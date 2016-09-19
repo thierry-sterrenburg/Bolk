@@ -43,7 +43,7 @@
 							</thead>
 							
 							<tbody>
-								<tr class="success">
+								<tr class="success" onclick="document.location = 'projectGEA';">
 									<td>1</td>
 									<td>32150105</td>
 									<td>T11</td>

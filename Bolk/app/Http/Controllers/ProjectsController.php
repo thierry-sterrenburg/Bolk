@@ -8,5 +8,5 @@ use App\Http\Requests;
 
 class ProjectsController extends Controller
 {
-    //
+    
 }
