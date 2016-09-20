@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Projects extends Migration
+class Windmills extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class Projects extends Migration
      */
     public function up()
     {
-        Schema::create("projects", function (Blueprint $table) {
+        Schema::create("windmills", function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('regnumber');
+			$table->integer('projectid');
+			$table->integer('tasknumber');
 			$table->string('name');
 			$table->string('location');
 			$table->datetime('startdate');
@@ -31,6 +32,6 @@ class Projects extends Migration
      */
     public function down()
     {
-         //
+        //
     }
 }

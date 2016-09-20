@@ -723,6 +723,7 @@ class ComposerStaticInita6c0141f382aba4f215936f88363bd80
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'Projects' => __DIR__ . '/../..' . '/database/migrations/2016_09_14_103106_projects.php',
+        'Requirements' => __DIR__ . '/../..' . '/database/migrations/2016_09_20_091039_requirements.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -804,6 +805,8 @@ class ComposerStaticInita6c0141f382aba4f215936f88363bd80
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'Transports' => __DIR__ . '/../..' . '/database/migrations/2016_09_20_084301_transports.php',
+        'Windmills' => __DIR__ . '/../..' . '/database/migrations/2016_09_20_091730_windmills.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Projects extends Migration
+class Requirements extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class Projects extends Migration
      */
     public function up()
     {
-        Schema::create("projects", function (Blueprint $table) {
+         Schema::create("requirements", function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('regnumber');
+			$table->integer('transportid');
 			$table->string('name');
-			$table->string('location');
+			$table->string('country');
 			$table->datetime('startdate');
 			$table->datetime('enddate');
+			$table->boolean('booked');
 			$table->longText('remarks');
 		}
     }
@@ -31,6 +32,6 @@ class Projects extends Migration
      */
     public function down()
     {
-         //
+        //
     }
 }
