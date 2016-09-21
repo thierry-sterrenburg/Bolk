@@ -24,7 +24,7 @@ class Components extends Migration
 			$table->double('weigth', 8,2);
 			$table->string('switchable');
 			$table->enum('status', ['storage','transport','delivered','installed']);
-		}
+		});
     }
 
     /**

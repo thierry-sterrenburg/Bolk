@@ -27,8 +27,7 @@ class Transports extends Migration
 			$table->datetime('dateofarrivalinitial');
 			$table->datetime('dateofarrivalfinal');
 			$table->longText('remarks');
-			
-		}
+		});
     }
 
     /**

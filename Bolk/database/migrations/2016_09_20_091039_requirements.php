@@ -22,7 +22,7 @@ class Requirements extends Migration
 			$table->datetime('enddate');
 			$table->boolean('booked');
 			$table->longText('remarks');
-		}
+		});
     }
 
     /**

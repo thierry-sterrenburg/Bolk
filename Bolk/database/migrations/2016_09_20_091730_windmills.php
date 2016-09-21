@@ -22,7 +22,7 @@ class Windmills extends Migration
 			$table->datetime('startdate');
 			$table->datetime('enddate');
 			$table->longText('remarks');
-		}
+		});
     }
 
     /**
