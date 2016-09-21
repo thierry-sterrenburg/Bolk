@@ -17,7 +17,8 @@ class Components extends Migration
 			$table->increments('id');
 			$table->integer('projectid');
 			$table->integer('windmillid')->nullable();
-			$table->integer('tasknumber');
+			$table->integer('regnumber');
+            $table->string('name')->nullable();
 			$table->double('length', 8,2)->nullable();
 			$table->double('height', 8,2)->nullable();
 			$table->double('width', 8,2)->nullable();
