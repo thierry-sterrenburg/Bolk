@@ -27,6 +27,18 @@ Route::get('/windmill', function () {
     return view('windmill');
 });
 
-Route::get('/project', function () {
-    return view('project');
+Route::get('/componant', function () {
+    return view('componant');
+});
+
+Route::get('/transportphase', function () {
+    return view('transportphase');
+});
+
+Route::get('/componant', function () {
+    return view('componant');
+});
+
+Route::get('/closestdeadlines', function () {
+    return view('closestdeadlines');
 });
