@@ -49,6 +49,7 @@
 							<thead>
 								<td>#</td>
 								<td>Name</td>
+								<td>Country</td>
 								<td>Document Location</td>
 								<td>Start datetime</td>
 								<td>End datetime</td>
@@ -61,6 +62,7 @@
 								<tr class="success">
 									<td>1</td>
 									<td>Escort</td>
+									<td>Germany</td>
 									<td>none</td>
 									<td>16-08-2016 9:00:00</td>
 									<td>16-08-2016 15:00:00</td>

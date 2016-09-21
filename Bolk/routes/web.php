@@ -19,6 +19,10 @@ Route::get('/index', function () {
     return view('index');
 });
 
+//Route::get('/clients', function () {
+//    return view('clients');
+//});
+
 Route::get('/projects', function () {
     return view('projects');
 });
@@ -31,16 +35,12 @@ Route::get('/windmill', function () {
     return view('windmill');
 });
 
-Route::get('/componant', function () {
-    return view('componant');
+Route::get('/component', function () {
+    return view('component');
 });
 
 Route::get('/transportphase', function () {
     return view('transportphase');
-});
-
-Route::get('/componant', function () {
-    return view('componant');
 });
 
 Route::get('/closestdeadlines', function () {
