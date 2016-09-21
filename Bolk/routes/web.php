@@ -31,9 +31,7 @@ Route::get('/project', function () {
     return view('project');
 });
 
-Route::get('/windmill', function () {
-    return view('windmill');
-});
+Route::get('/windmill', 'WindmillController@index');
 
 Route::get('/component', function () {
     return view('component');

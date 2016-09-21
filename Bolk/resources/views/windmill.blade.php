@@ -38,7 +38,7 @@
 							<thead>
 								<td>#</td>
 								<td>Reg. number</td>
-								<td>Component</td>
+								<td>Name</td>
 								<td>From</td>
 								<td>To</td>
 								<td>Number of transport phases</td>
@@ -51,74 +51,89 @@
 							</thead>
 							
 							<tbody>
-								<tr class="success" onclick="document.location = 'transport.html';">
-									<td>1</td>
-									<td>32150105</td>
-									<td>PPM</td>
-									<td>Almelo</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>16-08-2016</td>
-									<td>24-08-2016</td>
-									<td>23-08-2016</td>
-									<td>24-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-									<td>2</td>
-									<td>32150105</td>
-									<td>T-Base</td>
-									<td>Grangemouth</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>23-08-2016</td>
-									<td>24-08-2016</td>
-									<td>25-08-2016</td>
-									<td>27-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-								<tr class="warning">
-									<td>3</td>
-									<td>32150105</td>
-									<td>T-Mid</td>
-									<td>Grangemouth</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>23-08-2016</td>
-									<td>24-08-2016</td>
-									<td>25-08-2016</td>
-									<td>27-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>32150105</td>
-									<td>T-Top</td>
-									<td>Grangemouth</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>22-08-2016</td>
-									<td>22-08-2016</td>
-									<td>23-08-2016</td>
-									<td>23-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>32150105</td>
-									<td>Nacelle</td>
-									<td>Spelle</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>22-08-2016</td>
-									<td>22-08-2016</td>
-									<td>23-08-2016</td>
-									<td>23-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
+								@foreach($components as $component)
+									<tr>
+										<td>{{ $component->id }}</td>
+										<td>{{ $component->regnumber }}</td>
+										<td>{{ $component->name}}</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>{{ $component->remarks }}</td>
+									</tr>
+									<tr class="success" onclick="document.location = 'transport.html';">
+										<td>1</td>
+										<td>32150105</td>
+										<td>PPM</td>
+										<td>Almelo</td>
+										<td>Auchrobert</td>
+										<td>3</td>
+										<td>16-08-2016</td>
+										<td>24-08-2016</td>
+										<td>23-08-2016</td>
+										<td>24-08-2016</td>
+										<td>24-08-2016 13:57:09</td>
+										<td>-</td>
+									</tr>
+										<td>2</td>
+										<td>32150105</td>
+										<td>T-Base</td>
+										<td>Grangemouth</td>
+										<td>Auchrobert</td>
+										<td>3</td>
+										<td>23-08-2016</td>
+										<td>24-08-2016</td>
+										<td>25-08-2016</td>
+										<td>27-08-2016</td>
+										<td>24-08-2016 13:57:09</td>
+										<td>-</td>
+									</tr>
+									<tr class="warning">
+										<td>3</td>
+										<td>32150105</td>
+										<td>T-Mid</td>
+										<td>Grangemouth</td>
+										<td>Auchrobert</td>
+										<td>3</td>
+										<td>23-08-2016</td>
+										<td>24-08-2016</td>
+										<td>25-08-2016</td>
+										<td>27-08-2016</td>
+										<td>24-08-2016 13:57:09</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>32150105</td>
+										<td>T-Top</td>
+										<td>Grangemouth</td>
+										<td>Auchrobert</td>
+										<td>3</td>
+										<td>22-08-2016</td>
+										<td>22-08-2016</td>
+										<td>23-08-2016</td>
+										<td>23-08-2016</td>
+										<td>24-08-2016 13:57:09</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>32150105</td>
+										<td>Nacelle</td>
+										<td>Spelle</td>
+										<td>Auchrobert</td>
+										<td>3</td>
+										<td>22-08-2016</td>
+										<td>22-08-2016</td>
+										<td>23-08-2016</td>
+										<td>23-08-2016</td>
+										<td>24-08-2016 13:57:09</td>
+										<td>-</td>
 								</tr>
 							</tbody>
 							
