@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Bolk</a>
+                <a class="navbar-brand" href="/index">Bolk</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -55,10 +55,13 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Home</a>
+                            <a href="/index"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i>  Projects</a>
+                            <a href="/projects"><i class="fa fa-truck fa-fw"></i>  Projects</a>
+                        </li>
+                        <li>
+                            <a href="/closestdeadlines"><i class="fa fa-clock-o fa-fw"></i>  Deadlines</a>
                         </li>
                     </ul>
                 </div>

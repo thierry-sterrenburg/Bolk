@@ -5,9 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-						<ol class="breadcrumb">
-							<li class="active">Projects</li>
-						</ol>
+
                         <h1 class="page-header">Projects</h1>
 						
 						<!--panel content -->						

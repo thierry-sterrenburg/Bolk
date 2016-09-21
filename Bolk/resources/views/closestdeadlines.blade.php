@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('content')
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Closest Deadlines</h1>
+						
 						<!--panel content -->
 
 						<table class="table table-condensed table-hover">
@@ -88,5 +95,5 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        <!-- /#page-wrapper -
+        <!-- /#page-wrapper -->
 @endsection
