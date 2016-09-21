@@ -46,3 +46,5 @@ Route::get('/transportphase', function () {
 Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
 });
+
+Route::get('/modal', 'ProjectController@index');
