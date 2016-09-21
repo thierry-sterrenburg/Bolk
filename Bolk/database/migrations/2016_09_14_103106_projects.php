@@ -17,10 +17,10 @@ class Projects extends Migration
 			$table->increments('id');
 			$table->string('regnumber');
 			$table->string('name');
-			$table->string('location');
-			$table->datetime('startdate');
-			$table->datetime('enddate');
-			$table->longText('remarks');
+			$table->string('location')->nullable();
+			$table->datetime('startdate')->nullable();
+			$table->datetime('enddate')->nullable();
+			$table->longText('remarks')->nullable();
 		});
     }
 

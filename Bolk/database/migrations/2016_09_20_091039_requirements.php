@@ -17,11 +17,11 @@ class Requirements extends Migration
 			$table->increments('id');
 			$table->integer('transportid');
 			$table->string('name');
-			$table->string('country');
-			$table->datetime('startdate');
-			$table->datetime('enddate');
+			$table->string('country')->nullable();
+			$table->datetime('startdate')->nullable();
+			$table->datetime('enddate')->nullable();
 			$table->boolean('booked');
-			$table->longText('remarks');
+			$table->longText('remarks')->nullable();
 		});
     }
 

@@ -18,10 +18,10 @@ class Windmills extends Migration
 			$table->integer('projectid');
 			$table->integer('tasknumber');
 			$table->string('name');
-			$table->string('location');
-			$table->datetime('startdate');
-			$table->datetime('enddate');
-			$table->longText('remarks');
+			$table->string('location')->nullable();
+			$table->datetime('startdate')->nullable();
+			$table->datetime('enddate')->nullable();
+			$table->longText('remarks')->nullable();
 		});
     }
 

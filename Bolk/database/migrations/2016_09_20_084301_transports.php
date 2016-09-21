@@ -16,17 +16,17 @@ class Transports extends Migration
          Schema::create("transports", function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('componentid');
-			$table->integer('transportnumber');
-			$table->string('company');
-			$table->string('truck');
-			$table->string('trailer');
-			$table->string('configuration');
-			$table->string('from');
-			$table->string('to');
-			$table->datetime('dateofloading');
-			$table->datetime('dateofarrivalinitial');
-			$table->datetime('dateofarrivalfinal');
-			$table->longText('remarks');
+			$table->integer('transportnumber')->nullable();
+			$table->string('company')->nullable();
+			$table->string('truck')->nullable();
+			$table->string('trailer')->nullable();
+			$table->string('configuration')->nullable();
+			$table->string('from')->nullable();
+			$table->string('to')->nullable();
+			$table->datetime('dateofloading')->nullable();
+			$table->datetime('dateofarrivalinitial')->nullable();
+			$table->datetime('dateofarrivalfinal')->nullable();
+			$table->longText('remarks')->nullable();
 		});
     }
 
