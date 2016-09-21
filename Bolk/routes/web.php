@@ -12,10 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/projects', function () {
     return view('projects');
 });
 
+Route::get('/project', function () {
+    return view('project');
+});
+
+Route::get('/windmill', function () {
+    return view('windmill');
+});
+
+Route::get('/project', function () {
+    return view('project');
+});
