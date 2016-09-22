@@ -60,7 +60,7 @@
 							
 							<tbody>
 								@foreach($transports as $transport)
-									<tr>
+									<tr onclick="document.location= '/transportphase/id={{$transport->id}}';">
 										<td>{{ $transport->id }}</td>
 										<td>{{ $transport->transportnumber }}</td>
 										<td>{{ $transport->company}}</td>

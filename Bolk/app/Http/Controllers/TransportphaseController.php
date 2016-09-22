@@ -10,8 +10,8 @@ use DB;
 
 class TransportphaseController extends Controller
 {
-    public function index() {
-    	$requirements = Requirement::all();
-    	return view('transportphase', ['requirements' => $requirements]);
+    public function index($id) {
+    	$requirements = Requirement::where('transportid','=', $id)->get();
+    	return view('/transportphase', ['requirements' => $requirements]);
     }
 }

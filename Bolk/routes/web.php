@@ -32,7 +32,9 @@ Route::get('/windmill', 'WindmillController@index');
 
 Route::get('/component', 'ComponentController@index');
 
-Route::get('/transportphase', 'TransportphaseController@index');
+//Route::get('/transportphase', 'TransportphaseController@index');
+
+Route::get('/transportphase/id={id}', 'TransportphaseController@index');
 
 Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');

@@ -15,12 +15,14 @@ class Requirements extends Migration
     {
          Schema::create("requirements", function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('transportid');
+			$table->integer('transportid')->unsigned();
+            $table->foreign('transportid')->references('id')->on('transports');
 			$table->string('name');
 			$table->string('country')->nullable();
 			$table->datetime('startdate')->nullable();
 			$table->datetime('enddate')->nullable();
-			$table->boolean('booked');
+			$table->enum('booked', ['no','pending','yes']);
+            $table->string('responsibleplanner');
 			$table->longText('remarks')->nullable();
 		});
     }
