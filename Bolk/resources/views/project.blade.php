@@ -41,9 +41,23 @@
 								<td>start date</td>
 								<td>end date</td>
 								<td>last update</td>
+								<td>remarks
 							</thead>
 							
 							<tbody>
+								@foreach($windmills as $windmill)
+									<tr>
+										<td>{{ $windmill->id }}</td>
+										<td>{{ $windmill->regnumber }}</td>
+										<td>{{ $windmill->name }}</td>
+										<td>{{ $windmill->location }}</td>
+										<td></td>
+										<td>{{ $windmill->startdate }}</td>
+										<td>{{ $windmill->enddate }}</td>
+										<td></td>
+										<td>{{ $windmill->remarks }}</td>
+									</tr>
+								@endforeach	
 								<tr class="success" onclick="document.location = 'windmill.html';">
 									<td>1</td>
 									<td>32150105</td>

@@ -27,9 +27,7 @@ Route::get('/projects', function () {
     return view('projects');
 });
 
-Route::get('/project', function () {
-    return view('project');
-});
+Route::get('/project', 'ProjectController@index');
 
 Route::get('/windmill', 'WindmillController@index');
 
@@ -45,4 +43,4 @@ Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
 });
 
-Route::get('/modal', 'ProjectController@index');
+Route::get('/modal', 'ProjectsController@index'); 

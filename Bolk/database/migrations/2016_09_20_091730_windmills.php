@@ -16,7 +16,7 @@ class Windmills extends Migration
         Schema::create("windmills", function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('projectid');
-			$table->integer('tasknumber');
+			$table->integer('regnumber');
 			$table->string('name');
 			$table->string('location')->nullable();
 			$table->datetime('startdate')->nullable();
