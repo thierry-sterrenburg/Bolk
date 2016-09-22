@@ -14,4 +14,11 @@ class ProjectsController extends Controller
 	$projects = Project::all();
 	return view('modal', ['projects' => $projects]);
    }
+   public function newProject(Request $request){
+	   if($request->ajax()){
+		   $project=Project::create($request->all());
+		   return response()->json($project);
+	   }
+   }
+	
 }

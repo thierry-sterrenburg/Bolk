@@ -23,9 +23,8 @@ Route::get('/index', function () {
 //    return view('clients');
 //});
 
-Route::get('/projects', function () {
-    return view('projects');
-});
+Route::get('/projects', 'ProjectsController@index');
+Route::post('newProject', 'ProjectsController@newProject');
 
 Route::get('/project', 'ProjectController@index');
 
