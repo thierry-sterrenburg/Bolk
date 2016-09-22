@@ -13,30 +13,12 @@
 <div class="container">
   <h2>Projects</h2>
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Project</button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="add">Add Project</button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Project</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+
   
   <div class="panel-body">
+	@include('newProject')
 	<table class="table table-hover">
 		<caption>Projects</caption>
 			<thead>
@@ -77,6 +59,28 @@
 			</tbody>
 	</table>
   </div>
+  
+  <script type="text/javascript">
+	$('#add').on('click',function(){
+		$('#project').modal('show');
+	})
+	$('#frmProject').on('submit', function(e){
+		e.preventDefault();
+		var form=$('#frmProject');
+		var formData=form.serialize();
+		var url=form.attr('action');
+		$.ajax({
+			type : 'post',
+			url : url,
+			data: formData,
+			async:true,
+			dataType: 'json',
+			success:function(data){
+				console.log(data);
+			}
+		})
+	})
+  </script>
 </div>
 
 </body>
