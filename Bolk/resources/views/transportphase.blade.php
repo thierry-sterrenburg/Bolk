@@ -59,6 +59,18 @@
 							</thead>
 							
 							<tbody>
+								@foreach($requirements as $requirement)
+									<tr>
+										<td>{{ $requirement->id }}</td>
+										<td>{{ $requirement->name }}</td>
+										<td>{{ $requirement->country }}</td>
+										<td>is nog geen plek voor in database</td>
+										<td>{{ $requirement->startdate</td>
+										<td>{{ $requirement->enddate</td>
+										<td>{{ $requirement->booked</td>
+										<td>{{ $requirement->remaks</td>
+									</tr>
+								@endforeach	
 								<tr class="success">
 									<td>1</td>
 									<td>Escort</td>

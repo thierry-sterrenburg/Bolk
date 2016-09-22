@@ -59,6 +59,24 @@
 							</thead>
 							
 							<tbody>
+								@foreach($transports as $transport)
+									<tr>
+										<td>{{ $transport->id }}</td>
+										<td>{{ $transport->transportnumber }}</td>
+										<td>{{ $transport->company}}</td>
+										<td>{{ $transport->truck}}</td>
+										<td>{{ $transport->trailer }}</td>
+										<td>{{ $transport->configuration}}</td>
+										<td>{{ $transport->from }}</td>
+										<td>{{ $transport->to}}</td>
+										<td></td>
+										<td>{{ $transport->dateofloading}}</td>
+										<td>{{ $transport->dateofarrivalinitial}}</td>
+										<td>{{ $transport->dateofarrrivalfinal}}</td>
+										<td></td>
+										<td>{{ $transport->remarks}}</td>
+									</tr>
+								@endforeach
 								<tr class="success" onclick="document.location = 'requirement.html';">
 									<td>1</td>
 									<td>670</td>

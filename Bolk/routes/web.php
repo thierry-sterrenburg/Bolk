@@ -31,13 +31,9 @@ Route::get('/project', 'ProjectController@index');
 
 Route::get('/windmill', 'WindmillController@index');
 
-Route::get('/component', function () {
-    return view('component');
-});
+Route::get('/component', 'ComponentController@index');
 
-Route::get('/transportphase', function () {
-    return view('transportphase');
-});
+Route::get('/transportphase', 'TransportphaseController@index');
 
 Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
