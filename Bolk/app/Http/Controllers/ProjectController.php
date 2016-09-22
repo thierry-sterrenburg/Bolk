@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Project;
+use App\Windmill;
 use DB;
 
 class ProjectController extends Controller
 {
-   public function index(){
-	$projects = Project::all();
-	return view('modal', ['projects' => $projects]);
-   }
+    public function index(){
+	$windmills = Windmill::all();
+	return view('project', ['windmills' => $windmills]);
+	}
 }
