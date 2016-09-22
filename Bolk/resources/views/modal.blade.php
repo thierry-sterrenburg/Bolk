@@ -63,8 +63,10 @@
   <script type="text/javascript">
 	$('#add').on('click',function(){
 		$('#project').modal('show');
-	})
-	$('#frmProject').on('submit', function(e){
+	});
+	
+	$(function() {
+	$('#frmProject-submit').on('click', function(e){
 		e.preventDefault();
 		var form=$('#frmProject');
 		var formData=form.serialize();
@@ -73,13 +75,13 @@
 			type : 'post',
 			url : url,
 			data: formData,
-			async:true,
-			dataType: 'json',
 			success:function(data){
 				console.log(data);
+				location.reload();
 			}
-		})
-	})
+		});
+	});
+	});
   </script>
 </div>
 

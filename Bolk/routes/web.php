@@ -24,7 +24,7 @@ Route::get('/index', function () {
 //});
 
 Route::get('/projects', 'ProjectsController@index');
-Route::post('newProject', 'ProjectsController@newProject');
+Route::post('/newProject', 'ProjectsController@newProject');
 
 Route::get('/project', 'ProjectController@index');
 

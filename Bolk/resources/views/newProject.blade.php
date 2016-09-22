@@ -10,17 +10,17 @@
         </div>
         <div class="modal-body">
 		
-          <form action="newProject" method="post" id="frmProject">
+          <form action="/newProject" method="post" id="frmProject">
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="registrationNumber" id="registrationNumber" placeholder="Registration Number" class="form-control">
+					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control">
 				</div>
 				</div>
 				
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="projectName" id="projectName" placeholder="Project Name" class="form-control">
+					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control">
 				</div>
 				</div>
 				
@@ -34,13 +34,13 @@
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="startDate" id="startDate" placeholder="Start Date" class="form-control">
+					<input type="text" name="startdate" id="startdate" placeholder="Start Date" class="form-control">
 				</div>
 				</div>
 				
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="endDate" id="endDate" placeholder="End Date" class="form-control">
+					<input type="text" name="enddate" id="endDate" placeholder="End Date" class="form-control">
 				</div>
 				</div>
 			</div>
@@ -51,11 +51,11 @@
 					<input type="text" name="remarks" id="remarks" placeholder="Remarks" class="form-control">
 				</div>
 			</div>
-			
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" value="Save" id="save" class="btn btn-primary">
+			<input type="submit" value="Save" id="frmProject-submit" class="btn btn-primary" data-dismiss="modal">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
