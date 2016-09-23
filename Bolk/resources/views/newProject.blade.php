@@ -40,7 +40,7 @@
 				
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="enddate" id="endDate" placeholder="End Date" class="form-control">
+					<input type="text" name="enddate" id="enddate" placeholder="End Date" class="form-control">
 				</div>
 				</div>
 			</div>
@@ -52,10 +52,11 @@
 				</div>
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="hidden" name="id" id="id" value="">
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" value="Save" id="frmProject-submit" class="btn btn-primary" data-dismiss="modal">
+			<input type="submit" name="frmProject-submit" value="Save" id="frmProject-submit" class="btn btn-primary" data-dismiss="modal">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
