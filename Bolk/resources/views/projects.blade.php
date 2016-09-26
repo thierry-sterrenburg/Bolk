@@ -166,11 +166,13 @@
 	
 	$(function () {
         $('#startdatepicker').datetimepicker({
+			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'});
             
 		
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
+			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'
 			});
         $("#startdatepicker").on("dp.change", function (e) {

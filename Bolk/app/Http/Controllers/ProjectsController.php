@@ -16,7 +16,10 @@ class ProjectsController extends Controller
    }
    public function newProject(Request $request){
 	   if($request->ajax()){
-		   $project=Project::create($request->all());
+		   $project = new Project();
+		   $this->checkInput($project, $request);
+		   $project->save();
+		   //$project=Project::create($request->all());
 		   return response()->json($project);
 	   }
    }
@@ -29,12 +32,13 @@ class ProjectsController extends Controller
    public function newUpdate(Request $request){
 	   if ($request->ajax()){
 		   $project=Project::find($request->id);
-		   $project->regnumber=$request->regnumber;
-		   $project->name=$request->name;
-		   $project->location=$request->location;
-		   $project->startdate=$request->startdate;
-		   $project->enddate=$request->enddate;
-		   $project->remarks=$request->remarks;
+		   $this->checkInput($project, $request);
+		   //$project->regnumber=$request->regnumber;
+		   //$project->name=$request->name;
+		   //$project->location=$request->location;
+		   //$project->startdate=$request->startdate;
+		   //$project->enddate=$request->enddate;
+		   //$project->remarks=$request->remarks;
 		   $project->save();
 		   return Response($project);
 	   }
@@ -44,5 +48,39 @@ class ProjectsController extends Controller
 		   Project::destroy($request->id);
 		   return Response()->json(['sms'=>'delete successfully']);
 	   }
+   }
+   
+   public function checkInput($project, $request){
+		   if($request->regnumber == ''){
+			   $project->regnumber=null;
+		   }else{
+			   $project->regnumber=$request->regnumber;
+		   }
+		   if($request->name == ''){
+			   $project->name=null;
+		   }else{
+			   $project->name=$request->name;
+		   }
+		   if($request->location == ''){
+			   $project->location=null;
+		   }else{
+			   $project->location=$request->location;
+		   }
+		   if($request->startdate == ''){
+			   $project->startdate=null;
+		   }else{
+			   $project->startdate=$request->startdate;
+		   }
+		   if($request->enddate == ''){
+			   $project->enddate=null;
+		   }else{
+			   $project->enddate=$request->enddate;
+		   }
+		   if($request->remarks == ''){
+			   $project->remarks=null;
+		   }else{
+			   $project->remarks=$request->remarks;
+		   }
+	   return $project;
    }
 }
