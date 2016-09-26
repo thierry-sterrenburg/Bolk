@@ -42,5 +42,7 @@ Route::get('/transportphase/id={id}', 'TransportphaseController@index');
 Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
 });
-
+Route::get('/General', function () {
+    return view('GeneralPanel');
+});
 Route::get('/modal', 'ProjectsController@index'); 
