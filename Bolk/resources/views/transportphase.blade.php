@@ -73,38 +73,6 @@
 										<td>{{ $requirement->remaks }}</td>
 									</tr>
 								@endforeach	
-								<tr class="success">
-									<td>1</td>
-									<td>Escort</td>
-									<td>Germany</td>
-									<td>none</td>
-									<td>16-08-2016 9:00:00</td>
-									<td>16-08-2016 15:00:00</td>
-									<td>Yes</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>2 vans</td>
-								</tr>
-								<tr class="danger">
-									<td>2</td>
-									<td>Permit</td>
-									<td>none</td>
-									<td>16-08-2016 9:00:00</td>
-									<td>16-08-2016 15:00:00</td>
-									<td>No</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>2 vans + truck</td>
-								</tr>
-								<tr class="danger">
-									<td>3</td>
-									<td>Offloading</td>
-									<td>none</td>
-									<td>16-08-2016 15:00:00</td>
-									<td>16-08-2016 16:00:00</td>
-									<td>No</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-								
 							</tbody>
 							
 						</table>
