@@ -52,7 +52,7 @@
 							
 							<tbody>
 								@foreach($components as $component)
-									<tr>
+									<tr onclick="document.location= '/component/id={{$component->id}}';">
 										<td>{{ $component->id }}</td>
 										<td>{{ $component->regnumber }}</td>
 										<td>{{ $component->name}}</td>

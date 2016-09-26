@@ -10,8 +10,8 @@ use DB;
 
 class ProjectController extends Controller
 {
-    public function index(){
-	$windmills = Windmill::all();
-	return view('project', ['windmills' => $windmills]);
+    public function index($id){
+	$windmills = Windmill::where('projectid','=', $id)->get();
+	return view('/project', ['windmills' => $windmills]);
 	}
 }

@@ -77,53 +77,6 @@
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
-								<tr class="success" onclick="document.location = 'requirement.html';">
-									<td>1</td>
-									<td>670</td>
-									<td>Lubbers</td>
-									<td>Lubbers</td>
-									<td>4011</td>
-									<td>Lubbers</td>
-									<td>Almelo</td>
-									<td>Rotterdam</td>
-									<td>2</td>
-									<td>16-08-2016</td>
-									<td>17-08-2016</td>
-									<td>24-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
-									<td>2</td>
-									<td>671</td>
-									<td>Lubbers</td>
-									<td>Lubbers</td>
-									<td>4011</td>
-									<td>Lubbers</td>
-									<td>Rotterdam</td>
-									<td>Hull</td>
-									<td>2</td>
-									<td>17-08-2016</td>
-									<td>18-08-2016</td>
-									<td>28-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>Ferry</td>
-								</tr>
-								<tr class="warning">
-									<td>3</td>
-									<td>672</td>
-									<td>Lubbers</td>
-									<td>Lubbers</td>
-									<td>4011</td>
-									<td>Lubbers</td>
-									<td>Hull</td>
-									<td>Auchrobert</td>
-									<td>3</td>
-									<td>19-08-2016</td>
-									<td>24-08-2016</td>
-									<td>24-08-2016</td>
-									<td>24-08-2016 13:57:09</td>
-									<td>-</td>
-								</tr>
 								
 							</tbody>
 							

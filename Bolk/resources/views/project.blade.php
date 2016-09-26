@@ -46,7 +46,7 @@
 							
 							<tbody>
 								@foreach($windmills as $windmill)
-									<tr>
+									<tr onclick="document.location= '/windmill/id={{$windmill->id}}';">
 										<td>{{ $windmill->id }}</td>
 										<td>{{ $windmill->regnumber }}</td>
 										<td>{{ $windmill->name }}</td>
@@ -58,66 +58,6 @@
 										<td>{{ $windmill->remarks }}</td>
 									</tr>
 								@endforeach	
-								<tr class="success" onclick="document.location = 'windmill.html';">
-									<td>1</td>
-									<td>32150105</td>
-									<td>T11</td>
-									<td>Auchrobert</td>
-									<td>9</td>
-									<td>24-08-2016</td>
-									<td>30-08-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
-									<tr>
-									<td>2</td>
-									<td>32150106</td>
-									<td>T12</td>
-									<td>Auchrobert</td>
-									<td>10</td>
-									<td>27-08-2016</td>
-									<td>08-09-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
-								<tr class="warning">
-									<td>2</td>
-									<td>32150106</td>
-									<td>T12</td>
-									<td>Auchrobert</td>
-									<td>10</td>
-									<td>27-08-2016</td>
-									<td>08-09-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>32150106</td>
-									<td>T12</td>
-									<td>Auchrobert</td>
-									<td>10</td>
-									<td>27-08-2016</td>
-									<td>08-09-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
-									<tr>
-									<td>2</td>
-									<td>32150106</td>
-									<td>T12</td>
-									<td>Auchrobert</td>
-									<td>10</td>
-									<td>27-08-2016</td>
-									<td>08-09-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
-								<tr class="danger">
-									<td>2</td>
-									<td>32150106</td>
-									<td>T12</td>
-									<td>Auchrobert</td>
-									<td>10</td>
-									<td>27-08-2016</td>
-									<td>08-09-2016</td>
-									<td>13-09-2016 14:17:52</td>
-								</tr>
 							</tbody>
 							
 						</table>

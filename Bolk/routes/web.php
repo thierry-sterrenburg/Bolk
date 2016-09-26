@@ -29,11 +29,11 @@ Route::get('/getUpdate', 'ProjectsController@getUpdate');
 Route::put('/newProject', 'ProjectsController@newUpdate');
 Route::delete('/deleteProject', 'ProjectsController@deleteProject');
 
-Route::get('/project', 'ProjectController@index');
+Route::get('/project/id={id}', 'ProjectController@index');
 
-Route::get('/windmill', 'WindmillController@index');
+Route::get('/windmill/id={id}', 'WindmillController@index');
 
-Route::get('/component', 'ComponentController@index');
+Route::get('/component/id={id}', 'ComponentController@index');
 
 //Route::get('/transportphase', 'TransportphaseController@index');
 

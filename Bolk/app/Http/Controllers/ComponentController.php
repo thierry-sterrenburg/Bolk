@@ -10,8 +10,8 @@ use DB;
 
 class ComponentController extends Controller
 {
-    public function index() {
-    	$transports = Transport::all();
-    	return view('component', ['transports' => $transports]);
+    public function index($id) {
+    	$transports = Transport::where('componentid','=', $id)->get();
+    	return view('/component', ['transports' => $transports]);
     }
 }

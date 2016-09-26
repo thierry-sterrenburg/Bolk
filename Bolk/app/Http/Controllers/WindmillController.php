@@ -10,8 +10,8 @@ use DP;
 
 class WindmillController extends Controller
 {
-    public function index(){
-    	$components = Component::all();
-    	return view('windmill', ['components' => $components]);
+    public function index($id){
+    	$components = Component::where('windmillid','=', $id)->get();
+    	return view('/windmill', ['components' => $components]);
     }
 }
