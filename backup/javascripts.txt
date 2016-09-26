@@ -1,0 +1,43 @@
+$('.btn-edit').on('click',function(){
+		alert($(this).data('id'));
+	})
+	
+	
+	//---------get update---------
+	
+	$('tbody').delegate('.btn-edit','click',function(){
+		var value=$(this).data('id');
+		var url='{{URL::to('getUpdate')}}';
+		$.ajax({
+			type: 'get',
+			url : url.
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#regnumber').val(data.regnumber);
+				$('#name').val(data.name);
+				$('#location').val(data.location);
+				$('#startdate').val(data.startdate);
+				$('#enddate').val(data.enddate);
+				$('#remarks').val(data.remarks);
+				$('#project').modal('show');
+			}
+		});
+	});	
+	
+	
+		//---------delete project---------
+		//---------delete project---------
+	$('tbody').delegate('.btn-delete', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('deleteProject')}}';
+		if (confirm('Are you sure to delete?')==true){
+			$.ajax({
+				type : 'post',
+				url : url,
+				data : {'id':value},
+				success:function(data){
+					console.log(data);
+			});
+		}	
+	});

@@ -27,7 +27,7 @@ Route::get('/projects', 'ProjectsController@index');
 Route::post('/newProject', 'ProjectsController@newProject');
 Route::get('/getUpdate', 'ProjectsController@getUpdate');
 Route::put('/newProject', 'ProjectsController@newUpdate');
-Route::post('/deleteProject', 'ProjectsController@deleteProject');
+Route::delete('/deleteProject', 'ProjectsController@deleteProject');
 
 Route::get('/project', 'ProjectController@index');
 

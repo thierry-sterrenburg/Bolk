@@ -164,7 +164,7 @@
 		var url = '{{URL::to('deleteProject')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
-				type : 'post',
+				type : 'delete',
 				url : url,
 				data : {'id':value},
 				success:function(data){
