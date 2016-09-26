@@ -12,7 +12,7 @@ class ProjectsController extends Controller
 {
    public function index(){
 	$projects = Project::all();
-	return view('modal', ['projects' => $projects]);
+	return view('projects', ['projects' => $projects]);
    }
    public function newProject(Request $request){
 	   if($request->ajax()){

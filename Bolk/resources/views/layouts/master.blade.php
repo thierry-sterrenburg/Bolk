@@ -26,7 +26,19 @@
 	<!-- Date Picker -->
 	<link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css') }}" />
 
+	   
+	<!-- jQuery -->
+    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+	<script src="{{ asset('bower_components/moment/moment.min.js') }}"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+	
+	<script src="{{ asset('bower_components/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{ asset('bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
+	
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,17 +91,7 @@
 		 </div>
     <!-- /#wrapper -->
 	
-    <!-- jQuery -->
-    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-	<script src="{{ asset('bower_components/moment/moment.min.js') }}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-	
-	<script src="{{ asset('bower_components/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js') }}"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="{{ asset('bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
 	
 	
