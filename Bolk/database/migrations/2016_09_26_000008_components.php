@@ -19,7 +19,7 @@ class Components extends Migration
             $table->foreign('projectid')->references('id')->on('projects');
 			$table->integer('windmillid')->nullable();
             $table->foreign('windmillid')->references('id')->on('windmills');
-			$table->integer('regnumber');
+			$table->string('regnumber');
             $table->string('name')->nullable();
 			$table->double('length', 8,2)->nullable();
 			$table->double('height', 8,2)->nullable();

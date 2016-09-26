@@ -17,7 +17,7 @@ class Transports extends Migration
 			$table->increments('id');
 			$table->integer('componentid');
             $table->foreign('componentid')->references('id')->on('components');
-			$table->integer('transportnumber')->nullable();
+			$table->string('transportnumber')->nullable();
 			$table->string('company')->nullable();
 			$table->string('truck')->nullable();
 			$table->string('trailer')->nullable();

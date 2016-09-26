@@ -17,7 +17,7 @@ class Windmills extends Migration
 			$table->increments('id');
 			$table->integer('projectid');
             $table->foreign('projectid')->references('id')->on('projects');
-			$table->integer('regnumber');
+			$table->string('regnumber');
 			$table->string('name');
 			$table->string('location')->nullable();
 			$table->datetime('startdate')->nullable();
