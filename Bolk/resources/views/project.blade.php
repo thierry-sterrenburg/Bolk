@@ -77,9 +77,13 @@
 								<td>Last update</td>
 								<td>Remarks</td>
 							</thead>
-							
+
 							<tbody>
-									<tr>
+								@foreach($components as $component)
+									<tr onclick="document.location= '/component/id={{$component->id}}';">
+										<td>{{ $component->id }}</td>
+										<td>{{ $component->regnumber }}</td>
+										<td>{{ $component->name}}</td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -88,11 +92,9 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<td>{{ $component->remarks }}</td>
 									</tr>	
+								@endforeach
 							</tbody>
 							
 						</table>
