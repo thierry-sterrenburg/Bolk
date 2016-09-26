@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Components extends Migration
+class Windmills extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class Components extends Migration
      */
     public function up()
     {
-        Schema::create("components", function (Blueprint $table) {
+        Schema::create("windmills", function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('projectid');
-			$table->integer('windmillid')->nullable();
+            $table->foreign('projectid')->references('id')->on('projects');
 			$table->integer('regnumber');
-            $table->string('name')->nullable();
-			$table->double('length', 8,2)->nullable();
-			$table->double('height', 8,2)->nullable();
-			$table->double('width', 8,2)->nullable();
-			$table->double('weigth', 8,2)->nullable();
-			$table->string('switchable');
-			$table->enum('status', ['storage','transport','delivered','installed','unknown']);
+			$table->string('name');
+			$table->string('location')->nullable();
+			$table->datetime('startdate')->nullable();
+			$table->datetime('enddate')->nullable();
 			$table->longText('remarks')->nullable();
 		});
     }

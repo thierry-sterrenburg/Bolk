@@ -16,6 +16,7 @@ class Transports extends Migration
          Schema::create("transports", function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('componentid');
+            $table->foreign('componentid')->references('id')->on('components');
 			$table->integer('transportnumber')->nullable();
 			$table->string('company')->nullable();
 			$table->string('truck')->nullable();
