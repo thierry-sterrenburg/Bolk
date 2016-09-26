@@ -8,12 +8,8 @@
 
                         <h1 class="page-header">Projects</h1>
 						
-						<!--panel content -->						
-						<ul class="nav nav-pills" role="tablist">
-							<li role="presentation" class="active"><a href="#">Add Project <span class="badge">+</span></a></li>
-						</ul>
-						
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project</button>
+						<!--panel content -->												
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
 						
 						<br>
 						
@@ -34,14 +30,16 @@
 			</thead>
 			<tbody>
 				@foreach($projects as $project)
-				<tr id="project{{$project->id}}" onclick="document.location= '/project/id={{$project->id}}';">
-					<td>{{ $project->id }}</td>
-					<td>{{ $project->regnumber }}</td>
-					<td>{{ $project->name }}</td>
-					<td>{{ $project->location }}</td>
-					<td>{{ $project->startdate }}</td>
-					<td>{{ $project->enddate }}</td>
-					<td>{{ $project->remarks }}</td>
+				<tr id="project{{$project->id}}">
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->id }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->name }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->location }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">11</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">32</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
 					<td>
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}">Edit</button>
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}">Delete</button>
@@ -66,7 +64,7 @@
 
 	
 	$('#add').on('click',function(){
-		$('#frmProject-submit').val('save');
+		$('#frmProject-submit').val('Save');
 		$('frmProject').trigger('reset');
 		$('#project').modal('show');
 	})	
@@ -79,7 +77,7 @@
 		var url=form.attr('action');
 		var state=$('#frmProject-submit').val();
 		var type= 'post';
-		if(state=='update'){
+		if(state=='Update'){
 			type = 'put';
 		}
 		$.ajax({
@@ -98,7 +96,7 @@
 				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
 				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
 				'</tr>';
-				if(state=='save'){
+				if(state=='Save'){
 					$('tbody').append(row);
 				}else{
 					$('#project'+data.id).replaceWith(row);
@@ -143,7 +141,7 @@
 				$('#startdate').val(data.startdate);
 				$('#remarks').val(data.remarks);
 				$('#enddate').val(data.enddate);
-				$('#frmProject-submit').val('update');
+				$('#frmProject-submit').val('Update');
 				$('#project').modal('show');
 			}
 		});
@@ -167,15 +165,19 @@
 	});
 	
 	$(function () {
-        $('#datetimepicker6').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
+        $('#startdatepicker').datetimepicker({
+			format: 'YYYY-MM-DD HH:mm'});
+            
+		
+        $('#enddatepicker').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+			format: 'YYYY-MM-DD HH:mm'
+			});
+        $("#startdatepicker").on("dp.change", function (e) {
+            $('#enddatepicker').data("DateTimePicker").minDate(e.date);
         });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        $("#enddatepicker").on("dp.change", function (e) {
+            $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
 	

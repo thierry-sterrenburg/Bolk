@@ -6,7 +6,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Project</h4>
+          <h4 class="modal-title">Project Information</h4>
         </div>
         <div class="modal-body">
 		
@@ -32,20 +32,10 @@
 			</div>
 			
 			<div class="row">
-				<div class='col-md-5'>
+				<div class="col-lg-6 col-sm-6">
 					<div class="form-group">
-						<div class='input-group date' id='datetimepicker6'>
-							<input type='text' class="form-control" />
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class='col-md-5'>
-					<div class="form-group">
-						<div class='input-group date' id='datetimepicker7'>
-							<input type='text' class="form-control" />
+						<div class='input-group date' id='startdatepicker'>
+							<input type='text' class="form-control" name="startdate" id="startdate" placeholder="Start Date" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -53,22 +43,22 @@
 					</div>
 				</div>
 				<div class="col-lg-6 col-sm-6">
-				<div class="form-group">
-					<input type="text" name="startdate" id="startdate" placeholder="Start Date" class="form-control">
-				</div>
-				</div>
-				
-				<div class="col-lg-6 col-sm-6">
-				<div class="form-group">
-					<input type="text" name="enddate" id="enddate" placeholder="End Date" class="form-control">
-				</div>
+					<div class="form-group">
+						<div class='input-group date' id='enddatepicker'>
+							<input type='text' class="form-control" name="enddate" id="enddate" placeholder="End Date" class="form-control"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
 				</div>
 			</div>
 			
 			<div class="row">
-				
+				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
 					<input type="text" name="remarks" id="remarks" placeholder="Remarks" class="form-control">
+				</div>
 				</div>
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
