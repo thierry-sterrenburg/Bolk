@@ -29,6 +29,7 @@
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Windmill <span class="badge">+</span></button>
 						
 						<br>
+						@include('newWindmill')
 						<!--Windmill Table -->
 						<h3>Windmills</h3>
 						<table class="table table-condensed table-hover">
@@ -41,7 +42,7 @@
 								<td>start date</td>
 								<td>end date</td>
 								<td>last update</td>
-								<td>remarks
+								<td>remarks</td>
 							</thead>
 							
 							<tbody>
@@ -112,17 +113,15 @@
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 	
-
-	
 	$('#add').on('click',function(){
 		$('#frmWindmill-submit').val('Save');
 		$('#frmWindmill').trigger('reset');
-		document.getElementById("error_message").innerHTML = '';
+		
 		$('#windmill').modal('show');
 	})	
 	
 	$(function() {
-	$('#frmwindmill-submit').on('click', function(e){
+	$('#frmWindmill-submit').on('click', function(e){
 		e.preventDefault();
 		var form=$('#frmWindmill');
 		var formData=form.serialize();
@@ -153,7 +152,7 @@
 				}else{
 					$('#project'+data.id).replaceWith(row);
 				}
-				$('#frmProject').trigger('reset');
+				$('#frmWindmill').trigger('reset');
 				$('#regnumber').focus();
 			}
 		});
@@ -179,9 +178,8 @@
 	//---------get update---------
 	
 	$('tbody').delegate('.btn-edit','click',function(){
-		document.getElementById("error_message").innerHTML = '';
 		var value=$(this).data('id');
-		var url='{{URL::to('getUpdate')}}';
+		var url='{{URL::to('getUpdateWindmill')}}';
 		$.ajax({
 			type: 'get',
 			url : url,
@@ -203,15 +201,15 @@
 	//---------delete project---------
 	$('tbody').delegate('.btn-delete', 'click',function(){
 		var value = $(this).data('id');
-		var url = '{{URL::to('deleteProject')}}';
+		var url = '{{URL::to('deleteWindmill')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
-				type : 'delete',
+				type : 'delete	',
 				url : url,
 				data : {"_token": "{{ csrf_token() }}" ,
 					'id':value},
 				success:function(data){
-					$('#project'+value).remove();
+					$('#windmill'+value).remove();
 				}
 			});
 		}	
@@ -257,10 +255,6 @@
 		$('#project').modal('toggle');
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
-	}
-	
-	function resetError(){
-		document.getElementById("error_message").innerHTML = '';
 	}
 }
 	

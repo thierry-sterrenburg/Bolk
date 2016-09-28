@@ -1,3 +1,7 @@
+  <?php
+	
+  ?>
+  
   <!-- Modal -->
   <div class="modal fade" id="windmill" role="dialog">
     <div class="modal-dialog">
@@ -61,6 +65,7 @@
 				</div>
 				</div>
 			</div>
+			<input type="hidden" name="projectid" value="{{ $projectid }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
 		  </form>
