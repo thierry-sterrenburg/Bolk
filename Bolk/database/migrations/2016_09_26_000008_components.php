@@ -15,9 +15,9 @@ class Components extends Migration
     {
         Schema::create("components", function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('projectid');
+			$table->integer('projectid')->unsigned();
             $table->foreign('projectid')->references('id')->on('projects');
-			$table->integer('windmillid')->nullable();
+			$table->integer('windmillid')->nullable()->unsigned();
             $table->foreign('windmillid')->references('id')->on('windmills');
 			$table->string('regnumber');
             $table->string('name')->nullable();
