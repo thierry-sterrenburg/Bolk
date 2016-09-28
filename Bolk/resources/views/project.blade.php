@@ -1,3 +1,6 @@
+<?php 
+	use App\Http\Controllers\ProjectController;
+?>
 @extends('layouts.master')
 @section('content')
  <!-- Page Content -->
@@ -50,7 +53,7 @@
 										<td>{{ $windmill->regnumber }}</td>
 										<td>{{ $windmill->name }}</td>
 										<td>{{ $windmill->location }}</td>
-										<td></td>
+										<td>{{ ProjectController::countComponents($windmill->id)}}</td>
 										<td>{{ $windmill->startdate }}</td>
 										<td>{{ $windmill->enddate }}</td>
 										<td></td>
@@ -86,7 +89,7 @@
 										<td>{{ $component->name}}</td>
 										<td></td>
 										<td></td>
-										<td></td>
+										<td>{{ ProjectController::countTransports($component->id) }}</td>
 										<td></td>
 										<td></td>
 										<td></td>

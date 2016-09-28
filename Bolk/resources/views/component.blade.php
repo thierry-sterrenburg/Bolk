@@ -1,3 +1,7 @@
+<?php 
+	use App\Http\Controllers\ComponentController;
+?>
+
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -69,7 +73,7 @@
 										<td>{{ $transport->configuration}}</td>
 										<td>{{ $transport->from }}</td>
 										<td>{{ $transport->to}}</td>
-										<td></td>
+										<td>{{ ComponentController::countRequirements($transport->id) }}</td>
 										<td>{{ $transport->dateofloading}}</td>
 										<td>{{ $transport->dateofarrivalinitial}}</td>
 										<td>{{ $transport->dateofarrrivalfinal}}</td>

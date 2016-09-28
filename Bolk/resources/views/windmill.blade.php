@@ -1,3 +1,6 @@
+<?php 
+	use App\Http\Controllers\WindmillController;
+?>
 @extends('layouts.master')
 @section('content')
  <!-- Page Content -->
@@ -58,7 +61,7 @@
 										<td>{{ $component->name}}</td>
 										<td></td>
 										<td></td>
-										<td></td>
+										<td>{{ WindmillController::countTransports($component->id) }}</td>
 										<td></td>
 										<td></td>
 										<td></td>

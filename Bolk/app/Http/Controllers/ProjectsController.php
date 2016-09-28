@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Project;
+use App\Windmill;
+use App\Component;
+use App\Transport;
 use DB;
 
 class ProjectsController extends Controller
@@ -14,6 +17,26 @@ class ProjectsController extends Controller
 	$projects = Project::all();
 	return view('projects', ['projects' => $projects]);
    }
+
+   public static function countWindmills($projectid) {
+   	$numberofwindmills = Windmill::where('projectid', '=', $projectid)->count();
+   	return $numberofwindmills;
+   }
+
+   public static function countComponents($projectid) {
+   	$numberofcomponents = Component::where('projectid', '=', $projectid)->count();
+   	return $numberofcomponents;
+   }
+
+   public static function countTransports($projectid) {
+	$components = Component::where('projectid', '=', $projectid)->get();
+	$numberoftransports = 0;
+	foreach($components as $component) {
+		$numberoftransports = $numberoftransports+Transport::where('componentid', '=', $component->id)->count();
+	}
+	return $numberoftransports;
+   }
+
    public function newProject(Request $request){
 	   if($request->ajax()){
 		   $project = new Project();

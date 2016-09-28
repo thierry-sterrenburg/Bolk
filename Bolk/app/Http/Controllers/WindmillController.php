@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Component;
+use App\Transport;
 use DP;
 
 class WindmillController extends Controller
@@ -14,4 +15,9 @@ class WindmillController extends Controller
     	$components = Component::where('windmillid','=', $id)->get();
     	return view('/windmill', ['components' => $components]);
     }
+
+    public static function countTransports($componentid) {
+		$numberoftransports = Transport::where('componentid', '=', $componentid)->count();
+		return $numberoftransports;
+	}
 }

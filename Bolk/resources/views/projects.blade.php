@@ -1,4 +1,8 @@
-@extends('layouts.master')
+
+<?php
+	use App\Http\Controllers\ProjectsController;
+?>
+@extends('layouts.master');
 @section('content')
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -23,6 +27,7 @@
 				<td>name</td>
 				<td>location</td>
 				<td>number of windmills</td>
+				<td>number of components</td>
 				<td>number of transports</td>
 				<td>start date</td>
 				<td>end date</td>
@@ -35,8 +40,9 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->name }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->location }}</td>
-					<td onclick="document.location= '/project/id={{$project->id}}';">11</td>
-					<td onclick="document.location= '/project/id={{$project->id}}';">32</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countWindmills($project->id) }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countComponents($project->id) }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countTransports($project->id) }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
