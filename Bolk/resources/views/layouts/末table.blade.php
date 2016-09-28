@@ -516,7 +516,7 @@ $.fn.dataTableExt.afnFiltering.push(
 		
 
     } );
-			 $("#datepicker_from").datepicker({
+			 $("#fini").datepicker({
     showOn: "button",
     buttonImage: "images/calendar.gif",
     buttonImageOnly: false,
@@ -529,7 +529,7 @@ $.fn.dataTableExt.afnFiltering.push(
     oTable.draw();
   });
 
-  $("#datepicker_to").datepicker({
+  $("#ffin").datepicker({
     showOn: "button",
     buttonImage: "images/calendar.gif",
     buttonImageOnly: false,

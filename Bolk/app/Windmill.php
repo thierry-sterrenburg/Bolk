@@ -8,4 +8,14 @@ class Windmill extends Model
 {
 	protected $table = 'windmills';
 	public $timestamps = false; 
+	
+	protected $fillable=[
+		'projectid',
+		'regnumber',
+		'name',
+		'location',
+		'startdate',
+		'enddate',
+		'remarks'
+	];
 }
