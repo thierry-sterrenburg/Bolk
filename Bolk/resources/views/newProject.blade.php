@@ -9,18 +9,18 @@
           <h4 class="modal-title">Project Information</h4>
         </div>
         <div class="modal-body">
-		
+			<div id="error_message"></div>
           <form action="/newProject" method="post" id="frmProject">
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control" required>
+					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control" required/>
 				</div>
 				</div>
 				
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control" required>
+					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control" required/>
 				</div>
 				</div>
 				
@@ -66,7 +66,7 @@
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmProject-submit" value="Save" id="frmProject-submit" class="btn btn-primary" data-dismiss="modal">
+			<input type="submit" name="frmProject-submit" value="Save" id="frmProject-submit" class="btn btn-primary" onclick="validator()">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
