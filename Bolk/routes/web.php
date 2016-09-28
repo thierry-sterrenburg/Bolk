@@ -30,6 +30,10 @@ Route::put('/newProject', 'ProjectsController@newUpdate');
 Route::delete('/deleteProject', 'ProjectsController@deleteProject');
 
 Route::get('/project/id={id}', 'ProjectController@index');
+Route::post('/newWindmill', 'ProjectController@newWindmill');
+Route::get('/getUpdateWindmill', 'ProjectController@getUpdateWindmill');
+Route::put('/newWindmill', 'ProjectController@newUpdateWindmill');
+Route::delete('/deleteWindmill', 'ProjectController@deleteWindmill');
 
 Route::get('/windmill/id={id}', 'WindmillController@index');
 

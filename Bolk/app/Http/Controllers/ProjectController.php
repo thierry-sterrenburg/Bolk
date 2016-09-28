@@ -27,5 +27,69 @@ class ProjectController extends Controller
 		$numberoftransports = Transport::where('componentid', '=', $componentid)->count();
 		return $numberoftransports;
 	}
+	
+	public function newWindmill(Request $request){
+	   if($request->ajax()){
+		   $windmill = new Windmill();
+		   $this->checkInput($windmill, $request);
+		   $windmill->save();
+		   //$project=Project::create($request->all());
+		   return response()->json($windmill);
+	   }
+   }
+   public function getUpdateWindmill(Request $request){
+	  if ($request->ajax()){
+		  $windmill=Windmill::find($request->id);
+		  return Response($windmill);
+	  }
+   }
+   public function newUpdateWindmill(Request $request){
+	   if ($request->ajax()){
+		   $windmill=Windmill::find($request->id);
+		   $this->checkInput($windmill, $request);
+		   $windmill->save();
+		   return Response($windmill);
+	   }
+   }
+   public function deleteWindmill(Request $request){
+	   if ($request->ajax()){
+		   Windmill::destroy($request->id);
+		   return Response()->json(['sms'=>'delete successfully']);
+	   }
+   }
+   
+   public function checkInput($windmill, $request){
+		   if($request->regnumber == ''){
+			   $windmill->regnumber=null;
+		   }else{
+			   $windmill->regnumber=$request->regnumber;
+		   }
+		   if($request->name == ''){
+			   $windmill->name=null;
+		   }else{
+			   $windmill->name=$request->name;
+		   }
+		   if($request->location == ''){
+			   $windmill->location=null;
+		   }else{
+			   $windmill->location=$request->location;
+		   }
+		   if($request->startdate == ''){
+			   $windmill->startdate=null;
+		   }else{
+			   $windmill->startdate=$request->startdate;
+		   }
+		   if($request->enddate == ''){
+			   $windmill->enddate=null;
+		   }else{
+			   $windmill->enddate=$request->enddate;
+		   }
+		   if($request->remarks == ''){
+			   $windmill->remarks=null;
+		   }else{
+			   $windmill->remarks=$request->remarks;
+		   }
+	   return $windmill;
+   }
 
 }

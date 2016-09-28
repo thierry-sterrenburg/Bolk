@@ -26,9 +26,7 @@
 						
 						<br>
 						
-						<ul class="nav nav-pills" role="tablist">
-							<li role="presentation" class="active"><a href="#">Add Windmill <span class="badge">+</span></a></li>
-						</ul>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Windmill <span class="badge">+</span></button>
 						
 						<br>
 						<!--Windmill Table -->
@@ -111,4 +109,160 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+		<script type="text/javascript">
+	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+	
+
+	
+	$('#add').on('click',function(){
+		$('#frmWindmill-submit').val('Save');
+		$('#frmWindmill').trigger('reset');
+		document.getElementById("error_message").innerHTML = '';
+		$('#windmill').modal('show');
+	})	
+	
+	$(function() {
+	$('#frmwindmill-submit').on('click', function(e){
+		e.preventDefault();
+		var form=$('#frmWindmill');
+		var formData=form.serialize();
+		var url=form.attr('action');
+		var state=$('#frmWindmill-submit').val();
+		var type= 'post';
+		if(state=='Update'){
+			type = 'put';
+		}
+		$.ajax({
+			type : type,
+			url : url,
+			data: formData,
+			success:function(data){
+				var row='<tr id="windmill'+data.id+'">'+
+				'<td>'+ data.id +'</td>'+
+				'<td>'+ data.regnumber +'</td>'+
+				'<td>'+ data.name +'</td>'+
+				'<td>'+ data.location +'</td>'+
+				'<td>'+ data.startdate +'</td>'+
+				'<td>'+ data.enddate +'</td>'+
+				'<td>'+ data.remarks +'</td>'+
+				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
+				'</tr>';
+				if(state=='Save'){
+					$('tbody').append(row);
+				}else{
+					$('#project'+data.id).replaceWith(row);
+				}
+				$('#frmProject').trigger('reset');
+				$('#regnumber').focus();
+			}
+		});
+	})
+	});
+	
+	//---------addrow---------
+	function addRow(data){
+		var row='<tr id="windmill'+data.id+'">'+
+				'<td>'+ data.id +'</td>'+
+				'<td>'+ data.regnumber +'</td>'+
+				'<td>'+ data.name +'</td>'+
+				'<td>'+ data.location +'</td>'+
+				'<td>'+ data.startdate +'</td>'+
+				'<td>'+ data.enddate +'</td>'+
+				'<td>'+ data.remarks +'</td>'+
+				'<td><button class="btn btn-success btn-edit">Edit</button>'+
+				'<button class="btn btn-danger btn-delete">Delete</button></td>'+
+				'</tr>';
+		$('tbody').append(row);
+	}
+	
+	//---------get update---------
+	
+	$('tbody').delegate('.btn-edit','click',function(){
+		document.getElementById("error_message").innerHTML = '';
+		var value=$(this).data('id');
+		var url='{{URL::to('getUpdate')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#regnumber').val(data.regnumber);
+				$('#name').val(data.name);
+				$('#location').val(data.location);
+				$('#startdate').val(data.startdate);
+				$('#remarks').val(data.remarks);
+				$('#enddate').val(data.enddate);
+				$('#frmWindmill-submit').val('Update');
+				$('#project').modal('show');
+			}
+		});
+	});
+	
+	//---------delete project---------
+	$('tbody').delegate('.btn-delete', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('deleteProject')}}';
+		if (confirm('Are you sure to delete?')==true){
+			$.ajax({
+				type : 'delete',
+				url : url,
+				data : {"_token": "{{ csrf_token() }}" ,
+					'id':value},
+				success:function(data){
+					$('#project'+value).remove();
+				}
+			});
+		}	
+	});
+	
+	$(function () {
+        $('#startdatepicker').datetimepicker({
+			sideBySide: true,
+			format: 'YYYY-MM-DD HH:mm'});
+            
+		
+        $('#enddatepicker').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+			sideBySide: true,
+			format: 'YYYY-MM-DD HH:mm'
+			});
+        $("#startdatepicker").on("dp.change", function (e) {
+            $('#enddatepicker').data("DateTimePicker").minDate(e.date);
+        });
+        $("#enddatepicker").on("dp.change", function (e) {
+            $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+	
+	function validator() {
+    var x,y,text;
+
+    // Get the value of the input field with id="regnumber"
+    x = document.getElementById("regnumber").value;
+	y = document.getElementById("name").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x == "") {
+        text = "Regnumber must be filled in.";
+    } 
+	if (y == ""){
+		if(text!=null){
+			text = text+"<br/>";
+		}
+        text = text+"Name must be filled in.";
+    }
+	if(x != "" && y != ""){
+		$('#project').modal('toggle');
+	}else{
+		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+	}
+	
+	function resetError(){
+		document.getElementById("error_message").innerHTML = '';
+	}
+}
+	
+  </script>
 @endsection

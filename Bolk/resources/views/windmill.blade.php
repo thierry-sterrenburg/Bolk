@@ -31,9 +31,8 @@
 						
 						<br>
 						
-						<ul class="nav nav-pills" role="tablist">
-							<li role="presentation" class="active"><a href="#">Add Transport for Component<span class="badge">+</span></a></li>
-						</ul>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
+						
 						
 						<br>
 										
