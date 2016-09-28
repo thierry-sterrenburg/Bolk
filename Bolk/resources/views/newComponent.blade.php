@@ -1,16 +1,16 @@
   <!-- Modal -->
-  <div class="modal fade" id="windmill" role="dialog">
+  <div class="modal fade" id="component" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Windmill Information</h4>
+          <h4 class="modal-title">Component Information</h4>
         </div>
         <div class="modal-body">
 			<div id="error_message"></div>
-          <form action="/newWindmill" method="post" id="frmWindmill">
+          <form action="/newComponent" method="post" id="frmComponent">
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
@@ -20,7 +20,7 @@
 				
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="name" id="name" placeholder="Windmill Name" class="form-control">
+					<input type="text" name="name" id="name" placeholder="Component Name" class="form-control">
 				</div>
 				</div>
 				
@@ -66,7 +66,7 @@
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmWindmill-submit" value="Save" id="frmWindmill-submit" class="btn btn-primary" onclick="validator()">
+			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary" onclick="validator()">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

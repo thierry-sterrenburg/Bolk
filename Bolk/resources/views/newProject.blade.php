@@ -14,13 +14,13 @@
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control" required/>
+					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control">
 				</div>
 				</div>
 				
 				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control" required/>
+					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control">
 				</div>
 				</div>
 				
