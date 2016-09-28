@@ -46,3 +46,6 @@ Route::get('/General', function () {
     return view('GeneralPanel');
 });
 Route::get('/modal', 'ProjectsController@index'); 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

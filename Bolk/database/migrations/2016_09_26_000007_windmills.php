@@ -15,7 +15,7 @@ class Windmills extends Migration
     {
         Schema::create("windmills", function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('projectid');
+			$table->integer('projectid')->unsigned();
             $table->foreign('projectid')->references('id')->on('projects');
 			$table->string('regnumber');
 			$table->string('name');
