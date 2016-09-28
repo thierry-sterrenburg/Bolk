@@ -12,8 +12,9 @@ use DB;
 class ComponentController extends Controller
 {
     public function index($id) {
-    	$transports = Transport::where('componentid','=', $id)->get();
-    	return view('/component', ['transports' => $transports]);
+    	$componentid = $id
+    	$transports = Transport::where('componentid','=', $componentid)->get();
+    	return view('/component', ['transports' => $transports, 'componentid' => $componentid]);
     }
 
     public static function countRequirements($transportid) {

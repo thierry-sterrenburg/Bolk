@@ -12,8 +12,9 @@ use DP;
 class WindmillController extends Controller
 {
     public function index($id){
-    	$components = Component::where('windmillid','=', $id)->get();
-    	return view('/windmill', ['components' => $components]);
+    	$windmillid = $id;
+    	$components = Component::where('windmillid','=', $windmillid)->get();
+    	return view('/windmill', ['components' => $components, 'windmillid'=> $windmillid]);
     }
 
     public static function countTransports($componentid) {

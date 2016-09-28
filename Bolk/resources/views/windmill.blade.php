@@ -16,8 +16,6 @@
                         <h1 class="page-header">Windmill T11</h1>
 						
 						<!--panel content -->
-						
-						
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h3 class="panel-title">General Information</h3>
