@@ -18,103 +18,108 @@
 						
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Information windmill</h3>
+								<h3 class="panel-title">General Windmill Information </h3>
 							</div>
 							<div class="panel-body">
-								Project name<br/>
-								Location<br/>
-								Start date<br/>
-								End date<br/>
-								Remarks
-								
+								<div class="row">
+									<div class="col-md-6">
+										Project name<br/>
+										Location<br/>
+										Start date<br/>
+										End date<br/>
+										Remarks
+									</div>
+								</div>
 							</div>
 						</div>
 						
 						<br>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Information component</h3>
+								<h3 class="panel-title">General Component Information </h3>
 							</div>
 							<div class="panel-body">
-								<div class="panel-left">
-									Windmillnr<br/>
-									Name<br/>
-									Location<br/>
-									Start date<br/>
-									End date
+								<div class="row">
+									<div class="col-md-6">
+										Windmillnr<br/>
+										Name<br/>
+										Location<br/>
+										Start date<br/>
+										End date
+									</div>
+									<div class="col-md-6">
+										Project name<br/>
+										location<br/>
+										Start date<br/>
+										End date<br/>
+										Remarks
+									</div>
 								</div>
-								<div class="panel-right">
-									Project name<br/>
-									location<br/>
-									Start date<br/>
-									End date<br/>
-									Remarks
-								</div>
-								
 							</div>
 						</div>
 						<br>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Information transport</h3>
+								<h3 class="panel-title">General Transport Information </h3>
 							</div>
 							<div class="panel-body">
-								<div class="panel-left">
-									Component nr<br/>
-									Name<br/>
-									Length<br/>
-									Height<br/>
-									Width<br/>
-									Weigth<br/>
-									Switchable<br/>
-									Status<br/>
-									Remarks
+								<div class="row">
+									<div class="col-md-6">
+										Component nr<br/>
+										Name<br/>
+										Length<br/>
+										Height<br/>
+										Width<br/>
+										Weigth<br/>
+										Switchable<br/>
+										Status<br/>
+										Remarks
+									</div>
+									<div class="col-md-6">
+										Project name<br/>
+										Windmill name<br/>
+										Location<br/>
+										Start date<br/>
+										End date<br/>
+										Remarks
+									</div>
 								</div>
-								<div class="panel-right">
-									Project name<br/>
-									Windmill name<br/>
-									Location<br/>
-									Start date<br/>
-									End date<br/>
-									Remarks
-								</div>
-								
 							</div>
 						</div>
 						<br>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Information requiremets</h3>
+								<h3 class="panel-title">General Requirements Information </h3>
 							</div>
 							<div class="panel-body">
-								<div class="panel-left">
-									Company<br/>
-									Truck<br/>
-									Trailer<br/>
-									Configuration<br/>
-									Start location <br/>
-									End location <br/>
-									Date loading <br/>
-									Date intial arrival <br/>
-									Date final arrival <br/>
-									Remarks <br/>
-
+								<div class="row">
+									<div class="col-md-6">
+										Company<br/>
+										Truck<br/>
+										Trailer<br/>
+										Configuration<br/>
+										Start location <br/>
+										End location <br/>
+										Date loading <br/>
+										Date intial arrival <br/>
+										Date final arrival <br/>
+										Remarks <br/>
+									</div>
+									<div class="col-md-6">
+										Project name<br/>
+										Windmill name<br/>
+										Location<br/>
+										Component nr<br/>
+										Name<br/>
+										Length<br/>
+										Height<br/>
+										Width<br/>
+										Weigth<br/>
+										Switchable<br/>
+										Status<br/>
+										Remarks
+									</div>
 								</div>
-								<div class="panel-right">
-									Project name<br/>
-									Windmill name<br/>
-									Location<br/>
-									Component nr<br/>
-									Name<br/>
-									Length<br/>
-									Height<br/>
-									Width<br/>
-									Weigth<br/>
-									Switchable<br/>
-									Status<br/>
-									Remarks
-								</div>
-								
 							</div>
 						</div>
 						<br>
