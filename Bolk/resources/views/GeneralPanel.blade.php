@@ -18,25 +18,59 @@
 						
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Windmill Information </h3>
-							</div>
-							<div class="panel-body">
 								<div class="row">
-									<div class="col-md-6">
-										Project name<br/>
-										Location<br/>
-										Start date<br/>
-										End date<br/>
-										Remarks
+									<div class="col-md-8">
+										<h3 class="panel-title">General Project Information </h3>
+									</div>
+									<div class="col-md-4">
+										<div class="pull-right">
+											<small>Latest Update:</small>
+										</div>
 									</div>
 								</div>
 							</div>
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td><u>Registration Number: </u></td>
+										<td><u>Name:</u></td>
+									</tr>
+									<tr>
+										<td><u>Start Date:</u></td>
+										<td><u>End Date:</u></td>
+									</tr>
+										<td><u>Location:</u></td>
+										<td><u>Number of Windmills</u></td>
+									<tr>
+									</tr>
+									<tr>
+										<td><u>Number of Components</u></td>
+										<td><u>Number of Transports</u></td>
+									</tr>
+									<tr>
+										<td><u>Remarks</u></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						
 						<br>
+
+
+
+
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Component Information </h3>
+								<div class="row">
+									<div class="col-md-8">
+										<h3 class="panel-title">General Windmill Information </h3>
+									</div>
+									<div class="col-md-4">
+										<div class="pull-right">
+											<small>Latest Update:</small>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="panel-body">
 								<div class="row">
@@ -56,11 +90,46 @@
 									</div>
 								</div>
 							</div>
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td>Registration Number</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Name</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Location</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Start Date</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>End Date</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Remarks</td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
+
+
+
 						<br>
+
+
+
+
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Transport Information </h3>
+								<h3 class="panel-title">General Component Information </h3>
 							</div>
 							<div class="panel-body">
 								<div class="row">
@@ -89,7 +158,7 @@
 						<br>
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">General Requirements Information </h3>
+								<h3 class="panel-title">General Transport Information </h3>
 							</div>
 							<div class="panel-body">
 								<div class="row">
