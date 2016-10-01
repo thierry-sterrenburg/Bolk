@@ -16,182 +16,198 @@
 						<!--panel content -->
 						
 						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-md-8">
-										<h3 class="panel-title">General Project Information </h3>
-									</div>
-									<div class="col-md-4">
-										<div class="pull-right">
-											<small>Latest Update:</small>
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#projectinfotable">
+												<h3 class="panel-title">Project Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
 										</div>
 									</div>
 								</div>
+								<div id="projectinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Project Registration Number:</u></td>
+												<td colspan="1"><u>Name:</u></td>
+												<td colspan="1"><u>Location:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start Date:</u></td>
+												<td colspan="2"><u>End Date:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Toatal number of Windmills:</u></td>
+												<td colspan="1"><u>Total number of Components:</u></td>
+												<td colspan="1"><u>Total number of Transport Phases:</u></td>
+											</tr>
+											<tr>
+												<td colspan="3"><u>Remarks:</u></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							<table class="table table-bordered">
-								<tbody>
-									<tr>
-										<td><u>Registration Number: </u></td>
-										<td><u>Name:</u></td>
-									</tr>
-									<tr>
-										<td><u>Start Date:</u></td>
-										<td><u>End Date:</u></td>
-									</tr>
-										<td><u>Location:</u></td>
-										<td><u>Number of Windmills</u></td>
-									<tr>
-									</tr>
-									<tr>
-										<td><u>Number of Components</u></td>
-										<td><u>Number of Transports</u></td>
-									</tr>
-									<tr>
-										<td><u>Remarks</u></td>
-									</tr>
-								</tbody>
-							</table>
 						</div>
+
+
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#windmillinfotable">
+												<h3 class="panel-title">Windmill Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="windmillinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Windmill Registration Number:</u></td>
+												<td colspan="1"><u>Name: </u></td>
+												<td colspan="1"><u>Location:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start Date:</u></td>
+												<td colspan="2"><u>End Date:</u></td>
+											</tr>
+												<td colspan="3"><u>Number of Components:</u></td>
+											<tr>
+												<td colspan="3"><u>Remarks:</u></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#componentinfotable">
+												<h3 class="panel-title">Component Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="componentinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="2"><u>Component Registration Number:</u></td>
+												<td colspan="2"><u>Name:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Length:</u></td>
+												<td colspan="1"><u>Heigth:</u></td>
+												<td colspan="1"><u>Width:</u></td>
+												<td colspan="1"><u>Weight:</u></td>
+											</tr>
+											<tr>
+												<td colspan="2"><u>Switchable:</u></td>
+												<td colspan="2"><u>Status:</u></td>
+											</tr>
+											<tr>
+												<td colspan="4"><u>Number of Transport Phases:</u></td>
+
+											</tr>
+											<tr>
+												<td colspan="4"><u>Remarks:</u></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>	
+							</div>
+						</div>	
+
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#transportinfotable">
+												<h3 class="panel-title">Transport Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="transportinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Transport Number:</u></td>
+												<td colspan="2"><u>Company</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Truck:</u></td>
+												<td colspan="1"><u>Trailer:</u></td>
+												<td colspan="1"><u>Configuration:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start location:</u></td>
+												<td colspan="2"><u>End location:</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Date of loading:</u></td>
+												<td colspan="1"><u>Date initial arrival:</u></td>
+												<td colspan="1"><u>Date final arrival:</u></td>
+											</tr>
+											<tr>
+												<td colspan="3"><u>Remarks:</u></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+
+
+						<br>
+
+
+
+
+
+
+
+
+
+
+
+
 						
-						<br>
-
-
-
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-md-8">
-										<h3 class="panel-title">General Windmill Information </h3>
-									</div>
-									<div class="col-md-4">
-										<div class="pull-right">
-											<small>Latest Update:</small>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-6">
-										Windmillnr<br/>
-										Name<br/>
-										Location<br/>
-										Start date<br/>
-										End date
-									</div>
-									<div class="col-md-6">
-										Project name<br/>
-										location<br/>
-										Start date<br/>
-										End date<br/>
-										Remarks
-									</div>
-								</div>
-							</div>
-							<table class="table table-bordered">
-								<tbody>
-									<tr>
-										<td>Registration Number</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Name</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Location</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Start Date</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>End Date</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Remarks</td>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-
-
-
-						<br>
-
-
-
-
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">General Component Information </h3>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-6">
-										Component nr<br/>
-										Name<br/>
-										Length<br/>
-										Height<br/>
-										Width<br/>
-										Weigth<br/>
-										Switchable<br/>
-										Status<br/>
-										Remarks
-									</div>
-									<div class="col-md-6">
-										Project name<br/>
-										Windmill name<br/>
-										Location<br/>
-										Start date<br/>
-										End date<br/>
-										Remarks
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">General Transport Information </h3>
-							</div>
-							<div class="panel-body">
-								<div class="row">
-									<div class="col-md-6">
-										Company<br/>
-										Truck<br/>
-										Trailer<br/>
-										Configuration<br/>
-										Start location <br/>
-										End location <br/>
-										Date loading <br/>
-										Date intial arrival <br/>
-										Date final arrival <br/>
-										Remarks <br/>
-									</div>
-									<div class="col-md-6">
-										Project name<br/>
-										Windmill name<br/>
-										Location<br/>
-										Component nr<br/>
-										Name<br/>
-										Length<br/>
-										Height<br/>
-										Width<br/>
-										Weigth<br/>
-										Switchable<br/>
-										Status<br/>
-										Remarks
-									</div>
-								</div>
-							</div>
-						</div>
-						<br>
 						
 						<ul class="nav nav-pills" role="tablist">
 							<li role="presentation" class="active"><a href="#">Add Transport Phase<span class="badge">+</span></a></li>

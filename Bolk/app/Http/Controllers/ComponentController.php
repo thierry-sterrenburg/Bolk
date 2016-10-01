@@ -12,7 +12,7 @@ use DB;
 class ComponentController extends Controller
 {
     public function index($id) {
-    	$componentid = $id
+    	$componentid = $id;
     	$transports = Transport::where('componentid','=', $componentid)->get();
     	return view('/component', ['transports' => $transports, 'componentid' => $componentid]);
     }
