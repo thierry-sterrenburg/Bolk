@@ -93,12 +93,15 @@
 			
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
+				<label class="form-check-label">Switchable with</label>
+				@foreach($windmills as $windmill)
 				<div class="form-check">
 					<label for="switchable" class="form-check-label">
-					<input type="checkbox" class="form-check-input" id="switchable">
-						Check me out
+					<input type="checkbox" class="form-check-input" id="switchable" name="switchable" value="{{Swindmill->id}}">
+					{{$windmill->name}}
 					</label>
 				</div>
+				@endforeach
 				</div>
 			</div>
 			
@@ -115,7 +118,7 @@
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary" onclick="validator()">
+			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
