@@ -14,9 +14,10 @@ class Windmills extends Migration
     public function up()
     {
         Schema::create("windmills", function (Blueprint $table) {
+            $table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('projectid')->unsigned();
-            $table->foreign('projectid')->references('id')->on('projects');
+            $table->foreign('projectid')->references('id')->on('projects')->onDelete('cascade');
 			$table->string('regnumber');
 			$table->string('name');
 			$table->string('location')->nullable();
