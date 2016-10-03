@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div id="page-wrapper">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+          <h1>Register</h1><br>
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
@@ -19,6 +20,20 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Full name</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="fullname" value="{{ old('fullname') }}" required autofocus>
+
+                                @if ($errors->has('fullname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('fullname') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -78,5 +93,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
