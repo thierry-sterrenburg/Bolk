@@ -86,9 +86,9 @@
 								<td>Remarks</td>
 							</thead>
 
-							<tbody>
+							<tbody id="component-table">
 								@foreach($components as $component)
-									<tr>
+									<tr id="component{{$component->id}}">
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
@@ -200,10 +200,15 @@
 				'<td>'+ data.id +'</td>'+
 				'<td>'+ data.regnumber +'</td>'+
 				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.length +'</td>'+
-				'<td>'+ data.width +'</td>'+
-				'<td>'+ data.height +'</td>'+
-				'<td>'+ data.weight +'</td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td>0</td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
 				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
 				'</tr>';
@@ -214,6 +219,7 @@
 				}
 				$('#frmComponent').trigger('reset');
 				$('#regnumber').focus();
+				$('#component').modal('toggle');
 			}
 		});
 	})
@@ -235,7 +241,7 @@
 		$('tbody').append(row);
 	}
 	
-	//---------get update---------
+	//---------get update windmill---------
 	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
@@ -258,7 +264,7 @@
 		});
 	})
 	
-	//---------delete project---------
+	//---------delete windmill---------
 	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
 		var value = $(this).data('id');
 		var url = '{{URL::to('deleteWindmill')}}';

@@ -15,9 +15,9 @@ use DB;
 class ComponentController extends Controller
 {
     public function index($id) {
-    	$transports = Transport::where('componentid','=', $componentid)->get();
+    	$transports = Transport::where('componentid','=', $id)->get();
     	$component = Component::where('id','=',$id)->first();
-    	$windmill = Windmill::where('id', '=', $component->windmillid)-first();
+    	$windmill = Windmill::where('id', '=', $component->windmillid)->first();
     	$project = Project::where('id', '=',  $component->projectid)->first();
     	return view('/component', ['transports' => $transports, 'component' => $component, 'windmill' => $windmill, 'project' => $project]);
     }

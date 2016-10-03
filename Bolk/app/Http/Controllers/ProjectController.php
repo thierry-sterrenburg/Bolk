@@ -9,7 +9,6 @@ use App\Project;
 use App\Windmill;
 use App\Component;
 use App\Transport;
-use Illuminate\Support\Facades\Input;
 use DB;
 
 class ProjectController extends Controller

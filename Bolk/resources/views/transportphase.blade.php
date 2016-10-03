@@ -1,3 +1,10 @@
+<?php 
+	use App\Http\Controllers\ProjectsController;
+	use App\Http\Controllers\ProjectController;
+	use App\Http\Controllers\WindmillController;
+	use App\Http\Controllers\ComponentController;
+?>
+
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -14,26 +21,181 @@
 						</ol>
                         <h1 class="page-header">Transport 670</h1>
 						
-						<!--panel content -->
-						
-						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">General Information</h3>
+						<!--panel projectinfo -->
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#projectinfotable">
+												<h3 class="panel-title">Project Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="projectinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Project Registration Number:</u> {{$project->regnumber}}</td>
+												<td colspan="1"><u>Name: {{$project->name}}</u></td>
+												<td colspan="1"><u>Location:</u> {{$project->location}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start Date:</u> {{$project->startdate}}</td>
+												<td colspan="2"><u>End Date:</u> {{$project->enddate}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Total number of Windmills:</u> {{ProjectsController::countWindmills($project->id)}}</td>
+												<td colspan="1"><u>Total number of Components:</u> {{ProjectsController::countComponents($project->id)}}</td>
+												<td colspan="1"><u>Total number of Transport Phases:</u> {{ProjectsController::countTransports($project->id)}}</td>
+											</tr>
+											<tr>
+												<td colspan="3"><u>Remarks:</u>{{$project->remarks}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							<div class="panel-body">
-								Project GE Auchrobert registration number:189207<br/>
-								latest update: 13-9-2016 13:52:07 <br/>
-								number of requirements: 3<br/>
-								weight:<br/>
-								height:<br/>
-								width:<br/>
-								length:<br/>
-								<br>
-								truck:<br/>
-								trailer:<br />
-								configuration:<br>
-								
+						</div>
+						<!--end panel projectinfo-->
+						<!--panel windmillinfo-->
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#windmillinfotable">
+												<h3 class="panel-title">Windmill Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="windmillinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Windmill Registration Number:</u> {{$windmill->regnumber}}</td>
+												<td colspan="1"><u>Name: </u> {{$windmill->name}}</td>
+												<td colspan="1"><u>Location:</u> {{$windmill->location}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start Date: {{$windmill->startdate}}</u></td>
+												<td colspan="2"><u>End Date:</u> {{$windmill->enddate}}</td>
+											</tr>
+												<td colspan="3"><u>Number of Components: {{ProjectController::countComponents($windmill->id)}}</u></td>
+											<tr>
+												<td colspan="3"><u>Remarks:</u> {{$windmill->remarks}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!--end panel windmillinfo-->
+						<!--panel componentinfo-->
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#componentinfotable">
+												<h3 class="panel-title">Component Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="componentinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="2"><u>Component Registration Number:</u> {{$component->regnumber}}</td>
+												<td colspan="2"><u>Name:</u> {{$component->name}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Length: {{$component->length}}</u></td>
+												<td colspan="1"><u>Heigth: {{$component->heigth}}</u></td>
+												<td colspan="1"><u>Width: {{$component->width}}</u></td>
+												<td colspan="1"><u>Weight:</u> {{$component->weight}}</td>
+											</tr>
+											<tr>
+												<td colspan="2"><u>Switchable:</u> {{$component->switchable}}</td>
+												<td colspan="2"><u>Status:</u> {{$component->status}}</td>
+											</tr>
+											<tr>
+												<td colspan="4"><u>Number of Transport Phases:</u> {{WindmillController::countTransports($component->id)}}</td>
+
+											</tr>
+											<tr>
+												<td colspan="4"><u>Remarks:</u></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>	
+							</div>
+						</div>	
+
+						<div class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-md-8">
+											<a data-toggle="collapse" href="#transportinfotable">
+												<h3 class="panel-title">Transport Information </h3>
+											</a>
+										</div>
+										<div class="col-md-4">
+											<div class="pull-right">
+												<small>Latest Update:</small>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="transportinfotable" class="panel-collapse collapse">
+									<table class="table table-bordered">
+										<tbody>
+											<tr>
+												<td colspan="1"><u>Transport Number:</u> {{$transport->transportnumber}}</td>
+												<td colspan="2"><u>Company</u> {{$transport->company}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Truck:</u> {{$transport->truck}}</td>
+												<td colspan="1"><u>Trailer:</u> {{$transport->trailer}}</td>
+												<td colspan="1"><u>Configuration: {{$transport->configuration}}</u></td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Start location: {{$transport->from}}</u></td>
+												<td colspan="2"><u>End location:</u> {{$transport->to}}</td>
+											</tr>
+											<tr>
+												<td colspan="1"><u>Date of loading:</u> {{$transport->dateofloading}}</td>
+												<td colspan="1"><u>Date initial arrival:</u>{{$transport->dateofarrivalinitial}}</td>
+												<td colspan="1"><u>Date final arrival:</u>{{$transport->dateofarrivalfinal}}</td>
+											</tr>
+											<tr>
+												<td colspan="3"><u>Number of Requirements:</u>{{ComponentController::countRequirements($transport->id)}}</td>
+											</tr>
+											<tr>
+												<td colspan="3"><u>Remarks:</u> {{$transport->remarks}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 						
