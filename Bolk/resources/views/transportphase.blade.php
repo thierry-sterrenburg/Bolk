@@ -206,39 +206,6 @@
 						</ul>
 						
 						<br>
-						
-						<table class="table table-condensed table-hover">
-							<thead>
-								<td>#</td>
-								<td>Name</td>
-								<td>Country</td>
-								<td>Document Location</td>
-								<td>Start datetime</td>
-								<td>End datetime</td>
-								<td>Booked</td>
-								<td>Responsible planner</td>
-								<td>Last update</td>
-								<td>Remarks</td>
-							</thead>
-							
-							<tbody>
-								@foreach($requirements as $requirement)
-									<tr>
-										<td>{{ $requirement->id }}</td>
-										<td>{{ $requirement->name }}</td>
-										<td>{{ $requirement->country }}</td>
-										<td>is nog geen plek voor in database</td>
-										<td>{{ $requirement->startdate }}</td>
-										<td>{{ $requirement->enddate }}</td>
-										<td>{{ $requirement->booked }}</td>
-										<td>{{ $requirement->responsibleplanner }}</td>
-										<td>{{ $requirement->remaks }}</td>
-									</tr>
-								@endforeach	
-							</tbody>
-							
-						</table>
-
 
 						<table id="requirementtable" class="table table-condensed table-hover">
 							<div class="container">
