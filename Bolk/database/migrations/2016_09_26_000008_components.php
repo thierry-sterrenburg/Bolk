@@ -24,7 +24,7 @@ class Components extends Migration
 			$table->double('length', 8,2)->nullable();
 			$table->double('height', 8,2)->nullable();
 			$table->double('width', 8,2)->nullable();
-			$table->double('weigth', 8,2)->nullable();
+			$table->double('weight', 8,2)->nullable();
 			$table->string('switchable');
 			$table->enum('status', ['storage','transport','delivered','installed','unknown']);
 			$table->longText('remarks')->nullable();
