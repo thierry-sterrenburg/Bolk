@@ -8,14 +8,17 @@ use App\Http\Requests;
 use App\Windmill;
 use App\Component;
 use App\Transport;
+use Illuminate\Support\Facades\Input;
 use DB;
 
 class ProjectController extends Controller
 {
-    public function index($id){
+	
+	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('windmillid')->get();
-	return view('/project', ['windmills' => $windmills, 'components' => $components]);
+	$projectid = $id;
+	return view('/project', ['windmills' => $windmills, 'components' => $components,  'projectid' => $projectid]);
 	}
 
 	public static function countComponents($windmillid) {
@@ -33,7 +36,6 @@ class ProjectController extends Controller
 		   $windmill = new Windmill();
 		   $this->checkInput($windmill, $request);
 		   $windmill->save();
-		   //$project=Project::create($request->all());
 		   return response()->json($windmill);
 	   }
    }
@@ -59,6 +61,7 @@ class ProjectController extends Controller
    }
    
    public function checkInput($windmill, $request){
+			$windmill->projectid=$request->projectid;
 		   if($request->regnumber == ''){
 			   $windmill->regnumber=null;
 		   }else{

@@ -34,8 +34,9 @@ class Testdata extends Migration
 
 
         //requirements: id int(10)|transportid int(11)|name varchar(255)|country varchar(255)|startdate datetime|enddate datetime|booked enum|responsibleplanner varchar(255)|remarks longtext
-        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'permit', 'country' => 'Netherlands', 'startdate' => null, 'enddate' => null, 'booked' => 'pending', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
-        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'police escort', 'country' => 'Netherlands', 'startdate' => null, 'enddate' => null, 'booked' => 'no', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
+        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'permit', 'country' => 'Netherlands', 'startdate' => '2008-01-01 00:00:00', 'enddate' => '2008-02-01 00:00:00', 'booked' => 'pending', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
+        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'police escort', 'country' => 'Netherlands', 'startdate' => '2009-01-01 00:00:00', 'enddate' => '2009-02-01 00:00:00', 'booked' => 'no', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);        
+        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'overslagverguning', 'country' => 'Duitsland', 'startdate' => '2010-01-01 00:00:00', 'enddate' => '2010-02-01 00:00:00', 'booked' => 'yes', 'responsibleplanner' => 'Johannes van Bergen', 'remarks' => '']);
 
     }
 

@@ -29,6 +29,7 @@
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Windmill <span class="badge">+</span></button>
 						
 						<br>
+						@include('newWindmill')
 						<!--Windmill Table -->
 						<h3>Windmills</h3>
 						<table class="table table-condensed table-hover">
@@ -41,21 +42,25 @@
 								<td>start date</td>
 								<td>end date</td>
 								<td>last update</td>
-								<td>remarks
+								<td>remarks</td>
 							</thead>
 							
-							<tbody>
+							<tbody id="windmill-table">
 								@foreach($windmills as $windmill)
-									<tr onclick="document.location= '/windmill/id={{$windmill->id}}';">
-										<td>{{ $windmill->id }}</td>
-										<td>{{ $windmill->regnumber }}</td>
-										<td>{{ $windmill->name }}</td>
-										<td>{{ $windmill->location }}</td>
-										<td>{{ ProjectController::countComponents($windmill->id)}}</td>
-										<td>{{ $windmill->startdate }}</td>
-										<td>{{ $windmill->enddate }}</td>
-										<td></td>
-										<td>{{ $windmill->remarks }}</td>
+									<tr id="windmill{{$windmill->id}}">
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->name }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->location }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+										<td>
+											<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
+										</td>
 									</tr>
 								@endforeach	
 							</tbody>
@@ -81,19 +86,23 @@
 
 							<tbody>
 								@foreach($components as $component)
-									<tr onclick="document.location= '/component/id={{$component->id}}';">
-										<td>{{ $component->id }}</td>
-										<td>{{ $component->regnumber }}</td>
-										<td>{{ $component->name}}</td>
-										<td></td>
-										<td></td>
-										<td>{{ ProjectController::countTransports($component->id) }}</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td>{{ $component->remarks }}</td>
+									<tr>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id) }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+										<td>
+											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+										</td>
 									</tr>	
 								@endforeach
 							</tbody>
@@ -112,17 +121,15 @@
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 	
-
-	
 	$('#add').on('click',function(){
 		$('#frmWindmill-submit').val('Save');
 		$('#frmWindmill').trigger('reset');
-		document.getElementById("error_message").innerHTML = '';
+		
 		$('#windmill').modal('show');
 	})	
 	
 	$(function() {
-	$('#frmwindmill-submit').on('click', function(e){
+	$('#frmWindmill-submit').on('click', function(e){
 		e.preventDefault();
 		var form=$('#frmWindmill');
 		var formData=form.serialize();
@@ -145,15 +152,15 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'">Delete</button></td>'+
 				'</tr>';
 				if(state=='Save'){
-					$('tbody').append(row);
+					$('#windmill-table').append(row);
 				}else{
-					$('#project'+data.id).replaceWith(row);
+					$('#windmill'+data.id).replaceWith(row);
 				}
-				$('#frmProject').trigger('reset');
+				$('#frmWindmill').trigger('reset');
 				$('#regnumber').focus();
 			}
 		});
@@ -177,11 +184,10 @@
 	}
 	
 	//---------get update---------
-	
-	$('tbody').delegate('.btn-edit','click',function(){
-		document.getElementById("error_message").innerHTML = '';
-		var value=$(this).data('id');
-		var url='{{URL::to('getUpdate')}}';
+	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateWindmill')}}';
 		$.ajax({
 			type: 'get',
 			url : url,
@@ -195,15 +201,15 @@
 				$('#remarks').val(data.remarks);
 				$('#enddate').val(data.enddate);
 				$('#frmWindmill-submit').val('Update');
-				$('#project').modal('show');
+				$('#windmill').modal('show');
 			}
 		});
-	});
+	})
 	
 	//---------delete project---------
-	$('tbody').delegate('.btn-delete', 'click',function(){
+	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
 		var value = $(this).data('id');
-		var url = '{{URL::to('deleteProject')}}';
+		var url = '{{URL::to('deleteWindmill')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
 				type : 'delete',
@@ -211,7 +217,7 @@
 				data : {"_token": "{{ csrf_token() }}" ,
 					'id':value},
 				success:function(data){
-					$('#project'+value).remove();
+					$('#windmill'+value).remove();
 				}
 			});
 		}	
@@ -254,13 +260,9 @@
         text = text+"Name must be filled in.";
     }
 	if(x != "" && y != ""){
-		$('#project').modal('toggle');
+		$('#windmill').modal('toggle');
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
-	}
-	
-	function resetError(){
-		document.getElementById("error_message").innerHTML = '';
 	}
 }
 	

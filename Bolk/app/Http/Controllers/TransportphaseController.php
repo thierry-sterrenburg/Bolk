@@ -11,7 +11,8 @@ use DB;
 class TransportphaseController extends Controller
 {
     public function index($id) {
+    	$transportid = $id;
     	$requirements = Requirement::where('transportid','=', $id)->get();
-    	return view('/transportphase', ['requirements' => $requirements]);
+    	return view('/transportphase', ['requirements' => $requirements, 'transportid' => $transportid]);
     }
 }
