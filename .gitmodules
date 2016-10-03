@@ -1,0 +1,3 @@
+[submodule "Bolk/vendor/zizaco/entrust"]
+	path = Bolk/vendor/zizaco/entrust
+	url = git://github.com/Zizaco/entrust.git
