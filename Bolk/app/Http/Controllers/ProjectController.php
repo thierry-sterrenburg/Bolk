@@ -17,7 +17,7 @@ class ProjectController extends Controller
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('windmillid')->get();
-	$projectid = $id;
+	$project = $id;
 	return view('/project', ['windmills' => $windmills, 'components' => $components,  'projectid' => $projectid]);
 	}
 
@@ -60,6 +60,36 @@ class ProjectController extends Controller
 	   }
    }
    
+   public function newComponent(Request $request){
+	   if($request->ajax()){
+		   $component = new Component();
+		   $this->checkInputComponent($component, $request);
+		   $component->save();
+		   return response()->json($component);
+	   }
+   }
+   public function getUpdateComponent(Request $request){
+	  if ($request->ajax()){
+		  $component=Component::find($request->id);
+		  return Response($component);
+	  }
+   }
+   public function newUpdateComponent(Request $request){
+	   if ($request->ajax()){
+		   $component=Component::find($request->id);
+		   $this->checkInput($component, $request);
+		   $component->save();
+		   return Response($component);
+	   }
+   }
+   public function deleteComponent(Request $request){
+	   if ($request->ajax()){
+		   Component::destroy($request->id);
+		   return Response()->json(['sms'=>'delete successfully']);
+	   }
+   }
+   
+   
    public function checkInput($windmill, $request){
 			$windmill->projectid=$request->projectid;
 		   if($request->regnumber == ''){
@@ -94,5 +124,51 @@ class ProjectController extends Controller
 		   }
 	   return $windmill;
    }
+   
+   public function checkInputComponent($component, $request){
+			$component->projectid=$request->projectid;
+		   if($request->regnumber == ''){
+			   $component->regnumber=null;
+		   }else{
+			   $component->regnumber=$request->regnumber;
+		   }
+		   if($request->name == ''){
+			   $component->name=null;
+		   }else{
+			   $component->name=$request->name;
+		   }
+		    if($request->length == ''){
+			   $component->length=null;
+		   }else{
+			   $component->length=$request->length;
+		   }
+		    if($request->width == ''){
+			   $component->width=null;
+		   }else{
+			   $component->width=$request->width;
+		   }
+		    if($request->height == ''){
+			   $component->height=null;
+		   }else{
+			   $component->height=$request->height;
+		   }
+		    if($request->weight == ''){
+			   $component->weight=null;
+		   }else{
+			   $component->weight=$request->weight;
+		   }
+		    if($request->switchable == ''){
+			   $component->switchable=null;
+		   }else{
+			   $component->switchable=$request->switchable;
+		   }
+		   if($request->remarks == ''){
+			   $component->remarks=null;
+		   }else{
+			   $component->remarks=$request->remarks;
+		   }
+	   return $component;
+   }
+
 
 }
