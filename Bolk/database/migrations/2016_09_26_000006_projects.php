@@ -22,6 +22,7 @@ class Projects extends Migration
 			$table->datetime('startdate')->nullable();
 			$table->datetime('enddate')->nullable();
 			$table->longText('remarks')->nullable();
+            $table->timestamps();
 		});
     }
 
