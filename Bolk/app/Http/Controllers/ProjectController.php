@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Project;
 use App\Windmill;
 use App\Component;
 use App\Transport;
@@ -17,8 +18,8 @@ class ProjectController extends Controller
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('windmillid')->get();
-	$project = $id;
-	return view('/project', ['windmills' => $windmills, 'components' => $components,  'projectid' => $projectid]);
+	$project = Project::where('id','=',$id)->first();
+	return view('/project', ['windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}
 
 	public static function countComponents($windmillid) {
