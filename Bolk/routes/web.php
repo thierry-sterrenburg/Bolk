@@ -35,6 +35,11 @@ Route::get('/getUpdateWindmill', 'ProjectController@getUpdateWindmill');
 Route::put('/newWindmill', 'ProjectController@newUpdateWindmill');
 Route::delete('/deleteWindmill', 'ProjectController@deleteWindmill');
 
+Route::post('/newComponent', 'ProjectController@newComponent');
+Route::get('/getUpdateComponent', 'ProjectController@getComponent');
+Route::put('/newComponent', 'ProjectController@newUpdateComponent');
+Route::delete('/deleteComponent', 'ProjectController@deleteComponent');
+
 Route::get('/windmill/id={id}', 'WindmillController@index');
 
 Route::get('/component/id={id}', 'ComponentController@index');

@@ -12,45 +12,93 @@
 			<div id="error_message"></div>
           <form action="/newComponent" method="post" id="frmComponent">
 			<div class="row">
-				<div class="col-lg-4 col-sm-4">
+				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
 					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control">
 				</div>
 				</div>
 				
-				<div class="col-lg-4 col-sm-4">
+				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
 					<input type="text" name="name" id="name" placeholder="Component Name" class="form-control">
 				</div>
 				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-sm-6">
+					<label for="length" class="col-form-label">Length</label>
+				</div>
+				<div class="col-lg-6 col-sm-6">
+					<label for="width" class="col-form-label">Width</label>
+				</div>
 				
-				<div class="col-lg-4 col-sm-4">
 				<div class="form-group">
-					<input type="text" name="location" id="location" placeholder="Location" class="form-control">
+				<div class="col-lg-6 col-sm-6">
+					<div class="input-group">
+					<input type="text" name="length" id="length" placeholder="Length" class="form-control">
+					<div class="input-group-addon">m</div>
+					</div>
+				</div>
+				</div>
+	
+				<div class="col-lg-6 col-sm-6">
+				<div class="form-group">
+					<div class="input-group">
+					<input type="text" name="width" id="width" placeholder="Width" class="form-control">
+					<div class="input-group-addon">m</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-sm-6">
+					<label for="height" class="col-form-label">Height</label>
+				</div>
+				<div class="col-lg-6 col-sm-6">
+					<label for="Weight" class="col-form-label">Weight</label>
+				</div>
+				<div class="col-lg-6 col-sm-6">
+				<div class="form-group">
+					<div class="input-group">
+					<input type="text" name="height" id="height" placeholder="Height" class="form-control">
+					<div class="input-group-addon">m</div>
+					</div>
+				</div>
+				</div>
+				
+				<div class="col-lg-6 col-sm-6">
+				<div class="form-group">
+					<div class="input-group">
+					<input type="text" name="weight" id="weight" placeholder="Weight" class="form-control">
+					<div class="input-group-addon">kg</div>
+					</div>
 				</div>
 				</div>
 			</div>
 			
 			<div class="row">
-				<div class="col-lg-6 col-sm-6">
-					<div class="form-group">
-						<div class='input-group date' id='startdatepicker'>
-							<input type='text' class="form-control" name="startdate" id="startdate" placeholder="Start Date" />
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
-					</div>
+				<div class="col-lg-12 col-sm-12">
+				<div class="form-group">
+				 <label for="exampleSelect2">Status</label>
+					<select class="form-control" id="status">
+					<option>unknown</option>
+					<option>storage</option>
+					<option>transport</option>
+					<option>delivered</option>
+					<option>installed</option>
+					</select>
 				</div>
-				<div class="col-lg-6 col-sm-6">
-					<div class="form-group">
-						<div class='input-group date' id='enddatepicker'>
-							<input type='text' class="form-control" name="enddate" id="enddate" placeholder="End Date" class="form-control"/>
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-						</div>
-					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-lg-12 col-sm-12">
+				<div class="form-check">
+					<label for="switchable" class="form-check-label">
+					<input type="checkbox" class="form-check-input" id="switchable">
+						Check me out
+					</label>
+				</div>
 				</div>
 			</div>
 			
