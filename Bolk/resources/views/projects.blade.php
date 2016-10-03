@@ -11,12 +11,12 @@
                     <div class="col-lg-12">
 
                         <h1 class="page-header">Projects</h1>
-						
-						<!--panel content -->												
+
+						<!--panel content -->
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
-						
+
 						<br>
-						
+
 						  <div class="panel-body">
 	@include('newProject')
 	<table class="table table-hover">
@@ -55,9 +55,9 @@
 			</tbody>
 	</table>
   </div>
-						
+
                     </div>
-					
+
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -66,16 +66,16 @@
         </div>
 		 <script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-	
 
-	
+
+
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('Save');
 		$('#frmProject').trigger('reset');
 		document.getElementById("error_message").innerHTML = '';
 		$('#project').modal('show');
-	})	
-	
+	})
+
 	$(function() {
 	$('#frmProject-submit').on('click', function(e){
 		e.preventDefault();
@@ -114,7 +114,7 @@
 		});
 	})
 	});
-	
+
 	//---------addrow---------
 	function addRow(data){
 		var row='<tr id="project'+data.id+'">'+
@@ -130,9 +130,9 @@
 				'</tr>';
 		$('tbody').append(row);
 	}
-	
+
 	//---------get update---------
-	
+
 	$('tbody').delegate('.btn-edit','click',function(){
 		document.getElementById("error_message").innerHTML = '';
 		var value=$(this).data('id');
@@ -154,7 +154,7 @@
 			}
 		});
 	});
-	
+
 	//---------delete project---------
 	$('tbody').delegate('.btn-delete', 'click',function(){
 		var value = $(this).data('id');
@@ -169,15 +169,15 @@
 					$('#project'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
+
 	$(function () {
         $('#startdatepicker').datetimepicker({
 			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'});
-            
-		
+
+
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
 			sideBySide: true,
@@ -190,7 +190,7 @@
             $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
-	
+
 	function validator() {
     var x,y,text;
 
@@ -201,7 +201,7 @@
     // If x is Not a Number or less than one or greater than 10
     if (x == "") {
         text = "Regnumber must be filled in.";
-    } 
+    }
 	if (y == ""){
 		if(text!=null){
 			text = text+"<br/>";
@@ -213,12 +213,12 @@
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
-	
+
 	function resetError(){
 		document.getElementById("error_message").innerHTML = '';
 	}
 }
-	
+
   </script>
         <!-- /#page-wrapper -->
 @endsection

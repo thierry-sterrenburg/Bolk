@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'My Application',
+    'name' => 'Bolk Windmill Planner Assistant',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
         //
 
