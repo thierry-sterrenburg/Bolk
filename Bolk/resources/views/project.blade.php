@@ -15,15 +15,8 @@
                         <h1 class="page-header">Project GE Auchrobert</h1>
 						
 						<!--panel content -->						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">General Information</h3>
-							</div>
-							<div class="panel-body">
-								Project GE A registration number:189207 latest update: 13-9-2016 13:52:07 number of windmills: 6
-							</div>
-						</div>
-						
+						@include('layouts.projectpanel')
+
 						<br>
 						
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>

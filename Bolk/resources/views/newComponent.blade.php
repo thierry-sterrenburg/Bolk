@@ -97,7 +97,7 @@
 				@foreach($windmills as $windmill)
 				<div class="form-check">
 					<label for="switchable" class="form-check-label">
-					<input type="checkbox" class="form-check-input" id="switchable" name="switchable" value="{{Swindmill->id}}">
+					<input type="checkbox" class="form-check-input" id="switchable" name="switchable" value="{{$windmill->id}}">
 					{{$windmill->name}}
 					</label>
 				</div>
