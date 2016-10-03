@@ -2,7 +2,7 @@
 <?php
 	use App\Http\Controllers\ProjectsController;
 ?>
-@extends('layouts.master');
+@extends('layouts.master')
 @section('content')
         <!-- Page Content -->
         <div id="page-wrapper">

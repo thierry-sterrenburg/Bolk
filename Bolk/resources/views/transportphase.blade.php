@@ -159,9 +159,12 @@
         <script type="text/javascript">
         //linked datetimepicker
     		$(function () {
-		        $('#startdatesearch').datetimepicker();
+		        $('#startdatesearch').datetimepicker({
+		        	format: 'DD/MM/YYYY'
+		        });
 		        $('#enddatesearch').datetimepicker({
-		            useCurrent: false //Important! See issue #1075
+		            useCurrent: false, //Important! See issue #1075
+		            format: 'DD/MM/YYYY'
 		        });
 		        $("#startdatesearch").on("dp.change", function (e) {
 		            $('#enddatesearch').data("DateTimePicker").minDate(e.date);
