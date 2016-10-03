@@ -29,6 +29,7 @@ class Transports extends Migration
 			$table->datetime('dateofarrivalinitial')->nullable();
 			$table->datetime('dateofarrivalfinal')->nullable();
 			$table->longText('remarks')->nullable();
+            $table->timestamps();
 		});
     }
 
