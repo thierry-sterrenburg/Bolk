@@ -193,10 +193,7 @@
         <!-- own javascript code-->	
         <script type="text/javascript">
         	var $table = $('#componenttable');
-        	//$.settable = function () {
-        	//	var $table = "Componenttable";
-        	//	//var $table = document.getElementById('Componenttable');
-        	//};
+        	var $column = [6, 7];
         </script>
 
         <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">

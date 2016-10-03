@@ -12,12 +12,12 @@
 		        $("#startdatesearch").on("dp.change", function (e) {
 		            $('#enddatesearch').data("DateTimePicker").minDate(e.date);
 		            minDateFilter = new Date(e.date).getTime();
-		           $('#componenttable').DataTable().draw();
+		           $table.DataTable().draw();
 		        });
 		        $("#enddatesearch").on("dp.change", function (e) {
 		            //$('#startdatesearch').data("DateTimePicker").maxDate(e.date);
 		            maxDateFilter = new Date(e.date).getTime();
-		           $('#componenttable').DataTable().draw();
+		           $table.DataTable().draw();
 	        	});
 	    	});
     		//DataTables search execution
@@ -25,35 +25,50 @@
 			maxDateFilter="";
 			$.fn.dataTable.ext.search.push(
 			   function(oSettings, aData, iDataIndex) {
+			   	if($column.length == 2){
+					if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')) {
+				      aData._date = new Date(aData[$column[0]]).getTime();
+				      var bData = new Date(aData[$column[1]]).getTime();
+				    }
 
-				if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')||(typeof cData == 'undefined')) {
-			      aData._date = new Date(aData[9]).getTime();
-			      var bData = new Date(aData[10]).getTime();
-			      var cData = new Date(aData[11]).getTime();
-			    }
+				    if (minDateFilter && !isNaN(minDateFilter)) {
+				      if ((aData._date < minDateFilter)&&(bData < minDateFilter)) {
+				        return false;
+				      }
+				    }
 
-			    if (minDateFilter && !isNaN(minDateFilter)) {
-			      if ((aData._date < minDateFilter)&&(bData < minDateFilter)&&(cData < minDateFilter)) {
-			        return false;
-			      }
-			    }
+				    if (maxDateFilter && !isNaN(maxDateFilter)) {
+				      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)) {
+				        return false;
+				      }
+				    }
 
-			    if (maxDateFilter && !isNaN(maxDateFilter)) {
-			      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)&&(cData > maxDateFilter)) {
-			        return false;
-			      }
-			    }
+				    return true;
+
+			   	} else if($column.length == 3){
+					if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')||(typeof cData == 'undefined')) {
+				      aData._date = new Date(aData[$column[0]]).getTime();
+				      var bData = new Date(aData[$column[1]]).getTime();
+				      var cData = new Date(aData[$column[2]]).getTime();
+				    }
+
+				    if (minDateFilter && !isNaN(minDateFilter)) {
+				      if ((aData._date < minDateFilter)&&(bData < minDateFilter)&&(cData < minDateFilter)) {
+				        return false;
+				      }
+				    }
+
+				    if (maxDateFilter && !isNaN(maxDateFilter)) {
+				      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)&&(cData > maxDateFilter)) {
+				        return false;
+				      }
+				    }
 
 			    return true;
 			  }
-
-
-
-
-			  );
+			});
 
 	   		$(document).ready(function () {
-	   			//alert(document.getElementById($table)+$('#componenttable'));
 				$table.DataTable({
 					responsive: true,
 					dom: 'Bfrtip',
@@ -61,4 +76,4 @@
 						'excel', 'pdf', 'print'
 					]
 				});
-			} );
+			});
