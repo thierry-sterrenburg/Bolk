@@ -14,9 +14,10 @@ class Transports extends Migration
     public function up()
     {
          Schema::create("transports", function (Blueprint $table) {
+            $table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('componentid')->unsigned();
-            $table->foreign('componentid')->references('id')->on('components');
+            $table->foreign('componentid')->references('id')->on('components')->onDelete('cascade');
 			$table->string('transportnumber')->nullable();
 			$table->string('company')->nullable();
 			$table->string('truck')->nullable();

@@ -14,9 +14,10 @@ class Requirements extends Migration
     public function up()
     {
          Schema::create("requirements", function (Blueprint $table) {
+            $table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->integer('transportid')->unsigned();
-            $table->foreign('transportid')->references('id')->on('transports');
+            $table->foreign('transportid')->references('id')->on('transports')->onDelete('cascade');
 			$table->string('name');
 			$table->string('country')->nullable();
 			$table->datetime('startdate')->nullable();
