@@ -1,7 +1,6 @@
-<?php 
+<?php
 	use App\Http\Controllers\ComponentController;
 ?>
-
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -17,24 +16,10 @@
 						</ol>
                         <h1 class="page-header">PPM</h1>
 						
-						<!--panel content -->
-						
-						
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h3 class="panel-title">General Information</h3>
-							</div>
-							<div class="panel-body">
-								Project GE Auchrobert registration number:189207<br/>
-								latest update: 13-9-2016 13:52:07 <br/>
-								number of phases: 3<br/>
-								weight:<br/>
-								height:<br/>
-								width:<br/>
-								length:<br/>
-								
-							</div>
-						</div>
+						<!--panel content -->						
+                        @include('layouts/projectpanel')
+						@include('layouts/windmillpanel')
+						@include('layouts/componentpanel')
 						
 						<br>
 						
