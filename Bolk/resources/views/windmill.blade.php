@@ -110,7 +110,7 @@
 						
 						<br>
 										
-						<table class="table table-condensed table-hover">
+						<table id="componenttable" class="table table-condensed table-hover">
 							<thead>
 								<td>#</td>
 								<td>Reg. number</td>
