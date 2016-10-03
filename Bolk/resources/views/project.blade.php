@@ -26,10 +26,12 @@
 						
 						<br>
 						
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Windmill <span class="badge">+</span></button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 						
 						<br>
 						@include('newWindmill')
+						@include('newComponent')
 						<!--Windmill Table -->
 						<h3>Windmills</h3>
 						<table class="table table-condensed table-hover">
@@ -121,13 +123,23 @@
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 	
-	$('#add').on('click',function(){
+	//---------add Windmill---------
+	$('#addWindmill').on('click',function(){
 		$('#frmWindmill-submit').val('Save');
 		$('#frmWindmill').trigger('reset');
 		
 		$('#windmill').modal('show');
 	})	
 	
+	//---------add Component---------
+	$('#addComponent').on('click',function(){
+		$('#frmComponent-submit').val('Save');
+		$('#frmComponent').trigger('reset');
+		
+		$('#component').modal('show');
+	})
+	
+	//---------form Windmill---------
 	$(function() {
 	$('#frmWindmill-submit').on('click', function(e){
 		e.preventDefault();
@@ -161,6 +173,46 @@
 					$('#windmill'+data.id).replaceWith(row);
 				}
 				$('#frmWindmill').trigger('reset');
+				$('#regnumber').focus();
+			}
+		});
+	})
+	});
+	
+	//---------form Component---------
+	$(function() {
+	$('#frmComponent-submit').on('click', function(e){
+		e.preventDefault();
+		var form=$('#frmComponent');
+		var formData=form.serialize();
+		var url=form.attr('action');
+		var state=$('#frmComponent-submit').val();
+		var type= 'post';
+		if(state=='Update'){
+			type = 'put';
+		}
+		$.ajax({
+			type : type,
+			url : url,
+			data: formData,
+			success:function(data){
+				var row='<tr id="component'+data.id+'">'+
+				'<td>'+ data.id +'</td>'+
+				'<td>'+ data.regnumber +'</td>'+
+				'<td>'+ data.name +'</td>'+
+				'<td>'+ data.length +'</td>'+
+				'<td>'+ data.width +'</td>'+
+				'<td>'+ data.height +'</td>'+
+				'<td>'+ data.weight +'</td>'+
+				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
+				'</tr>';
+				if(state=='Save'){
+					$('#component-table').append(row);
+				}else{
+					$('#component'+data.id).replaceWith(row);
+				}
+				$('#frmComponent').trigger('reset');
 				$('#regnumber').focus();
 			}
 		});
