@@ -87,7 +87,7 @@
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id) }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>

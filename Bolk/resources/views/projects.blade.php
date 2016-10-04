@@ -42,7 +42,7 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->location }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countWindmills($project->id) }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countComponents($project->id) }}</td>
-					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countTransports($project->id) }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';"></td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>

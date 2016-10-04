@@ -80,7 +80,7 @@
 										<td>{{ $transport->configuration}}</td>
 										<td>{{ $transport->from }}</td>
 										<td>{{ $transport->to}}</td>
-										<td>{{ ComponentController::countRequirements($transport->id) }}</td>
+										<td></td>
 										<td>{{ $transport->dateofloading}}</td>
 										<td>{{ $transport->dateofarrivalinitial}}</td>
 										<td>{{ $transport->dateofarrivalfinal}}</td>

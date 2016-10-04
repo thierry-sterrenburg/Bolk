@@ -28,15 +28,6 @@ class ProjectsController extends Controller
    	return $numberofcomponents;
    }
 
-   public static function countTransports($projectid) {
-	$components = Component::where('projectid', '=', $projectid)->get();
-	$numberoftransports = 0;
-	foreach($components as $component) {
-		$numberoftransports = $numberoftransports+Transport::where('componentid', '=', $component->id)->count();
-	}
-	return $numberoftransports;
-   }
-
    public function newProject(Request $request){
 	   if($request->ajax()){
 		   $project = new Project();

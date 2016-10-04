@@ -9,7 +9,7 @@ use App\Project;
 use App\Windmill;
 use App\Component;
 use App\Transport;
-use DP;
+use DB;
 
 class WindmillController extends Controller
 {
@@ -19,9 +19,4 @@ class WindmillController extends Controller
     	$project = Project::where('id', '=', Windmill::where('id','=', $id)->value('projectid'))->first();
     	return view('/windmill', ['components' => $components, 'windmill'=> $windmill, 'project' => $project]);
     }
-
-    public static function countTransports($componentid) {
-		$numberoftransports = Transport::where('componentid', '=', $componentid)->count();
-		return $numberoftransports;
-	}
 }
