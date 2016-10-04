@@ -40,7 +40,7 @@
 												<td colspan="1"><u>Date final arrival:</u>{{$transport->dateofarrivalfinal}}</td>
 											</tr>
 											<tr>
-												<td colspan="3"><u>Number of Requirements:</u></td>
+												<td colspan="3"><u>Number of Requirements:{{ComponentController::countRequirements($transport->id)}}</u></td>
 											</tr>
 											<tr>
 												<td colspan="3"><u>Remarks:</u> {{$transport->remarks}}</td>

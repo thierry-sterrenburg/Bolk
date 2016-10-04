@@ -14,11 +14,14 @@
 						</ol>
                         <h1 class="page-header">Transport 670</h1>
 
-                        <!--panel content -->
-					    @include('layouts/projectpanel')
+						<!--panel content -->						
+                        @include('layouts/projectpanel')
+                        @if(!is_null($component->mainwindmillid))
 						@include('layouts/windmillpanel')
+						@endif
 						@include('layouts/componentpanel')
 						@include('layouts/transportpanel')
+						<!--end panels-->
 
 						<br>
 						

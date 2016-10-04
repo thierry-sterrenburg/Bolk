@@ -18,7 +18,7 @@
 						
 						<!--panel content -->						
                         @include('layouts/projectpanel')
-                        @if(!is_null($windmill))
+                        @if(!is_null($component->mainwindmillid))
 						@include('layouts/windmillpanel')
 						@endif
 						@include('layouts/componentpanel')
@@ -83,7 +83,7 @@
 										<td>{{ $transport->configuration}}</td>
 										<td>{{ $transport->from }}</td>
 										<td>{{ $transport->to}}</td>
-										<td></td>
+										<td>{{ ComponentController::countRequirements($transport->id)}}</td>
 										<td>{{ $transport->dateofloading}}</td>
 										<td>{{ $transport->dateofarrivalinitial}}</td>
 										<td>{{ $transport->dateofarrivalfinal}}</td>

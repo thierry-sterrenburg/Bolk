@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Project;
 use App\Windmill;
 use App\Component;
-use App\Transport;
+use App\Component_Transport;
 use DB;
 
 class ProjectsController extends Controller
@@ -26,6 +26,15 @@ class ProjectsController extends Controller
    public static function countComponents($projectid) {
    	$numberofcomponents = Component::where('projectid', '=', $projectid)->count();
    	return $numberofcomponents;
+   }
+
+   public static function countTransports($projectid) {
+   	$allcomponents = Component::where('projectid','=', $projectid)->get();
+   	$numberoftransports = 0;
+   	foreach($allcomponents as $singlecomponent) {
+   		$numberoftransports = $numberoftransports + Component_Transport::where('componentid','=', $singlecomponent->id)->count();
+   	}
+   	return $numberoftransports;
    }
 
    public function newProject(Request $request){

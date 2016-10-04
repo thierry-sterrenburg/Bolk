@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Project;
 use App\Windmill;
 use App\Component;
-use App\Transport;
+use App\Component_Transport;
 use DB;
 
 class ProjectController extends Controller
@@ -16,18 +16,18 @@ class ProjectController extends Controller
 	
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
-	$components = Component::where('projectid', '=', $id)->whereNull('windmillid')->get();
+	$components = Component::where('projectid', '=', $id)->whereNull('mainwindmillid')->get();
 	$project = Project::where('id','=',$id)->first();
 	return view('/project', ['windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}
 
 	public static function countComponents($windmillid) {
-		$numberofcomponents = Component::where('windmillid', '=', $windmillid)->count();
+		$numberofcomponents = Component::where('mainwindmillid','=', $windmillid)->count();
 		return $numberofcomponents;
 	}
 
 	public static function countTransports($componentid) {
-		$numberoftransports = Transport::where('componentid', '=', $componentid)->count();
+		$numberoftransports = Component_Transport::where('componentid','=',$componentid)->count();
 		return $numberoftransports;
 	}
 	

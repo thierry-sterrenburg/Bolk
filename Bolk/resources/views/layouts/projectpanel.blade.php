@@ -33,7 +33,7 @@
 											<tr>
 												<td colspan="1"><u>Total number of Windmills:</u> {{ProjectsController::countWindmills($project->id)}}</td>
 												<td colspan="1"><u>Total number of Components:</u> {{ProjectsController::countComponents($project->id)}}</td>
-												<td colspan="1"><u>Total number of Transport Phases:</u></td>
+												<td colspan="1"><u>Total number of Transport Phases:</u> {{ProjectsController::countTransports($project->id)}}</td>
 											</tr>
 											<tr>
 												<td colspan="3"><u>Remarks:</u>{{$project->remarks}}</td>

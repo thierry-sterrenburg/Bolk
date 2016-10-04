@@ -73,7 +73,7 @@
 										<td>{{ $component->name}}</td>
 										<td></td>
 										<td></td>
-										<td></td>
+										<td>{{ WindmillController::countTransports($component->id)}}</td>
 										<td></td>
 										<td></td>
 										<td></td>

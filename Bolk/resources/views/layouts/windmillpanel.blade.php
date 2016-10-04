@@ -27,10 +27,10 @@
 												<td colspan="1"><u>Location:</u> {{$windmill->location}}</td>
 											</tr>
 											<tr>
-												<td colspan="1"><u>Start Date: {{$windmill->startdate}}</u></td>
+												<td colspan="1"><u>Start Date:</u> {{$windmill->startdate}}</td>
 												<td colspan="2"><u>End Date:</u> {{$windmill->enddate}}</td>
 											</tr>
-												<td colspan="3"><u>Number of Components: {{ProjectController::countComponents($windmill->id)}}</u></td>
+												<td colspan="3"><u>Number of Components:</u> {{ProjectController::countComponents($windmill->id)}}</td>
 											<tr>
 												<td colspan="3"><u>Remarks:</u> {{$windmill->remarks}}</td>
 											</tr>

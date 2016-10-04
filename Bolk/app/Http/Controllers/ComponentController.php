@@ -18,8 +18,18 @@ class ComponentController extends Controller
     public function index($id) {
         $transports = Component_Transport::where('componentid','=', $id)->join('transports', 'component_transports.transportid', '=', 'transports.id')->get();
         $component = Component::where('id','=',$id)->first();
-    	$windmill = Windmill::where('id', '=', $component->windmillid)->first();
+    	$windmill = Windmill::where('id', '=', $component->mainwindmillid)->first();
     	$project = Project::where('id', '=',  $component->projectid)->first();
     	return view('/component', ['transports' => $transports, 'component' => $component, 'windmill' => $windmill, 'project' => $project]);
-    }   
+    }
+
+    public static function countTransports($componentid) {
+		$numberoftransports = Component_Transport::where('componentid','=',$componentid)->count();
+		return $numberoftransports;
+	}   
+
+	public static function countRequirements($transportid) {
+		$numberofRequirements = Requirement::where('transportid','=',$transportid)->count();
+		return $numberofRequirements;
+	}
 }

@@ -36,7 +36,7 @@
 												<td colspan="2"><u>Status:</u> {{$component->status}}</td>
 											</tr>
 											<tr>
-												<td colspan="4"><u>Number of Transport Phases:</u></td>
+												<td colspan="4"><u>Number of Transport Phases:</u>{{WindmillController::countTransports($component->id)}}</td>
 
 											</tr>
 											<tr>
