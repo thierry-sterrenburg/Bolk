@@ -79,7 +79,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
-				 <label for="exampleSelect2">Status</label>
+				 <label for="status">Status</label>
 					<select class="form-control" id="status">
 					<option>unknown</option>
 					<option>storage</option>
@@ -92,7 +92,7 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-lg-12 col-sm-12">
+				<div class="col-lg-6 col-sm-6">
 				<label class="form-check-label">Switchable with</label>
 				@foreach($windmills as $windmill)
 				<div class="form-check">
@@ -102,6 +102,20 @@
 					</label>
 				</div>
 				@endforeach
+				</div>
+				
+				<div class="col-lg-6 col-sm-6">
+					<div class="form-group">
+					<label for="status">Attached to</label>
+					<select class="form-control" id="windmill">
+					<option>unknown</option>
+					<option>storage</option>
+					<option>transport</option>
+					<option>delivered</option>
+					<option>installed</option>
+					</select>
+				</div>
+					
 				</div>
 			</div>
 			
