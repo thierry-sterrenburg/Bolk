@@ -27,82 +27,129 @@
 						@include('newComponent')
 						<!--Windmill Table -->
 						<h3>Windmills</h3>
-						<table class="table table-condensed table-hover">
-							<thead>
-								<td>#</td>
-								<td>registration number</td>
-								<td>name</td>
-								<td>location</td>
-								<td>number of components</td>
-								<td>start date</td>
-								<td>end date</td>
-								<td>last update</td>
-								<td>remarks</td>
-							</thead>
-							
-							<tbody id="windmill-table">
-								@foreach($windmills as $windmill)
-									<tr id="windmill{{$windmill->id}}">
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->name }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->location }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
-										<td>
-											<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
-											<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
-										</td>
-									</tr>
-								@endforeach	
-							</tbody>
-							
-						</table>
+							<table id="display" class="table table-condensed table-hover">
+								<div class="container">
+								    <div class='col-md-5'>
+								        <div class="form-group">
+								            <div class='input-group date' id='startdatesearch'>
+								                <input type='text' class="form-control" />
+								                <span class="input-group-addon">
+								                    <span class="glyphicon glyphicon-calendar"></span>
+								                </span>
+								            </div>
+								        </div>
+								    </div>
+								    <div class='col-md-5'>
+								        <div class="form-group">
+								            <div class='input-group date' id='enddatesearch'>
+								                <input type='text' class="form-control" />
+								                <span class="input-group-addon">
+								                    <span class="glyphicon glyphicon-calendar"></span>
+								                </span>
+								            </div>
+								        </div>
+								    </div>
+								</div>
+								<thead>
+									<td>#</td>
+									<td>registration number</td>
+									<td>name</td>
+									<td>location</td>
+									<td>number of components</td>
+									<td>start date</td>
+									<td>end date</td>
+									<td>last update</td>
+									<td>remarks</td>
+									<td></td>
+								</thead>
+								
+								<tbody id="windmill-table">
+									@foreach($windmills as $windmill)
+										<tr id="windmill{{$windmill->id}}">
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->name }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->location }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
+											<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+											<td>
+												<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
+												<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
+											</td>
+										</tr>
+									@endforeach	
+								</tbody>
+								
+							</table>
 						<!-- Component Table-->
 						<h3>Components</h3>
-						<table class="table table-condensed table-hover">
-							<thead>
-								<td>#</td>
-								<td>Reg. number</td>
-								<td>Name</td>
-								<td>From</td>
-								<td>To</td>
-								<td>Number of transport phases</td>
-								<td>Date of loading</td>
-								<td>Date of Arrival</td>
-								<td>Offloading(initial)</td>
-								<td>Offloading(final)</td>
-								<td>Last update</td>
-								<td>Remarks</td>
-							</thead>
+							<table id="display2" class="table table-condensed table-hover">
+								<div class="container">
+								    <div class='col-md-5'>
+								        <div class="form-group">
+								            <div class='input-group date' id='startdatesearch2'>
+								                <input type='text' class="form-control" />
+								                <span class="input-group-addon">
+								                    <span class="glyphicon glyphicon-calendar"></span>
+								                </span>
+								            </div>
+								        </div>
+								    </div>
+								    <div class='col-md-5'>
+								        <div class="form-group">
+								            <div class='input-group date' id='enddatesearch2'>
+								                <input type='text' class="form-control" />
+								                <span class="input-group-addon">
+								                    <span class="glyphicon glyphicon-calendar"></span>
+								                </span>
+								            </div>
+								        </div>
+								    </div>
+								</div>
+								<thead>
+									<td>#</td>
+									<td>Reg. number</td>
+									<td>Name</td>
+									<td>From</td>
+									<td>To</td>
+									<td>Number of transport phases</td>
+									<td>Date of loading</td>
+									<td>Date of Arrival</td>
+									<td>Offloading (initial)</td>
+									<td>Offloading (final)</td>
+									<td>Last update</td>
+									<td>Remarks</td>
+									<td></td>
+								</thead>
 
-							<tbody id="component-table">
-								@foreach($components as $component)
-									<tr id="component{{$component->id}}">
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id) }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
-										<td>
-											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
-											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
-										</td>
-									</tr>	
-								@endforeach
-							</tbody>
+								<tbody id="component-table">
+									@foreach($components as $component)
+										<tr id="component{{$component->id}}">
+											<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
+											<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
+											<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id) }}</td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+											<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+											<td>
+												<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+												<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+											</td>
+										</tr>	
+									@endforeach
+								</tbody>
+								
+							</table>
 							
-						</table>
 						
                     </div>
 					
@@ -318,4 +365,25 @@
 }
 	
   </script>
+	<!-- Datatable script-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+	<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" ></script>
+	<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" ></script>
+	<script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
+	<script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+	<!-- own javascript code-->	
+	<script type="text/javascript">
+		var $table = $('#display');
+		var $table2 = $('#display2');
+		var $column = [5, 6];
+		var $column2 = [6, 7];
+	</script>
+
+	<script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 @endsection

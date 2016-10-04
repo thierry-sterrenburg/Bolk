@@ -2,12 +2,31 @@
         //linked datetimepicker
 
     		$(function () {
+    			if($column2 != 'null'){
+    				$('#startdatesearch2').datetimepicker({
+		        	format: 'YYYY-MM-DD'
+		        });
+		        $('#enddatesearch2').datetimepicker({
+		            useCurrent: false, //Important! See issue #1075
+		            format: 'YYYY-MM-DD'
+		        });
+		        $("#startdatesearch2").on("dp.change", function (e) {
+		            $('#enddatesearch2').data("DateTimePicker").minDate(e.date);
+		            minDateFilter = new Date(e.date).getTime();
+		           $table2.DataTable().draw();
+		        });
+		        $("#enddatesearch2").on("dp.change", function (e) {
+		            //$('#startdatesearch').data("DateTimePicker").maxDate(e.date);
+		            maxDateFilter = new Date(e.date).getTime();
+		           $table2.DataTable().draw();
+	        	});
+		    	}
 		        $('#startdatesearch').datetimepicker({
-		        	format: 'DD/MM/YYYY'
+		        	format: 'YYYY-MM-DD'
 		        });
 		        $('#enddatesearch').datetimepicker({
 		            useCurrent: false, //Important! See issue #1075
-		            format: 'DD/MM/YYYY'
+		            format: 'YYYY-MM-DD'
 		        });
 		        $("#startdatesearch").on("dp.change", function (e) {
 		            $('#enddatesearch').data("DateTimePicker").minDate(e.date);
@@ -69,6 +88,15 @@
 			});
 
 	   		$(document).ready(function () {
+	   			if ($table2 != 'null'){
+	   				$table2.DataTable({
+					responsive: true,
+					dom: 'Bfrtip',
+					buttons: [
+						'excel', 'pdf', 'print'
+					]
+				});
+	   			}
 				$table.DataTable({
 					responsive: true,
 					dom: 'Bfrtip',

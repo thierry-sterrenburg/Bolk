@@ -25,6 +25,7 @@
 						
 						
 						<br>
+						<br>
 										
 						<table id="componenttable" class="table table-condensed table-hover">
 							<div class="container">
