@@ -18,8 +18,8 @@ class Components extends Migration
 			$table->increments('id');
 			$table->integer('projectid')->unsigned();
             $table->foreign('projectid')->references('id')->on('projects')->onDelete('cascade');
-			$table->integer('windmillid')->nullable()->unsigned();
-            $table->foreign('windmillid')->references('id')->on('windmills')->onDelete('set null');
+			$table->integer('mainwindmillid')->nullable()->unsigned();
+            $table->foreign('mainwindmillid')->references('id')->on('windmills')->onDelete('set null');
 			$table->string('regnumber');
             $table->string('name')->nullable();
 			$table->double('length', 8,2)->nullable();
