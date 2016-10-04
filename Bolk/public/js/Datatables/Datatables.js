@@ -2,7 +2,7 @@
         //linked datetimepicker
 
     		$(function () {
-    			if($column2 != 'null'){
+    			if(typeof $column2 != 'undefined'){
     				$('#startdatesearch2').datetimepicker({
 		        	format: 'YYYY-MM-DD'
 		        });
@@ -88,7 +88,7 @@
 			});
 
 	   		$(document).ready(function () {
-	   			if ($table2 != 'null'){
+	   			if (typeof $table2 != 'undefined'){
 	   				$table2.DataTable({
 					responsive: true,
 					dom: 'Bfrtip',

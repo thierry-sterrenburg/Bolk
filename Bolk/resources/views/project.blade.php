@@ -27,7 +27,29 @@
 						@include('newComponent')
 						<!--Windmill Table -->
 						<h3>Windmills</h3>
-						<table class="table table-condensed table-hover">
+						<table id="windmill-datatable" class="table table-condensed table-hover">
+						<div class="container">
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='startdatesearch'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='enddatesearch'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
+							</div>
 							<thead>
 								<td>#</td>
 								<td>registration number</td>
@@ -38,6 +60,7 @@
 								<td>end date</td>
 								<td>last update</td>
 								<td>remarks</td>
+								<td></td>
 							</thead>
 							
 							<tbody id="windmill-table">
@@ -63,7 +86,29 @@
 						</table>
 						<!-- Component Table-->
 						<h3>Components</h3>
-						<table class="table table-condensed table-hover">
+						<table id="component-datatable" class="table table-condensed table-hover">
+						<div class="container">
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='startdatesearch2'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
+							    <div class='col-md-5'>
+							        <div class="form-group">
+							            <div class='input-group date' id='enddatesearch2'>
+							                <input type='text' class="form-control" />
+							                <span class="input-group-addon">
+							                    <span class="glyphicon glyphicon-calendar"></span>
+							                </span>
+							            </div>
+							        </div>
+							    </div>
+							</div>
 							<thead>
 								<td>#</td>
 								<td>Reg. number</td>
@@ -77,6 +122,7 @@
 								<td>Offloading(final)</td>
 								<td>Last update</td>
 								<td>Remarks</td>
+								<td></td>
 							</thead>
 
 							<tbody id="component-table">
@@ -318,4 +364,25 @@
 }
 	
   </script>
+    <!-- Datatable script-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js" ></script>
+    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js" ></script>
+    <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
+    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <!-- own javascript code-->	
+    <script type="text/javascript">
+    	var $table = $('#windmill-datatable');
+    	var $table2 = $('#component-datatable');
+    	var $column = [5, 6];
+    	var $column = [6, 7];
+    </script>
+
+    <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 @endsection
