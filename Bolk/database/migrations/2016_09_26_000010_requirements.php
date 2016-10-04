@@ -25,6 +25,7 @@ class Requirements extends Migration
 			$table->enum('booked', ['no','pending','yes']);
             $table->string('responsibleplanner');
 			$table->longText('remarks')->nullable();
+            $table->timestamps();
 		});
     }
 
