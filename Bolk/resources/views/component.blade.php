@@ -18,8 +18,11 @@
 						
 						<!--panel content -->						
                         @include('layouts/projectpanel')
+                        @if(!is_null($windmill))
 						@include('layouts/windmillpanel')
+						@endif
 						@include('layouts/componentpanel')
+						<!--end panels-->
 						
 						<br>
 						
