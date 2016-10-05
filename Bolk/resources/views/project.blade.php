@@ -307,7 +307,7 @@
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
-		var url='{{URL::to('getUpdateComponent/id={"+value+"}')}}';
+		var url='{{URL::to('getUpdateComponent')}}';
 		$.ajax({
 			type: 'get',
 			url : url,

@@ -71,10 +71,10 @@ class ProjectController extends Controller
 		   return response()->json($component);
 	   }
    }
-   public function getUpdateComponent($id, Request $request){
+   public function getUpdateComponent(Request $request){
 	  if ($request->ajax()){
 		  $component=Component::find($request->id);
-		  $switchablewindmills = Switchable::where('componentid', '=', $id)->pluck('windmillid');
+		  $switchablewindmills = Switchable::where('componentid', '=', $request->id)->pluck('windmillid');
 		  return Response($component);
 	  }
    }
