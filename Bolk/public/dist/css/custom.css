@@ -1,0 +1,6 @@
+.nav{
+    cursor: pointer;
+}
+.table-condensed>tbody>tr>td{
+	cursor: pointer;
+}

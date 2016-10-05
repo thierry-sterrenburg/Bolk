@@ -1,5 +1,6 @@
 <?php 
 	use App\Http\Controllers\ProjectController;
+	use App\Http\Controllers\Project_transportController;
 ?>
 @extends('layouts.master')
 @section('content')
@@ -14,8 +15,8 @@
 						</ol>
                         <h1 class="page-header">Project GE Auchrobert</h1>
                         <ul class="nav nav-tabs">
-						  <li class="active"><a onclick="document.location= '/project/id={{$project->id}}';">Windmills</a></li>
-						  <li><a onclick="document.location= '/project_transport/id={{$project->id}}';">Transports</a></li>
+						  <li><a onclick="document.location= '/project/id={{$project->id}}';">Windmills</a></li>
+						  <li class="active"><a onclick="document.location= '/project_transport/id={{$project->id}}';">Transports</a></li>
 						  <li><a href="#">Menu 2</a></li>
 						  <li><a href="#">Menu 3</a></li>
 						</ul>
@@ -25,15 +26,15 @@
 
 						<br>
 						
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addTransport" value="add">Add Transport <span class="badge">+</span></button>
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 						
 						<br>
-						@include('newWindmill')
+						@include('newTransport')
 						@include('newComponent')
-						<!--Windmill Table -->
-						<h3>Windmills</h3>
-						<table id="windmill-datatable" class="table table-condensed table-hover">
+						<!--Transport Table -->
+						<h3>Transports</h3>
+						<table id="Transport-datatable" class="table table-condensed table-hover">
 						<div class="container">
 							    <div class='col-md-5'>
 							        <div class="form-group">
@@ -57,36 +58,50 @@
 							    </div>
 							</div>
 							<thead>
+							@foreach($transportscolumn as $column)
+							<td>{{$column}}</td>
+							@endforeach
+							<!--
 								<td>#</td>
-								<td>registration number</td>
-								<td>name</td>
-								<td>location</td>
-								<td>number of components</td>
-								<td>start date</td>
-								<td>end date</td>
-								<td>last update</td>
-								<td>remarks</td>
+								<td>Transport Number</td>
+								<td>Company</td>
+								<td>Truck</td>
+								<td>Trailer</td>
+								<td>Configuration</td>
+								<td>From</td>
+								<td>To</td>
+								<td>Number of Requirements</td>
+								<td>Date of loading</td>
+								<td>Date of Arrival(initial)</td>
+								<td>Date of Arrival(final)</td>
+								<td>Last update</td>
+								<td>Remarks</td>-->
 								<td></td>
 							</thead>
 							
-							<tbody id="windmill-table">
-								@foreach($windmills as $windmill)
-									<tr id="windmill{{$windmill->id}}">
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->name }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->location }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+							<tbody id="transport-table">
+								@foreach($transports as $transport)
+									<tr onclick="document.location= '/transportphase/id={{$transport->id}}';">
+										<td>{{ $transport->id }}</td>
+										<td>{{ $transport->transportnumber }}</td>
+										<td>{{ $transport->company}}</td>
+										<td>{{ $transport->truck}}</td>
+										<td>{{ $transport->trailer }}</td>
+										<td>{{ $transport->configuration}}</td>
+										<td>{{ $transport->from }}</td>
+										<td>{{ $transport->to}}</td>
+										<td>{{ Project_transportController::countRequirements($transport->id)}}</td>
+										<td>{{ $transport->dateofloading}}</td>
+										<td>{{ $transport->dateofarrivalinitial}}</td>
+										<td>{{ $transport->dateofarrivalfinal}}</td>
+										<td></td>
+										<td>{{ $transport->remarks}}</td>
 										<td>
-											<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
-											<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
+											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
 										</td>
 									</tr>
-								@endforeach	
+								@endforeach
 							</tbody>
 							
 						</table>
@@ -133,19 +148,19 @@
 
 							<tbody id="component-table">
 								@foreach($components as $component)
-									<tr id="component{{$component->id}}">
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id)}}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+									<tr id="component{{$component->id}}" onclick="document.location= '/component/id={{$component->id}}';">
+										<td>{{ $component->id }}</td>
+										<td>{{ $component->regnumber }}</td>
+										<td>{{ $component->name}}</td>
+										<td></td>
+										<td></td>
+										<td>{{ ProjectController::countTransports($component->id)}}</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>{{ $component->remarks }}</td>
 										<td>
 											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
 											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
@@ -168,12 +183,12 @@
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 	
-	//---------add Windmill---------
-	$('#addWindmill').on('click',function(){
-		$('#frmWindmill-submit').val('Save');
-		$('#frmWindmill').trigger('reset');
+	//---------add Transport---------
+	$('#addTransport').on('click',function(){
+		$('#frmTransport-submit').val('Save');
+		$('#frmTransport').trigger('reset');
 		
-		$('#windmill').modal('show');
+		$('#Transport').modal('show');
 	})	
 	
 	//---------add Component---------
@@ -184,14 +199,14 @@
 		$('#component').modal('show');
 	})
 	
-	//---------form Windmill---------
+	//---------form Transport---------
 	$(function() {
-	$('#frmWindmill-submit').on('click', function(e){
+	$('#frmTransport-submit').on('click', function(e){
 		e.preventDefault();
-		var form=$('#frmWindmill');
+		var form=$('#frmTransport');
 		var formData=form.serialize();
 		var url=form.attr('action');
-		var state=$('#frmWindmill-submit').val();
+		var state=$('#frmTransport-submit').val();
 		var type= 'post';
 		if(state=='Update'){
 			type = 'put';
@@ -201,23 +216,28 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="windmill'+data.id+'">'+
+				var row='<tr id="transport'+data.id+'">'+
 				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
+				'<td>'+ data.transportnumber +'</td>'+
+				'<td>'+ data.company +'</td>'+
+				'<td>'+ data.truck +'</td>'+
+				'<td>'+ data.trailer +'</td>'+
+				'<td>'+ data.configuration +'</td>'+
+				'<td>'+ data.from +'</td>'+
+				'<td>'+ data.to +'</td>'+
+				'<td>'+ data.dateofloading +'</td>'+
+				'<td>'+ data.dateofarrivalinitial +'</td>'+
+				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
 				'</tr>';
 				if(state=='Save'){
-					$('#windmill-table').append(row);
+					$('#transport-table').append(row);
 				}else{
-					$('#windmill'+data.id).replaceWith(row);
+					$('#transport'+data.id).replaceWith(row);
 				}
-				$('#frmWindmill').trigger('reset');
+				$('#frmTransport').trigger('reset');
 				$('#regnumber').focus();
 			}
 		});
@@ -263,7 +283,7 @@
 					$('#component'+data.id).replaceWith(row);
 				}
 				$('#frmComponent').trigger('reset');
-				$('#componentregnumber').focus();
+				$('#regnumber').focus();
 				$('#component').modal('toggle');
 			}
 		});
@@ -272,73 +292,56 @@
 	
 	//---------addrow---------
 	function addRow(data){
-		var row='<tr id="windmill'+data.id+'">'+
+		var row='<tr id="transport'+data.id+'">'+
 				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
+				'<td>'+ data.transportnumber +'</td>'+
+				'<td>'+ data.company +'</td>'+
+				'<td>'+ data.truck +'</td>'+
+				'<td>'+ data.trailer +'</td>'+
+				'<td>'+ data.configuration +'</td>'+
+				'<td>'+ data.from +'</td>'+
+				'<td>'+ data.to +'</td>'+
+				'<td>'+ data.dateofloading +'</td>'+
+				'<td>'+ data.dateofarrivalinitial +'</td>'+
+				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit">Edit</button>'+
-				'<button class="btn btn-danger btn-delete">Delete</button></td>'+
-				'</tr>';
+				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
 		$('tbody').append(row);
 	}
 	
-	//---------get update windmill---------
-	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
+	//---------get update transport---------
+	$('#transport-table').delegate('.btn-edit-transport','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
-		var url='{{URL::to('getUpdateWindmill')}}';
+		var url='{{URL::to('getUpdateTransport')}}';
 		$.ajax({
 			type: 'get',
 			url : url,
 			data: {'id':value},
 			success:function(data){
 				$('#id').val(data.id);
-				$('#regnumber').val(data.regnumber);
-				$('#name').val(data.name);
-				$('#location').val(data.location);
-				$('#startdate').val(data.startdate);
+				$('#transportnumber').val(data.transportnumber);
+				$('#company').val(data.company);
+				$('#truck').val(data.truck);
+				$('#trailer').val(data.trailer);
+				$('#configuration').val(data.configuration);
+				$('#from').val(data.from);
+				$('#to').val(data.to);
+				$('#dateofloading').val(data.dateofloading);
+				$('#dateofarrivalinitial').val(data.dateofarrivalinitial);
+				$('#dateofarrivalfinal').val(data.dateofarrivalfinal);
 				$('#remarks').val(data.remarks);
-				$('#enddate').val(data.enddate);
-				$('#frmWindmill-submit').val('Update');
-				$('#windmill').modal('show');
+				$('#frmTransport-submit').val('Update');
+				$('#transport').modal('show');
 			}
 		});
 	})
 	
-		//---------get update component---------
-	$('#component-table').delegate('.btn-edit-component','click',function(){
-	document.getElementById("error_message").innerHTML = '';
-	var value=$(this).data('id');
-		var url='{{URL::to('getUpdateComponent')}}';
-		$.ajax({
-			type: 'get',
-			url : url,
-			data: {'id':value},
-			success:function(data){
-				$('#componentid').val(data.id);
-				$('#componentregnumber').val(data.regnumber);
-				$('#componentname').val(data.name);
-				$('#componentlength').val(data.length);
-				$('#componentheight').val(data.height);
-				$('#componentwidth').val(data.width);
-				$('#componentweight').val(data.weight);
-				$('#componentremarks').val(data.remarks);
-				$('#componentstatus').val(data.status).change();
-				$('#frmComponent-submit').val('Update');
-				$('#component').modal('show');
-			}
-		});
-	})
-	
-	
-	//---------delete windmill---------
-	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
+	//---------delete transport---------
+	$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 		var value = $(this).data('id');
-		var url = '{{URL::to('deleteWindmill')}}';
+		var url = '{{URL::to('deleteTransport')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
 				type : 'delete',
@@ -346,7 +349,7 @@
 				data : {"_token": "{{ csrf_token() }}" ,
 					'id':value},
 				success:function(data){
-					$('#windmill'+value).remove();
+					$('#transport'+value).remove();
 				}
 			});
 		}	
@@ -389,7 +392,7 @@
         text = text+"Name must be filled in.";
     }
 	if(x != "" && y != ""){
-		$('#windmill').modal('toggle');
+		$('#transport').modal('toggle');
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
@@ -410,9 +413,9 @@
     <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <!-- own javascript code-->	
     <script type="text/javascript">
-    	var $table = $('#windmill-datatable');
+    	var $table = $('#Transport-datatable');
     	var $table2 = $('#component-datatable');
-    	var $column = [5, 6];
+    	var $column = [9, 10, 11];
     	var $column2 = [6, 7];
     </script>
 
