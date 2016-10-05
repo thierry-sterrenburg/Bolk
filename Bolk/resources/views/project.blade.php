@@ -257,7 +257,7 @@
 					$('#component'+data.id).replaceWith(row);
 				}
 				$('#frmComponent').trigger('reset');
-				$('#regnumber').focus();
+				$('#componentregnumber').focus();
 				$('#component').modal('toggle');
 			}
 		});
@@ -313,10 +313,11 @@
 			url : url,
 			data: {'id':value},
 			success:function(data){
-				$('#id').val(data.id);
-				$('#regnumber').val(data.regnumber);
-				$('#name').val(data.name);
-				$('#remarks').val(data.remarks);
+				$('#componentid').val(data.id);
+				$('#componentregnumber').val(data.regnumber);
+				
+				$('#componentname').val(data.name);
+				$('#componentremarks').val(data.remarks);
 				$('#frmComponent-submit').val('Update');
 				$('#component').modal('show');
 			}

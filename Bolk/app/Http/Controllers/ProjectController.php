@@ -131,45 +131,45 @@ class ProjectController extends Controller
    
    public function checkInputComponent($component, $request){
 			$component->projectid=$request->projectid;
-		   if($request->regnumber == ''){
+		   if($request->componentregnumber == ''){
 			   $component->regnumber=null;
 		   }else{
-			   $component->regnumber=$request->regnumber;
+			   $component->regnumber=$request->componentregnumber;
 		   }
-		   if($request->name == ''){
+		   if($request->componentname == ''){
 			   $component->name=null;
 		   }else{
-			   $component->name=$request->name;
+			   $component->name=$request->componentname;
 		   }
-		    if($request->length == ''){
+		    if($request->componentlength == ''){
 			   $component->length=null;
 		   }else{
-			   $component->length=$request->length;
+			   $component->length=$request->componentlength;
 		   }
-		    if($request->width == ''){
+		    if($request->componentwidth == ''){
 			   $component->width=null;
 		   }else{
-			   $component->width=$request->width;
+			   $component->width=$request->componentwidth;
 		   }
-		    if($request->height == ''){
+		    if($request->componentheight == ''){
 			   $component->height=null;
 		   }else{
-			   $component->height=$request->height;
+			   $component->height=$request->componentheight;
 		   }
-		    if($request->weight == ''){
+		    if($request->componentweight == ''){
 			   $component->weight=null;
 		   }else{
-			   $component->weight=$request->weight;
+			   $component->weight=$request->componentweight;
 		   }
-		    if($request->switchable == ''){
+		    if($request->componentswitchable == ''){
 			   $component->switchable=null;
 		   }else{
-			   $component->switchable=$request->switchable;
+			   $component->switchable=$request->componentswitchable;
 		   }
-		   if($request->remarks == ''){
+		   if($request->componentremarks == ''){
 			   $component->remarks=null;
 		   }else{
-			   $component->remarks=$request->remarks;
+			   $component->remarks=$request->componentremarks;
 		   }
 	   return $component;
    }
