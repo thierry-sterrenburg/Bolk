@@ -44,16 +44,12 @@ Route::get('/windmill/id={id}', 'WindmillController@index');
 
 Route::get('/component/id={id}', 'ComponentController@index');
 
-//Route::get('/transportphase', 'TransportphaseController@index');
-
 Route::get('/transportphase/id={id}', 'TransportphaseController@index');
 
 Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
 });
-Route::get('/General', function () {
-    return view('GeneralPanel');
-});
+
 Route::get('/modal', 'ProjectsController@index'); 
 Auth::routes();
 
