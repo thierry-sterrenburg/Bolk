@@ -13,7 +13,7 @@
 										</div>
 										<div class="col-md-4">
 											<div class="pull-right">
-												<small>Latest Update:</small>
+												<small>Latest Update: {{$transport->updated_at}}</small>
 											</div>
 										</div>
 									</div>
