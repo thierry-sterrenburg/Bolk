@@ -24,6 +24,6 @@ class Windmill extends Model
 	}
 
 	public function components() {
-		return $this->hasMany('App\Component');
+		return $this->hasMany('App\Component', 'mainwindmillid');
 	}
 }
