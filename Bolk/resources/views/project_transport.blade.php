@@ -34,7 +34,7 @@
 						@include('newComponent')
 						<!--Transport Table -->
 						<h3>Transports</h3>
-						<table id="Transport-datatable" class="table table-condensed table-hover">
+						<table id="transport-datatable" class="table table-condensed table-hover">
 						<div class="container">
 							    <div class='col-md-5'>
 							        <div class="form-group">
@@ -58,10 +58,6 @@
 							    </div>
 							</div>
 							<thead>
-							@foreach($transportscolumn as $column)
-							<td>{{$column}}</td>
-							@endforeach
-							<!--
 								<td>#</td>
 								<td>Transport Number</td>
 								<td>Company</td>
@@ -75,7 +71,7 @@
 								<td>Date of Arrival(initial)</td>
 								<td>Date of Arrival(final)</td>
 								<td>Last update</td>
-								<td>Remarks</td>-->
+								<td>Remarks</td>
 								<td></td>
 							</thead>
 							
@@ -188,7 +184,7 @@
 		$('#frmTransport-submit').val('Save');
 		$('#frmTransport').trigger('reset');
 		
-		$('#Transport').modal('show');
+		$('#transport').modal('show');
 	})	
 	
 	//---------add Component---------
@@ -238,7 +234,7 @@
 					$('#transport'+data.id).replaceWith(row);
 				}
 				$('#frmTransport').trigger('reset');
-				$('#regnumber').focus();
+				$('#transportnumber').focus();
 			}
 		});
 	})
@@ -413,7 +409,7 @@
     <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
     <!-- own javascript code-->	
     <script type="text/javascript">
-    	var $table = $('#Transport-datatable');
+    	var $table = $('#transport-datatable');
     	var $table2 = $('#component-datatable');
     	var $column = [9, 10, 11];
     	var $column2 = [6, 7];
