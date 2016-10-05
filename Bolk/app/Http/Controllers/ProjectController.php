@@ -173,6 +173,13 @@ class ProjectController extends Controller
 		   }
 	   return $component;
    }
+   
+   public static function checkSwitchable($componentid, $windmillid){
+	   if(!is_null(DB::table('switchables')->where('componentid', '=', $componentid)->where('windmillid', '=', $windmillid)->first())){
+		   return true;
+	   }
+	   return false;
+   }
 
 
 }
