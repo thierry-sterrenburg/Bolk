@@ -16,4 +16,12 @@ class Project extends Model
 		'enddate',
 		'remarks'
 	];
+
+	public function windmills() {
+		return $this->hasMany('App\Windmill', 'projectid');
+	}
+
+	public function components() {
+		return $this->hasMany('App\Component', 'projectid');
+	}
 }
