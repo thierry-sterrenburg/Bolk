@@ -303,6 +303,27 @@
 		});
 	})
 	
+		//---------get update component---------
+	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateComponent/id={'+value+'}')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#regnumber').val(data.regnumber);
+				$('#name').val(data.name);
+				$('#remarks').val(data.remarks);
+				$('#frmComponent-submit').val('Update');
+				$('#component').modal('show');
+			}
+		});
+	})
+	
+	
 	//---------delete windmill---------
 	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
 		var value = $(this).data('id');
