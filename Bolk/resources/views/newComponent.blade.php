@@ -81,11 +81,11 @@
 				<div class="form-group">
 				 <label for="componentstatus">Status</label>
 					<select class="form-control" id="componentstatus" name="componentstatus">
-					<option>unknown</option>
-					<option>storage</option>
-					<option>transport</option>
-					<option>delivered</option>
-					<option>installed</option>
+					<option value="unknown">unknown</option>
+					<option value="storage">storage</option>
+					<option value="transport">transport</option>
+					<option value="delivered">delivered</option>
+					<option value="installed">installed</option>
 					</select>
 				</div>
 				</div>

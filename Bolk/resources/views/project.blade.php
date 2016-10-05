@@ -315,9 +315,13 @@
 			success:function(data){
 				$('#componentid').val(data.id);
 				$('#componentregnumber').val(data.regnumber);
-				
 				$('#componentname').val(data.name);
+				$('#componentlength').val(data.length);
+				$('#componentheight').val(data.height);
+				$('#componentwidth').val(data.width);
+				$('#componentweight').val(data.weight);
 				$('#componentremarks').val(data.remarks);
+				$('#componentstatus').val(data.status).change();
 				$('#frmComponent-submit').val('Update');
 				$('#component').modal('show');
 			}
