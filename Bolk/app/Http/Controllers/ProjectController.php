@@ -9,6 +9,7 @@ use App\Project;
 use App\Windmill;
 use App\Component;
 use App\Component_Transport;
+use App\Switchable;
 use DB;
 
 class ProjectController extends Controller
@@ -18,6 +19,8 @@ class ProjectController extends Controller
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('mainwindmillid')->get();
 	$project = Project::where('id','=',$id)->first();
+
+
 	return view('/project', ['windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}
 
@@ -68,9 +71,10 @@ class ProjectController extends Controller
 		   return response()->json($component);
 	   }
    }
-   public function getUpdateComponent(Request $request){
+   public function getUpdateComponent($id, Request $request){
 	  if ($request->ajax()){
 		  $component=Component::find($request->id);
+		  $switchablewindmills = Switchable::where('componentid', '=', $id)->pluck('windmillid');
 		  return Response($component);
 	  }
    }
