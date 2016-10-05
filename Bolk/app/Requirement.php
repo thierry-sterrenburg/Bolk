@@ -9,7 +9,7 @@ class Requirement extends Model
     protected $table = "requirements";
     protected $touches = ['transport'];
 
-    protected function transports() {
+    protected function transport() {
     	return $this->belongsTo('App/Transport', 'transportid');
     }
 }

@@ -8,7 +8,7 @@ class Transport extends Model
 {
     protected $table = 'transports';
 
-    public function requirements() {
+    public function requirement() {
     	return $this->hasMany('App\Requirement', 'transportid');
     }
 }

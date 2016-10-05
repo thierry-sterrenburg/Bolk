@@ -17,11 +17,11 @@ class Project extends Model
 		'remarks'
 	];
 
-	public function windmills() {
+	public function windmill() {
 		return $this->hasMany('App\Windmill', 'projectid');
 	}
 
-	public function components() {
+	public function component() {
 		return $this->hasMany('App\Component', 'projectid');
 	}
 }

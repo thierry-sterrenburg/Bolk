@@ -19,11 +19,11 @@ class Windmill extends Model
 		'remarks'
 	];
 
-	public function projects() {
+	public function project() {
 		return $this->belongsTo('App\Project', 'projectid');
 	}
 
-	public function components() {
+	public function component() {
 		return $this->hasMany('App\Component', 'mainwindmillid');
 	}
 }
