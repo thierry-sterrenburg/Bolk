@@ -62,7 +62,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index">{{ config('app.name', 'Laravel') }}</a>
+                <a class="navbar-brand" href="/index">BIPS <span style="font-size: 0.8em">{{ config('app.name', 'Laravel') }}</span></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
@@ -114,6 +114,11 @@
                         <li>
                             <a href="/closestdeadlines"><i class="fa fa-clock-o fa-fw"></i>  Deadlines</a>
                         </li>
+                        @role(('admin'))
+                        <li>
+                            <a href="/administration"><i class="fa fa-gears fa-fw"></i> Administration</a>
+                        </li>
+                        @endrole
                       @endif
                     </ul>
                 </div>

@@ -69,10 +69,12 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
+					@permission(('edit-table'))
 					<td>
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}">Edit</button>
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}">Delete</button>
 					</td>
+					@endpermission
 				</tr>
 				@endforeach
 			</tbody>
@@ -256,7 +258,7 @@
 	    <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
 	    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-        <!-- own javascript code-->	
+        <!-- own javascript code-->
         <script type="text/javascript">
         	var $table = $('#projectdatatable');
         	var $column = [7, 8];
