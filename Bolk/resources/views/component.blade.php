@@ -9,12 +9,14 @@
                 <div class="row">
                     <div class="col-lg-12">
 						<ol class="breadcrumb">
-							<li><a href="projects.html">Projects</a></li>
-							<li><a href="project.html">Project GE Auchrobert</a></li>
-							<li><a href="windmill.html">Windmill T11</a></li>
-							<li class="active">PPM</li>
+							<li><a href="/projects">Projects</a></li>
+							<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+							@if(!is_null($component->mainwindmillid))
+							<li><a href="/windmill/id={{$windmill->id}}">{{$windmill->name}}</a></li>
+							@endif
+							<li class="active">{{$component->name}}</li>
 						</ol>
-                        <h1 class="page-header">PPM</h1>
+                        <h1 class="page-header">{{$component->name}}</h1>
 						
 						<!--panel content -->						
                         @include('layouts/projectpanel')

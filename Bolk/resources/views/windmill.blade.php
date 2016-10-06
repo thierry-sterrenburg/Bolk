@@ -9,11 +9,11 @@
                 <div class="row">
                     <div class="col-lg-12">
 						<ol class="breadcrumb">
-							<li><a href="projects.html">Projects</a></li>
-							<li><a href="project.html">Project GE Auchrobert</a></li>
-							<li class="active">Windmill T11</li>
+							<li><a href="/projects">Projects</a></li>
+							<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+							<li class="active">{{$windmill->name}}</li>
 						</ol>
-                        <h1 class="page-header">Windmill T11</h1>
+                        <h1 class="page-header">{{$windmill->name}}</h1>
 						
 						<!--panel content -->
 						@include('layouts.projectpanel')
