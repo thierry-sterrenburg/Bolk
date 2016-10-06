@@ -6,13 +6,11 @@
                 <div class="row">
                     <div class="col-lg-12">
 						<ol class="breadcrumb">
-							<li><a href="projects.html">Projects</a></li>
-							<li><a href="project.html">Project GE Auchrobert</a></li>
-							<li><a href="windmill.html">Windmill T11</a></li>
-							<li><a href="transport.html">PPM</a></li>
-							<li class="active">Transport 670</li>
+							<li><a href="\projects">Projects</a></li>
+							<li><a href="\project\id={{$project->id}}">{{$project->name}}</a></li>							
+							<li class="active">Transport {{$transport->transportnumber}}</li>
 						</ol>
-                        <h1 class="page-header">Transport 670</h1>
+                        <h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
 
 						<!--panel content -->						
                         @include('layouts/projectpanel')
