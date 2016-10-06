@@ -140,6 +140,48 @@
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
+			
+		$(function() {
+		$('#frmTransport-submit').on('click', function(e){
+		e.preventDefault();
+		var form=$('#frmTransport');
+		var formData=form.serialize();
+		var url=form.attr('action');
+		var state=$('#frmTransport-submit').val();
+		var type= 'post';
+		if(state=='Update'){
+			type = 'put';
+		}
+		$.ajax({
+			type : type,
+			url : url,
+			data: formData,
+			success:function(data){
+				var row='<tr id="transport'+data.id+'">'+
+				'<td>'+ data.id +'</td>'+
+				'<td>'+ data.transportnumber +'</td>'+
+				'<td>'+ data.company +'</td>'+
+				'<td>'+ data.truck +'</td>'+
+				'<td>'+ data.trailer +'</td>'+
+				'<td>'+ data.from +'</td>'+
+				'<td>0</td>'+
+				'<td>'+ data.dateofloading +'</td>'+
+				'<td>'+ data.dateofarrivalinitial +'</td>'+
+				'<td>'+ data.dateofarrivalfinal +'</td>'+
+				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'">Delete</button></td>'+
+				'</tr>';
+				if(state=='Save'){
+					$('#transport-table').append(row);
+				}else{
+					$('#transport'+data.id).replaceWith(row);
+				}
+				$('#frmTransport').trigger('reset');
+				$('#transportnumber').focus();
+			}
+		});
+	})
+	});
 		</script>
         <!-- /#page-wrapper -->
         <!-- Datatable script-->
