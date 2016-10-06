@@ -16,6 +16,8 @@ class Transports extends Migration
          Schema::create("transports", function (Blueprint $table) {
             $table->engine = 'InnoDB';
 			$table->increments('id');
+            $table->integer('projectid')->unsigned();
+            $table->foreign('projectid')->references('id')->on('projects'); 
 			$table->string('transportnumber')->nullable();
 			$table->string('company')->nullable();
 			$table->string('truck')->nullable();
@@ -27,6 +29,7 @@ class Transports extends Migration
 			$table->datetime('dateofarrivalinitial')->nullable();
 			$table->datetime('dateofarrivalfinal')->nullable();
 			$table->longText('remarks')->nullable();
+
             $table->timestamps();
 		});
     }
