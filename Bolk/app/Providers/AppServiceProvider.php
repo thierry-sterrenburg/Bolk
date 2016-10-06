@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Project;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('partials.nav', function ($view)
+        {
+            $projects = Project::pluck('id', 'name');
+            $view->with('projects', $projects);
+        });
     }
 
     /**
