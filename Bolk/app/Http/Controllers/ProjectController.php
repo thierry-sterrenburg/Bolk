@@ -18,6 +18,7 @@ class ProjectController extends Controller
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('mainwindmillid')->get();
+	$switchables = Switchable::all();
 	$project = Project::where('id','=',$id)->first();
 
 

@@ -26,10 +26,9 @@
 						
 						<br>
 						
-						<ul class="nav nav-pills" role="tablist">
-							<li role="presentation" class="active"><a href="#">Add Transport Phase<span class="badge">+</span></a></li>
-						</ul>
-						
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add Transportphase<span class="badge">+</span></button>
+						<br>
+						@include('newTransport')
 						<br>
 						
 						<table id="transportphasetable" class="table table-condensed table-hover">
@@ -74,20 +73,22 @@
 							
 							<tbody>
 								@foreach($transports as $transport)
-									<tr onclick="document.location= '/transportphase/id={{$transport->id}}';">
-										<td>{{ $transport->id }}</td>
-										<td>{{ $transport->transportnumber }}</td>
-										<td>{{ $transport->company}}</td>
-										<td>{{ $transport->truck}}</td>
-										<td>{{ $transport->trailer }}</td>
-										<td>{{ $transport->configuration}}</td>
-										<td>{{ $transport->from }}</td>
-										<td>{{ $transport->to}}</td>
-										<td>{{ ComponentController::countRequirements($transport->id)}}</td>
-										<td>{{ $transport->dateofloading}}</td>
-										<td>{{ $transport->dateofarrivalinitial}}</td>
-										<td>{{ $transport->dateofarrivalfinal}}</td>
-										<td></td>
+									<tr>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->truck}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->trailer }}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->configuration}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ComponentController::countRequirements($transport->id)}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
+										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+										<td>
+											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-component-transport" data-id="{{ $transport->id }}">Delete</button></td>
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
@@ -105,6 +106,41 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+		<script type="text/javascript">
+			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+			//---------add Transport---------
+			$('#addTransport').on('click',function(){
+				$('#frmTransport-submit').val('Save');
+				$('#frmTransport').trigger('reset');
+		
+				$('#transport').modal('show');
+			})	
+			
+			$(function () {
+				$('#loadingdatepicker').datetimepicker({
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'});
+
+				$('#initialdatepicker').datetimepicker({
+					useCurrent: false, //Important! See issue #1075
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'
+					});
+				$('#finaldatepicker').datetimepicker({
+					useCurrent: false, //Important! See issue #1075
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'
+					});	
+					
+				$("#loadingdatepicker").on("dp.change", function (e) {
+					$('#finaldatepicker').data("DateTimePicker").minDate(e.date);
+					
+				});
+				$("#finaldatepicker").on("dp.change", function (e) {
+				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
+				});
+			});
+		</script>
         <!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
