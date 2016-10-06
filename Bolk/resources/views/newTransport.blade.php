@@ -65,7 +65,7 @@
 				</div>
 			</div>
 
-				<div class="row">
+			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 					<div class="form-group">
 						<div class='input-group date' id='loadingdatepicker'>
