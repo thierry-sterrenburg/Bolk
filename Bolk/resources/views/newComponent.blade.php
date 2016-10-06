@@ -1,5 +1,6 @@
   <?php 
 	use App\Http\Controllers\ProjectController;
+	$componentid = Cookie::get('componentid');
 ?>
   <!--Modal -->
   <div class="modal fade" id="component" role="dialog">
@@ -100,10 +101,11 @@
 				@foreach($windmills as $windmill)
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
-					<!--@if(ProjectController::checkSwitchable($component->id,$windmill->id))-->
+					@if(ProjectController::checkSwitchable($componentid,$windmill->id))
 						<input type="checkbox" class="form-check-input" id="componentswitchable" name="{{$windmill->id}}" value="{{$windmill->id}}" checked>
-					<!--@endif-->
+					@else	
 					<input type="checkbox" class="form-check-input" id="componentswitchable" name="{{$windmill->id}}" value="{{$windmill->id}}">
+					@endif
 					{{$windmill->name}}
 					</label>
 				</div>

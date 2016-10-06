@@ -10,6 +10,7 @@ use App\Windmill;
 use App\Component;
 use App\Component_Transport;
 use App\Switchable;
+use Cookie;
 use DB;
 
 class ProjectController extends Controller
@@ -75,13 +76,13 @@ class ProjectController extends Controller
 	  if ($request->ajax()){
 		  $component=Component::find($request->id);
 		  $switchablewindmills = Switchable::where('componentid', '=', $request->id)->pluck('windmillid');
-		  return Response($component);
+		  return Response($component)->withCookie(Cookie::make('componentid', $request->id, 60));
 	  }
    }
    public function newUpdateComponent(Request $request){
 	   if ($request->ajax()){
 		   $component=Component::find($request->id);
-		   $this->checkInput($component, $request);
+		   $this->checkInputComponent($component, $request);
 		   $component->save();
 		   return Response($component);
 	   }
@@ -175,7 +176,7 @@ class ProjectController extends Controller
    }
    
    public static function checkSwitchable($componentid, $windmillid){
-	   if(!is_null(DB::table('switchables')->where('componentid', '=', $componentid)->where('windmillid', '=', $windmillid)->first())){
+	   if(!is_null(Switchable::where('componentid', '=', $componentid)->where('windmillid', '=', $windmillid)->first())){
 		   return true;
 	   }
 	   return false;
