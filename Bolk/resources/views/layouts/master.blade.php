@@ -117,6 +117,7 @@
                       @endif
                     </ul>
                 </div>
+                @include('partials.nav')
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
