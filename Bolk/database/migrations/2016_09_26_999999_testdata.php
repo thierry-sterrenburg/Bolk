@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Role;
+use App\User;
+use App\Permission;
 
 class Testdata extends Migration
 {
@@ -45,9 +48,46 @@ class Testdata extends Migration
 
         //requirements: id int(10)|transportid int(11)|name varchar(255)|country varchar(255)|startdate datetime|enddate datetime|booked enum|responsibleplanner varchar(255)|remarks longtext
         DB::table('requirements')->insert(['transportid' => '1', 'name' => 'permit', 'country' => 'Netherlands', 'startdate' => '2008-01-01 00:00:00', 'enddate' => '2008-02-01 00:00:00', 'booked' => 'pending', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
-        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'police escort', 'country' => 'Netherlands', 'startdate' => '2009-01-01 00:00:00', 'enddate' => '2009-02-01 00:00:00', 'booked' => 'no', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);        
+        DB::table('requirements')->insert(['transportid' => '1', 'name' => 'police escort', 'country' => 'Netherlands', 'startdate' => '2009-01-01 00:00:00', 'enddate' => '2009-02-01 00:00:00', 'booked' => 'no', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
         DB::table('requirements')->insert(['transportid' => '1', 'name' => 'overslagverguning', 'country' => 'Duitsland', 'startdate' => '2010-01-01 00:00:00', 'enddate' => '2010-02-01 00:00:00', 'booked' => 'yes', 'responsibleplanner' => 'Johannes van Bergen', 'remarks' => '']);
 
+        DB::table('users')->insert(['name' => 'admin', 'fullname' => 'Administrator', 'email' => 'admin@bolk.com', 'password' => bcrypt('secret'),]);
+        DB::table('users')->insert(['name' => 'planner', 'fullname' => 'Planner', 'email' => 'planner@bolk.com', 'password' => bcrypt('secret'),]);
+        DB::table('users')->insert(['name' => 'customer', 'fullname' => 'Customer', 'email' => 'customer@bolk.com', 'password' => bcrypt('secret'),]);
+
+        $admin = new Role();
+        $admin -> name = 'admin';
+        $admin -> display_name = 'Administrator';
+        $admin -> save();
+        $planner = new Role();
+        $planner -> name = 'planner';
+        $planner -> display_name = 'Planner';
+        $planner -> save();
+        $customer = new Role();
+        $customer -> name = 'customer';
+        $customer -> display_name = 'Customer';
+        $customer -> save();
+
+        $user = User::where('name', '=', 'admin')->first();
+        $user->attachRole($admin);
+        $user = User::where('name', '=', 'planner')->first();
+        $user->attachRole($planner);
+        $user = User::where('name', '=', 'customer')->first();
+        $user->attachRole($customer);
+
+        $editTable = new Permission();
+        $editTable -> name = 'edit-table';
+        $editTable -> display_name = 'Edit tables';
+        $editTable -> save();
+
+        $viewTable = new Permission();
+        $viewTable -> name = 'view-table';
+        $viewTable -> display_name = 'View tables';
+        $viewTable -> save();
+
+        $admin->attachPermissions(array($editTable, $viewTable));
+        $planner->attachPermissions(array($editTable, $viewTable));
+        $customer->attachPermissions(array($viewTable));
     }
 
     /**
