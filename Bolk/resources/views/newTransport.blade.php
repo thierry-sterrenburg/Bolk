@@ -106,9 +106,8 @@
 				</div>
 				</div>
 			</div>
-			<input type="hidden" name="projectid" value="{{ $project->id }}">
+			<input type="hidden" name="componentid" value="{{ $component->id }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<input type="hidden" name="id" id="id" value="">
 		  </form>
         </div>
         <div class="modal-footer">
