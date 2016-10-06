@@ -69,6 +69,20 @@ class ProjectController extends Controller
 		   $component = new Component();
 		   $this->checkInputComponent($component, $request);
 		   $component->save();
+		   $switchable = new Switchable();
+		   $windmills = Windmill::where('projectid', '=', $request->projectid);
+		   foreach($windmills as $windmill){
+			   $checkWindmill = $windmill->id;
+			   if(!is_null($request->windmill1)){
+				   $switchable->componentid = $component->id;
+				   $switchable->windmillid = $request->windmill1;
+				   $switchable->save();
+			   }else{
+					$switchable->componentid = $component->id;
+				   $switchable->windmillid = $request->windmill1;
+				   $switchable->save();
+			   }
+		   }
 		   return response()->json($component);
 	   }
    }
