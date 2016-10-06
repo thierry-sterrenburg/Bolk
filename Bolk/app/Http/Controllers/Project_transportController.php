@@ -17,7 +17,6 @@ class Project_transportController extends Controller
 {
 	
 	public function index($id){
-		$windmills = Windmill::where('projectid','=', $id)->get();
 		$transports = Transport::join('component_transports', 'transports.id', '=', 'component_transports.transportid')
 		->join('components', 'component_transports.componentid', '=', 'components.id')
 		->where('components.projectid', '=', $id)
@@ -25,7 +24,8 @@ class Project_transportController extends Controller
 		$components = Component::where('projectid', '=', $id)->get();
 		$project = Project::where('id','=',$id)->first();
 		$columns = DB::connection()->getSchemaBuilder()->getColumnListing("transports");
-	return view('/project_transport', ['transports' => $transports, 'components' => $components,  'project' => $project, 'windmills' => $windmills, 'transportscolumn' => $columns]);
+
+	return view('/project_transport', ['transports' => $transports, 'components' => $components,  'project' => $project, 'transportscolumn' => $columns]);
 	}
 
 

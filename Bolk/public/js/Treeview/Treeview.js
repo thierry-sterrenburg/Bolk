@@ -1,7 +1,7 @@
 function buildDomTree() {
           var defaultData = [];
           var $id = 0;
-          alert($projects);
+          /**
           $projects.forEach(addNode);
           function addNode($project){
             var obj = {
@@ -13,6 +13,7 @@ function buildDomTree() {
 
           }
         }
+        */
         /**
         function walk(nodes, data) {
 
@@ -32,7 +33,9 @@ function buildDomTree() {
         }
         walk($('html')[0].children, data);
         return data;
-      }*/
+        */
+      }
+      /**
   		$(function() {
         var options = {
           bootstrap2: false, 
@@ -41,4 +44,4 @@ function buildDomTree() {
           data: buildDomTree()
         };
   			$('#treeview').treeview(options);
-  		});
+  		});*/
