@@ -106,6 +106,7 @@
 				</div>
 				</div>
 			</div>
+			<input type="hidden" name="id" id="id" value="">
 			<input type="hidden" name="componentid" value="{{ $component->id }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  </form>

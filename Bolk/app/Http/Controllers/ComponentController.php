@@ -50,7 +50,7 @@ class ComponentController extends Controller
 		  return Response($transport);
 	  }
    }
-   public function newUpdateWindmill(Request $request){
+   public function newUpdateTransport(Request $request){
 	   if ($request->ajax()){
 		   $transport=Transport::find($request->id);
 		   $this->checkInputTransport($transport, $request);
@@ -59,7 +59,8 @@ class ComponentController extends Controller
 	   }
    }
    public function deleteTransport(Request $request){
-	   if ($transport->ajax()){
+	   if ($request->ajax()){
+		   Component_Transport::where('transportid', $request->id)->delete();
 		   Transport::destroy($request->id);
 		   return Response()->json(['sms'=>'delete successfully']);
 	   }

@@ -100,9 +100,6 @@
 				@foreach($windmills as $windmill)
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
-					<!--@if(ProjectController::checkSwitchable($component->id,$windmill->id))-->
-						<input type="checkbox" class="form-check-input" id="componentswitchable" name="{{$windmill->id}}" value="{{$windmill->id}}" checked>
-					<!--@endif-->
 					<input type="checkbox" class="form-check-input" id="componentswitchable" name="{{$windmill->id}}" value="{{$windmill->id}}">
 					{{$windmill->name}}
 					</label>
@@ -132,9 +129,9 @@
 				</div>
 				</div>
 			</div>
+			<input type="hidden" name="id" id="id" value="">
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<input type="hidden" name="id" id="id" value="">
 		  </form>
         </div>
         <div class="modal-footer">

@@ -26,7 +26,7 @@
 						
 						<br>
 						
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add Transportphase<span class="badge">+</span></button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add Transportphase <span class="badge">+</span></button>
 						<br>
 						@include('newTransport')
 						
@@ -72,9 +72,9 @@
 								<td>Remarks</td>
 							</thead>
 							
-							<tbody>
+							<tbody id="transport-table">
 								@foreach($transports as $transport)
-									<tr>
+									<tr id="transport{{$transport->id}}">
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
@@ -89,7 +89,7 @@
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
 										<td>
 											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
-											<button class="btn btn-danger btn-delete-component-transport" data-id="{{ $transport->id }}">Delete</button></td>
+											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button></td>
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
@@ -141,47 +141,93 @@
 				});
 			});
 			
-		$(function() {
-		$('#frmTransport-submit').on('click', function(e){
-		e.preventDefault();
-		var form=$('#frmTransport');
-		var formData=form.serialize();
-		var url=form.attr('action');
-		var state=$('#frmTransport-submit').val();
-		var type= 'post';
-		if(state=='Update'){
-			type = 'put';
-		}
-		$.ajax({
-			type : type,
-			url : url,
-			data: formData,
-			success:function(data){
-				var row='<tr id="transport'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.transportnumber +'</td>'+
-				'<td>'+ data.company +'</td>'+
-				'<td>'+ data.truck +'</td>'+
-				'<td>'+ data.trailer +'</td>'+
-				'<td>'+ data.from +'</td>'+
-				'<td>0</td>'+
-				'<td>'+ data.dateofloading +'</td>'+
-				'<td>'+ data.dateofarrivalinitial +'</td>'+
-				'<td>'+ data.dateofarrivalfinal +'</td>'+
-				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'">Delete</button></td>'+
-				'</tr>';
-				if(state=='Save'){
-					$('#transport-table').append(row);
-				}else{
-					$('#transport'+data.id).replaceWith(row);
+			$(function() {
+				$('#frmTransport-submit').on('click', function(e){
+				e.preventDefault();
+				var form=$('#frmTransport');
+				var formData=form.serialize();
+				var url=form.attr('action');
+				var state=$('#frmTransport-submit').val();
+				var type= 'post';
+				if(state=='Update'){
+					type = 'put';
 				}
-				$('#frmTransport').trigger('reset');
-				$('#transportnumber').focus();
-			}
-		});
-	})
-	});
+				$.ajax({
+					type : type,
+					url : url,
+					data: formData,
+					success:function(data){
+						var row='<tr id="transport'+data.id+'">'+
+						'<td>'+ data.id +'</td>'+
+						'<td>'+ data.transportnumber +'</td>'+
+						'<td>'+ data.company +'</td>'+
+						'<td>'+ data.truck +'</td>'+
+						'<td>'+ data.trailer +'</td>'+
+						'<td>'+ data.from +'</td>'+
+						'<td>0</td>'+
+						'<td>'+ data.dateofloading +'</td>'+
+						'<td>'+ data.dateofarrivalinitial +'</td>'+
+						'<td>'+ data.dateofarrivalfinal +'</td>'+
+						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
+						'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
+						'</tr>';
+						if(state=='Save'){
+							$('#transportphasetable').append(row);
+						}else{
+							$('#transport'+data.id).replaceWith(row);
+						}
+						$('#frmTransport').trigger('reset');
+						$('#transportnumber').focus();
+						$('#transport').modal('toggle');
+					}
+				});
+				})
+			});
+	
+			//---------get update windmill---------
+			$('#transportphasetable').delegate('.btn-edit-transport','click',function(){
+			document.getElementById("error_message").innerHTML = '';
+			var value=$(this).data('id');
+				var url='{{URL::to('getUpdateTransport')}}';
+				$.ajax({
+					type: 'get',
+					url : url,
+					data: {'id':value},
+					success:function(data){
+						$('#id').val(data.id);
+						$('#transportnumber').val(data.transportnumber);
+						$('#transportcompany').val(data.company);
+						$('#transporttruck').val(data.truck);
+						$('#transporttrailer').val(data.trailer);
+						$('#transportconfiguration').val(data.configuration);
+						$('#transportfrom').val(data.from);
+						$('#transportto').val(data.to);
+						$('#loadingdate').val(data.dateofloading);
+						$('#initialdatearrival').val(data.dateofarrivalinitial);
+						$('#finaldatearrival').val(data.dateofarrivalfinal);
+						$('#transportremarks').val(data.transportremarks);
+						$('#frmTransport-submit').val('Update');
+						$('#transport').modal('show');
+					}
+				});
+			})
+			
+			//---------delete project---------
+			$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
+				var value = $(this).data('id');
+				var url = '{{URL::to('deleteTransport')}}';
+				if (confirm('Are you sure to delete?'+value)==true){
+					$.ajax({
+						type : 'delete',
+						url : url,
+						data : {"_token": "{{ csrf_token() }}" ,
+							'id':value},
+						success:function(data){
+							$('#transport'+value).remove();
+						}
+					});
+				}
+			});
 		</script>
         <!-- /#page-wrapper -->
         <!-- Datatable script-->
