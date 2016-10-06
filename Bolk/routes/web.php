@@ -40,6 +40,7 @@ Route::post('/newComponent', 'ProjectController@newComponent');
 Route::get('/getUpdateComponent', 'ProjectController@getUpdateComponent');
 Route::put('/newComponent', 'ProjectController@newUpdateComponent');
 Route::delete('/deleteComponent', 'ProjectController@deleteComponent');
+View::composer('/newComponent', 'App\Http\ViewComposers\newComponentComposer');
 
 Route::get('/windmill/id={id}', 'WindmillController@index');
 
@@ -51,7 +52,10 @@ Route::get('/closestdeadlines', function () {
     return view('closestdeadlines');
 });
 
-Route::get('/modal', 'ProjectsController@index'); 
+Route::get('/modal', 'ProjectsController@index');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
