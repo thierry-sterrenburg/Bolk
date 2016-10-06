@@ -45,6 +45,8 @@ class Testdata extends Migration
         DB::table('component_transports')->insert(['componentid' => '1', 'transportid' => '4']);
         DB::table('component_transports')->insert(['componentid' => '2', 'transportid' => '5']);
 
+        //switchabels: componetid int(10)|windmillid int(10)
+        DB::table('switchables')->insert(['componentid' => '3', 'windmillid' => '1']);
 
         //requirements: id int(10)|transportid int(11)|name varchar(255)|country varchar(255)|startdate datetime|enddate datetime|booked enum|responsibleplanner varchar(255)|remarks longtext
         DB::table('requirements')->insert(['transportid' => '1', 'name' => 'permit', 'country' => 'Netherlands', 'startdate' => '2008-01-01 00:00:00', 'enddate' => '2008-02-01 00:00:00', 'booked' => 'pending', 'responsibleplanner' => 'Henk de Vries', 'remarks' => '']);
