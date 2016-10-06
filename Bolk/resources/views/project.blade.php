@@ -9,10 +9,10 @@
                 <div class="row">
                     <div class="col-lg-12">
 						<ol class="breadcrumb">
-							<li><a href="projects.html">Projects</a></li>
-							<li class="active">Project GE Auchrobert</li>
+							<li><a href="/projects">Projects</a></li>
+							<li class="active">{{$project->name}}</li>
 						</ol>
-                        <h1 class="page-header">Project GE Auchrobert</h1>
+                        <h1 class="page-header">{{$project->name}}</h1>
                         <ul class="nav nav-tabs">
 						  <li class="active"><a onclick="document.location= '/project/id={{$project->id}}';">Windmills</a></li>
 						  <li><a onclick="document.location= '/project_transport/id={{$project->id}}';">Transports</a></li>

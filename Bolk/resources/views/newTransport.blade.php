@@ -65,7 +65,7 @@
 				</div>
 			</div>
 
-				<div class="row">
+			<div class="row">
 				<div class="col-lg-4 col-sm-4">
 					<div class="form-group">
 						<div class='input-group date' id='loadingdatepicker'>
@@ -106,9 +106,9 @@
 				</div>
 				</div>
 			</div>
-			<input type="hidden" name="projectid" value="{{ $project->id }}">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="componentid" value="{{ $component->id }}">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		  </form>
         </div>
         <div class="modal-footer">
