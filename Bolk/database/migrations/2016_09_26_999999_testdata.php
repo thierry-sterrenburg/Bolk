@@ -77,19 +77,34 @@ class Testdata extends Migration
         $user = User::where('name', '=', 'customer')->first();
         $user->attachRole($customer);
 
-        $editTable = new Permission();
-        $editTable -> name = 'edit-table';
-        $editTable -> display_name = 'Edit tables';
-        $editTable -> save();
+        $createProject = new Permission(); $createProject -> name = 'create-project'; $createProject -> display_name = 'Create Projects'; $createProject -> save();
+        $readProject = new Permission(); $readProject -> name = 'read-project'; $readProject -> display_name = 'Read Projects'; $readProject -> save();
+        $editProject = new Permission(); $editProject -> name = 'edit-project'; $editProject -> display_name = 'Edit Projects'; $editProject -> save();
+        $deleteProject = new Permission(); $deleteProject -> name = 'delete-project'; $deleteProject -> display_name = 'Delete Projects'; $deleteProject -> save();
 
-        $viewTable = new Permission();
+        $createWindmill = new Permission(); $createWindmill -> name = 'create-windmill'; $createWindmill -> display_name = 'Create Windmill'; $createWindmill -> save();
+        $readWindmill = new Permission(); $readWindmill -> name = 'read-windmill'; $readWindmill -> display_name = 'Read Windmill'; $readWindmill -> save();
+        $editWindmill = new Permission(); $editWindmill -> name = 'edit-windmill'; $editWindmill -> display_name = 'Edit Windmill'; $editWindmill -> save();
+        $deleteWindmill = new Permission(); $deleteWindmill -> name = 'delete-windmill'; $deleteWindmill -> display_name = 'Delete Windmill'; $deleteWindmill -> save();
+
+        $createTransport = new Permission(); $createTransport -> name = 'create-transport'; $createTransport -> display_name = 'Create Transports'; $createTransport -> save();
+        $readTransport = new Permission(); $readTransport -> name = 'read-transport'; $readTransport -> display_name = 'Read Transports'; $readTransport -> save();
+        $editTransport = new Permission(); $editTransport -> name = 'edit-transport'; $editTransport -> display_name = 'Edit Transports'; $editTransport -> save();
+        $deleteTransport = new Permission(); $deleteTransport -> name = 'delete-transport'; $deleteTransport -> display_name = 'Delete Transports'; $deleteTransport -> save();
+
+        $createComponent = new Permission(); $createComponent -> name = 'create-component'; $createComponent -> display_name = 'Create Components'; $createComponent -> save();
+        $readComponent = new Permission(); $readComponent -> name = 'read-component'; $readComponent -> display_name = 'Read Components'; $readComponent -> save();
+        $editComponent = new Permission(); $editComponent -> name = 'edit-component'; $editComponent -> display_name = 'Edit Components'; $editComponent -> save();
+        $deleteComponent = new Permission(); $deleteComponent -> name = 'delete-component'; $deleteComponent -> display_name = 'Delete Components'; $deleteComponent -> save();
+
+        /**$viewTable = new Permission();
         $viewTable -> name = 'view-table';
         $viewTable -> display_name = 'View tables';
-        $viewTable -> save();
+        $viewTable -> save();**/
 
-        $admin->attachPermissions(array($editTable, $viewTable));
-        $planner->attachPermissions(array($editTable, $viewTable));
-        $customer->attachPermissions(array($viewTable));
+        $admin->attachPermissions(array($createProject,$readProject,$editProject,$deleteProject,$createWindmill,$readWindmill,$editWindmill,$deleteWindmill,$createTransport,$readTransport,$editTransport,$deleteTransport,$createComponent,$readComponent,$editComponent,$deleteComponent));
+        $planner->attachPermissions(array($createProject,$readProject,$editProject,$deleteProject,$createWindmill,$readWindmill,$editWindmill,$deleteWindmill,$createTransport,$readTransport,$editTransport,$deleteTransport,$createComponent,$readComponent,$editComponent,$deleteComponent));
+        $customer->attachPermissions(array($readProject, $readWindmill,$readTransport,$readComponent));
     }
 
     /**
