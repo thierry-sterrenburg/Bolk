@@ -102,9 +102,9 @@
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
 					@if(ProjectController::checkSwitchable($componentid,$windmill->id))
-						<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill1" value="{{$windmill->id}}" checked>
+						<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill{{$windmill->id}}" checked>
 					@else	
-					<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill2" value="{{$windmill->id}}">
+					<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill{{$windmill->id}}">
 					@endif
 					{{$windmill->name}}
 					</label>
@@ -136,7 +136,7 @@
 			</div>
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="componentid" id="componentid" value="">
 		  </form>
         </div>
         <div class="modal-footer">

@@ -68,21 +68,25 @@ class ProjectController extends Controller
 	   if($request->ajax()){
 		   $component = new Component();
 		   $this->checkInputComponent($component, $request);
+		   $componentid = $component->componentid;
+		   $projectid = $request->projectid;
 		   $component->save();
 		   $switchable = new Switchable();
-		   $windmills = Windmill::where('projectid', '=', $request->projectid);
-		   foreach($windmills as $windmill){
-			   $checkWindmill = $windmill->id;
-			   if(!is_null($request->windmill1)){
-				   $switchable->componentid = $component->id;
-				   $switchable->windmillid = $request->windmill1;
-				   $switchable->save();
-			   }else{
-					$switchable->componentid = $component->id;
-				   $switchable->windmillid = $request->windmill1;
-				   $switchable->save();
-			   }
-		   }
+		   
+		   //variables are empty after saving row.
+		   
+		   //$windmills = Windmill::where('projectid', '=', $projectid);
+		   $switchable->componentid = $componentid;
+			$switchable->windmillid = '1';
+			$switchable->save();
+		   //foreach($windmills as $windmill){
+			  // $checkWindmill = $windmill->id;
+			   //if($request->input('windmill'.$checkwindmill)){
+				//   $switchable->componentid = $componentid;
+				//   $switchable->windmillid = $checkwindmill;
+				//   $switchable->save();
+			//   }
+		   //}
 		   return response()->json($component);
 	   }
    }
@@ -95,7 +99,7 @@ class ProjectController extends Controller
    }
    public function newUpdateComponent(Request $request){
 	   if ($request->ajax()){
-		   $component=Component::find($request->id);
+		   $component=Component::find($request->componentid);
 		   $this->checkInputComponent($component, $request);
 		   $component->save();
 		   return Response($component);
@@ -103,7 +107,7 @@ class ProjectController extends Controller
    }
    public function deleteComponent(Request $request){
 	   if ($request->ajax()){
-		   Component::destroy($request->id);
+		   Component::destroy($request->componentid);
 		   return Response()->json(['sms'=>'delete successfully']);
 	   }
    }
@@ -145,7 +149,7 @@ class ProjectController extends Controller
    }
    
    public function checkInputComponent($component, $request){
-			$component->projectid=$request->projectid;
+		$component->projectid=$request->projectid;
 		   if($request->componentregnumber == ''){
 			   $component->regnumber=null;
 		   }else{
@@ -186,6 +190,12 @@ class ProjectController extends Controller
 		   }else{
 			   $component->remarks=$request->componentremarks;
 		   }
+		   //if($request->windmill1 == true){
+			 // $switchable = new Switchable();
+			  //$switchable->componentid = $component->id;
+			 // $switchable->windmillid = '1';
+			 // $switchable->save();
+		  // }
 	   return $component;
    }
    
