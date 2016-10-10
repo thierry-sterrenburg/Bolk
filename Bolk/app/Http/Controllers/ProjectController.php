@@ -68,25 +68,28 @@ class ProjectController extends Controller
 	   if($request->ajax()){
 		   $component = new Component();
 		   $this->checkInputComponent($component, $request);
-		   $componentid = $component->componentid;
-		   $projectid = $request->projectid;
+		   $windmills = Windmill::where('projectid', '=', $request->projectid);
 		   $component->save();
-		   $switchable = new Switchable();
+		  
 		   
 		   //variables are empty after saving row.
 		   
-		   //$windmills = Windmill::where('projectid', '=', $projectid);
-		   $switchable->componentid = $componentid;
-			$switchable->windmillid = '1';
-			$switchable->save();
-		   //foreach($windmills as $windmill){
-			  // $checkWindmill = $windmill->id;
-			   //if($request->input('windmill'.$checkwindmill)){
-				//   $switchable->componentid = $componentid;
-				//   $switchable->windmillid = $checkwindmill;
-				//   $switchable->save();
-			//   }
-		   //}
+		   
+		   //$switchable->componentid = $component->id;
+			//$switchable->windmillid = '1';
+			
+			//$switchable->save();
+			 //print_r('hallo1');
+		   foreach($windmills as $windmill){
+			  //print_r('hallo2');
+			   $switchable = new Switchable();
+			   $checkWindmill = $windmill->id;
+			   if($request->input('windmill'.$checkwindmill)==true){
+				  $switchable->componentid = $component->id;
+				  $switchable->windmillid = $checkwindmill;
+				  $switchable->save();
+			 }
+		   }
 		   return response()->json($component);
 	   }
    }
