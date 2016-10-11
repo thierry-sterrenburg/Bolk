@@ -95,12 +95,31 @@ class ProjectController extends Controller
 		   $component=Component::find($request->componentid);
 		   $this->checkInputComponent($component, $request);
 		   $component->save();
+		   $windmills = Windmill::where('projectid', '=', $request->projectid)->get();
+			
+		   foreach($windmills as $windmill){
+			   $checkwindmill = $windmill->id;
+			   $checkswitchable = Switchable::where('windmillid', '=', $checkwindmill)->where('componentid','=', $component->id);
+			   if($checkswitchable->exists()){
+				    if($request->input('windmill'.$checkwindmill)!=true){
+						$checkswitchable->delete();
+					}
+			   }else{
+				 if($request->input('windmill'.$checkwindmill)==true){
+				  $switchable = new Switchable();
+				  $switchable->componentid = $component->id;
+				  $switchable->windmillid = $checkwindmill;
+				  $switchable->save();
+				} 
+			 }
+		   }
+
 		   return Response($component);
 	   }
    }
    public function deleteComponent(Request $request){
 	   if ($request->ajax()){
-		   Component::destroy($request->componentid);
+		   Component::destroy($request->id);
 		   return Response()->json(['sms'=>'delete successfully']);
 	   }
    }

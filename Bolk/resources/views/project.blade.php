@@ -352,6 +352,23 @@
 		}	
 	});
 	
+		//---------delete component---------
+	$('#component-table').delegate('.btn-delete-component', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('deleteComponent')}}';
+		if (confirm('Are you sure to delete?')==true){
+			$.ajax({
+				type : 'delete',
+				url : url,
+				data : {"_token": "{{ csrf_token() }}" ,
+					'id':value},
+				success:function(data){
+					$('#component'+value).remove();
+				}
+			});
+		}	
+	});
+	
 	$(function () {
         $('#startdatepicker').datetimepicker({
 			sideBySide: true,
