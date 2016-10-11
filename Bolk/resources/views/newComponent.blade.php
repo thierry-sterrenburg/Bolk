@@ -115,12 +115,13 @@
 				<div class="col-lg-6 col-sm-6">
 					<div class="form-group">
 					<label for="status">Attached to</label>
-					<select class="form-control" id="componentinwindmill">
-					<option>unknown</option>
-					<option>storage</option>
-					<option>transport</option>
-					<option>delivered</option>
-					<option>installed</option>
+					<select class="form-control" id="componentinwindmill" name="componentinwindmill">
+					<option value="none">none</option>
+					@foreach($windmills as $windmill)
+						@if((ProjectController::checkSwitchable($componentid,$windmill->id)))
+							<option value="{{$windmill->id}}">{{$windmill->name}}</option>
+						@endif
+					@endforeach
 					</select>
 				</div>
 					

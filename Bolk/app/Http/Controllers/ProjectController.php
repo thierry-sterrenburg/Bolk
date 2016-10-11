@@ -162,6 +162,7 @@ class ProjectController extends Controller
    
    public function checkInputComponent($component, $request){
 		$component->projectid=$request->projectid;
+		$component->status=$request->componentstatus;
 		   if($request->componentregnumber == ''){
 			   $component->regnumber=null;
 		   }else{
@@ -196,7 +197,12 @@ class ProjectController extends Controller
 			   $component->remarks=null;
 		   }else{
 			   $component->remarks=$request->componentremarks;
+		   }if($request->componentinwindmill == 'none'){
+			   $component->mainwindmillid = null;
+		   }else{
+			   $component->mainwindmillid=$request->componentinwindmill;
 		   }
+		   
 	   return $component;
    }
    
