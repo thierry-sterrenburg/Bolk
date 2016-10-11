@@ -68,8 +68,8 @@ class ProjectController extends Controller
 	   if($request->ajax()){
 		   $component = new Component();
 		   $this->checkInputComponent($component, $request);
-		   $windmills = Windmill::where('projectid', '=', $request->projectid);
 		   $component->save();
+		   $windmills = Windmill::where('projectid', '=', $request->projectid)->get();
 		  
 		   
 		   //variables are empty after saving row.
@@ -77,14 +77,15 @@ class ProjectController extends Controller
 		   
 		   //$switchable->componentid = $component->id;
 			//$switchable->windmillid = '1';
+			$switchable = new Switchable();
+			$switchable->componentid = $component->id;
+			$switchable->windmillid = '1';
+			$switchable->save();
 			
-			//$switchable->save();
-			 //print_r('hallo1');
 		   foreach($windmills as $windmill){
-			  //print_r('hallo2');
-			   $switchable = new Switchable();
-			   $checkWindmill = $windmill->id;
+			   $checkwindmill = $windmill->id;
 			   if($request->input('windmill'.$checkwindmill)==true){
+				  $switchable = new Switchable();
 				  $switchable->componentid = $component->id;
 				  $switchable->windmillid = $checkwindmill;
 				  $switchable->save();
@@ -183,22 +184,11 @@ class ProjectController extends Controller
 		   }else{
 			   $component->weight=$request->componentweight;
 		   }
-		    if($request->componentswitchable == ''){
-			   $component->switchable=null;
-		   }else{
-			   $component->switchable=$request->componentswitchable;
-		   }
 		   if($request->componentremarks == ''){
 			   $component->remarks=null;
 		   }else{
 			   $component->remarks=$request->componentremarks;
 		   }
-		   //if($request->windmill1 == true){
-			 // $switchable = new Switchable();
-			  //$switchable->componentid = $component->id;
-			 // $switchable->windmillid = '1';
-			 // $switchable->save();
-		  // }
 	   return $component;
    }
    
