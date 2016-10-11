@@ -70,17 +70,6 @@ class ProjectController extends Controller
 		   $this->checkInputComponent($component, $request);
 		   $component->save();
 		   $windmills = Windmill::where('projectid', '=', $request->projectid)->get();
-		  
-		   
-		   //variables are empty after saving row.
-		   
-		   
-		   //$switchable->componentid = $component->id;
-			//$switchable->windmillid = '1';
-			$switchable = new Switchable();
-			$switchable->componentid = $component->id;
-			$switchable->windmillid = '1';
-			$switchable->save();
 			
 		   foreach($windmills as $windmill){
 			   $checkwindmill = $windmill->id;

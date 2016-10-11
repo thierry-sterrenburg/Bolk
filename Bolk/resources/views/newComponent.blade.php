@@ -102,9 +102,9 @@
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
 					@if(ProjectController::checkSwitchable($componentid,$windmill->id))
-						<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill{{$windmill->id}}" checked>
+						<input type="checkbox" class="form-check-input" id="windmill{{$windmill->id}}" name="windmill{{$windmill->id}}" checked>
 					@else	
-					<input type="checkbox" class="form-check-input" id="componentswitchable" name="windmill{{$windmill->id}}">
+					<input type="checkbox" class="form-check-input" id="windmill{{$windmill->id}}" name="windmill{{$windmill->id}}">
 					@endif
 					{{$windmill->name}}
 					</label>
