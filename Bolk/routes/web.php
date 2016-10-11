@@ -29,7 +29,7 @@ Route::get('/getUpdate', 'ProjectsController@getUpdate');
 Route::put('/newProject', 'ProjectsController@newUpdate');
 Route::delete('/deleteProject', 'ProjectsController@deleteProject');
 
-Route::get('/project/id={id}', , 'uses' => 'ProjectController@index');
+Route::get('/project/id={id}','ProjectController@index');
 Route::get('/project_transport/id={id}','Project_transportController@index');
 Route::post('/newWindmill', 'ProjectController@newWindmill');
 Route::get('/getUpdateWindmill', 'ProjectController@getUpdateWindmill');
