@@ -23,9 +23,10 @@ class Project_transportController extends Controller
 		->get();
 		$components = Component::where('projectid', '=', $id)->get();
 		$project = Project::where('id','=',$id)->first();
+		$windmills = Windmill::where('projectid','=', $id)->get();
 		$columns = DB::connection()->getSchemaBuilder()->getColumnListing("transports");
 
-	return view('/project_transport', ['transports' => $transports, 'components' => $components,  'project' => $project, 'transportscolumn' => $columns]);
+	return view('/project_transport', ['transports' => $transports,'windmills' => $windmills, 'components' => $components,  'project' => $project, 'transportscolumn' => $columns]);
 	}
 
 

@@ -17,7 +17,7 @@ class Transports extends Migration
             $table->engine = 'InnoDB';
 			$table->increments('id');
             $table->integer('projectid')->unsigned();
-            $table->foreign('projectid')->references('id')->on('projects'); 
+            $table->foreign('projectid')->references('id')->on('projects')->onDelete('cascade'); 
 			$table->string('transportnumber')->nullable();
 			$table->string('company')->nullable();
 			$table->string('truck')->nullable();
