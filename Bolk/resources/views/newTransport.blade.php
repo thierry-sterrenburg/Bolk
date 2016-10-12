@@ -107,11 +107,12 @@
 				</div>
 			</div>
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			@if(isset($component))
 				<input type="hidden" name="componentid" id="componentid" value="{{$component->id}}">
 			@endif
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			
 		  </form>
         </div>
         <div class="modal-footer">

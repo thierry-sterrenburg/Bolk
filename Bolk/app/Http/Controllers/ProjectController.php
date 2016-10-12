@@ -141,6 +141,27 @@ class ProjectController extends Controller
 	   }
    }
    
+   public function getUpdateTransport(Request $request){
+	  if ($request->ajax()){
+		  $transport=Transport::find($request->id);
+		  return Response($transport)->withCookie(Cookie::make('transportid', $request->id, 60));
+	  }
+   }
+   
+   public function newUpdateTransport(Request $request){
+	   if ($request->ajax()){
+		   $transport=Transport::find($request->id);
+		   $this->checkInputTransport($transport, $request);
+		   $transport->save();
+		   return Response($transport);
+	   }
+   }
+   public function deleteTransport(Request $request){
+	   if ($request->ajax()){
+		   Transport::destroy($request->id);
+		   return Response()->json(['sms'=>'delete successfully']);
+	   }
+   }
    
    public function checkInput($windmill, $request){
 			$windmill->projectid=$request->projectid;
