@@ -13,7 +13,7 @@ use App\Transport;
 use App\Requirement;
 use DB;
 
-class Project_transportController extends Controller
+class Project_transportsController extends Controller
 {
 	
 	public function index($id){
@@ -22,7 +22,7 @@ class Project_transportController extends Controller
 		$project = Project::where('id','=',$id)->first();
 		$windmills = Windmill::where('projectid','=', $id)->get();
 
-	return view('/project_transport', ['transports' => $transports,'windmills' => $windmills, 'components' => $components,  'project' => $project]);
+	return view('/project_transports', ['transports' => $transports,'windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}
 
 

@@ -1,6 +1,6 @@
 <?php 
 	use App\Http\Controllers\ProjectController;
-	use App\Http\Controllers\Project_transportController;
+	use App\Http\Controllers\Project_transportsController;
 ?>
 @extends('layouts.master')
 @section('content')
@@ -16,13 +16,9 @@
 				<div class="row">
                     <h1 class="page-header">{{$project->name}}</h1>
                 </div>
-                <div class="row">    
-                    <ul class="nav nav-tabs">
-						<li><a onclick="document.location= '/project/id={{$project->id}}';">Windmills</a></li>
-						<li class="active"><a onclick="document.location= '/project_transport/id={{$project->id}}';">Transports</a></li>
-						<li><a href="#">Menu 2</a></li>
-						<li><a href="#">Menu 3</a></li>
-					</ul>
+                <!--nav tabs-->
+                <div class="row"> 
+                	@include('partials.projecttabs')   
 				</div>
 				<!--panel content -->
 				<div class="row">									
@@ -33,12 +29,10 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addTransport" value="add">Add Transport <span class="badge">+</span></button>
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 				</div>
-				<div class="row">
-					@include('newTransport')
-					@include('newComponent')
-				</div>
+				@include('newTransport')
+				@include('newComponent')
 				<!--Transport Table -->
-				<div class"row">
+				<div class="row">
 					<h3>Transports</h3>
 				</div>
 				<div class="row">	
@@ -94,8 +88,8 @@
 									<td>{{ $transport->configuration}}</td>
 									<td>{{ $transport->from }}</td>
 									<td>{{ $transport->to}}</td>
-									<td>{{ Project_transportController::countComponents($transport->id)}}</td>
-									<td>{{ Project_transportController::countRequirements($transport->id)}}</td>
+									<td>{{ Project_transportsController::countComponents($transport->id)}}</td>
+									<td>{{ Project_transportsController::countRequirements($transport->id)}}</td>
 									<td>{{ $transport->dateofloading}}</td>
 									<td>{{ $transport->dateofarrivalinitial}}</td>
 									<td>{{ $transport->dateofarrivalfinal}}</td>
