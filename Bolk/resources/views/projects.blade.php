@@ -70,7 +70,6 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
-					@permission(('edit-table'))
 					<td>
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
@@ -79,7 +78,6 @@
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 						@endpermission
 					</td>
-					@endpermission
 				</tr>
 				@endforeach
 			</tbody>

@@ -139,8 +139,8 @@ use App\Transport;
 						'<td>'+ data.responsibleplanner +'</td>'+
 						'<td></td>'+
 						'<td>'+ data.remarks +'</td>'+
-						'<td><button class="btn btn-success btn-edit-requirement" data-id="'+ data.id +'">Edit</button> '+
-						'<button class="btn btn-danger btn-delete" data-id-requirement="'+ data.id +'">Delete</button></td>'+
+						'<td><button class="btn btn-success btn-edit-requirement" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+						'<button class="btn btn-danger btn-delete" data-id-requirement="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
 						if(state=='Save'){
 							$('#requirement-table').append(row);
