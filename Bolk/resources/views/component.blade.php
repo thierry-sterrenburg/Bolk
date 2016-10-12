@@ -95,7 +95,9 @@
 											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
 											@endpermission
 											@permission(('delete-transport'))
-											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button></td>
+											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
+											@endpermission
+										</td>
 											@endpermission
 										<td>{{ $transport->remarks}}</td>
 									</tr>
