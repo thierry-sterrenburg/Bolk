@@ -45,10 +45,10 @@ View::composer('/newComponent', 'App\Http\ViewComposers\newComponentComposer');
 Route::get('/windmill/id={id}', 'WindmillController@index');
 
 Route::get('/component/id={id}', 'ComponentController@index');
-Route::post('/newTransport','ComponentController@newTransport');
-Route::get('/getUpdateTransport', 'ComponentController@getUpdateTransport');
-Route::put('/newTransport', 'ComponentController@newUpdateTransport');
-Route::delete('/deleteTransport', 'ComponentController@deleteTransport');
+Route::post('/newTransport','ProjectController@newTransport');
+Route::get('/getUpdateTransport', 'ProjectController@getUpdateTransport');
+Route::put('/newTransport', 'ProjectController@newUpdateTransport');
+Route::delete('/deleteTransport', 'ProjectController@deleteTransport');
 
 Route::get('/transportphase/id={id}','TransportphaseController@index');
 

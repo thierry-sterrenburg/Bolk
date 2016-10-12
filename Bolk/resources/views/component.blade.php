@@ -148,7 +148,8 @@
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
-
+			
+			//---------from transport---------
 			$(function() {
 				$('#frmTransport-submit').on('click', function(e){
 				e.preventDefault();
@@ -191,8 +192,8 @@
 				});
 				})
 			});
-
-			//---------get update windmill---------
+	
+			//---------get update transport---------
 			$('#transportphasetable').delegate('.btn-edit-transport','click',function(){
 			document.getElementById("error_message").innerHTML = '';
 			var value=$(this).data('id');
@@ -219,8 +220,8 @@
 					}
 				});
 			})
-
-			//---------delete project---------
+			
+			//---------delete transport---------
 			$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 				var value = $(this).data('id');
 				var url = '{{URL::to('deleteTransport')}}';

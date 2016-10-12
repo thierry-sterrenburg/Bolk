@@ -23,9 +23,9 @@
 
 						<br>
 						
-						<ul class="nav nav-pills" role="tablist">
-							<li role="presentation" class="active"><a href="#">Add Requirement<span class="badge">+</span></a></li>
-						</ul>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
+						<br>
+						@include('newRequirement')
 						
 						<br>
 
@@ -65,7 +65,7 @@
 								<td>Remarks</td>
 							</thead>
 							
-							<tbody>
+							<tbody id="requirement-table">
 								@foreach($requirements as $requirement)
 									<tr>
 										<td>{{ $requirement->id }}</td>
@@ -76,7 +76,9 @@
 										<td>{{ $requirement->enddate }}</td>
 										<td>{{ $requirement->booked }}</td>
 										<td>{{ $requirement->responsibleplanner }}</td>
-										<td></td>
+										<td>
+											<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}">Delete</button></td>
 										<td>{{ $requirement->remaks }}</td>
 									</tr>
 								@endforeach	
@@ -95,6 +97,16 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+		<script type="text/javascript">
+		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+			//---------add Transport---------
+			$('#addRequirement').on('click',function(){
+				$('#frmRequirement-submit').val('Save');
+				$('#frmRequirement').trigger('reset');
+		
+				$('#requirement').modal('show');
+			})	
+		</script>
 		<!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
