@@ -17,23 +17,23 @@
 							<li class="active">{{$component->name}}</li>
 						</ol>
                         <h1 class="page-header">{{$component->name}}</h1>
-						
-						<!--panel content -->						
+
+						<!--panel content -->
                         @include('layouts/projectpanel')
                         @if(!is_null($component->mainwindmillid))
 						@include('layouts/windmillpanel')
 						@endif
 						@include('layouts/componentpanel')
 						<!--end panels-->
-						
+
 						<br>
-						
+
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add Transportphase <span class="badge">+</span></button>
 						<br>
 						@include('newTransport')
-						
+
 						<br>
-						
+
 						<table id="transportphasetable" class="table table-condensed table-hover">
 							<div class="container">
 							    <div class='col-md-5'>
@@ -73,7 +73,7 @@
 								<td>Last update</td>
 								<td>Remarks</td>
 							</thead>
-							
+
 							<tbody id="transport-table">
 								@foreach($transports as $transport)
 									<tr id="transport{{$transport->id}}">
@@ -89,19 +89,25 @@
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+										@permission(('edit-transport'|'delete-transport'))
 										<td>
+											@permission(('edit-transport'))
 											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+											@endpermission
+											@permission(('delete-transport'))
 											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button></td>
+											@endpermission
+											@endpermission
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
-								
+
 							</tbody>
-							
+
 						</table>
-						
+
                     </div>
-					
+
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -114,10 +120,10 @@
 			$('#addTransport').on('click',function(){
 				$('#frmTransport-submit').val('Save');
 				$('#frmTransport').trigger('reset');
-		
+
 				$('#transport').modal('show');
-			})	
-			
+			})
+
 			$(function () {
 				$('#loadingdatepicker').datetimepicker({
 					sideBySide: true,
@@ -132,17 +138,17 @@
 					useCurrent: false, //Important! See issue #1075
 					sideBySide: true,
 					format: 'YYYY-MM-DD HH:mm'
-					});	
-					
+					});
+
 				$("#loadingdatepicker").on("dp.change", function (e) {
 					$('#finaldatepicker').data("DateTimePicker").minDate(e.date);
-					
+
 				});
 				$("#finaldatepicker").on("dp.change", function (e) {
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
-			
+
 			$(function() {
 				$('#frmTransport-submit').on('click', function(e){
 				e.preventDefault();
@@ -185,7 +191,7 @@
 				});
 				})
 			});
-	
+
 			//---------get update windmill---------
 			$('#transportphasetable').delegate('.btn-edit-transport','click',function(){
 			document.getElementById("error_message").innerHTML = '';
@@ -213,7 +219,7 @@
 					}
 				});
 			})
-			
+
 			//---------delete project---------
 			$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 				var value = $(this).data('id');
