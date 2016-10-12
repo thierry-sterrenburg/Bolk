@@ -12,30 +12,46 @@
 			<div id="error_message"></div>
           <form action="/newRequirement" method="post" id="frmRequirement">
 			<div class="row">
-				<div class="col-lg-4 col-sm-4">
+				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="regnumber" id="regnumber" placeholder="Registration Number" class="form-control">
+					<input type="text" name="requirementname" id="requirementname" placeholder="Name" class="form-control">
 				</div>
 				</div>
 				
-				<div class="col-lg-4 col-sm-4">
+				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="name" id="name" placeholder="Project Name" class="form-control">
+					<input type="text" name="requirementcountry" id="requirementcountry" placeholder="Country" class="form-control">
 				</div>
 				</div>
 				
-				<div class="col-lg-4 col-sm-4">
-				<div class="form-group">
-					<input type="text" name="location" id="location" placeholder="Location" class="form-control">
-				</div>
-				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
+				<div class="form-group">
+					<input type="text" name="requirementplanner" id="requirementplanner" placeholder="Planner" class="form-control">
+				</div>
+				</div>
+				
+				<div class="col-lg-6 col-sm-6">
+				<div class="form-group">
+				 <label for="requirementbooked">Booked</label>
+					<select class="form-control" id="requirementbooked" name="requirementbooked">
+					<option value="no">no</option>
+					<option value="pending">pending</option>
+					<option value="yes">yes</option>
+					</select>
+				</div>
+				</div>
+				
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-lg-6 col-sm-6">
 					<div class="form-group">
-						<div class='input-group date' id='startdatepicker'>
-							<input type='text' class="form-control" name="startdate" id="startdate" placeholder="Start Date" />
+						<div class='input-group date' id='requirementstartdatepicker'>
+							<input type='text' class="form-control" name="requirementstartdate" id="requirementstartdate" placeholder="Start Date" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -44,8 +60,8 @@
 				</div>
 				<div class="col-lg-6 col-sm-6">
 					<div class="form-group">
-						<div class='input-group date' id='enddatepicker'>
-							<input type='text' class="form-control" name="enddate" id="enddate" placeholder="End Date" class="form-control"/>
+						<div class='input-group date' id='requirementenddatepicker'>
+							<input type='text' class="form-control" name="requirementenddate" id="requirementenddate" placeholder="End Date" class="form-control"/>
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -57,16 +73,17 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
-					<input type="text" name="remarks" id="remarks" placeholder="Remarks" class="form-control">
+					<input type="text" name="requirementremarks" id="requirementremarks" placeholder="Remarks" class="form-control">
 				</div>
 				</div>
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="transportid" id="id" value="{{$transport->id}}">
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmProject-submit" value="Save" id="frmProject-submit" class="btn btn-primary" onclick="validator()">
+			<input type="submit" name="frmRequirement-submit" value="Save" id="frmRequirement-submit" class="btn btn-primary">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

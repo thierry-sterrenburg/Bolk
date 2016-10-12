@@ -24,4 +24,49 @@ class TransportphaseController extends Controller
     	$project = Project::where('id','=', $component->projectid)->first();
     	return view('/transportphase', ['requirements' => $requirements, 'transport' => $transport, 'component' => $component, 'windmill' => $windmill, 'project' => $project]);
     }
+	
+	public function newRequirement(Request $request){
+	   if($request->ajax()){
+		   $requirement = new Requirement();
+		   $this->checkInputRequirement($requirement, $request);
+		   $requirement->save();
+		   return response()->json($requirement);
+	   }
+   }
+   
+   public function checkInputRequirement($requirement, $request){
+			$requirement->transportid=$request->transportid;
+			$requirement->booked = $request->requirementbooked;
+		   if($request->requirementname == ''){
+			   $requirement->name=null;
+		   }else{
+			   $requirement->name=$request->requirementname;
+		   }
+		   if($request->requirementcountry == ''){
+			   $requirement->country=null;
+		   }else{
+			   $requirement->country=$request->requirementcountry;
+		   }
+		   if($request->requirementstartdate == ''){
+			   $requirement->startdate=null;
+		   }else{
+			   $requirement->startdate=$request->requirementstartdate;
+		   }
+		   if($request->requirementenddate == ''){
+			   $requirement->enddate=null;
+		   }else{
+			   $requirement->enddate=$request->requirementenddate;
+		   }
+		   if($request->requirementplanner == ''){
+			   $requirement->responsibleplanner=null;
+		   }else{
+			   $requirement->responsibleplanner=$request->requirementplanner;
+		   }
+		   if($request->requirementremarks == ''){
+			   $requirement->remarks=null;
+		   }else{
+			   $requirement->remarks=$request->requirementremarks;
+		   }
+	   return $requirement;
+   }
 }

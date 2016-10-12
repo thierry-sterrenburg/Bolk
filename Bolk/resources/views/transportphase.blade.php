@@ -1,3 +1,7 @@
+<?php
+use App\Transport;
+?>
+
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -67,7 +71,7 @@
 							
 							<tbody id="requirement-table">
 								@foreach($requirements as $requirement)
-									<tr>
+									<tr id="requirement{{$requirement->id}}">
 										<td>{{ $requirement->id }}</td>
 										<td>{{ $requirement->name }}</td>
 										<td>{{ $requirement->country }}</td>
@@ -106,6 +110,50 @@
 		
 				$('#requirement').modal('show');
 			})	
+			
+			//---------form requirement---------
+			$(function() {
+				$('#frmRequirement-submit').on('click', function(e){
+				e.preventDefault();
+				var form=$('#frmRequirement');
+				var formData=form.serialize();
+				var url=form.attr('action');
+				var state=$('#frmRequirement-submit').val();
+				var type= 'post';
+				if(state=='Update'){
+					type = 'put';
+				}
+				$.ajax({
+					type : type,
+					url : url,
+					data: formData,
+					success:function(data){
+						var row='<tr id="requirement'+data.id+'">'+
+						'<td>'+ data.id +'</td>'+
+						'<td>'+ data.name +'</td>'+
+						'<td>'+ data.country +'</td>'+
+						'<td></td>'+
+						'<td>'+ data.startdate +'</td>'+
+						'<td>'+ data.enddate +'</td>'+
+						'<td>'+ data.booked +'</td>'+
+						'<td>'+ data.responsibleplanner +'</td>'+
+						'<td></td>'+
+						'<td>'+ data.remarks +'</td>'+
+						'<td><button class="btn btn-success btn-edit-requirement" data-id="'+ data.id +'">Edit</button> '+
+						'<button class="btn btn-danger btn-delete" data-id-requirement="'+ data.id +'">Delete</button></td>'+
+						'</tr>';
+						if(state=='Save'){
+							$('#requirement-table').append(row);
+						}else{
+							$('#requirement'+data.id).replaceWith(row);
+						}
+						$('#frmRequirement').trigger('reset');
+						$('#name').focus();
+						$('#requirement').modal('toggle');
+					}
+				});
+				})
+			});
 		</script>
 		<!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
