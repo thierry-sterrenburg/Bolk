@@ -80,35 +80,35 @@
 
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
-								<tr onclick="document.location= '/transportphase/id={{$transport->id}}';">
-									<td>{{ $transport->id }}</td>
-									<td>{{ $transport->transportnumber }}</td>
-									<td>{{ $transport->company}}</td>
-									<td>{{ $transport->truck}}</td>
-									<td>{{ $transport->trailer }}</td>
-									<td>{{ $transport->configuration}}</td>
-									<td>{{ $transport->from }}</td>
-									<td>{{ $transport->to}}</td>
-									<td>{{ Project_transportsController::countComponents($transport->id)}}</td>
-									<td>{{ Project_transportsController::countRequirements($transport->id)}}</td>
-									<td>{{ $transport->dateofloading}}</td>
-									<td>{{ $transport->dateofarrivalinitial}}</td>
-									<td>{{ $transport->dateofarrivalfinal}}</td>
-									<td></td>
-									<td>{{ $transport->remarks}}</td>
+								<tr>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->truck}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->trailer }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->configuration}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';"></td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
 									<td>
-											@permission(('edit-transport'))
+										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
-											@endpermission
-											@permission(('delete-transport'))
+										@endpermission
+										@permission(('delete-transport'))
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
-											@endpermission
+										@endpermission
 									</td>
 								</tr>
 							@endforeach
 						</tbody>
 					</table>
-						@endpermission
+					@endpermission
 				</div>
             </div>
             <!-- /.container-fluid -->

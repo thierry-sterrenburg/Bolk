@@ -76,19 +76,19 @@
 
 						<tbody id="component-table">
 							@foreach($components as $component)
-								<tr id="component{{$component->id}}" onclick="document.location= '/component/id={{$component->id}}';">
-									<td>{{ $component->id }}</td>
-									<td>{{ $component->regnumber }}</td>
-									<td>{{ $component->name}}</td>
-									<td></td>
-									<td></td>
-									<td>{{ Project_componentsController::countTransports($component->id)}}</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>{{ $component->remarks }}</td>
+								<tr id="component{{$component->id}}">
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 									<td>
 											@permission(('edit-component'))
 										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
