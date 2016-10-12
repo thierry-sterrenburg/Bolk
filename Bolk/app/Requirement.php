@@ -10,6 +10,6 @@ class Requirement extends Model
     protected $touches = ['transport'];
 
     protected function transport() {
-    	return $this->belongsTo('App/Transport', 'transportid');
+    	return $this->belongsTo('App\Transport', 'transportid');
     }
 }

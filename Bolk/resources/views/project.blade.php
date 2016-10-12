@@ -15,10 +15,10 @@
 				<div class="row">
                     <h1 class="page-header">{{$project->name}}</h1>
                 </div>
-                <div class="row">    
+                <div class="row">
                 	@include('partials.projecttabs')
-				</div>		
-				<!--panel content -->						
+				</div>
+				<!--panel content -->
 				<div class="row">
 					@include('layouts.projectpanel')
 				</div>
@@ -31,7 +31,7 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 					@endpermission
 
-				</div>		
+				</div>
 				@include('newWindmill')
 				@include('newComponent')
 				<!--Windmill Table -->
@@ -89,14 +89,14 @@
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
 									<td>
 										@permission(('edit-windmill'))
-										<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
+										<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
 										@permission(('delete-windmill'))
-										<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
+										<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
 									</td>
 								</tr>
-							@endforeach	
+							@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -111,7 +111,7 @@
 				<div class="row">
 					<h3>Components</h3>
 				</div>
-				<div class="row">	
+				<div class="row">
 					<table id="component-datatable" class="table table-condensed table-hover">
 						<div class="container">
 					    	<div class='col-md-5'>
@@ -167,15 +167,15 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 									<td>
 											@permission(('edit-component'))
-										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 											@endpermission
 											@permission(('delete-component'))
-										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
 											@endpermission
 									</td>
-								</tr>	
+								</tr>
 							@endforeach
-						</tbody>	
+						</tbody>
 					</table>
 				</div>
 				@endpermission
@@ -232,8 +232,8 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#windmill-table').append(row);
@@ -277,8 +277,8 @@
 				'<td></td>'+
 				'<td></td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#component-table').append(row);
@@ -303,8 +303,8 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit">Edit</button>'+
-				'<button class="btn btn-danger btn-delete">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
+				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 		$('tbody').append(row);
 	}

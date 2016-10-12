@@ -11,12 +11,12 @@ use App\Transport;
                     <div class="col-lg-12">
 						<ol class="breadcrumb">
 							<li><a href="\projects">Projects</a></li>
-							<li><a href="\project\id={{$project->id}}">{{$project->name}}</a></li>							
+							<li><a href="\project\id={{$project->id}}">{{$project->name}}</a></li>
 							<li class="active">Transport {{$transport->transportnumber}}</li>
 						</ol>
                         <h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
 
-						<!--panel content -->						
+						<!--panel content -->
                         @include('layouts/projectpanel')
                         @if(!is_null($component->mainwindmillid))
 						@include('layouts/windmillpanel')
@@ -26,11 +26,11 @@ use App\Transport;
 						<!--end panels-->
 
 						<br>
-						
+
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
 						<br>
 						@include('newRequirement')
-						
+
 						<br>
 
 						<table id="requirementtable" class="table table-condensed table-hover">
@@ -68,7 +68,7 @@ use App\Transport;
 								<td>Last update</td>
 								<td>Remarks</td>
 							</thead>
-							
+
 							<tbody id="requirement-table">
 								@foreach($requirements as $requirement)
 									<tr id="requirement{{$requirement->id}}">
@@ -81,19 +81,19 @@ use App\Transport;
 										<td>{{ $requirement->booked }}</td>
 										<td>{{ $requirement->responsibleplanner }}</td>
 										<td>
-											<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}">Edit</button>
-											<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}">Delete</button></td>
+											<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
+											<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
 										<td>{{ $requirement->remaks }}</td>
 									</tr>
-								@endforeach	
+								@endforeach
 							</tbody>
-							
+
 						</table>
 
 
 
                     </div>
-					
+
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -107,10 +107,10 @@ use App\Transport;
 			$('#addRequirement').on('click',function(){
 				$('#frmRequirement-submit').val('Save');
 				$('#frmRequirement').trigger('reset');
-		
+
 				$('#requirement').modal('show');
-			})	
-			
+			})
+
 			//---------form requirement---------
 			$(function() {
 				$('#frmRequirement-submit').on('click', function(e){
@@ -208,7 +208,7 @@ use App\Transport;
     <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
     <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-         <!-- own javascript code-->	
+         <!-- own javascript code-->
         <script type="text/javascript">
         	var $table = $('#requirementtable');
         	var $column = [4, 5];
@@ -216,7 +216,7 @@ use App\Transport;
 
         <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 
-    
+
 
 
 
