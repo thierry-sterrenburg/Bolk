@@ -97,7 +97,6 @@
 											@permission(('delete-transport'))
 											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button></td>
 											@endpermission
-											@endpermission
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
@@ -148,7 +147,7 @@
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
-			
+
 			//---------from transport---------
 			$(function() {
 				$('#frmTransport-submit').on('click', function(e){
@@ -192,7 +191,7 @@
 				});
 				})
 			});
-	
+
 			//---------get update transport---------
 			$('#transportphasetable').delegate('.btn-edit-transport','click',function(){
 			document.getElementById("error_message").innerHTML = '';
@@ -220,7 +219,7 @@
 					}
 				});
 			})
-			
+
 			//---------delete transport---------
 			$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 				var value = $(this).data('id');

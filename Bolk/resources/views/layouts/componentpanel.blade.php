@@ -1,6 +1,7 @@
-<?php 
+<?php
 	use App\Http\Controllers\WindmillController;
 ?>
+@permission(('read-component'))
 						<!--panel componentinfo-->
 						<div class="panel-group">
 							<div class="panel panel-default">
@@ -44,7 +45,8 @@
 											</tr>
 										</tbody>
 									</table>
-								</div>	
+								</div>
 							</div>
 						</div>
-						<!--End Panel componentinfo-->	
+						<!--End Panel componentinfo-->
+						@endpermission

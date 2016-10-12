@@ -1,6 +1,7 @@
-<?php 
+<?php
 	use App\Http\Controllers\ProjectsController;
 ?>
+@permission(('read-project'))
 						<!--panel projectinfo -->
 						<div class="panel-group">
 							<div class="panel panel-default">
@@ -44,3 +45,4 @@
 							</div>
 						</div>
 						<!--end panel projectinfo-->
+						@endpermission

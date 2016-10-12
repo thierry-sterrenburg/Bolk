@@ -1,17 +1,18 @@
-  <?php 
+  <?php
 	use App\Http\Controllers\ProjectController;
 	$componentid = Cookie::get('componentid');
 ?>
   <!--Modal -->
   <div class="modal fade" id="component" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Component Information</h4>
         </div>
+        @permission(('create-component'))
         <div class="modal-body">
 			<div id="error_message"></div>
           <form action="/newComponent" method="post" id="frmComponent">
@@ -21,7 +22,7 @@
 					<input type="text" name="componentregnumber" id="componentregnumber" placeholder="Registration Number" class="form-control">
 				</div>
 				</div>
-				
+
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
 					<input type="text" name="componentname" id="componentname" placeholder="Component Name" class="form-control">
@@ -35,7 +36,7 @@
 				<div class="col-lg-6 col-sm-6">
 					<label for="componentwidth" class="col-form-label">Width</label>
 				</div>
-				
+
 				<div class="form-group">
 				<div class="col-lg-6 col-sm-6">
 					<div class="input-group">
@@ -44,7 +45,7 @@
 					</div>
 				</div>
 				</div>
-	
+
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
 					<div class="input-group">
@@ -69,7 +70,7 @@
 					</div>
 				</div>
 				</div>
-				
+
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
 					<div class="input-group">
@@ -79,7 +80,7 @@
 				</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
@@ -94,7 +95,7 @@
 				</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
 				<label class="form-check-label">Switchable with</label>
@@ -104,13 +105,13 @@
 					@if(isset($windmill))
 						@if(ProjectController::checkSwitchable($componentid,$eachwindmill->id) || $eachwindmill == $windmill)
 							<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" checked>
-						@else	
+						@else
 						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}">
 						@endif
 					@else
 						@if(ProjectController::checkSwitchable($componentid,$eachwindmill->id))
 						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" checked>
-						@else	
+						@else
 						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}">
 						@endif
 					@endif
@@ -119,7 +120,7 @@
 				</div>
 				@endforeach
 				</div>
-				
+
 				<div class="col-lg-6 col-sm-6">
 					<div class="form-group">
 					<label for="status">Attached to</label>
@@ -141,10 +142,10 @@
 					@endforeach
 					</select>
 				</div>
-					
+
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
@@ -157,11 +158,23 @@
 			<input type="hidden" name="componentid" id="componentid" value="">
 		  </form>
         </div>
+        @endpermission
+        <?php
+        if (!Entrust::can('create-component')){
+          ?>
+        <div class="modal-body">
+          <div class="alert alert-danger">
+            You are not allowed to do this
+          </div>
+        </div>
+        <?php
+      }
+         ?>
         <div class="modal-footer">
 			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>

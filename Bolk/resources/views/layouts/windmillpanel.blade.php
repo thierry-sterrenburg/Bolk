@@ -1,6 +1,7 @@
-<?php 
+<?php
 	use App\Http\Controllers\ProjectController;
 ?>
+@permission(('read-windmill'))
 						<!--panel windmillinfo-->
 						<div class="panel-group">
 							<div class="panel panel-default">
@@ -40,3 +41,4 @@
 							</div>
 						</div>
 						<!--end panel windmillinfo-->
+						@endpermission

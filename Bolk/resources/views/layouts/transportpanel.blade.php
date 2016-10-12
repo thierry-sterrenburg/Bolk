@@ -1,6 +1,7 @@
-<?php 
+<?php
 	use App\Http\Controllers\ComponentController;
 ?>
+@permission(('read-transport'))
 <!--Panel transportinfo-->
 						<div class="panel-group">
 							<div class="panel panel-default">
@@ -50,3 +51,4 @@
 								</div>
 							</div>
 						</div>
+						@endpermission

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	use App\Http\Controllers\ProjectController;
 ?>
 @extends('layouts.master')
@@ -24,13 +24,19 @@
 				</div>
 				<!--add buttons-->
 				<div class="row">
+					@permission(('create-windmill'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>
+					@endpermission
+					@permission(('create-component'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
+					@endpermission
+
 				</div>		
 				@include('newWindmill')
 				@include('newComponent')
 				<!--Windmill Table -->
 				<div class="row">
+					@permission(('read-windmill'))
 					<h3>Windmills</h3>
 				</div>
 				<div class="row">
@@ -82,15 +88,26 @@
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
 									<td>
+										@permission(('edit-windmill'))
 										<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}">Edit</button>
+										@endpermission
+										@permission(('delete-windmill'))
 										<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}">Delete</button>
+										@endpermission
 									</td>
 								</tr>
 							@endforeach	
 						</tbody>
 					</table>
-				</div>	
+				</div>
+				@endpermission
+						@if(!Entrust::can('read-windmill'))
+						<div class="alert alert-danger">
+							<strong>{{$project->name}} Windmills</strong> You are not allowed to access this information
+						</div>
+						@endif
 				<!-- Component Table-->
+				@permission(('read-component'))
 				<div class="row">
 					<h3>Components</h3>
 				</div>
@@ -149,37 +166,47 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 									<td>
+											@permission(('edit-component'))
 										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											@endpermission
+											@permission(('delete-component'))
 										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+											@endpermission
 									</td>
 								</tr>	
 							@endforeach
 						</tbody>	
 					</table>
-				</div>	
+				</div>
+				@endpermission
+				@if(!Entrust::can('read-component'))
+				<div class="alert alert-danger">
+					<strong>{{$project->name}} Components</strong> You are not allowed to access this information
+				</div>
+				@endif
             </div>
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-	
+
 	//---------add Windmill---------
 	$('#addWindmill').on('click',function(){
 		$('#frmWindmill-submit').val('Save');
 		$('#frmWindmill').trigger('reset');
-		
+
 		$('#windmill').modal('show');
-	})	
-	
+	})
+
 	//---------add Component---------
 	$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
 		$('#frmComponent').trigger('reset');
-		
+
 		$('#component').modal('show');
 	})
-	
+
 	//---------form Windmill---------
 	$(function() {
 	$('#frmWindmill-submit').on('click', function(e){
@@ -219,7 +246,7 @@
 		});
 	})
 	});
-	
+
 	//---------form Component---------
 	$(function() {
 	$('#frmComponent-submit').on('click', function(e){
@@ -265,7 +292,7 @@
 		});
 	})
 	});
-	
+
 	//---------addrow---------
 	function addRow(data){
 		var row='<tr id="windmill'+data.id+'">'+
@@ -281,7 +308,7 @@
 				'</tr>';
 		$('tbody').append(row);
 	}
-	
+
 	//---------get update windmill---------
 	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
 	document.getElementById("error_message").innerHTML = '';
@@ -304,7 +331,7 @@
 			}
 		});
 	})
-	
+
 		//---------get update component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
@@ -329,8 +356,8 @@
 			}
 		});
 	})
-	
-	
+
+
 	//---------delete windmill---------
 	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
 		var value = $(this).data('id');
@@ -345,9 +372,9 @@
 					$('#windmill'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
+
 		//---------delete component---------
 	$('#component-table').delegate('.btn-delete-component', 'click',function(){
 		var value = $(this).data('id');
@@ -362,15 +389,15 @@
 					$('#component'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
+
 	$(function () {
         $('#startdatepicker').datetimepicker({
 			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'});
-            
-		
+
+
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
 			sideBySide: true,
@@ -383,7 +410,7 @@
             $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
-	
+
 	function validator() {
     var x,y,text;
 
@@ -394,7 +421,7 @@
     // If x is Not a Number or less than one or greater than 10
     if (x == "") {
         text = "Regnumber must be filled in.";
-    } 
+    }
 	if (y == ""){
 		if(text!=null){
 			text = text+"<br/>";
@@ -407,7 +434,7 @@
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
 }
-	
+
   </script>
     <!-- Datatable script-->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
@@ -421,7 +448,7 @@
     <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
     <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-    <!-- own javascript code-->	
+    <!-- own javascript code-->
     <script type="text/javascript">
     	var $table = $('#windmill-datatable');
     	var $table2 = $('#component-datatable');

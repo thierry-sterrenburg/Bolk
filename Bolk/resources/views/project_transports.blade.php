@@ -1,4 +1,4 @@
-<?php 
+<?php
 	use App\Http\Controllers\ProjectController;
 	use App\Http\Controllers\Project_transportsController;
 ?>
@@ -23,15 +23,23 @@
 				<!--panel content -->
 				<div class="row">									
 				@include('layouts.projectpanel')
+
+
+						@permission(('create-transport'))
 				</div>
 				<!--add buttones-->
 				<div class="row">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addTransport" value="add">Add Transport <span class="badge">+</span></button>
+						@endpermission
+						@permission(('create-component'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 				</div>
+						@endpermission
+
 				@include('newTransport')
 				@include('newComponent')
 				<!--Transport Table -->
+				@permission(('read-transport'))
 				<div class="row">
 					<h3>Transports</h3>
 				</div>
@@ -96,15 +104,21 @@
 									<td></td>
 									<td>{{ $transport->remarks}}</td>
 									<td>
+											@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+											@endpermission
+											@permission(('delete-transport'))
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
+											@endpermission
 									</td>
 								</tr>
 							@endforeach
 						</tbody>
 					</table>
+						@endpermission
+						@permission(('read-component'))
 				</div>
-	
+				
 				<!-- Component Table-->
 				<div class="row">
 					<h3>Components</h3>
@@ -165,13 +179,19 @@
 									<td></td>
 									<td>{{ $component->remarks }}</td>
 									<td>
+											@permission(('edit-component'))
 										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											@endpermission
+											@permission(('delete-component'))
 										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+											@endpermission
 									</td>
 								</tr>	
 							@endforeach
 						</tbody>	
 					</table>
+						@endpermission
+
 				</div>	
             </div>
             <!-- /.container-fluid -->
@@ -179,23 +199,23 @@
         <!-- /#page-wrapper -->
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-	
+
 	//---------add Transport---------
 	$('#addTransport').on('click',function(){
 		$('#frmTransport-submit').val('Save');
 		$('#frmTransport').trigger('reset');
-		
+
 		$('#transport').modal('show');
-	})	
-	
+	})
+
 	//---------add Component---------
 	$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
 		$('#frmComponent').trigger('reset');
-		
-		$('#component').modal('show');s
+
+		$('#component').modal('show');
 	})
-	
+
 	//---------form Transport---------
 	$(function() {
 	$('#frmTransport-submit').on('click', function(e){
@@ -240,7 +260,7 @@
 		});
 	})
 	});
-	
+
 	//---------form Component---------
 	$(function() {
 	$('#frmComponent-submit').on('click', function(e){
@@ -286,7 +306,7 @@
 		});
 	})
 	});
-	
+
 	//---------addrow---------
 	function addRow(data){
 		var row='<tr id="transport'+data.id+'">'+
@@ -306,7 +326,7 @@
 				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
 		$('tbody').append(row);
 	}
-	
+
 	//---------get update transport---------
 	$('#transport-table').delegate('.btn-edit-transport','click',function(){
 	document.getElementById("error_message").innerHTML = '';
@@ -334,7 +354,7 @@
 			}
 		});
 	})
-	
+
 	//---------delete transport---------
 	$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 		var value = $(this).data('id');
@@ -349,15 +369,15 @@
 					$('#transport'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
+
 	$(function () {
         $('#startdatepicker').datetimepicker({
 			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'});
-            
-		
+
+
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
 			sideBySide: true,
@@ -370,7 +390,7 @@
             $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
-	
+
 	function validator() {
     var x,y,text;
 
@@ -381,7 +401,7 @@
     // If x is Not a Number or less than one or greater than 10
     if (x == "") {
         text = "Regnumber must be filled in.";
-    } 
+    }
 	if (y == ""){
 		if(text!=null){
 			text = text+"<br/>";
@@ -394,7 +414,7 @@
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
 }
-	
+
   </script>
     <!-- Datatable script-->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
@@ -408,7 +428,7 @@
     <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
     <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-    <!-- own javascript code-->	
+    <!-- own javascript code-->
     <script type="text/javascript">
     	var $table = $('#transport-datatable');
     	var $table2 = $('#component-datatable');

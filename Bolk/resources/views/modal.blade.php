@@ -3,7 +3,7 @@
 <head>
   <title>Bolk</title>
   <meta charset="utf-8">
-  <meta name="_token" content="{{ csrf_token() }}" /> 
+  <meta name="_token" content="{{ csrf_token() }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -14,10 +14,12 @@
 <div class="container">
   <h2>Projects</h2>
   <!-- Trigger the modal with a button -->
+  @permission(('create-project'))
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project</button>
+  @endpermission
 
 
-  
+
   <div class="panel-body">
 	@include('newProject')
 	<table class="table table-hover">
@@ -45,7 +47,7 @@
 					<td>30-08-2016</td>
 					<td>blabla</td>
 				</tr>
-				
+
 				@foreach($projects as $project)
 				<tr id="project{{$project->id}}">
 					<td>{{ $project->id }}</td>
@@ -56,30 +58,34 @@
 					<td>{{ $project->enddate }}</td>
 					<td>{{ $project->remarks }}</td>
 					<td>
+            @permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}">Edit</button>
+            @endpermission
+            @permission(('delete-project'))
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}">Delete</button>
+            @endpermission
 					</td>
 				</tr>
 				@endforeach
 			</tbody>
 	</table>
   </div>
-  
+
   <script type="text/javascript">
 	$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
 			}
 	})
-	
 
-	
+
+
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('save');
 		$('frmProject').trigger('reset');
 		$('#project').modal('show');
-	})	
-	
+	})
+
 	$(function() {
 	$('#frmProject-submit').on('click', function(e){
 		e.preventDefault();
@@ -118,7 +124,7 @@
 		});
 	})
 	});
-	
+
 	//---------addrow---------
 	function addRow(data){
 		var row='<tr id="project'+data.id+'">'+
@@ -134,9 +140,9 @@
 				'</tr>';
 		$('tbody').append(row);
 	}
-	
+
 	//---------get update---------
-	
+
 	$('tbody').delegate('.btn-edit','click',function(){
 		var value=$(this).data('id');
 		var url='{{URL::to('getUpdate')}}';
@@ -157,7 +163,7 @@
 			}
 		});
 	});
-	
+
 	//---------delete project---------
 	$('tbody').delegate('.btn-delete', 'click',function(){
 		var value = $(this).data('id');
@@ -171,9 +177,9 @@
 					$('#project'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
+
 	$(function () {
         $('#datetimepicker6').datetimepicker();
         $('#datetimepicker7').datetimepicker({
@@ -186,10 +192,9 @@
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
-	
+
   </script>
 </div>
 
 </body>
 </html>
-

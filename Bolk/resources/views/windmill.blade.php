@@ -1,4 +1,4 @@
-<?php 
+<?php
 	use App\Http\Controllers\WindmillController;
 	use App\Http\Controllers\ProjectController;
 ?>
@@ -15,19 +15,22 @@
 							<li class="active">{{$windmill->name}}</li>
 						</ol>
                         <h1 class="page-header">{{$windmill->name}}</h1>
-						
+
 						<!--panel content -->
 						@include('layouts.projectpanel')
 						@include('layouts.windmillpanel')
 
 						<br>
-						
+
+						@permission(('create-component'))
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
-						
+						@endpermission
+
 						<br>
 						@include('newComponent')
 						<br>
-										
+
+						@permission(('read-component'))
 						<table id="componenttable" class="table table-condensed table-hover">
 							<div class="container">
 							    <div class='col-md-5'>
@@ -65,7 +68,7 @@
 								<td>Last update</td>
 								<td>Remarks</td>
 							</thead>
-							
+
 							<tbody id="component-table">
 								@foreach($components as $component)
 									<tr id="component{{$component->id}}">
@@ -82,17 +85,22 @@
 										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 										<td>
+											@permission(('edit-component'))
 											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											@endpermission
+											@permission(('delete-component'))
 											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+											@endpermission
 										</td>
-									</tr>	
+									</tr>
 								@endforeach
 							</tbody>
-							
+
 						</table>
-						
+						@endpermission
+
                     </div>
-					
+
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -105,10 +113,10 @@
 		$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
 		$('#frmComponent').trigger('reset');
-		
+
 		$('#component').modal('show');
 		})
-		
+
 		//---------form Component---------
 	$(function() {
 	$('#frmComponent-submit').on('click', function(e){
@@ -154,7 +162,7 @@
 		});
 	})
 	});
-	
+
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
@@ -178,7 +186,7 @@
 			}
 		});
 	})
-	
+
 	//---------delete component---------
 	$('#component-table').delegate('.btn-delete-component', 'click',function(){
 		var value = $(this).data('id');
@@ -193,10 +201,10 @@
 					$('#component'+value).remove();
 				}
 			});
-		}	
+		}
 	});
-	
-		
+
+
 		</script>
         <!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
@@ -210,7 +218,7 @@
 	    <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.html5.min.js" ></script>
 	    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-        <!-- own javascript code-->	
+        <!-- own javascript code-->
         <script type="text/javascript">
         	var $table = $('#componenttable');
         	var $column = [6, 7];

@@ -13,7 +13,9 @@
                         <h1 class="page-header">Projects</h1>
 
 						<!--panel content -->
+						@permission(('edit-table'))
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
+						@endpermission
 
 						<br>
 
@@ -71,8 +73,12 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
 					@permission(('edit-table'))
 					<td>
+						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}">Edit</button>
+						@endpermission
+						@permission(('delete-project'))
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}">Delete</button>
+						@endpermission
 					</td>
 					@endpermission
 				</tr>
