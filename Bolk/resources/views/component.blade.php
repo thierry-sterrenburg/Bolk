@@ -89,7 +89,6 @@
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
-										@permission(('edit-transport'|'delete-transport'))
 										<td>
 											@permission(('edit-transport'))
 											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
@@ -98,7 +97,6 @@
 											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
 											@endpermission
 										</td>
-											@endpermission
 										<td>{{ $transport->remarks}}</td>
 									</tr>
 								@endforeach
