@@ -1,7 +1,3 @@
-<?php
-use App\Transport;
-?>
-
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -15,8 +11,10 @@ use App\Transport;
 					@include('partials.transporttabs')
 				</div>
 				<!--panel content -->
-                @include('layouts/projectpanel')
-				@include('layouts/transportpanel')
+				<div class="row">
+                	@include('layouts/projectpanel')
+					@include('layouts/transportpanel')
+				</div>
 				<!--end panels-->
 				<!--add buttons-->
 				<div class="row">
