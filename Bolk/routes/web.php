@@ -31,6 +31,7 @@ Route::delete('/deleteProject', 'ProjectsController@deleteProject');
 
 Route::get('/project/id={id}','ProjectController@index');
 Route::get('/project_transports/id={id}','Project_transportsController@index');
+Route::get('/project_components/id={id}','Project_componentsController@index');
 Route::post('/newWindmill', 'ProjectController@newWindmill');
 Route::get('/getUpdateWindmill', 'ProjectController@getUpdateWindmill');
 Route::put('/newWindmill', 'ProjectController@newUpdateWindmill');

@@ -18,11 +18,8 @@ class Project_transportsController extends Controller
 	
 	public function index($id){
 		$transports = Transport::where('projectid','=', $id)->get();
-		$components = Component::where('projectid', '=', $id)->get();
 		$project = Project::where('id','=',$id)->first();
-		$windmills = Windmill::where('projectid','=', $id)->get();
-
-	return view('/project_transports', ['transports' => $transports,'windmills' => $windmills, 'components' => $components,  'project' => $project]);
+		return view('/project_transports', ['transports' => $transports, 'project' => $project]);
 	}
 
 

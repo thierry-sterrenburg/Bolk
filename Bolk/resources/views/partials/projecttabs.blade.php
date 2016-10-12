@@ -9,11 +9,9 @@
 	var url = document.location.toString();
 	if (url.match('/project/id=')) {
     	$('#projecttab').addClass('active');
-   	} 
-   	else if (url.match('/project_components/id=')) {
+   	} else if (url.match('/project_components/id=')) {
    		$('#componenttab').addClass('active');
-   	};
-   	else if (url.match('/project_transports/id=')) {
+   	} else if (url.match('/project_transports/id=')) {
    		$('#transporttab').addClass('active');
-   	};
+   	}
 </script>
