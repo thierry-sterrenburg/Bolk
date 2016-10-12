@@ -7,96 +7,79 @@ use App\Transport;
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-						<ol class="breadcrumb">
-							<li><a href="\projects">Projects</a></li>
-							<li><a href="\project\id={{$project->id}}">{{$project->name}}</a></li>
-							<li class="active">Transport {{$transport->transportnumber}}</li>
-						</ol>
-                        <h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
-
-						<!--panel content -->
-                        @include('layouts/projectpanel')
-                        @if(!is_null($component->mainwindmillid))
-						@include('layouts/windmillpanel')
-						@endif
-						@include('layouts/componentpanel')
-						@include('layouts/transportpanel')
-						<!--end panels-->
-
-						<br>
-
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
-						<br>
-						@include('newRequirement')
-
-						<br>
-
-						<table id="requirementtable" class="table table-condensed table-hover">
-							<div class="container">
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='startdatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='enddatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							</div>
-							<thead>
-								<td>#</td>
-								<td>Name</td>
-								<td>Country</td>
-								<td>Document Location</td>
-								<td>Start datetime</td>
-								<td>End datetime</td>
-								<td>Booked</td>
-								<td>Responsible planner</td>
-								<td>Last update</td>
-								<td>Remarks</td>
-							</thead>
-
-							<tbody id="requirement-table">
-								@foreach($requirements as $requirement)
-									<tr id="requirement{{$requirement->id}}">
-										<td>{{ $requirement->id }}</td>
-										<td>{{ $requirement->name }}</td>
-										<td>{{ $requirement->country }}</td>
-										<td>is nog geen plek voor in database</td>
-										<td>{{ $requirement->startdate }}</td>
-										<td>{{ $requirement->enddate }}</td>
-										<td>{{ $requirement->booked }}</td>
-										<td>{{ $requirement->responsibleplanner }}</td>
-										<td>
-											<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
-											<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
-										<td>{{ $requirement->remaks }}</td>
-									</tr>
-								@endforeach
-							</tbody>
-
-						</table>
-
-
-
-                    </div>
-
-                    <!-- /.col-lg-12 -->
+            	<div class="row">
+                    <h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
                 </div>
-                <!-- /.row -->
+                <!--navtabs-->
+				<div class="row">
+					@include('partials.transporttabs')
+				</div>
+				<!--panel content -->
+                @include('layouts/projectpanel')
+				@include('layouts/transportpanel')
+				<!--end panels-->
+				<!--add buttons-->
+				<div class="row">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
+				</div>
+				@include('newRequirement')
+				<!--Requirement Table-->
+				<div class="row">
+					<table id="requirementtable" class="table table-condensed table-hover">
+						<div class="container">
+						    <div class='col-md-5'>
+						        <div class="form-group">
+						            <div class='input-group date' id='startdatesearch'>
+						                <input type='text' class="form-control" />
+						                <span class="input-group-addon">
+						                    <span class="glyphicon glyphicon-calendar"></span>
+						                </span>
+						            </div>
+						        </div>
+						    </div>
+						    <div class='col-md-5'>
+						        <div class="form-group">
+						            <div class='input-group date' id='enddatesearch'>
+						                <input type='text' class="form-control" />
+						                <span class="input-group-addon">
+						                    <span class="glyphicon glyphicon-calendar"></span>
+						                </span>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+						<thead>
+							<td>#</td>
+							<td>Name</td>
+							<td>Country</td>
+							<td>Document Location</td>
+							<td>Start datetime</td>
+							<td>End datetime</td>
+							<td>Booked</td>
+							<td>Responsible planner</td>
+							<td>Last update</td>
+							<td>Remarks</td>
+						</thead>
+						<tbody id="requirement-table">
+							@foreach($requirements as $requirement)
+								<tr id="requirement{{$requirement->id}}">
+									<td>{{ $requirement->id }}</td>
+									<td>{{ $requirement->name }}</td>
+									<td>{{ $requirement->country }}</td>
+									<td>is nog geen plek voor in database</td>
+									<td>{{ $requirement->startdate }}</td>
+									<td>{{ $requirement->enddate }}</td>
+									<td>{{ $requirement->booked }}</td>
+									<td>{{ $requirement->responsibleplanner }}</td>
+									<td>
+										<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
+										<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
+									<td>{{ $requirement->remaks }}</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
             </div>
             <!-- /.container-fluid -->
         </div>

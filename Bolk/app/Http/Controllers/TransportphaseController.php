@@ -6,10 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Project;
-use App\Windmill;
-use App\Component;
-use App\Transport;
-use App\Component_Transport;	
+use App\Transport;	
 use App\Requirement;
 use DB;
 
@@ -18,11 +15,8 @@ class TransportphaseController extends Controller
     public function index($id) {
     	$requirements = Requirement::where('transportid','=', $id)->get();
     	$transport = Transport::where('id','=', $id)->first();
-    	//!!!!! needs repairing for multipal components per transport!!!!!\\\\\\
-    	$component = Component_Transport::where('transportid','=', $id)->join('components', 'component_transports.componentid', '=', 'components.id')->first();
-    	$windmill = Windmill::where('id', '=', $component->mainwindmillid)->first();
-    	$project = Project::where('id','=', $component->projectid)->first();
-    	return view('/transportphase', ['requirements' => $requirements, 'transport' => $transport, 'component' => $component, 'windmill' => $windmill, 'project' => $project]);
+    	$project = Project::where('id','=', $transport->projectid)->first();
+    	return view('/transportphase',['transport'=>$transport, 'project'=>$project, 'requirements'=>$requirements]);
     }
 	
 	public function newRequirement(Request $request){
