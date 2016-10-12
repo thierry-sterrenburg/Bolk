@@ -1,5 +1,6 @@
 <?php 
 	use App\Http\Controllers\WindmillController;
+	use App\Http\Controllers\ProjectController;
 ?>
 @extends('layouts.master')
 @section('content')
@@ -21,10 +22,10 @@
 
 						<br>
 						
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Component <span class="badge">+</span></button>
-						
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 						
 						<br>
+						@include('newComponent')
 						<br>
 										
 						<table id="componenttable" class="table table-condensed table-hover">
@@ -65,23 +66,27 @@
 								<td>Remarks</td>
 							</thead>
 							
-							<tbody>
+							<tbody id="component-table">
 								@foreach($components as $component)
-									<tr onclick="document.location= '/component/id={{$component->id}}';">
-										<td>{{ $component->id }}</td>
-										<td>{{ $component->regnumber }}</td>
-										<td>{{ $component->name}}</td>
-										<td></td>
-										<td></td>
-										<td>{{ WindmillController::countTransports($component->id)}}</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td>{{ $component->remarks }}</td>
-									</tr>
-								@endforeach	
+									<tr id="component{{$component->id}}">
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ ProjectController::countTransports($component->id)}}</td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+										<td>
+											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+										</td>
+									</tr>	
+								@endforeach
 							</tbody>
 							
 						</table>
@@ -95,6 +100,63 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+		<script type="text/javascript">
+		//---------add Component---------
+		$('#addComponent').on('click',function(){
+		$('#frmComponent-submit').val('Save');
+		$('#frmComponent').trigger('reset');
+		
+		$('#component').modal('show');
+		})
+		
+		//---------form Component---------
+	$(function() {
+	$('#frmComponent-submit').on('click', function(e){
+		e.preventDefault();
+		var form=$('#frmComponent');
+		var formData=form.serialize();
+		var url=form.attr('action');
+		var state=$('#frmComponent-submit').val();
+		var type= 'post';
+		if(state=='Update'){
+			type = 'put';
+		}
+		$.ajax({
+			type : type,
+			url : url,
+			data: formData,
+			success:function(data){
+				var row='<tr id="component'+data.id+'">'+
+				'<td>'+ data.id +'</td>'+
+				'<td>'+ data.regnumber +'</td>'+
+				'<td>'+ data.name +'</td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td>0</td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td></td>'+
+				'<td>'+ data.remarks +'</td>'+
+				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
+				'</tr>';
+				if(state=='Save'){
+					$('#component-table').append(row);
+				}else{
+					$('#component'+data.id).replaceWith(row);
+				}
+				$('#frmComponent').trigger('reset');
+				$('#componentregnumber').focus();
+				$('#component').modal('toggle');
+			}
+		});
+	})
+	});
+	
+		
+		</script>
         <!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">

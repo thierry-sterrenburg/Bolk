@@ -17,7 +17,8 @@ class WindmillController extends Controller
     	$windmill = Windmill::where('id','=',$id)->first();
     	$components = Component::where('mainwindmillid','=',$id)->get();
     	$project = Project::where('id', '=', Windmill::where('id','=', $id)->value('projectid'))->first();
-    	return view('/windmill', ['components' => $components, 'windmill'=> $windmill, 'project' => $project]);
+		$windmills = Windmill::where('projectid','=', $project->id)->get();
+    	return view('/windmill', ['components' => $components, 'windmill'=> $windmill, 'project' => $project, 'windmills'=>$windmills]);
     }
 
 	public static function countTransports($componentid) {

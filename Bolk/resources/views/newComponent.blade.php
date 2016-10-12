@@ -98,15 +98,23 @@
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
 				<label class="form-check-label">Switchable with</label>
-				@foreach($windmills as $windmill)
+				@foreach($windmills as $eachwindmill)
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
-					@if(ProjectController::checkSwitchable($componentid,$windmill->id))
-						<input type="checkbox" class="form-check-input" id="windmill{{$windmill->id}}" name="windmill{{$windmill->id}}" checked>
-					@else	
-					<input type="checkbox" class="form-check-input" id="windmill{{$windmill->id}}" name="windmill{{$windmill->id}}">
+					@if(isset($windmill))
+						@if(ProjectController::checkSwitchable($componentid,$eachwindmill->id) || $eachwindmill == $windmill)
+							<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" checked>
+						@else	
+						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}">
+						@endif
+					@else
+						@if(ProjectController::checkSwitchable($componentid,$eachwindmill->id))
+						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" checked>
+						@else	
+						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}">
+						@endif
 					@endif
-					{{$windmill->name}}
+					{{$eachwindmill->name}}
 					</label>
 				</div>
 				@endforeach
@@ -116,10 +124,13 @@
 					<div class="form-group">
 					<label for="status">Attached to</label>
 					<select class="form-control" id="componentinwindmill" name="componentinwindmill">
+					@if(isset($windmill))
+					<option value="{{$windmill->id}}">{{$windmill->name}}</option>
+					@endif
 					<option value="none">none</option>
-					@foreach($windmills as $windmill)
-						@if((ProjectController::checkSwitchable($componentid,$windmill->id)))
-							<option value="{{$windmill->id}}">{{$windmill->name}}</option>
+					@foreach($windmills as $eachwindmill)
+						@if((ProjectController::checkSwitchable($componentid,$eachwindmill->id)))
+							<option value="{{$eachwindmill->id}}">{{$eachwindmill->name}}</option>
 						@endif
 					@endforeach
 					</select>
