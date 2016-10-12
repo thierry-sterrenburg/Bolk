@@ -154,6 +154,47 @@ use App\Transport;
 				});
 				})
 			});
+			
+			//---------get update requirement---------
+			$('#requirement-table').delegate('.btn-edit-requirement','click',function(){
+			document.getElementById("error_message").innerHTML = '';
+			var value=$(this).data('id');
+				var url='{{URL::to('getUpdateRequirement')}}';
+				$.ajax({
+					type: 'get',
+					url : url,
+					data: {'id':value},
+					success:function(data){
+						$('#id').val(data.id);
+						$('#requirementname').val(data.name);
+						$('#requirementcountry').val(data.country);
+						$('#requirementstartdate').val(data.startdate);
+						$('#requirementenddate').val(data.enddate);
+						$('#requirementplanner').val(data.responsibleplanner);
+						$('#requirementbooked').val(data.booked);
+						$('#requirementremarks').val(data.remarks);
+						$('#frmRequirement-submit').val('Update');
+						$('#requirement').modal('show');
+					}
+				});
+			})
+			
+			//---------delete requirement---------
+			$('#requirement-table').delegate('.btn-delete-requirement', 'click',function(){
+				var value = $(this).data('id');
+				var url = '{{URL::to('deleteRequirement')}}';
+				if (confirm('Are you sure to delete?'+value)==true){
+					$.ajax({
+						type : 'delete',
+						url : url,
+						data : {"_token": "{{ csrf_token() }}" ,
+							'id':value},
+						success:function(data){
+							$('#requirement'+value).remove();
+						}
+					});
+				}
+			});
 		</script>
 		<!-- Datatable script-->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>

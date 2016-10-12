@@ -34,6 +34,27 @@ class TransportphaseController extends Controller
 	   }
    }
    
+    public function getUpdateRequirement(Request $request){
+	  if ($request->ajax()){
+		  $requirement=Requirement::find($request->id);
+		  return Response($requirement);
+	  }
+   }
+   public function newUpdateRequirement(Request $request){
+	   if ($request->ajax()){
+		   $requirement=Requirement::find($request->id);
+		   $this->checkInputRequirement($requirement, $request);
+		   $requirement->save();
+		   return Response($requirement);
+	   }
+   }
+   public function deleteRequirement(Request $request){
+	   if ($request->ajax()){
+		   Requirement::destroy($request->id);
+		   return Response()->json(['sms'=>'delete successfully']);
+	   }
+   }
+   
    public function checkInputRequirement($requirement, $request){
 			$requirement->transportid=$request->transportid;
 			$requirement->booked = $request->requirementbooked;

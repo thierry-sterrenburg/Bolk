@@ -52,6 +52,9 @@ Route::delete('/deleteTransport', 'ProjectController@deleteTransport');
 
 Route::get('/transportphase/id={id}','TransportphaseController@index');
 Route::post('/newRequirement','TransportphaseController@newRequirement');
+Route::get('/getUpdateRequirement', 'TransportphaseController@getUpdateRequirement');
+Route::put('/newRequirement', 'TransportphaseController@newUpdateRequirement');
+Route::delete('/deleteRequirement', 'TransportphaseController@deleteRequirement');
 
 
 Route::get('/closestdeadlines', function () {
