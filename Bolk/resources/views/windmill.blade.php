@@ -86,10 +86,10 @@
 										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 										<td>
 											@permission(('edit-component'))
-											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 											@endpermission
 											@permission(('delete-component'))
-											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
 											@endpermission
 										</td>
 									</tr>
@@ -147,8 +147,8 @@
 				'<td></td>'+
 				'<td></td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#component-table').append(row);

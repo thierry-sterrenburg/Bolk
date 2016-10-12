@@ -91,10 +91,10 @@
 										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
 										<td>
 											@permission(('edit-transport'))
-											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 											@endpermission
 											@permission(('delete-transport'))
-											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
+											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 											@endpermission
 										</td>
 										<td>{{ $transport->remarks}}</td>
@@ -176,8 +176,8 @@
 						'<td>'+ data.dateofloading +'</td>'+
 						'<td>'+ data.dateofarrivalinitial +'</td>'+
 						'<td>'+ data.dateofarrivalfinal +'</td>'+
-						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
-						'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
+						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+						'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
 						if(state=='Save'){
 							$('#transportphasetable').append(row);

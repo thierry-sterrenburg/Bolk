@@ -17,11 +17,11 @@
                     <h1 class="page-header">{{$project->name}}</h1>
                 </div>
                 <!--nav tabs-->
-                <div class="row"> 
-                	@include('partials.projecttabs')   
+                <div class="row">
+                	@include('partials.projecttabs')
 				</div>
 				<!--panel content -->
-				<div class="row">									
+				<div class="row">
 				@include('layouts.projectpanel')
 
 
@@ -43,7 +43,7 @@
 				<div class="row">
 					<h3>Transports</h3>
 				</div>
-				<div class="row">	
+				<div class="row">
 					<table id="transport-datatable" class="table table-condensed table-hover">
 						<div class="container">
 							<div class='col-sm-5'>
@@ -84,7 +84,7 @@
 							<td>Remarks</td>
 							<td></td>
 						</thead>
-							
+
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
 								<tr onclick="document.location= '/transportphase/id={{$transport->id}}';">
@@ -105,10 +105,10 @@
 									<td>{{ $transport->remarks}}</td>
 									<td>
 											@permission(('edit-transport'))
-										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}">Edit</button>
+										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 											@endpermission
 											@permission(('delete-transport'))
-										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}">Delete</button>
+										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 											@endpermission
 									</td>
 								</tr>
@@ -118,7 +118,7 @@
 						@endpermission
 						@permission(('read-component'))
 				</div>
-				
+
 				<!-- Component Table-->
 				<div class="row">
 					<h3>Components</h3>
@@ -180,19 +180,19 @@
 									<td>{{ $component->remarks }}</td>
 									<td>
 											@permission(('edit-component'))
-										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}">Edit</button>
+										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 											@endpermission
 											@permission(('delete-component'))
-										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}">Delete</button>
+										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
 											@endpermission
 									</td>
-								</tr>	
+								</tr>
 							@endforeach
-						</tbody>	
+						</tbody>
 					</table>
 						@endpermission
 
-				</div>	
+				</div>
             </div>
             <!-- /.container-fluid -->
         </div>
@@ -246,8 +246,8 @@
 				'<td>'+ data.dateofarrivalinitial +'</td>'+
 				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#transport-table').append(row);
@@ -291,8 +291,8 @@
 				'<td></td>'+
 				'<td></td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#component-table').append(row);
@@ -322,8 +322,8 @@
 				'<td>'+ data.dateofarrivalinitial +'</td>'+
 				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 		$('tbody').append(row);
 	}
 

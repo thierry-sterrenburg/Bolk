@@ -74,10 +74,10 @@
 					@permission(('edit-table'))
 					<td>
 						@permission(('edit-project'))
-						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}">Edit</button>
+						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 						@endpermission
 						@permission(('delete-project'))
-						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}">Delete</button>
+						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 						@endpermission
 					</td>
 					@endpermission
@@ -131,8 +131,8 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('tbody').append(row);
@@ -156,8 +156,8 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit">Edit</button>'+
-				'<button class="btn btn-danger btn-delete">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
+				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 		$('tbody').append(row);
 	}
