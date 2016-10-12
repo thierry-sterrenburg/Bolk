@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Project;
+use App\Windmill;
+use App\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,9 +18,13 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('partials.nav', function ($view)
         {
-            $projects = Project::pluck('id', 'name');
-            $view->with('projects', $projects);
+            $projectsoverview = Project::get();
+            $windmilloverview = Windmill::get();
+            $componentoverview = Component::get();
+            
+            $view->with('projectsoverview', $projectsoverview)->with('windmilloverview', $windmilloverview)->with('componentoverview', $componentoverview);
         });
+
     }
 
     /**
