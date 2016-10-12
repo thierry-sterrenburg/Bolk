@@ -10,6 +10,7 @@ use App\Windmill;
 use App\Component;
 use App\Component_Transport;
 use App\Switchable;
+use App\Transport;
 use Cookie;
 use DB;
 
@@ -124,6 +125,22 @@ class ProjectController extends Controller
 	   }
    }
    
+   public function newTransport(Request $request){
+	   if($request->ajax()){
+		   $transport = new Transport();
+		   $this->checkInputTransport($transport, $request);
+		   $transport->save();
+		   
+		   if($request->componentid != null){
+			   $componenttransport = new Component_Transport();
+			   $componenttransport->componentid = $request->componentid;
+			   $componenttransport->transportid = $transport->id;
+			   $componenttransport->save();
+		   }
+		   return response()->json($transport);
+	   }
+   }
+   
    
    public function checkInput($windmill, $request){
 			$windmill->projectid=$request->projectid;
@@ -204,6 +221,66 @@ class ProjectController extends Controller
 		   }
 		   
 	   return $component;
+   }
+   
+   public function checkInputTransport($transport, $request){
+			$transport->projectid=$request->projectid;
+		   if($request->transportnumber == ''){
+			   $transport->transportnumber=null;
+		   }else{
+			   $transport->transportnumber=$request->transportnumber;
+		   }
+		   if($request->transportcompany == ''){
+			   $transport->company=null;
+		   }else{
+			   $transport->company=$request->transportcompany;
+		   }
+		   if($request->transporttruck == ''){
+			   $transport->truck=null;
+		   }else{
+			   $transport->truck=$request->transporttruck;
+		   }
+		   if($request->transporttrailer == ''){
+			   $transport->trailer=null;
+		   }else{
+			   $transport->trailer=$request->transporttrailer;
+		   }
+		   if($request->transportconfiguration == ''){
+			   $transport->configuration=null;
+		   }else{
+			   $transport->configuration=$request->transportconfiguration;
+		   }
+		   if($request->transportfrom == ''){
+			   $transport->from=null;
+		   }else{
+			   $transport->from=$request->transportfrom;
+		   }
+		   if($request->transportto == ''){
+			   $transport->to=null;
+		   }else{
+			   $transport->to=$request->transportto;
+		   }
+		   if($request->loadingdate == ''){
+			   $transport->dateofloading=null;
+		   }else{
+			   $transport->dateofloading=$request->loadingdate;
+		   }
+		   if($request->initialdatearrival == ''){
+			   $transport->dateofarrivalinitial=null;
+		   }else{
+			   $transport->dateofarrivalinitial=$request->initialdatearrival;
+		   }
+		   if($request->finaldatearrival == ''){
+			   $transport->dateofarrivalfinal=null;
+		   }else{
+			   $transport->dateofarrivalfinal=$request->finaldatearrival;
+		   }
+		   if($request->transportremarks == ''){
+			   $transport->remarks=null;
+		   }else{
+			   $transport->remarks=$request->transportremarks;
+		   }
+	   return $transport;
    }
    
    public static function checkSwitchable($componentid, $windmillid){
