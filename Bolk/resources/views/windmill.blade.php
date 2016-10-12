@@ -155,6 +155,47 @@
 	})
 	});
 	
+	$('#component-table').delegate('.btn-edit-component','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateComponent')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#componentid').val(data.id);
+				$('#componentregnumber').val(data.regnumber);
+				$('#componentname').val(data.name);
+				$('#componentlength').val(data.length);
+				$('#componentheight').val(data.height);
+				$('#componentwidth').val(data.width);
+				$('#componentweight').val(data.weight);
+				$('#componentremarks').val(data.remarks);
+				$('#componentstatus').val(data.status).change();
+				$('#frmComponent-submit').val('Update');
+				$('#component').modal('show');
+			}
+		});
+	})
+	
+	//---------delete component---------
+	$('#component-table').delegate('.btn-delete-component', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('deleteComponent')}}';
+		if (confirm('Are you sure to delete?')==true){
+			$.ajax({
+				type : 'delete',
+				url : url,
+				data : {"_token": "{{ csrf_token() }}" ,
+					'id':value},
+				success:function(data){
+					$('#component'+value).remove();
+				}
+			});
+		}	
+	});
+	
 		
 		</script>
         <!-- Datatable script-->

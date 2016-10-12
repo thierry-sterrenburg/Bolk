@@ -129,8 +129,14 @@
 					@endif
 					<option value="none">none</option>
 					@foreach($windmills as $eachwindmill)
-						@if((ProjectController::checkSwitchable($componentid,$eachwindmill->id)))
+						@if(isset($windmill))
+							@if(($windmill->id != $eachwindmill->id) && (ProjectController::checkSwitchable($componentid,$eachwindmill->id)))
+								<option value="{{$eachwindmill->id}}">{{$eachwindmill->name}}</option>
+							@endif
+						@else
+							@if((ProjectController::checkSwitchable($componentid,$eachwindmill->id)))
 							<option value="{{$eachwindmill->id}}">{{$eachwindmill->name}}</option>
+							@endif
 						@endif
 					@endforeach
 					</select>
