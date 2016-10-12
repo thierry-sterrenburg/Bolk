@@ -27,13 +27,8 @@
 					@permission(('create-windmill'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>
 					@endpermission
-					@permission(('create-component'))
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
-					@endpermission
-
 				</div>
 				@include('newWindmill')
-				@include('newComponent')
 				<!--Windmill Table -->
 				<div class="row">
 					@permission(('read-windmill'))
@@ -121,14 +116,6 @@
 		$('#windmill').modal('show');
 	})
 
-	//---------add Component---------
-	$('#addComponent').on('click',function(){
-		$('#frmComponent-submit').val('Save');
-		$('#frmComponent').trigger('reset');
-
-		$('#component').modal('show');
-	})
-
 	//---------form Windmill---------
 	$(function() {
 	$('#frmWindmill-submit').on('click', function(e){
@@ -164,52 +151,6 @@
 				}
 				$('#frmWindmill').trigger('reset');
 				$('#regnumber').focus();
-			}
-		});
-	})
-	});
-
-	//---------form Component---------
-	$(function() {
-	$('#frmComponent-submit').on('click', function(e){
-		e.preventDefault();
-		var form=$('#frmComponent');
-		var formData=form.serialize();
-		var url=form.attr('action');
-		var state=$('#frmComponent-submit').val();
-		var type= 'post';
-		if(state=='Update'){
-			type = 'put';
-		}
-		$.ajax({
-			type : type,
-			url : url,
-			data: formData,
-			success:function(data){
-				var row='<tr id="component'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>0</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-				if(state=='Save'){
-					$('#component-table').append(row);
-				}else{
-					$('#component'+data.id).replaceWith(row);
-				}
-				$('#frmComponent').trigger('reset');
-				$('#componentregnumber').focus();
-				$('#component').modal('toggle');
 			}
 		});
 	})
@@ -254,32 +195,6 @@
 		});
 	})
 
-		//---------get update component---------
-	$('#component-table').delegate('.btn-edit-component','click',function(){
-	document.getElementById("error_message").innerHTML = '';
-	var value=$(this).data('id');
-		var url='{{URL::to('getUpdateComponent')}}';
-		$.ajax({
-			type: 'get',
-			url : url,
-			data: {'id':value},
-			success:function(data){
-				$('#componentid').val(data.id);
-				$('#componentregnumber').val(data.regnumber);
-				$('#componentname').val(data.name);
-				$('#componentlength').val(data.length);
-				$('#componentheight').val(data.height);
-				$('#componentwidth').val(data.width);
-				$('#componentweight').val(data.weight);
-				$('#componentremarks').val(data.remarks);
-				$('#componentstatus').val(data.status).change();
-				$('#frmComponent-submit').val('Update');
-				$('#component').modal('show');
-			}
-		});
-	})
-
-
 	//---------delete windmill---------
 	$('#windmill-table').delegate('.btn-delete-windmill', 'click',function(){
 		var value = $(this).data('id');
@@ -292,23 +207,6 @@
 					'id':value},
 				success:function(data){
 					$('#windmill'+value).remove();
-				}
-			});
-		}
-	});
-
-		//---------delete component---------
-	$('#component-table').delegate('.btn-delete-component', 'click',function(){
-		var value = $(this).data('id');
-		var url = '{{URL::to('deleteComponent')}}';
-		if (confirm('Are you sure to delete?')==true){
-			$.ajax({
-				type : 'delete',
-				url : url,
-				data : {"_token": "{{ csrf_token() }}" ,
-					'id':value},
-				success:function(data){
-					$('#component'+value).remove();
 				}
 			});
 		}

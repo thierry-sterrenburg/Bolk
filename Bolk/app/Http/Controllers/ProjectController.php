@@ -16,24 +16,16 @@ use DB;
 
 class ProjectController extends Controller
 {
-	
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
 	$components = Component::where('projectid', '=', $id)->whereNull('mainwindmillid')->get();
 	$project = Project::where('id','=',$id)->first();
-
-
 	return view('/project', ['windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}
 
 	public static function countComponents($windmillid) {
 		$numberofcomponents = Component::where('mainwindmillid','=', $windmillid)->count();
 		return $numberofcomponents;
-	}
-
-	public static function countTransports($componentid) {
-		$numberoftransports = Component_Transport::where('componentid','=',$componentid)->count();
-		return $numberoftransports;
 	}
 	
 	public function newWindmill(Request $request){

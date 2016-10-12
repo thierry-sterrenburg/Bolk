@@ -41,7 +41,6 @@ Route::post('/newComponent', 'ProjectController@newComponent');
 Route::get('/getUpdateComponent', 'ProjectController@getUpdateComponent');
 Route::put('/newComponent', 'ProjectController@newUpdateComponent');
 Route::delete('/deleteComponent','ProjectController@deleteComponent');
-View::composer('/newComponent', 'App\Http\ViewComposers\newComponentComposer');
 
 Route::get('/windmill/id={id}', 'WindmillController@index');
 
