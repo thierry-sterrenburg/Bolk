@@ -94,10 +94,15 @@
 
 	   		$(document).ready(function () {
 				$table.DataTable({
+					"scrollX": true,
 					responsive: true,
 					dom: 'Bfrtip',
 					buttons: [
-						'excel', 'pdf', 'print'
+						'excel', 'pdf', 'print', 
+						{
+						extend: 'colvis',
+                		columns: ':not(:first-child)'
+            			}
 					]
 				});
 				if (typeof $table2 != 'undefined'){
