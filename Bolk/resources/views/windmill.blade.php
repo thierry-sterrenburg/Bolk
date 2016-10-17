@@ -67,6 +67,7 @@
 								<td>Offloading(final)</td>
 								<td>Last update</td>
 								<td>Remarks</td>
+								<td></td>
 							</thead>
 
 							<tbody id="component-table">
