@@ -176,9 +176,9 @@
 					data: formData,
 					success:function(data){
 						
-						$('#frmRequirement').trigger('reset');
+						$('#frmChecklist').trigger('reset');
 						$('#name').focus();
-						$('#requirement').modal('toggle');
+						$('#checklist').modal('toggle');
 						location.reload;
 					}
 				});

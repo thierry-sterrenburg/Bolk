@@ -28,6 +28,13 @@ class TransportphaseController extends Controller
 	   }
    }
    
+   public function newChecklist(Request $request){
+	   if($request->ajax()){
+		   $this->checkInputChecklist($request);
+		   return response();
+	   }
+   }
+   
     public function getUpdateRequirement(Request $request){
 	  if ($request->ajax()){
 		  $requirement=Requirement::find($request->id);
@@ -83,5 +90,23 @@ class TransportphaseController extends Controller
 			   $requirement->remarks=$request->requirementremarks;
 		   }
 	   return $requirement;
+   }
+   
+   public function checkInputChecklist($request){
+	   if($request->checklistcmr == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='CMR';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistcmr == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='CMR';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
    }
 }
