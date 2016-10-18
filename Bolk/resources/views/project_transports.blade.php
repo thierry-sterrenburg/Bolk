@@ -69,6 +69,7 @@
 							<td>Configuration</td>
 							<td>From</td>
 							<td>To</td>
+							<td>Number of Components</td>
 							<td>Number of Requirements</td>
 							<td>Date of loading</td>
 							<td>Date of Arrival(initial)</td>
@@ -94,7 +95,7 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';"></td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
 									<td>
 										@permission(('edit-transport'))
