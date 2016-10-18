@@ -15,7 +15,7 @@ class Transport_componentsController extends Controller
     public function index($id) {
     	$transport = Transport::where('id','=',$id)->first();
     	$components = Component_Transport::where('transportid','=', $id)->join('components', 'component_transports.componentid', '=', 'components.id')->get();
-    	$project = Project::where('id','=',$transport->id)->first();
+    	$project = Project::where('id','=',$transport->projectid)->first();
     	return view('/transport_components',['transport'=>$transport,'components'=>$components,'project'=>$project]);
     }
 
