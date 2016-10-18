@@ -18,9 +18,9 @@
 					CMR
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistcmr" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistcmr" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistcmr" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
