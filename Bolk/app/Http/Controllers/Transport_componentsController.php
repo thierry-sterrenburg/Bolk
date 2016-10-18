@@ -31,7 +31,16 @@ class Transport_componentsController extends Controller
 		   $component_transport = new Component_Transport();
 		   $component_transport->componentid = $request->componentid;
 		   $component_transport->transportid = $request->transportid;
+		   $component_transport->save();
 		   return response()->json($component_transport);
 	   }
 	}
+	
+	public function deleteComponent(Request $request){
+		if ($request->ajax()){
+		   Component_Transport::where('componentid', $request->id)->delete();
+		   return Response()->json(['sms'=>'delete successfully']);
+	   }
+	}
+	
 }

@@ -164,22 +164,6 @@
 	})
 	});
 
-	//---------addrow---------
-	function addRow(data){
-		var row='<tr id="windmill'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
-				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-		$('tbody').append(row);
-	}
-
 		//---------get update component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
@@ -208,7 +192,7 @@
 		//---------delete component---------
 	$('#component-table').delegate('.btn-delete-component', 'click',function(){
 		var value = $(this).data('id');
-		var url = '{{URL::to('deleteComponent')}}';
+		var url = '{{URL::to('deleteComponentfromTransport')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
 				type : 'delete',

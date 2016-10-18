@@ -53,6 +53,7 @@ Route::delete('/deleteTransport', 'ProjectController@deleteTransport');
 Route::get('/transportphase/id={id}','TransportphaseController@index');
 Route::get('/transport_components/id={id}','Transport_componentsController@index');
 Route::post('/addComponenttoTransport','Transport_componentsController@addComponent');
+Route::delete('/deleteComponentfromTransport','Transport_componentsController@deleteComponent');
 Route::post('/newRequirement','TransportphaseController@newRequirement');
 Route::post('/newChecklist','TransportphaseController@newChecklist');
 
