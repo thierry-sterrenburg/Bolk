@@ -94,6 +94,7 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
+<<<<<<< HEAD
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->loadingdate}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
@@ -101,6 +102,13 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
 									<td/>
 									<td>{{ $transport->remarks}}</td>
+=======
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+>>>>>>> origin/master
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -128,14 +136,6 @@
 		$('#frmTransport').trigger('reset');
 
 		$('#transport').modal('show');
-	})
-
-	//---------add Component---------
-	$('#addComponent').on('click',function(){
-		$('#frmComponent-submit').val('Save');
-		$('#frmComponent').trigger('reset');
-
-		$('#component').modal('show');
 	})
 
 	//---------form Transport---------
@@ -178,52 +178,6 @@
 				}
 				$('#frmTransport').trigger('reset');
 				$('#transportnumber').focus();
-			}
-		});
-	})
-	});
-
-	//---------form Component---------
-	$(function() {
-	$('#frmComponent-submit').on('click', function(e){
-		e.preventDefault();
-		var form=$('#frmComponent');
-		var formData=form.serialize();
-		var url=form.attr('action');
-		var state=$('#frmComponent-submit').val();
-		var type= 'post';
-		if(state=='Update'){
-			type = 'put';
-		}
-		$.ajax({
-			type : type,
-			url : url,
-			data: formData,
-			success:function(data){
-				var row='<tr id="component'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>0</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-				if(state=='Save'){
-					$('#component-table').append(row);
-				}else{
-					$('#component'+data.id).replaceWith(row);
-				}
-				$('#frmComponent').trigger('reset');
-				$('#regnumber').focus();
-				$('#component').modal('toggle');
 			}
 		});
 	})

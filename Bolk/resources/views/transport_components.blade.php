@@ -6,6 +6,15 @@
 	<!--Page Content-->
 	<div id="page-wrapper">
 		<div class="container-fluid">
+            <!--breadcrumbs-->
+            <div class="row">
+            	<ol class="breadcrumb">
+					<li><a href="/projects">Projects</a></li>
+					<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+					<li class="active">{{$transport->transportnumber}}</li>
+				</ol>
+            </div>
+            <!--header-->
 			<div class="row">
 				<h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
 			</div>
@@ -21,9 +30,10 @@
 			<!--add buttons-->
 			<div class="row">
 				@permission(('create-component'))
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponenttoTransport" value="add">Add Component to Transport<span class="badge">+</span></button>
 				@endpermission
 			</div>
+				@include(('addComponenttoTransport'))
 			<!-- Component Table-->
 			<div class="row">
 				<h3>Components</h3>
@@ -101,21 +111,21 @@
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
 	//---------add Component---------
-	$('#addComponent').on('click',function(){
-		$('#frmComponent-submit').val('Save');
-		$('#frmComponent').trigger('reset');
+	$('#addComponenttoTransport').on('click',function(){
+		$('#frmAddComponent-submit').val('Save');
+		$('#frmAddComponent').trigger('reset');
 
-		$('#component').modal('show');
+		$('#addComponent').modal('show');
 	})
 
 	//---------form Component---------
 	$(function() {
-	$('#frmComponent-submit').on('click', function(e){
+	$('#frmAddComponent-submit').on('click', function(e){
 		e.preventDefault();
-		var form=$('#frmComponent');
+		var form=$('#frmAddComponent');
 		var formData=form.serialize();
 		var url=form.attr('action');
-		var state=$('#frmComponent-submit').val();
+		var state=$('#frmAddComponent-submit').val();
 		var type= 'post';
 		if(state=='Update'){
 			type = 'put';
@@ -146,29 +156,13 @@
 				}else{
 					$('#component'+data.id).replaceWith(row);
 				}
-				$('#frmComponent').trigger('reset');
+				$('#frmAddComponent').trigger('reset');
 				$('#componentregnumber').focus();
-				$('#component').modal('toggle');
+				$('#addComponent').modal('toggle');
 			}
 		});
 	})
 	});
-
-	//---------addrow---------
-	function addRow(data){
-		var row='<tr id="windmill'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
-				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-		$('tbody').append(row);
-	}
 
 		//---------get update component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
@@ -198,7 +192,7 @@
 		//---------delete component---------
 	$('#component-table').delegate('.btn-delete-component', 'click',function(){
 		var value = $(this).data('id');
-		var url = '{{URL::to('deleteComponent')}}';
+		var url = '{{URL::to('deleteComponentfromTransport')}}';
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
 				type : 'delete',

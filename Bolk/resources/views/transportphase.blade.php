@@ -3,6 +3,15 @@
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
+            	<!--breadcrumbs-->
+            	<div class="row">
+            		<ol class="breadcrumb">
+						<li><a href="/projects">Projects</a></li>
+						<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+						<li class="active">{{$transport->transportnumber}}</li>
+					</ol>
+            	</div>
+            	<!--header-->
             	<div class="row">
                     <h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
                 </div>
@@ -19,8 +28,13 @@
 				<!--add buttons-->
 				<div class="row">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ChecklistModal" id="addChecklist" value="add">Add Checklist <span class="badge">+</span></button>
 				</div>
+				
+				<br/>
 				@include('newRequirement')
+				@include('newChecklist')
+				
 				<!--Requirement Table-->
 				<div class="row">
 					<table id="requirementtable" class="table table-condensed table-hover">
@@ -91,6 +105,14 @@
 
 				$('#requirement').modal('show');
 			})
+			
+			//---------add Transport---------
+			$('#addChecklist').on('click',function(){
+				$('#frmChecklist-submit').val('Save');
+				$('#frmChecklist').trigger('reset');
+
+				$('#checklist').modal('show');
+			})
 
 			//---------form requirement---------
 			$(function() {
@@ -131,6 +153,33 @@
 						$('#frmRequirement').trigger('reset');
 						$('#name').focus();
 						$('#requirement').modal('toggle');
+					}
+				});
+				})
+			});
+			
+			//---------form checklist---------
+			$(function() {
+				$('#frmChecklist-submit').on('click', function(e){
+				e.preventDefault();
+				var form=$('#frmChecklist');
+				var formData=form.serialize();
+				var url=form.attr('action');
+				var state=$('#frmChecklist-submit').val();
+				var type= 'post';
+				if(state=='Update'){
+					type = 'put';
+				}
+				$.ajax({
+					type : type,
+					url : url,
+					data: formData,
+					success:function(data){
+						
+						$('#frmChecklist').trigger('reset');
+						$('#name').focus();
+						$('#checklist').modal('toggle');
+						location.reload;
 					}
 				});
 				})

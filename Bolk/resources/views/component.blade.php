@@ -7,22 +7,13 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-						<ol class="breadcrumb">
-							<li><a href="/projects">Projects</a></li>
-							<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
-							@if(!is_null($component->mainwindmillid))
-							<li><a href="/windmill/id={{$windmill->id}}">{{$windmill->name}}</a></li>
-							@endif
-							<li class="active">{{$component->name}}</li>
-						</ol>
-                        <h1 class="page-header">{{$component->name}}</h1>
-
-						<!--panel content -->
-                        @include('layouts/projectpanel')
-                        @if(!is_null($component->mainwindmillid))
-						@include('layouts/windmillpanel')
+					<ol class="breadcrumb">
+						<li><a href="/projects">Projects</a></li>
+						<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+						@if(!is_null($component->mainwindmillid))
+						<li><a href="/windmill/id={{$windmill->id}}">{{$windmill->name}}</a></li>
 						@endif
+<<<<<<< HEAD
 						@include('layouts/componentpanel')
 						<!--end panels-->
 
@@ -116,15 +107,112 @@
                     </div>
 
                     <!-- /.col-lg-12 -->
+=======
+						<li class="active">{{$component->name}}</li>
+					</ol>
+				</div>
+				<div class="row">		
+                    <h1 class="page-header">{{$component->name}}</h1>
+>>>>>>> origin/master
                 </div>
-                <!-- /.row -->
+                <!--panel content -->
+                <div class="row">
+                    @include('layouts/projectpanel')
+                    @if(!is_null($component->mainwindmillid))
+					@include('layouts/windmillpanel')
+					@endif
+					@include('layouts/componentpanel')
+				</div>
+				<!--end panels-->
+				<!--add buttons-->
+				<div class="row">	
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="newTransport" value="add">Add New Transport <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport">Add Existing Transport <span class="badge">+</span></button>
+				</div>
+				@include('newTransport')
+				@include('addTransport')
+				<!--end buttons-->
+				<!--transport table-->
+				<div class="row">
+					<h3>Transports</h3>
+				</div>
+				<div class="row">
+					<table id="transportphasetable" class="table table-condensed table-hover">
+						<div class="container">
+						    <div class='col-md-5'>
+						        <div class="form-group">
+						            <div class='input-group date' id='startdatesearch'>
+						                <input type='text' class="form-control" />
+						                <span class="input-group-addon">
+						                    <span class="glyphicon glyphicon-calendar"></span>
+						                </span>
+						            </div>
+						        </div>
+						    </div>
+						    <div class='col-md-5'>
+						        <div class="form-group">
+						            <div class='input-group date' id='enddatesearch'>
+						                <input type='text' class="form-control" />
+						                <span class="input-group-addon">
+						                    <span class="glyphicon glyphicon-calendar"></span>
+						                </span>
+						            </div>
+						        </div>
+						    </div>
+						</div>
+						<thead>
+							<td>#</td>
+							<td>Transport Number</td>
+							<td>Company</td>
+							<td>Truck</td>
+							<td>Trailer</td>
+							<td>Configuration</td>
+							<td>From</td>
+							<td>To</td>
+							<td>Number of Requirements</td>
+							<td>Date of loading</td>
+							<td>Date of Arrival(initial)</td>
+							<td>Date of Arrival(final)</td>
+							<td>Last update</td>
+							<td>Remarks</td>
+						</thead>
+						<tbody id="transport-table">
+							@foreach($transports as $transport)
+								<tr id="transport{{$transport->id}}">
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->truck}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->trailer }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->configuration}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ComponentController::countRequirements($transport->id)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+									<td>
+										@permission(('edit-transport'))
+										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
+										@endpermission
+										@permission(('delete-transport'))
+										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
+										@endpermission
+									</td>
+									<td>{{ $transport->remarks}}</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+				<!-- /.transport table-->
             </div>
             <!-- /.container-fluid -->
         </div>
 		<script type="text/javascript">
 			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-			//---------add Transport---------
-			$('#addTransport').on('click',function(){
+			//---------add new Transport---------
+			$('#newTransport').on('click',function(){
 				$('#frmTransport-submit').val('Save');
 				$('#frmTransport').trigger('reset');
 
@@ -155,6 +243,10 @@
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
+
+			//--------add to existing transport--------
+			$('#addTransport').onclick=function() {
+			}
 
 			//---------from transport---------
 			$(function() {
