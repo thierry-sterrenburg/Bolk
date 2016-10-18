@@ -19,7 +19,7 @@
 					</div>
 					<div class="col-lg-7 col-sm-7">
 					<label class="radio-inline"><input type="radio" name="checklistcmr" value="yes">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistcmr" value="no" value="no">No</label>
 					<label class="radio-inline"><input type="radio" name="checklistcmr" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
@@ -32,9 +32,9 @@
 					Register Address of Loading
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistaddressloading">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistaddressloading">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistaddressloading">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistaddressloading" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistaddressloading" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistaddressloading" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -46,9 +46,9 @@
 					Permit Empty Truck(EN)
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistempty" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistempty" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistempty" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -60,9 +60,9 @@
 					Permit Loaded Truck(EN)
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistloaded" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistloaded" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistloaded" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -74,9 +74,9 @@
 					Nachtrag, Par 70
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistpar70" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistpar70" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistpar70" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -88,9 +88,9 @@
 					Trailer papers/SERT
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistsert" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistsert" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistsert" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -102,9 +102,9 @@
 					Route Report
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistroute" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistroute" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistroute" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -116,9 +116,9 @@
 					VLM
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistvlm" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistvlm" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistvlm" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -130,9 +130,9 @@
 					Escort
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistescort" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistescort" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistescort" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -144,9 +144,9 @@
 					Registered by the Police
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistpolice" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistpolice" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistpolice" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -158,9 +158,9 @@
 					Ferry Booked
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistferry" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistferry" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistferry" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -172,9 +172,9 @@
 					Register Address of Arrival
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistaddressarrival" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistaddressarrival" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistaddressarrival" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -186,9 +186,9 @@
 					Remarks 1
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
@@ -200,9 +200,9 @@
 					Remarks 2
 					</div>
 					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistcmr">Not Applicable</label></div>
+					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="yes">Yes</label>
+					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="no">No</label>
+					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="notapplicable" checked>Not Applicable</label></div>
 					</div>
 				</div>
 			</div>
