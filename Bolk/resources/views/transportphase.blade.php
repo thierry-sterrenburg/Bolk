@@ -158,6 +158,33 @@
 				})
 			});
 			
+			//---------form checklist---------
+			$(function() {
+				$('#frmChecklist-submit').on('click', function(e){
+				e.preventDefault();
+				var form=$('#frmChecklisr');
+				var formData=form.serialize();
+				var url=form.attr('action');
+				var state=$('#frmChecklist-submit').val();
+				var type= 'post';
+				if(state=='Update'){
+					type = 'put';
+				}
+				$.ajax({
+					type : type,
+					url : url,
+					data: formData,
+					success:function(data){
+						
+						$('#frmRequirement').trigger('reset');
+						$('#name').focus();
+						$('#requirement').modal('toggle');
+						location.reload;
+					}
+				});
+				})
+			});
+			
 			//---------get update requirement---------
 			$('#requirement-table').delegate('.btn-edit-requirement','click',function(){
 			document.getElementById("error_message").innerHTML = '';
