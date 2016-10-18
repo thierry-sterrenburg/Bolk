@@ -100,7 +100,7 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
 									<td/>
-									<td>{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>

@@ -75,14 +75,17 @@
 							<td>To</td>
 							<td>Number of Requirements</td>
 							<td>Date of loading</td>
-							<td>Date of Arrival(initial)</td>
-							<td>Date of Arrival(final)</td>
+							<td>Desired arrival</td>
+							<td>Estimated arrival</td>
+							<td>Planned arrival</td>
+							<td>Actual arrival</td>
 							<td>Last update</td>
 							<td>Remarks</td>
+							<td/>
 						</thead>
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
-								<tr id="transport{{$transport->id}}">
+								<tr>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
@@ -92,9 +95,13 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ComponentController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->loadingdate}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
+									<td/>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -103,7 +110,6 @@
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
 									</td>
-									<td>{{ $transport->remarks}}</td>
 								</tr>
 							@endforeach
 						</tbody>
