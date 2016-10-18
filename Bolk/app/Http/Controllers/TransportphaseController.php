@@ -31,7 +31,7 @@ class TransportphaseController extends Controller
    public function newChecklist(Request $request){
 	   if($request->ajax()){
 		   $this->checkInputChecklist($request);
-		   return response();
+		   //return response();
 	   }
    }
    
@@ -108,5 +108,183 @@ class TransportphaseController extends Controller
 		   $requirement->responsibleplanner ='Admin';
 		   $requirement->save();
 	   }
+	   
+	   if($request->checklistaddressloading == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Register Address of Loading';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistaddressloading == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Register Address of Loading';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	   if($request->checklistempty == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Permit Empty Truck(EN)';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistempty == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Permit Empty Truck(EN)';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistloaded == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Permit Loaded Truck(EN)';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistempty == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Permit Loaded Truck(EN)';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistpar70 == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Nachtrag Par. 70';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistpar70 == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Nachtrag Par. 70';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistsert == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Trailer papers/SERT';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistsert == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Trailer papers/SERT';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistroute == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Route Report';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistroute == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Route Report';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistvlm == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='VLM';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistvlm == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='VLM';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistescort == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Escort';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistescort == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Escort';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistpolice == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Registered by the Police';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistpolice == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Registered by the Police';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistferry == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Ferry Booked';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistferry == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Ferry Booked';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	    if($request->checklistaddressarrival == 'yes'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'yes';
+		   $requirement->name='Register Address of Arrival';
+		   $requirement->responsibleplanner='Admin';
+		   $requirement->save();
+	   }else if($request->checklistaddressarrival == 'no'){
+		   $requirement = new Requirement();
+		   $requirement->transportid=$request->transportid;
+		   $requirement->booked = 'no';
+		   $requirement->name ='Register Address of Arrival';
+		   $requirement->responsibleplanner ='Admin';
+		   $requirement->save();
+	   }
+	   
+	   
    }
 }

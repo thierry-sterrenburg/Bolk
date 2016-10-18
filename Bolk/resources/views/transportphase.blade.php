@@ -162,7 +162,7 @@
 			$(function() {
 				$('#frmChecklist-submit').on('click', function(e){
 				e.preventDefault();
-				var form=$('#frmChecklisr');
+				var form=$('#frmChecklist');
 				var formData=form.serialize();
 				var url=form.attr('action');
 				var state=$('#frmChecklist-submit').val();

@@ -178,37 +178,7 @@
 					</div>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-lg-12 col-sm-12">
-				<div class="form-group">
-					<div class="col-lg-5 col-sm-5">
-					Remarks 1
-					</div>
-					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="yes">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="no">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistremarks1" value="notapplicable" checked>Not Applicable</label></div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-12 col-sm-12">
-				<div class="form-group">
-					<div class="col-lg-5 col-sm-5">
-					Remarks 2
-					</div>
-					<div class="col-lg-7 col-sm-7">
-					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="yes">Yes</label>
-					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="no">No</label>
-					<label class="radio-inline"><input type="radio" name="checklistremarks2" value="notapplicable" checked>Not Applicable</label></div>
-					</div>
-				</div>
-			</div>
-			
-			
-			
+						
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
 			<input type="hidden" name="transportid" id="id" value="{{$transport->id}}">
