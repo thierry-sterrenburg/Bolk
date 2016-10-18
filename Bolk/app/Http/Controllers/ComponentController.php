@@ -20,7 +20,8 @@ class ComponentController extends Controller
         $component = Component::where('id','=',$id)->first();
     	$windmill = Windmill::where('id', '=', $component->mainwindmillid)->first();
     	$project = Project::where('id', '=',  $component->projectid)->first();
-    	return view('/component', ['transports' => $transports, 'component' => $component, 'windmill' => $windmill, 'project' => $project]);
+    	$allTransports = Transport::where('projectid','=',$project->id)->get();
+    	return view('/component', ['transports' => $transports, 'component' => $component, 'windmill' => $windmill, 'project' => $project, 'allTransports'=>$allTransports]);
     }
 
     public static function countTransports($componentid) {
@@ -32,6 +33,16 @@ class ComponentController extends Controller
 		$numberofRequirements = Requirement::where('transportid','=',$transportid)->count();
 		return $numberofRequirements;
 	}
+
+	public function addTransport(Request $request) {
+		if($request->ajax()) {
+			$component_transport = new Component_Transport();
+			$component_transport->componentid = $request->componentid;
+			$component_transport->transportid = $request->transportid;
+			return response()->json($component_transport);
+		}
+	}
+
 	public function newTransport(Request $request){
 	   if($request->ajax()){
 		   $transport = new Transport();
