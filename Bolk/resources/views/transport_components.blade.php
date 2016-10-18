@@ -6,6 +6,15 @@
 	<!--Page Content-->
 	<div id="page-wrapper">
 		<div class="container-fluid">
+            <!--breadcrumbs-->
+            <div class="row">
+            	<ol class="breadcrumb">
+					<li><a href="/projects">Projects</a></li>
+					<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+					<li class="active">{{$transport->transportnumber}}</li>
+				</ol>
+            </div>
+            <!--header-->
 			<div class="row">
 				<h1 class="page-header">Transport {{$transport->transportnumber}}</h1>
 			</div>
