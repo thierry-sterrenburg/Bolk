@@ -13,107 +13,11 @@
 						@if(!is_null($component->mainwindmillid))
 						<li><a href="/windmill/id={{$windmill->id}}">{{$windmill->name}}</a></li>
 						@endif
-<<<<<<< HEAD
-						@include('layouts/componentpanel')
-						<!--end panels-->
-
-						<br>
-
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add Transportphase <span class="badge">+</span></button>
-						<br>
-						@include('newTransport')
-						@permission(('read-transport'))
-
-						<br>
-
-						<table id="transportphasetable" class="table table-condensed table-hover">
-							<div class="container">
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='startdatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='enddatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							</div>
-							<thead>
-								<td>#</td>
-								<td>Transport Number</td>
-								<td>Company</td>
-								<td>Truck</td>
-								<td>Trailer</td>
-								<td>Configuration</td>
-								<td>From</td>
-								<td>To</td>
-								<td>Number of Requirements</td>
-								<td>Date of loading</td>
-								<td>Desired arrival</td>
-								<td>Estimated arrival</td>
-								<td>Planned arrival</td>
-								<td>Actual arrival</td>
-								<td>Last update</td>
-								<td>Remarks</td>
-								<td/>
-							</thead>
-
-							<tbody id="transport-table">
-								@foreach($transports as $transport)
-									<tr id="transport{{$transport->id}}">
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->truck}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->trailer }}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->configuration}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ComponentController::countRequirements($transport->id)}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->loadingdate}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
-										<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-										<td/>
-										<td>{{ $transport->remarks}}</td>
-										<td>
-											@permission(('edit-transport'))
-											<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
-											@endpermission
-											@permission(('delete-transport'))
-											<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
-											@endpermission
-										</td>
-									</tr>
-								@endforeach
-
-							</tbody>
-
-						</table>
-						@endpermission
-
-                    </div>
-
-                    <!-- /.col-lg-12 -->
-=======
 						<li class="active">{{$component->name}}</li>
 					</ol>
 				</div>
 				<div class="row">		
                     <h1 class="page-header">{{$component->name}}</h1>
->>>>>>> origin/master
                 </div>
                 <!--panel content -->
                 <div class="row">
