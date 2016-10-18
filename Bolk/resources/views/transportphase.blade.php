@@ -28,8 +28,13 @@
 				<!--add buttons-->
 				<div class="row">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ChecklistModal" id="addChecklist" value="add">Add Checklist <span class="badge">+</span></button>
 				</div>
+				
+				<br/>
 				@include('newRequirement')
+				@include('newChecklist')
+				
 				<!--Requirement Table-->
 				<div class="row">
 					<table id="requirementtable" class="table table-condensed table-hover">
@@ -99,6 +104,14 @@
 				$('#frmRequirement').trigger('reset');
 
 				$('#requirement').modal('show');
+			})
+			
+			//---------add Transport---------
+			$('#addChecklist').on('click',function(){
+				$('#frmChecklist-submit').val('Save');
+				$('#frmChecklist').trigger('reset');
+
+				$('#checklist').modal('show');
 			})
 
 			//---------form requirement---------
