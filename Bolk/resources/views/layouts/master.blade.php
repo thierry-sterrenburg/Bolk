@@ -105,24 +105,11 @@
                         <a href="/login"><i class="fa fa-sign-in"></i> Log in</a>
                       </li>
                       @else
-                        <li>
-                            <a href="/index"><i class="fa fa-home fa-fw"></i> Home</a>
-                        </li>
-                        <li>
-                            <a href="/projects"><i class="fa fa-truck fa-fw"></i>  Projects</a>
-                        </li>
-                        <li>
-                            <a href="/closestdeadlines"><i class="fa fa-clock-o fa-fw"></i>  Deadlines</a>
-                        </li>
-                        @role(('admin'))
-                        <li>
-                            <a href="/administration"><i class="fa fa-gears fa-fw"></i> Administration</a>
-                        </li>
-                        @endrole
+                        <div id="tree"/>
+                      @include('partials.nav')
                       @endif
                     </ul>
                 </div>
-                @include('partials.nav')
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->

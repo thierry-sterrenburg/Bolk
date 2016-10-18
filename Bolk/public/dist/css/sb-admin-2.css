@@ -115,7 +115,8 @@ body {
 }
 
 .sidebar .nav-second-level li,
-.sidebar .nav-third-level li {
+.sidebar .nav-third-level li,
+.sidebar .nav-fourth-level li {
     border-bottom: 0!important;
 }
 
@@ -125,6 +126,10 @@ body {
 
 .sidebar .nav-third-level li a {
     padding-left: 52px;
+}
+
+.sidebar .nav-fourth-level li a {
+    padding-left: 67px;
 }
 
 @media(min-width:768px) {

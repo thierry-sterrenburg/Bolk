@@ -2,19 +2,7 @@
 use app\Providers\AppServiceProvider;
 use app\Http\Controllers\NavController;
 ?>
-<div class="row">
-	<div class="col-sm-12">
-    	<label for="treeview"></label>
-    	<div id="tree"/>
-    	{{--
-   	@foreach($projectsoverview as $project => $name)
-    	<div>{{$project}}</div>
-    	@endforeach
-    	--}}
-  	
-  		</div>
-	</div>
-</div>
+
 <!-- custom Treeview code 
 <script type="text/javascript" src="{{ asset('js/Treeview/Treeview.js') }}"></script>
 -->
@@ -24,6 +12,18 @@ use app\Http\Controllers\NavController;
   	// Some logic to retrieve, or generate tree structure 
   
   	var tree = [ 
+  	{
+  		text: "Home",
+  		icon: "fa fa-home fa-fw",
+  		href: "/index"
+  	},
+  	{
+  		text: "Overview",
+  		icon: "fa fa-truck",
+  		href: "/projects",
+  		nodes:
+  		[
+  	
   		  		
 		<?php
 		$sizeP = count($projectsoverview);
@@ -83,9 +83,6 @@ use app\Http\Controllers\NavController;
 				}
 				}
 				$indexW ++;
-				echo'
-				//W:'.$indexW.'
-				';
 			}
 
 			$indexC = 1;
@@ -124,15 +121,33 @@ use app\Http\Controllers\NavController;
 		
 		if($indexP == $sizeP){
 			echo '
-			}
-			]';
+			}';
 		}else{
 			echo '
 			},';
 			$indexP ++;
 		}
 	}
-		?>;
+	?>
+	]
+	},
+	{
+		text: "Deadlines",
+		icon: "fa fa-clock-o fa-fw",
+		href: "/closestdeadlines"
+	}
+	<?php
+	if(Entrust::hasRole('admin')){
+		echo '
+	,
+	{
+		text: "Administration",
+		icon: "fa fa-gears fa-fw",
+		href: "/Administration"
+	}';
+	}
+	?>
+	]
 	return tree;
 	}
  
