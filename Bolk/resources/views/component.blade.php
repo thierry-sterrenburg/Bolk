@@ -126,8 +126,8 @@
 				<!--end panels-->
 				<!--add buttons-->
 				<div class="row">	
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="newTransport" value="add">Add New Transport <span class="badge">+</span></button>
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport">Add Existing Transport <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add New Transport <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransportToComponent" value="add">Add Existing Transport <span class="badge">+</span></button>
 				</div>
 				@include('newTransport')
 				@include('addTransport')
@@ -212,7 +212,7 @@
 		<script type="text/javascript">
 			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 			//---------add new Transport---------
-			$('#newTransport').on('click',function(){
+			$('#addTransport').on('click',function(){
 				$('#frmTransport-submit').val('Save');
 				$('#frmTransport').trigger('reset');
 
@@ -245,8 +245,12 @@
 			});
 
 			//--------add to existing transport--------
-			$('#addTransport').onclick=function() {
-			}
+			$('#addTransportToComponent').on('click',function(){
+				$('#frmAddTransport-submit').val('Save');
+				$('#frmAddTransport').trigger('reset');
+
+				$('#addTransport').modal('show');
+			})
 
 			//---------from transport---------
 			$(function() {

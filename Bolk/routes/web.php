@@ -49,6 +49,7 @@ Route::post('/newTransport','ProjectController@newTransport');
 Route::get('/getUpdateTransport', 'ProjectController@getUpdateTransport');
 Route::put('/newTransport', 'ProjectController@newUpdateTransport');
 Route::delete('/deleteTransport', 'ProjectController@deleteTransport');
+Route::post('/addTransportToComponent', 'ComponentController@addTransport');
 
 Route::get('/transportphase/id={id}','TransportphaseController@index');
 Route::get('/transport_components/id={id}','Transport_componentsController@index');
