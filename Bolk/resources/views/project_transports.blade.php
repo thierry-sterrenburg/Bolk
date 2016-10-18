@@ -69,13 +69,16 @@
 							<td>Configuration</td>
 							<td>From</td>
 							<td>To</td>
+							<td>Number of Components</td>
 							<td>Number of Requirements</td>
 							<td>Date of loading</td>
-							<td>Date of Arrival(initial)</td>
-							<td>Date of Arrival(final)</td>
+							<td>Desired arrival</td>
+							<td>Estimated arrival</td>
+							<td>Planned arrival</td>
+							<td>Actual arrival</td>
 							<td>Last update</td>
 							<td>Remarks</td>
-							<td></td>
+							<td/>
 						</thead>
 
 						<tbody id="transport-table">
@@ -91,11 +94,13 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofloading}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalinitial}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateofarrivalfinal}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';"></td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->loadingdate}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
+									<td/>
+									<td>{{ $transport->remarks}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>

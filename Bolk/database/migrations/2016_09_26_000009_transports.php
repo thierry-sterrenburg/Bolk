@@ -25,9 +25,11 @@ class Transports extends Migration
 			$table->string('configuration')->nullable();
 			$table->string('from')->nullable();
 			$table->string('to')->nullable();
-			$table->datetime('dateofloading')->nullable();
-			$table->datetime('dateofarrivalinitial')->nullable();
-			$table->datetime('dateofarrivalfinal')->nullable();
+			$table->datetime('loadingdate')->nullable();
+            $table->datetime('datedesired')->nullable();
+            $table->datetime('dateestimated')->nullable();
+            $table->datetime('dateplanned')->nullable();
+            $table->datetime('dateactual')->nullable();
 			$table->longText('remarks')->nullable();
 
             $table->timestamps();
