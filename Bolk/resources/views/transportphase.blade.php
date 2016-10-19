@@ -36,7 +36,7 @@
 				@include('newChecklist')
 				
 				<!--Requirement Table-->
-				<div class="row">
+				<div class="row" id="tablecontainer">
 					<table id="requirementtable" class="table table-condensed table-hover">
 						<div class="container">
 						    <div class='col-md-5'>
@@ -71,6 +71,7 @@
 							<td>Responsible planner</td>
 							<td>Last update</td>
 							<td>Remarks</td>
+							<td></td>
 						</thead>
 						<tbody id="requirement-table">
 							@foreach($requirements as $requirement)
@@ -83,10 +84,12 @@
 									<td>{{ $requirement->enddate }}</td>
 									<td>{{ $requirement->booked }}</td>
 									<td>{{ $requirement->responsibleplanner }}</td>
+									<td>{{ $requirement->updated_at }}</td>
+									<td>{{ $requirement->remarks }}</td>
 									<td>
 										<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
 										<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
-									<td>{{ $requirement->remaks }}</td>
+									
 								</tr>
 							@endforeach
 						</tbody>
@@ -131,10 +134,11 @@
 					url : url,
 					data: formData,
 					success:function(data){
-						
+					
 						$('#frmRequirement').trigger('reset');
 						$('#name').focus();
-						$( "#requirementtable" ).load( "/transportphase/id="+data.transportid+" #requirementtable" );
+						$("#tablecontainer" ).load( "/transportphase/id="+data.transportid+" #tablecontainer" );
+						
 						$('#requirement').modal('toggle');
 					}
 				});
