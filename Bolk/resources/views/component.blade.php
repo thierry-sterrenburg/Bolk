@@ -180,18 +180,18 @@
 					data: formData,
 					success:function(data){
 						var row='<tr id="transport'+data.id+'">'+
-						'<td>'+ data.id +'</td>'+
-						'<td>'+ data.transportnumber +'</td>'+
-						'<td>'+ data.company +'</td>'+
-						'<td>'+ data.truck +'</td>'+
-						'<td>'+ data.trailer +'</td>'+
-						'<td>'+ data.configuration +'</td>'+
-						'<td>'+ data.from +'</td>'+
-						'<td>'+ data.to +'</td>'+
-						'<td>0</td>'+
-						'<td>'+ data.dateofloading +'</td>'+
-						'<td>'+ data.dateofarrivalinitial +'</td>'+
-						'<td>'+ data.dateofarrivalfinal +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.id +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.transportnumber +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.company +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.truck +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.trailer +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.configuration +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.from +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.to +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">0</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofloading +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalinitial +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalfinal +'</td>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
