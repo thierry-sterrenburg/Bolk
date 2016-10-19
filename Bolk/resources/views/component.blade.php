@@ -185,13 +185,15 @@
 						'<td>'+ data.company +'</td>'+
 						'<td>'+ data.truck +'</td>'+
 						'<td>'+ data.trailer +'</td>'+
+						'<td>'+ data.configuration +'</td>'+
 						'<td>'+ data.from +'</td>'+
+						'<td>'+ data.to +'</td>'+
 						'<td>0</td>'+
 						'<td>'+ data.dateofloading +'</td>'+
 						'<td>'+ data.dateofarrivalinitial +'</td>'+
 						'<td>'+ data.dateofarrivalfinal +'</td>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-						'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
 						if(state=='Save'){
 							$('#transportphasetable').append(row);
