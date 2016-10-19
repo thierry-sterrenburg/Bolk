@@ -122,16 +122,16 @@
 			data: formData,
 			success:function(data){
 				var row='<tr id="project'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>0</td>'+
-				'<td>0</td>'+
-				'<td>0</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.id +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.regnumber +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.name +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.location +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">0</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">0</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">0</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.startdate +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.enddate +'</td>'+
+				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
