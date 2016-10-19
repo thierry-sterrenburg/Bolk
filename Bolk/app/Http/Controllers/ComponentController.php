@@ -40,7 +40,8 @@ class ComponentController extends Controller
 			$component_transport->componentid = $request->componentid;
 			$component_transport->transportid = $request->transportid;
 			$component_transport->save();
-			return response()->json($component_transport);
+			$transportrow = Transport::where('id','=',$request->transportid)->first();
+			return response()->json($transportrow);
 		}
 	}
 
@@ -118,25 +119,15 @@ class ComponentController extends Controller
 		   }else{
 			   $transport->dateofloading=$request->loadingdate;
 		   }
-		    if($request->datedesired == ''){
-			   $transport->datedesired=null;
+		    if($request->initialdatearrival == ''){
+			   $transport->dateofarrivalinitial=null;
 		   }else{
-			   $transport->datedesired=$request->datedesired;
+			   $transport->dateofarrivalinitial=$request->initialdatearrival;
 		   }
-		    if($request->dateplanned == ''){
-			   $transport->dateplanned=null;
+		    if($request->finaldatearrival == ''){
+			   $transport->dateofarrivalfinal=null;
 		   }else{
-			   $transport->dateplanned=$request->dateplanned;
-		   }
-		    if($request->dateestimated == ''){
-			   $transport->dateestimated=null;
-		   }else{
-			   $transport->dateestimated=$request->dateestimated;
-		   }
-		    if($request->dateactual == ''){
-			   $transport->dateactual=null;
-		   }else{
-			   $transport->dateactual=$request->dateactual;
+			   $transport->dateofarrivalfinal=$request->initialdatefinal;
 		   }
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;

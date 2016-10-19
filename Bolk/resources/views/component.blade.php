@@ -182,21 +182,39 @@
 					var url=form.attr('action');
 					var state=$('#frmAddTransport-submit').val();
 					var type='post';
-					if(state=='Update'){
-						type='put';
-					}
 					$.ajax({
 						type : type,
 						url : url,
 						data : formData,
-						succes:function(data){
+						success:function(data){
+						var row='<tr id="transport'+data.id+'">'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.id +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.transportnumber +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.company +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.truck +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.trailer +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.configuration +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.from +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.to +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">0</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofloading +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalinitial +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalfinal +'</td>'+
+						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
+						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+						'</tr>';
+						if(state=='Save'){
+							$('#transportphasetable').append(row);
+						}else{
+							$('#transport'+data.id).replaceWith(row);
+						}
 							$('#frmAddTransport').trigger('reset');
 							$('#transportnumber').focus();
 							$('#addTransportModal').modal('toggle');
 						}
-					})
-				})
-			})
+					});
+				});
+			});
 
 			//---------form transport---------
 			$(function() {

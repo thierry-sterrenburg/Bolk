@@ -1,3 +1,6 @@
+<?php
+  use App\Http\Controllers\ComponentController;
+?>
 <!-- Modal -->
   <div class="modal fade" id="addTransportModal" role="dialog">
     <div class="modal-dialog">  

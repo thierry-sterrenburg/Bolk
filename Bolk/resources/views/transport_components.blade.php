@@ -118,6 +118,7 @@
 		$('#addComponent').modal('show');
 	})
 
+
 	//---------form Component---------
 	$(function() {
 	$('#frmAddComponent-submit').on('click', function(e){
