@@ -138,11 +138,13 @@
 				'<td>'+ data.regnumber +'</td>'+
 				'<td>'+ data.name +'</td>'+
 				'<td>'+ data.location +'</td>'+
+				'<td>0</td>'+
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
+				'<td></td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-windmill" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-windmill="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+				'<button class="btn btn-danger btn-delete-windmill"  data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#windmill-table').append(row);
@@ -155,22 +157,6 @@
 		});
 	})
 	});
-
-	//---------addrow---------
-	function addRow(data){
-		var row='<tr id="windmill'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
-				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-		$('tbody').append(row);
-	}
 
 	//---------get update windmill---------
 	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
