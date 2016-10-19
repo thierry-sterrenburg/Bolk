@@ -1,5 +1,5 @@
   <!-- Modal -->
-  <div class="modal fade" id="addTransport" role="dialog">
+  <div class="modal fade" id="addTransportModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->

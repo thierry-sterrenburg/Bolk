@@ -159,10 +159,10 @@
 				$('#frmAddTransport-submit').val('Save');
 				$('#frmAddTransport').trigger('reset');
 
-				$('#addTransport').modal('show');
+				$('#addTransportModal').modal('show');
 			})
 
-			//---------from transport---------
+			//---------form transport---------
 			$(function() {
 				$('#frmTransport-submit').on('click', function(e){
 				e.preventDefault();

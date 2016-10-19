@@ -21,7 +21,7 @@
 
 						  <div class="panel-body">
 	@include('newProject')
-	<table id=projectdatatable class="table table-condensed table-hover">
+	<table id="projectdatatable" class="table table-condensed table-hover">
 		<div class="container">
 		    <div class='col-md-5'>
 		        <div class="form-group">
