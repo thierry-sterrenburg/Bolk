@@ -126,6 +126,9 @@
 				'<td>'+ data.regnumber +'</td>'+
 				'<td>'+ data.name +'</td>'+
 				'<td>'+ data.location +'</td>'+
+				'<td>0</td>'+
+				'<td>0</td>'+
+				'<td>0</td>'+
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
