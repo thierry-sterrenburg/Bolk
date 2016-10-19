@@ -96,7 +96,7 @@
 				$table.DataTable({
 					"scrollX": true,
 					responsive: true,
-					dom: 'Bfrtip',
+					dom: 'B<"clear">lfrtip',
 					buttons: [
 						'excel', 'pdf', 'print', 
 						{

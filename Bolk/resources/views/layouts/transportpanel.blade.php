@@ -37,8 +37,10 @@
 											</tr>
 											<tr>
 												<td colspan="1"><u>Date of loading:</u> {{$transport->dateofloading}}</td>
-												<td colspan="1"><u>Date initial arrival:</u>{{$transport->dateofarrivalinitial}}</td>
-												<td colspan="1"><u>Date final arrival:</u>{{$transport->dateofarrivalfinal}}</td>
+												<td colspan="1"><u>Desired arrival:</u>{{$transport->datedesired}}</td>
+												<td colspan="1"><u>Estimated arrival:</u>{{$transport->dateestimated}}</td>
+												<td colspan="1"><u>Planned arrival:</u>{{$transport->dateplanned}}</td>
+												<td colspan="1"><u>Actual arrival:</u>{{$transport->dateactual}}</td>
 											</tr>
 											<tr>
 												<td colspan="3"><u>Number of Requirements:{{ComponentController::countRequirements($transport->id)}}</u></td>

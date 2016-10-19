@@ -117,15 +117,25 @@ class ComponentController extends Controller
 		   }else{
 			   $transport->dateofloading=$request->loadingdate;
 		   }
-		    if($request->initialdatearrival == ''){
-			   $transport->dateofarrivalinitial=null;
+		    if($request->datedesired == ''){
+			   $transport->datedesired=null;
 		   }else{
-			   $transport->dateofarrivalinitial=$request->initialdatearrival;
+			   $transport->datedesired=$request->datedesired;
 		   }
-		    if($request->finaldatearrival == ''){
-			   $transport->dateofarrivalfinal=null;
+		    if($request->dateplanned == ''){
+			   $transport->dateplanned=null;
 		   }else{
-			   $transport->dateofarrivalfinal=$request->initialdatefinal;
+			   $transport->dateplanned=$request->dateplanned;
+		   }
+		    if($request->dateestimated == ''){
+			   $transport->dateestimated=null;
+		   }else{
+			   $transport->dateestimated=$request->dateestimated;
+		   }
+		    if($request->dateactual == ''){
+			   $transport->dateactual=null;
+		   }else{
+			   $transport->dateactual=$request->dateactual;
 		   }
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;

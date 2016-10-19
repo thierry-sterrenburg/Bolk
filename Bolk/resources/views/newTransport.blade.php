@@ -79,8 +79,8 @@
 				
 				<div class="col-lg-4 col-sm-4">
 					<div class="form-group">
-						<div class='input-group date' id='initialdatepicker'>
-							<input type='text' class="form-control" name="initialdatearrival" id="initialdatearrival" placeholder="Initial Date of Arrival" />
+						<div class='input-group date' id='desireddatepicker'>
+							<input type='text' class="form-control" name="datedesired" id="datedesired" placeholder="Desired arrival" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -89,8 +89,28 @@
 				</div>
 				<div class="col-lg-4 col-sm-4">
 					<div class="form-group">
-						<div class='input-group date' id='finaldatepicker'>
-							<input type='text' class="form-control" name="finaldatearrival" id="finaldatearrival" placeholder="Final Date of Arrival" class="form-control"/>
+						<div class='input-group date' id='estimateddatepicker'>
+							<input type='text' class="form-control" name="dateestimated" id="dateestimated" placeholder="Estimated arrival" class="form-control"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-4">
+					<div class="form-group">
+						<div class='input-group date' id='planneddatepicker'>
+							<input type='text' class="form-control" name="dateplanned" id="dateplanned" placeholder="planned arrival" />
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-4">
+					<div class="form-group">
+						<div class='input-group date' id='actualdatepicker'>
+							<input type='text' class="form-control" name="dateactual" id="dateactual" placeholder="Actual arrival" class="form-control"/>
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>
@@ -116,7 +136,7 @@
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmTransport-submit" value="Save" id="frmTransport-submit" class="btn btn-primary">
+			<input type="submit" name="frmTransport-submit" value="Save" id="frmTransport-submit" class="btn btn-primary" onclick="validator()">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

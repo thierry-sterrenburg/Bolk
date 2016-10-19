@@ -157,8 +157,10 @@
 				'<td>'+ data.from +'</td>'+
 				'<td>'+ data.to +'</td>'+
 				'<td>'+ data.dateofloading +'</td>'+
-				'<td>'+ data.dateofarrivalinitial +'</td>'+
-				'<td>'+ data.dateofarrivalfinal +'</td>'+
+				'<td>'+ data.datedesired +'</td>'+
+				'<td>'+ data.dateestimated +'</td>'+
+				'<td>'+ data.dateplanned +'</td>'+
+				'<td>'+ data.dateactual +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
@@ -190,8 +192,10 @@
 				'<td>0</td>'+
 				'<td>0</td>'+
 				'<td>'+ data.dateofloading +'</td>'+
-				'<td>'+ data.dateofarrivalinitial +'</td>'+
-				'<td>'+ data.dateofarrivalfinal +'</td>'+
+				'<td>'+ data.datedesired +'</td>'+
+				'<td>'+ data.dateestimated +'</td>'+
+				'<td>'+ data.dateplanned +'</td>'+
+				'<td>'+ data.dateactual +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-transport" data-id"'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
@@ -217,8 +221,10 @@
 				$('#from').val(data.from);
 				$('#to').val(data.to);
 				$('#dateofloading').val(data.dateofloading);
-				$('#dateofarrivalinitial').val(data.dateofarrivalinitial);
-				$('#dateofarrivalfinal').val(data.dateofarrivalfinal);
+				$('#datedesired').val(data.datedesired);
+				$('#dateestimated').val(data.dateestimated);
+				$('#dateplanned').val(data.dateplanned);
+				$('#dateactual').val(data.dateactual);
 				$('#remarks').val(data.remarks);
 				$('#frmTransport-submit').val('Update');
 				$('#transport').modal('show');
@@ -244,42 +250,51 @@
 	});
 
 	$(function () {
-        $('#startdatepicker').datetimepicker({
+        $('#loadingdatepicker').datetimepicker({
 			sideBySide: true,
 			format: 'YYYY-MM-DD HH:mm'});
 
 
-        $('#enddatepicker').datetimepicker({
+        $('#desireddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'
-			});
-        $("#startdatepicker").on("dp.change", function (e) {
-            $('#enddatepicker').data("DateTimePicker").minDate(e.date);
+			format: 'YYYY-MM-DD HH:mm'});
+
+        $('#estimateddatepicker').datetimepicker({
+			useCurrent: false,
+			sideBySide: true,
+			format: 'YYYY-MM-DD HH:mm'});
+
+        $('#planneddatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'YYYY-MM-DD HH:mm'});
+
+        $('#actualdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'YYYY-MM-DD HH:mm'});
+
+        $("#loadingdatepicker").on("dp.change", function (e) {
+            $('#desireddatepicker').data("DateTimePicker").minDate(e.date);
         });
-        $("#enddatepicker").on("dp.change", function (e) {
-            $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
+        $("#desireddatepicker").on("dp.change", function (e) {
+            $('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
         });
+        
     });
 
 	function validator() {
     var x,y,text;
 
     // Get the value of the input field with id="regnumber"
-    x = document.getElementById("regnumber").value;
-	y = document.getElementById("name").value;
+    x = document.getElementById("transportnumber").value;
 
     // If x is Not a Number or less than one or greater than 10
     if (x == "") {
-        text = "Regnumber must be filled in.";
+        text = "Transportnumber must be filled in.";
     }
-	if (y == ""){
-		if(text!=null){
-			text = text+"<br/>";
-		}
-        text = text+"Name must be filled in.";
-    }
-	if(x != "" && y != ""){
+	if(x != ""){
 		$('#transport').modal('toggle');
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';

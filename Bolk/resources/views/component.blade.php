@@ -134,22 +134,32 @@
 					sideBySide: true,
 					format: 'YYYY-MM-DD HH:mm'});
 
-				$('#initialdatepicker').datetimepicker({
+				$('#desireddatepicker').datetimepicker({
 					useCurrent: false, //Important! See issue #1075
 					sideBySide: true,
 					format: 'YYYY-MM-DD HH:mm'
 					});
-				$('#finaldatepicker').datetimepicker({
+				$('#estimateddatepicker').datetimepicker({
+					useCurrent: false, //Important! See issue #1075
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'
+					});
+				$('#planneddatepicker').datetimepicker({
+					useCurrent: false, //Important! See issue #1075
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'
+					});
+				$('#actualdatepicker').datetimepicker({
 					useCurrent: false, //Important! See issue #1075
 					sideBySide: true,
 					format: 'YYYY-MM-DD HH:mm'
 					});
 
 				$("#loadingdatepicker").on("dp.change", function (e) {
-					$('#finaldatepicker').data("DateTimePicker").minDate(e.date);
+					$('#desireddatepicker').data("DateTimePicker").minDate(e.date);
 
 				});
-				$("#finaldatepicker").on("dp.change", function (e) {
+				$("#desireddatepicker").on("dp.change", function (e) {
 				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
 				});
 			});
@@ -252,6 +262,23 @@
 					});
 				}
 			});
+
+			function validator() {
+			    var x,y,text;
+
+			    // Get the value of the input field with id="regnumber"
+			    x = document.getElementById("transportnumber").value;
+
+			    // If x is Not a Number or less than one or greater than 10
+			    if (x == "") {
+			        text = "Transportnumber must be filled in.";
+			    }
+				if(x != ""){
+					$('#transport').modal('toggle');
+				}else{
+					document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+				}
+			}
 		</script>
         <!-- /#page-wrapper -->
         <!-- Datatable script-->
