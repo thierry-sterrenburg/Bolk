@@ -131,27 +131,10 @@
 					url : url,
 					data: formData,
 					success:function(data){
-						var row='<tr id="requirement'+data.id+'">'+
-						'<td>'+ data.id +'</td>'+
-						'<td>'+ data.name +'</td>'+
-						'<td>'+ data.country +'</td>'+
-						'<td></td>'+
-						'<td>'+ data.startdate +'</td>'+
-						'<td>'+ data.enddate +'</td>'+
-						'<td>'+ data.booked +'</td>'+
-						'<td>'+ data.responsibleplanner +'</td>'+
-						'<td></td>'+
-						'<td>'+ data.remarks +'</td>'+
-						'<td><button class="btn btn-success btn-edit-requirement" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-						'<button class="btn btn-danger btn-delete" data-id-requirement="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
-						'</tr>';
-						if(state=='Save'){
-							$('#requirement-table').append(row);
-						}else{
-							$('#requirement'+data.id).replaceWith(row);
-						}
+						
 						$('#frmRequirement').trigger('reset');
 						$('#name').focus();
+						$( "#requirementtable" ).load( "/transportphase/id="+data.transportid+" #requirementtable" );
 						$('#requirement').modal('toggle');
 					}
 				});
