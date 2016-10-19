@@ -107,10 +107,15 @@
 				});
 				if (typeof $table2 != 'undefined'){
 	   				$table2.DataTable({
+					"scrollX": true,
 					responsive: true,
-					dom: 'Bfrtip',
+					dom: 'B<"clear">lfrtip',
 					buttons: [
-						'excel', 'pdf', 'print'
+						'excel', 'pdf', 'print', 
+						{
+						extend: 'colvis',
+                		columns: ':not(:first-child)'
+            			}
 					]
 				});
 	   			}
