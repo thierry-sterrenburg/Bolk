@@ -39,6 +39,7 @@ class ComponentController extends Controller
 			$component_transport = new Component_Transport();
 			$component_transport->componentid = $request->componentid;
 			$component_transport->transportid = $request->transportid;
+			$component_transport->save();
 			return response()->json($component_transport);
 		}
 	}

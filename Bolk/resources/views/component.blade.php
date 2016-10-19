@@ -172,6 +172,32 @@
 				$('#addTransportModal').modal('show');
 			})
 
+
+			//-------form add to existing transport-------
+			$(function() {
+				$('#frmAddTransport-submit').on('click', function(e) {
+					e.preventDefault();
+					var form=$('#frmAddTransport');
+					var formData=form.serialize();
+					var url=form.attr('action');
+					var state=$('#frmAddTransport-submit').val();
+					var type='post';
+					if(state=='Update'){
+						type='put';
+					}
+					$.ajax({
+						type : type,
+						url : url,
+						data : formData,
+						succes:function(data){
+							$('#frmAddTransport').trigger('reset');
+							$('#transportnumber').focus();
+							$('#addTransportModal').modal('toggle');
+						}
+					})
+				})
+			})
+
 			//---------form transport---------
 			$(function() {
 				$('#frmTransport-submit').on('click', function(e){

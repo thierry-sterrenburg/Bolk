@@ -45,11 +45,11 @@ Route::delete('/deleteComponent','ProjectController@deleteComponent');
 Route::get('/windmill/id={id}', 'WindmillController@index');
 
 Route::get('/component/id={id}', 'ComponentController@index');
+Route::post('/addTransportToComponent', 'ComponentController@addTransport');
 Route::post('/newTransport','ProjectController@newTransport');
 Route::get('/getUpdateTransport', 'ProjectController@getUpdateTransport');
 Route::put('/newTransport', 'ProjectController@newUpdateTransport');
 Route::delete('/deleteTransport', 'ProjectController@deleteTransport');
-Route::post('/addTransportToComponent', 'ComponentController@addTransport');
 
 Route::get('/transportphase/id={id}','TransportphaseController@index');
 Route::get('/transport_components/id={id}','Transport_componentsController@index');
