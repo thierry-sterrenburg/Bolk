@@ -112,9 +112,9 @@ class Project_transportsController extends Controller
 			   $transport->to=$request->transportto;
 		   }
 		    if($request->loadingdate == ''){
-			   $transport->dateofloading=null;
+			   $transport->loadingdate=null;
 		   }else{
-			   $transport->dateofloading=$request->loadingdate;
+			   $transport->loadingdate=$request->loadingdate;
 		   }
 		    if($request->datedesired == ''){
 			   $transport->datedesired=null;

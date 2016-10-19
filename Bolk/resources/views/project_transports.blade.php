@@ -156,6 +156,8 @@
 				'<td>'+ data.configuration +'</td>'+
 				'<td>'+ data.from +'</td>'+
 				'<td>'+ data.to +'</td>'+
+				'<td>0</td>'+
+				'<td>0</td>'+
 				'<td>'+ data.dateofloading +'</td>'+
 				'<td>'+ data.datedesired +'</td>'+
 				'<td>'+ data.dateestimated +'</td>'+
