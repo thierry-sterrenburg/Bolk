@@ -161,7 +161,7 @@
 				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+				'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
 				if(state=='Save'){
 					$('#transport-table').append(row);
@@ -170,6 +170,7 @@
 				}
 				$('#frmTransport').trigger('reset');
 				$('#transportnumber').focus();
+				$('#transport').modal('toggle');
 			}
 		});
 	})
@@ -186,12 +187,14 @@
 				'<td>'+ data.configuration +'</td>'+
 				'<td>'+ data.from +'</td>'+
 				'<td>'+ data.to +'</td>'+
+				'<td>0</td>'+
+				'<td>0</td>'+
 				'<td>'+ data.dateofloading +'</td>'+
 				'<td>'+ data.dateofarrivalinitial +'</td>'+
 				'<td>'+ data.dateofarrivalfinal +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-transport="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+				'<button class="btn btn-danger btn-delete-transport" data-id"'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 		$('tbody').append(row);
 	}
 
