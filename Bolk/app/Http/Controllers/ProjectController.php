@@ -18,7 +18,7 @@ class ProjectController extends Controller
 {
 	public function index($id){
 	$windmills = Windmill::where('projectid','=', $id)->get();
-	$components = Component::where('projectid', '=', $id)->whereNull('mainwindmillid')->get();
+	$components = Component::where('projectid', '=', $id)->get();
 	$project = Project::where('id','=',$id)->first();
 	return view('/project', ['windmills' => $windmills, 'components' => $components,  'project' => $project]);
 	}

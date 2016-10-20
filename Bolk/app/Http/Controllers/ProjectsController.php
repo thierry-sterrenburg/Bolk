@@ -29,11 +29,7 @@ class ProjectsController extends Controller
    }
 
    public static function countTransports($projectid) {
-   	$allcomponents = Component::where('projectid','=', $projectid)->get();
-   	$numberoftransports = 0;
-   	foreach($allcomponents as $singlecomponent) {
-   		$numberoftransports = $numberoftransports + Component_Transport::where('componentid','=', $singlecomponent->id)->count();
-   	}
+   	$numberoftransports = Transport::where('projectid', '=', $projectid)->count();
    	return $numberoftransports;
    }
 
