@@ -296,7 +296,7 @@ class ProjectController extends Controller
 		   if($request->dateactual == ''){
 			   $transport->dateactual=null;
 		   }else{
-			   $transport->dateoactual=$request->dateactual;
+			   $transport->dateactual=$request->dateactual;
 		   }
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;

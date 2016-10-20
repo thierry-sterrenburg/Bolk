@@ -208,9 +208,11 @@
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.from +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.to +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">0</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofloading +'</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalinitial +'</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalfinal +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.loadingdate +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.datedesired +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateestimated +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateplanned +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateactual +'</td>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
@@ -248,9 +250,11 @@
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.from +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.to +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">0</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofloading +'</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalinitial +'</td>'+
-						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateofarrivalfinal +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.loadingdate +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.datedesired +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateestimated +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateplanned +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateactual +'</td>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
@@ -285,9 +289,11 @@
 						$('#transportconfiguration').val(data.configuration);
 						$('#transportfrom').val(data.from);
 						$('#transportto').val(data.to);
-						$('#loadingdate').val(data.dateofloading);
-						$('#initialdatearrival').val(data.dateofarrivalinitial);
-						$('#finaldatearrival').val(data.dateofarrivalfinal);
+						$('#dateofloading').val(data.dateofloading);
+						$('#datedesired').val(data.datedesired);
+						$('#dateestimated').val(data.dateestimated);
+						$('#dateplanned').val(data.dateplanned);
+						$('#dateactual').val(data.dateactual);
 						$('#transportremarks').val(data.transportremarks);
 						$('#frmTransport-submit').val('Update');
 						$('#transport').modal('show');
