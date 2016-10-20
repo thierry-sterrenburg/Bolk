@@ -137,4 +137,11 @@ class ComponentController extends Controller
 		   }
 	   return $transport;
    }
+   
+   public static function checkOnTransport($componentid, $transportid){
+	    if(is_null(Component_Transport::where('componentid', '=', $componentid)->where('transportid', '=', $transportid)->first())){
+		   return true;
+	   }
+   }
+   
 }
