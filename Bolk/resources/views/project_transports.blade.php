@@ -147,34 +147,10 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="transport'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.transportnumber +'</td>'+
-				'<td>'+ data.company +'</td>'+
-				'<td>'+ data.truck +'</td>'+
-				'<td>'+ data.trailer +'</td>'+
-				'<td>'+ data.configuration +'</td>'+
-				'<td>'+ data.from +'</td>'+
-				'<td>'+ data.to +'</td>'+
-				'<td>0</td>'+
-				'<td>0</td>'+
-				'<td>'+ data.dateofloading +'</td>'+
-				'<td>'+ data.datedesired +'</td>'+
-				'<td>'+ data.dateestimated +'</td>'+
-				'<td>'+ data.dateplanned +'</td>'+
-				'<td>'+ data.dateactual +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-				if(state=='Save'){
-					$('#transport-table').append(row);
-				}else{
-					$('#transport'+data.id).replaceWith(row);
-				}
 				$('#frmTransport').trigger('reset');
 				$('#transportnumber').focus();
 				$('#transport').modal('toggle');
+				location.reload();
 			}
 		});
 	})

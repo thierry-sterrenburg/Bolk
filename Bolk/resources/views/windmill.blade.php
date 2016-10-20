@@ -135,30 +135,10 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="component'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>0</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
-				'<button class="btn btn-danger btn-delete" data-id-component="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-				if(state=='Save'){
-					$('#component-table').append(row);
-				}else{
-					$('#component'+data.id).replaceWith(row);
-				}
 				$('#frmComponent').trigger('reset');
 				$('#componentregnumber').focus();
 				$('#component').modal('toggle');
+				location.reload();
 			}
 		});
 	})
