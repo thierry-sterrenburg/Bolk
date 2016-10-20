@@ -105,7 +105,6 @@
 				</div>
 			@endpermission
         </div>
-<<<<<<< HEAD
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
