@@ -4,145 +4,175 @@
 ?>
 @extends('layouts.master')
 @section('content')
- <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-						<ol class="breadcrumb">
-							<li><a href="/projects">Projects</a></li>
-							<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
-							<li class="active">{{$windmill->name}}</li>
-						</ol>
-                        <h1 class="page-header">{{$windmill->name}}</h1>
-
-						<!--panel content -->
-						@include('layouts.projectpanel')
-						@include('layouts.windmillpanel')
-
-						<br>
-
-						@permission(('create-component'))
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
-						@endpermission
-
-						<br>
-						@include('newComponent')
-						<br>
-
-						@permission(('read-component'))
-						<table id="componenttable" class="table table-condensed table-hover">
-							<div class="container">
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='startdatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							    <div class='col-md-5'>
-							        <div class="form-group">
-							            <div class='input-group date' id='enddatesearch'>
-							                <input type='text' class="form-control" />
-							                <span class="input-group-addon">
-							                    <span class="glyphicon glyphicon-calendar"></span>
-							                </span>
-							            </div>
-							        </div>
-							    </div>
-							</div>
-							<thead>
-								<td>#</td>
-								<td>Reg. number</td>
-								<td>Name</td>
-								<td>From</td>
-								<td>To</td>
-								<td>Number of transport phases</td>
-								<td>Date of loading</td>
-								<td>Date of Arrival</td>
-								<td>Offloading(initial)</td>
-								<td>Offloading(final)</td>
-								<td>Last update</td>
-								<td>Remarks</td>
-								<td></td>
-							</thead>
-
-							<tbody id="component-table">
-								@foreach($components as $component)
-									<tr id="component{{$component->id}}">
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-										<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
-										<td>
-											@permission(('edit-component'))
-											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
-											@endpermission
-											@permission(('delete-component'))
-											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
-											@endpermission
-										</td>
-									</tr>
-								@endforeach
-							</tbody>
-
-						</table>
-						@endpermission
-
-                    </div>
-
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
+<!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+					<ol class="breadcrumb">
+						<li><a href="/projects">Projects</a></li>
+						<li><a href="/project/id={{$project->id}}">{{$project->name}}</a></li>
+						<li class="active">{{$windmill->name}}</li>
+					</ol>
+			</div>
+			<div class="row">
+                <h1 class="page-header">{{$windmill->name}}</h1>
             </div>
-            <!-- /.container-fluid -->
+			<!--panel content -->
+			<div class="row">
+			@include('layouts.projectpanel')
+			@include('layouts.windmillpanel')
+			</div>
+			<!--add buttons-->
+			@permission(('create-component'))
+				<div class="row">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add New Component <span class="badge">+</span></button>
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addExistingComponentToWindmill">Add Existing Component <span class="badge">+</span></button>
+ 					@include('newComponent')
+ 					@include('addComponentToWindmill')
+ 				</div>
+ 			@endpermission
+ 			<!--table content -->
+			@permission(('read-component'))
+				<div class="row">
+					<h3>Components</h3>
+				</div>
+				<div class="row">
+					<table id="componenttable" class="table table-condensed table-hover">
+						<div class="container">
+					    	<div class='col-md-5'>
+					        	<div class="form-group">
+					            	<div class='input-group date' id='startdatesearch'>
+					                	<input type='text' class="form-control" />
+					                	<span class="input-group-addon">
+					                    	<span class="glyphicon glyphicon-calendar"></span>
+					                	</span>
+					            	</div>
+						        </div>
+						    </div>
+						    <div class='col-md-5'>
+						        <div class="form-group">
+						            <div class='input-group date' id='enddatesearch'>
+						                <input type='text' class="form-control" />
+						                <span class="input-group-addon">
+					    	                <span class="glyphicon glyphicon-calendar"></span>
+					        	        </span>
+					            	</div>
+						        </div>
+						    </div>
+						</div>
+						<thead>
+							<td>#</td>
+							<td>Reg. number</td>
+							<td>Name</td>
+							<td>From</td>
+							<td>To</td>
+							<td>Number of transport phases</td>
+							<td>Date of loading</td>
+							<td>Date of Arrival</td>
+							<td>Offloading(initial)</td>
+							<td>Offloading(final)</td>
+							<td>Last update</td>
+							<td>Remarks</td>
+							<td></td>
+						</thead>
+						<tbody id="component-table">
+							@foreach($components as $component)
+								<tr id="component{{$component->id}}">
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+									<td>
+										@permission(('edit-component'))
+											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
+										@endpermission
+										@permission(('delete-component'))
+											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
+										@endpermission
+									</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+			@endpermission
         </div>
-        <!-- /#page-wrapper -->
-		<script type="text/javascript">
-		//---------add Component---------
-		$('#addComponent').on('click',function(){
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+	
+	<script type="text/javascript">
+	//---------new Component---------
+	$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
 		$('#frmComponent').trigger('reset');
-
 		$('#component').modal('show');
-		})
-
-		//---------form Component---------
-	$(function() {
-	$('#frmComponent-submit').on('click', function(e){
-		e.preventDefault();
-		var form=$('#frmComponent');
-		var formData=form.serialize();
-		var url=form.attr('action');
-		var state=$('#frmComponent-submit').val();
-		var type= 'post';
-		if(state=='Update'){
-			type = 'put';
-		}
-		$.ajax({
-			type : type,
-			url : url,
-			data: formData,
-			success:function(data){
-				$('#frmComponent').trigger('reset');
-				$('#componentregnumber').focus();
-				$('#component').modal('toggle');
-				location.reload();
-			}
-		});
 	})
+
+	//---------add Component---------
+	$('#addExistingComponentToWindmill').on('click',function(){
+		$('#frmAddComponent-submit').val('Save');
+		$('#frmAddComponent').trigger('reset');
+		$('#addExistingComponent').modal('show');
+	})
+
+	//---------form new Component---------
+	$(function() {
+		$('#frmComponent-submit').on('click', function(e){
+			e.preventDefault();
+			var form=$('#frmComponent');
+			var formData=form.serialize();
+			var url=form.attr('action');
+			var state=$('#frmComponent-submit').val();
+			var type= 'post';
+			if(state=='Update'){
+				type = 'put';
+			}
+			$.ajax({
+				type : type,
+				url : url,
+				data: formData,
+				success:function(data){
+					$('#frmComponent').trigger('reset');
+					$('#componentregnumber').focus();
+					$('#component').modal('toggle');
+					location.reload();
+				}
+			});
+		})
 	});
+
+	//---------form add Component---------
+	$(function() {
+		$('#frmAddComponent-submit').on('click', function(e){
+			e.preventDefault();
+			var form=$('#frmAddComponent');
+			var formData=form.serialize();
+			var url=form.attr('action');
+			var state=$('#frmExistingComponent-submit').val();
+			var type= 'put';
+			$.ajax({
+				type : type,
+				url : url,
+				data: formData,
+				success:function(data){
+					$('#frmAddComponent').trigger('reset');
+					$('#componentregnumber').focus();
+					$('#addExistingComponent').modal('toggle');
+					location.reload();
+				}
+			});
+		})
+	});
+
 
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
