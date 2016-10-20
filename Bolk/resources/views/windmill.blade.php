@@ -110,11 +110,15 @@
         </div>
         <!-- /#page-wrapper -->
 		<script type="text/javascript">
+		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		
+		$('#frmComponent-clear').on('click',function(){
+		$('#frmComponent').trigger('reset');
+		})
+		
 		//---------add Component---------
 		$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
-		$('#frmComponent').trigger('reset');
-
 		$('#component').modal('show');
 		})
 
