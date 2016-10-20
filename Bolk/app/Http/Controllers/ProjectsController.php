@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Project;
 use App\Windmill;
 use App\Component;
-use App\Component_Transport;
+use App\Transport;
 use DB;
 
 class ProjectsController extends Controller
