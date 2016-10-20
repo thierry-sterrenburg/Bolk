@@ -71,13 +71,14 @@ class ComponentController extends Controller
 		   return Response($transport);
 	   }
    }
-   public function deleteTransport(Request $request){
-	   if ($request->ajax()){
-		   Component_Transport::where('transportid', $request->id)->delete();
-		   Transport::destroy($request->id);
-		   return Response()->json(['sms'=>'delete successfully']);
-	   }
-   }
+
+    public function deleteTransportFromComponent(Request $request) {
+   		if ($request->ajax()){
+   			Component_Transport::where('transportid', $request->id)->delete();
+   			return Response()->json(['sms'=>'delete successfully']);
+   		}
+    }
+
 	public function checkInputTransport($transport, $request){
 		   if($request->transportnumber == ''){
 			   $transport->transportumber=null;

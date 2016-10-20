@@ -46,6 +46,7 @@ Route::get('/windmill/id={id}', 'WindmillController@index');
 
 Route::get('/component/id={id}', 'ComponentController@index');
 Route::post('/addTransportToComponent', 'ComponentController@addTransport');
+Route::delete('/deleteTransportFromComponent', 'ComponentController@deleteTransportFromComponent');
 Route::post('/newTransport','ProjectController@newTransport');
 Route::get('/getUpdateTransport', 'ProjectController@getUpdateTransport');
 Route::put('/newTransport', 'ProjectController@newUpdateTransport');

@@ -298,7 +298,7 @@
 			//---------delete transport---------
 			$('#transport-table').delegate('.btn-delete-transport', 'click',function(){
 				var value = $(this).data('id');
-				var url = '{{URL::to('deleteTransport')}}';
+				var url = '{{URL::to('deleteTransportFromComponent')}}';
 				if (confirm('Are you sure to delete?'+value)==true){
 					$.ajax({
 						type : 'delete',
