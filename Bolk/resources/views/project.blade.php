@@ -133,7 +133,17 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="windmill'+data.id+'">'+
+				
+				$('#frmWindmill').trigger('reset');
+				$('#regnumber').focus();
+				location.reload();
+			}
+		});
+	})
+	});
+	
+	function addRowWindmill(data){
+		var row='<tr id="windmill'+data.id+'">'+
 				'<td>'+ data.id +'</td>'+
 				'<td>'+ data.regnumber +'</td>'+
 				'<td>'+ data.name +'</td>'+
@@ -151,12 +161,10 @@
 				}else{
 					$('#windmill'+data.id).replaceWith(row);
 				}
-				$('#frmWindmill').trigger('reset');
-				$('#regnumber').focus();
-			}
-		});
-	})
-	});
+	}
+	
+	function addRowWindmill(data){
+	}
 
 	//---------get update windmill---------
 	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){

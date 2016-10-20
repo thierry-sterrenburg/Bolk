@@ -187,7 +187,18 @@
 						url : url,
 						data : formData,
 						success:function(data){
-						var row='<tr id="transport'+data.id+'">'+
+						
+							$('#frmAddTransport').trigger('reset');
+							$('#transportnumber').focus();
+							$('#addTransportModal').modal('toggle');
+							location.reload();
+						}
+					});
+				});
+			});
+			
+			function addRowToExistingTransport(data){
+				var row='<tr id="transport'+data.id+'">'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.id +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.transportnumber +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.company +'</td>'+
@@ -208,13 +219,7 @@
 						}else{
 							$('#transport'+data.id).replaceWith(row);
 						}
-							$('#frmAddTransport').trigger('reset');
-							$('#transportnumber').focus();
-							$('#addTransportModal').modal('toggle');
-						}
-					});
-				});
-			});
+			}
 
 			//---------form transport---------
 			$(function() {

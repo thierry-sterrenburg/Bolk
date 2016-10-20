@@ -102,24 +102,10 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="project'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
-				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
-				'</tr>';
-				if(state=='save'){
-					$('tbody').append(row);
-				}else{
-					$('#project'+data.id).replaceWith(row);
-				}
+				
 				$('#frmProject').trigger('reset');
 				$('#regnumber').focus();
+				location.reload();
 			}
 		});
 	})
@@ -135,10 +121,14 @@
 				'<td>'+ data.startdate +'</td>'+
 				'<td>'+ data.enddate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit">Edit</button>'+
-				'<button class="btn btn-danger btn-delete">Delete</button></td>'+
+				'<td><button class="btn btn-success btn-edit" data-id="'+ data.id +'">Edit</button> '+
+				'<button class="btn btn-danger btn-delete" data-id="'+ data.id +'">Delete</button></td>'+
 				'</tr>';
-		$('tbody').append(row);
+				if(state=='save'){
+					$('tbody').append(row);
+				}else{
+					$('#project'+data.id).replaceWith(row);
+				}
 	}
 
 	//---------get update---------

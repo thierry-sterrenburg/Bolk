@@ -137,9 +137,8 @@
 					
 						$('#frmRequirement').trigger('reset');
 						$('#name').focus();
-						$("#tablecontainer" ).load( "/transportphase/id="+data.transportid+" #tablecontainer" );
-						
 						$('#requirement').modal('toggle');
+						location.reload();
 					}
 				});
 				})

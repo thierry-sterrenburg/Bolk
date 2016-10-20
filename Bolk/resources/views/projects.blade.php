@@ -121,7 +121,18 @@
 			url : url,
 			data: formData,
 			success:function(data){
-				var row='<tr id="project'+data.id+'">'+
+				
+				$('#frmProject').trigger('reset');
+				$('#regnumber').focus();
+				location.reload();
+			}
+		});
+	})
+	});
+
+	//---------addrow---------
+	function addRow(data){
+		var row='<tr id="project'+data.id+'">'+
 				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.id +'</td>'+
 				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.regnumber +'</td>'+
 				'<td onclick="document.location= \'/project/id='+data.id+'\';">'+ data.name +'</td>'+
@@ -140,27 +151,6 @@
 				}else{
 					$('#project'+data.id).replaceWith(row);
 				}
-				$('#frmProject').trigger('reset');
-				$('#regnumber').focus();
-			}
-		});
-	})
-	});
-
-	//---------addrow---------
-	function addRow(data){
-		var row='<tr id="project'+data.id+'">'+
-				'<td>'+ data.id +'</td>'+
-				'<td>'+ data.regnumber +'</td>'+
-				'<td>'+ data.name +'</td>'+
-				'<td>'+ data.location +'</td>'+
-				'<td>'+ data.startdate +'</td>'+
-				'<td>'+ data.enddate +'</td>'+
-				'<td>'+ data.remarks +'</td>'+
-				'<td><button class="btn btn-success btn-edit"><i class="fa fa-pencil"></i></button>'+
-				'<button class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></button></td>'+
-				'</tr>';
-		$('tbody').append(row);
 	}
 
 	//---------get update---------
