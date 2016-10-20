@@ -64,8 +64,8 @@ Route::put('/newRequirement', 'TransportphaseController@newUpdateRequirement');
 Route::delete('/deleteRequirement', 'TransportphaseController@deleteRequirement');
 
 
-Route::get('/closestdeadlines', function () {
-    return view('closestdeadlines');
+Route::get('/closestdeadlines_components', function () {
+    return view('closestdeadlines_components');
 });
 
 Route::get('/modal', 'ProjectsController@index');
