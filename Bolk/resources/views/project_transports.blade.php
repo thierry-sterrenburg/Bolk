@@ -76,8 +76,9 @@
 							<td>Estimated arrival</td>
 							<td>Planned arrival</td>
 							<td>Actual arrival</td>
-							<td>Last update</td>
+							<td>Date of unloading</td>
 							<td>Remarks</td>
+							<td>Last update</td>
 							<td/>
 						</thead>
 
@@ -99,8 +100,9 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-									<td/>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -175,6 +177,7 @@
 				'<td>'+ data.dateplanned +'</td>'+
 				'<td>'+ data.dateactual +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
+				'<td/>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-transport" data-id"'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 		$('tbody').append(row);
@@ -230,33 +233,52 @@
 	$(function () {
         $('#loadingdatepicker').datetimepicker({
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
-
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
         $('#desireddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
         $('#estimateddatepicker').datetimepicker({
 			useCurrent: false,
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
         $('#planneddatepicker').datetimepicker({
         	useCurrent: false,
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
         $('#actualdatepicker').datetimepicker({
         	useCurrent: false,
 			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#unloadingdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
         $("#loadingdatepicker").on("dp.change", function (e) {
             $('#desireddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#estimateddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#planneddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#unloadingdatepicker').data("DateTimePicker").minDate(e.date);
         });
-        $("#desireddatepicker").on("dp.change", function (e) {
+        $('#unloadingdatepicker').on("dp.change", function (e) {
             $('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
         });
         

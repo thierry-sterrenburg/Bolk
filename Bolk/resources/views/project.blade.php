@@ -108,11 +108,13 @@
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
+	$('#frmWindmill-clear').on('click',function(){
+		$('#frmWindmill').trigger('reset');
+	})
 	//---------add Windmill---------
 	$('#addWindmill').on('click',function(){
 		$('#frmWindmill-submit').val('Save');
-		$('#frmWindmill').trigger('reset');
-
+		document.getElementById("error_message").innerHTML = '';
 		$('#windmill').modal('show');
 	})
 
@@ -208,14 +210,12 @@
 
 	$(function () {
         $('#startdatepicker').datetimepicker({
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY'});
 
 
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'
+			format: 'DD-MM-YYYY'
 			});
         $("#startdatepicker").on("dp.change", function (e) {
             $('#enddatepicker').data("DateTimePicker").minDate(e.date);
@@ -227,7 +227,7 @@
 
 	function validator() {
     var x,y,text;
-
+	text="";
     // Get the value of the input field with id="regnumber"
     x = document.getElementById("regnumber").value;
 	y = document.getElementById("name").value;
@@ -237,15 +237,19 @@
         text = "Regnumber must be filled in.";
     }
 	if (y == ""){
-		if(text!=null){
+		if(text!=""){
 			text = text+"<br/>";
 		}
-        text = text+"Name must be filled in.";
+        text = text+"Windmil name must be filled in.";
     }
 	if(x != "" && y != ""){
 		$('#windmill').modal('toggle');
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+	}
+	
+	function resetError(){
+		document.getElementById("error_message").innerHTML = '';
 	}
 }
 

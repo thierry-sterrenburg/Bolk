@@ -153,7 +153,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
-					<input type="text" name="componentremarks" id="componentremarks" placeholder="Remarks" class="form-control">
+					<textarea rows="4" cols="50" type="text" name="componentremarks" id="componentremarks" placeholder="Remarks" class="form-control"></textarea>
 				</div>
 				</div>
 			</div>
@@ -176,7 +176,8 @@
          ?>
         <div class="modal-footer">
 			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-warning" id="frmComponent-clear">Clear</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
 

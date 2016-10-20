@@ -19,7 +19,13 @@
                   <label for="status">Transport</label>
                   <select class="form-control" id="transportid" name="transportid">
                     @foreach($allTransports as $transportselect)
-                      <option value="{{$transportselect->id}}">Transport: {{$transportselect->transportnumber}} </option>
+						@if(ComponentController::checkOnTransport($component->id,$transportselect->id))
+						@if(($transportselect->from != null ||$transportselect->from != "") && ($transportselect->to != null ||$transportselect->to != ""))
+							<option value="{{$transportselect->id}}">Transport: {{$transportselect->transportnumber}}, {{$transportselect->from}} -> {{$transportselect->to}} </option>
+						@else
+							<option value="{{$transportselect->id}}">Transport: {{$transportselect->transportnumber}}</option>
+						@endif
+						@endif
                     @endforeach
                   </select>
                 </div>

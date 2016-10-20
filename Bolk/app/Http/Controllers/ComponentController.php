@@ -118,17 +118,32 @@ class ComponentController extends Controller
 		    if($request->loadingdate == ''){
 			   $transport->dateofloading=null;
 		   }else{
-			   $transport->dateofloading=$request->loadingdate;
+			   $transport->dateofloading= date(‘Y-m-d’ , strtotime($request->loadingdate));
 		   }
-		    if($request->initialdatearrival == ''){
-			   $transport->dateofarrivalinitial=null;
+		    if($request->datedesired == ''){
+			   $transport->datedesired=null;
 		   }else{
-			   $transport->dateofarrivalinitial=$request->initialdatearrival;
+			   $transport->datedesired=date(‘Y-m-d’ , strtotime($request->datedesired));
 		   }
-		    if($request->finaldatearrival == ''){
-			   $transport->dateofarrivalfinal=null;
+		    if($request->dateplanned == ''){
+			   $transport->dateplanned=null;
 		   }else{
-			   $transport->dateofarrivalfinal=$request->initialdatefinal;
+			   $transport->dateplanned=date(‘Y-m-d’ , strtotime($request->dateplanned));
+		   }
+		    if($request->dateestimated == ''){
+			   $transport->dateestimated=null;
+		   }else{
+			   $transport->dateestimated=date(‘Y-m-d’ , strtotime($request->dateestimated));
+		   }
+		    if($request->dateactual == ''){
+			   $transport->dateactual=null;
+		   }else{
+			   $transport->dateactual=date(‘Y-m-d’ , strtotime($request->dateactual));
+		   }
+		   if($request->unloadingdate == ''){
+			   $transport->unloadingdate=null;
+		   }else{
+			   $transport->unloadingdate=date(‘Y-m-d’ , strtotime($request->unloadingdate));
 		   }
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;
@@ -137,4 +152,11 @@ class ComponentController extends Controller
 		   }
 	   return $transport;
    }
+   
+   public static function checkOnTransport($componentid, $transportid){
+	    if(is_null(Component_Transport::where('componentid', '=', $componentid)->where('transportid', '=', $transportid)->first())){
+		   return true;
+	   }
+   }
+   
 }

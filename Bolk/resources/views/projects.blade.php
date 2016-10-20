@@ -70,7 +70,7 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countTransports($project->id) }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
-					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 					<td>
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
@@ -96,11 +96,12 @@
 		 <script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
-
+	$('#frmProject-clear').on('click',function(){
+		$('#frmProject').trigger('reset');
+	})
 
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('Save');
-		$('#frmProject').trigger('reset');
 		document.getElementById("error_message").innerHTML = '';
 		$('#project').modal('show');
 	})
@@ -196,14 +197,12 @@
 
 	$(function () {
         $('#startdatepicker').datetimepicker({
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY'});
 
 
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'
+			format: 'DD-MM-YYYY'
 			});
         $("#startdatepicker").on("dp.change", function (e) {
             $('#enddatepicker').data("DateTimePicker").minDate(e.date);
@@ -215,7 +214,7 @@
 
 	function validator() {
     var x,y,text;
-
+	text="";
     // Get the value of the input field with id="regnumber"
     x = document.getElementById("regnumber").value;
 	y = document.getElementById("name").value;
@@ -225,13 +224,14 @@
         text = "Regnumber must be filled in.";
     }
 	if (y == ""){
-		if(text!=null){
+		if(text!=""){
 			text = text+"<br/>";
 		}
         text = text+"Name must be filled in.";
     }
 	if(x != "" && y != ""){
 		$('#project').modal('toggle');
+		
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}

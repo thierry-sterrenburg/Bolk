@@ -298,6 +298,11 @@ class ProjectController extends Controller
 		   }else{
 			   $transport->dateactual=$request->dateactual;
 		   }
+		   if($request->unloadingdate == ''){
+			   $transport->unloadingdate=null;
+		   }else{
+			   $transport->unloadingdate=$request->unloadingdate;
+		   }		   
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;
 		   }else{

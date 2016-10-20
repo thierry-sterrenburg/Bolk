@@ -10,6 +10,7 @@ use App\Project;
 use App\Component_Transport;
 use App\Transport;
 use App\Component;
+use App\Windmill;
 
 class Transport_componentsController extends Controller
 {
