@@ -104,7 +104,11 @@
 					<label for="componentswitchable" class="form-check-label">
 					@if(isset($windmill))
 						@if(ProjectController::checkSwitchable($componentid,$eachwindmill->id) || $eachwindmill == $windmill)
+							@if($eachwindmill == $windmill)
+							<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" disabled checked>
+							@else	
 							<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}" checked>
+							@endif
 						@else
 						<input type="checkbox" class="form-check-input" id="windmill{{$eachwindmill->id}}" name="windmill{{$eachwindmill->id}}">
 						@endif
