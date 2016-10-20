@@ -79,8 +79,9 @@
 							<td>Estimated arrival</td>
 							<td>Planned arrival</td>
 							<td>Actual arrival</td>
-							<td>Last update</td>
+							<td>Date of unloading</td>
 							<td>Remarks</td>
+							<td>Last update</td>
 							<td/>
 						</thead>
 						<tbody id="transport-table">
@@ -100,8 +101,9 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-									<td/>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -150,6 +152,11 @@
 					format: 'YYYY-MM-DD HH:mm'
 					});
 				$('#actualdatepicker').datetimepicker({
+					useCurrent: false, //Important! See issue #1075
+					sideBySide: true,
+					format: 'YYYY-MM-DD HH:mm'
+					});
+				$('#unloadingdatepicker').datetimepicker({
 					useCurrent: false, //Important! See issue #1075
 					sideBySide: true,
 					format: 'YYYY-MM-DD HH:mm'
@@ -213,6 +220,9 @@
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateestimated +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateplanned +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateactual +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.unloadingdate +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.transportremarks +'</td>'+
+						'<td/>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
@@ -255,6 +265,9 @@
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateestimated +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateplanned +'</td>'+
 						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.dateactual +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.unloadingdate +'</td>'+
+						'<td  onclick="document.location= \'/transportphase/id='+data.id+'\';">'+ data.transportremarks +'</td>'+
+						'<td/>'+
 						'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 						'<button class="btn btn-danger btn-delete-transport" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 						'</tr>';
@@ -266,6 +279,7 @@
 						$('#frmTransport').trigger('reset');
 						$('#transportnumber').focus();
 						$('#transport').modal('toggle');
+						location.reload();
 					}
 				});
 				})
@@ -294,6 +308,7 @@
 						$('#dateestimated').val(data.dateestimated);
 						$('#dateplanned').val(data.dateplanned);
 						$('#dateactual').val(data.dateactual);
+						$('#unloadingdate').val(data.unloadingdate);
 						$('#transportremarks').val(data.transportremarks);
 						$('#frmTransport-submit').val('Update');
 						$('#transport').modal('show');

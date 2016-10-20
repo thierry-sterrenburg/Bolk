@@ -76,8 +76,9 @@
 							<td>Estimated arrival</td>
 							<td>Planned arrival</td>
 							<td>Actual arrival</td>
-							<td>Last update</td>
+							<td>Date of unloading</td>
 							<td>Remarks</td>
+							<td>Last update</td>
 							<td/>
 						</thead>
 
@@ -99,8 +100,9 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-									<td/>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -175,6 +177,7 @@
 				'<td>'+ data.dateplanned +'</td>'+
 				'<td>'+ data.dateactual +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
+				'<td/>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-transport" data-id"'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 		$('tbody').append(row);
