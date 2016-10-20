@@ -96,11 +96,12 @@
 		 <script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 
-
+	$('#frmProject-clear').on('click',function(){
+		$('#frmProject').trigger('reset');
+	})
 
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('Save');
-		$('#frmProject').trigger('reset');
 		document.getElementById("error_message").innerHTML = '';
 		$('#project').modal('show');
 	})
@@ -196,14 +197,12 @@
 
 	$(function () {
         $('#startdatepicker').datetimepicker({
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'});
+			format: 'DD-MM-YYYY'});
 
 
         $('#enddatepicker').datetimepicker({
             useCurrent: false, //Important! See issue #1075
-			sideBySide: true,
-			format: 'YYYY-MM-DD HH:mm'
+			format: 'DD-MM-YYYY'
 			});
         $("#startdatepicker").on("dp.change", function (e) {
             $('#enddatepicker').data("DateTimePicker").minDate(e.date);
