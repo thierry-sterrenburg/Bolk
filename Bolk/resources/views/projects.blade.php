@@ -70,7 +70,7 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countTransports($project->id) }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
-					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->remarks }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 					<td>
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
