@@ -118,32 +118,32 @@ class ComponentController extends Controller
 		    if($request->loadingdate == ''){
 			   $transport->dateofloading=null;
 		   }else{
-			   $transport->dateofloading=$request->loadingdate;
+			   $transport->dateofloading= date(‘Y-m-d’ , strtotime($request->loadingdate));
 		   }
 		    if($request->datedesired == ''){
 			   $transport->datedesired=null;
 		   }else{
-			   $transport->datedesired=$request->datedesired;
+			   $transport->datedesired=date(‘Y-m-d’ , strtotime($request->datedesired));
 		   }
 		    if($request->dateplanned == ''){
 			   $transport->dateplanned=null;
 		   }else{
-			   $transport->dateplanned=$request->dateplanned;
+			   $transport->dateplanned=date(‘Y-m-d’ , strtotime($request->dateplanned));
 		   }
 		    if($request->dateestimated == ''){
 			   $transport->dateestimated=null;
 		   }else{
-			   $transport->dateestimated=$request->dateestimated;
+			   $transport->dateestimated=date(‘Y-m-d’ , strtotime($request->dateestimated));
 		   }
 		    if($request->dateactual == ''){
 			   $transport->dateactual=null;
 		   }else{
-			   $transport->dateactual=$request->dateactual;
+			   $transport->dateactual=date(‘Y-m-d’ , strtotime($request->dateactual));
 		   }
 		   if($request->unloadingdate == ''){
 			   $transport->unloadingdate=null;
 		   }else{
-			   $transport->unloadingdate=$request->unloadingdate;
+			   $transport->unloadingdate=date(‘Y-m-d’ , strtotime($request->unloadingdate));
 		   }
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;

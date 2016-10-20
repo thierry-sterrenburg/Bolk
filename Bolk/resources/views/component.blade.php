@@ -132,44 +132,57 @@
 			})
 
 			$(function () {
-				$('#loadingdatepicker').datetimepicker({
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'});
+        $('#loadingdatepicker').datetimepicker({
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
-				$('#desireddatepicker').datetimepicker({
-					useCurrent: false, //Important! See issue #1075
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'
-					});
-				$('#estimateddatepicker').datetimepicker({
-					useCurrent: false, //Important! See issue #1075
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'
-					});
-				$('#planneddatepicker').datetimepicker({
-					useCurrent: false, //Important! See issue #1075
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'
-					});
-				$('#actualdatepicker').datetimepicker({
-					useCurrent: false, //Important! See issue #1075
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'
-					});
-				$('#unloadingdatepicker').datetimepicker({
-					useCurrent: false, //Important! See issue #1075
-					sideBySide: true,
-					format: 'YYYY-MM-DD HH:mm'
-					});
+        $('#desireddatepicker').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
-				$("#loadingdatepicker").on("dp.change", function (e) {
-					$('#desireddatepicker').data("DateTimePicker").minDate(e.date);
+        $('#estimateddatepicker').datetimepicker({
+			useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
 
-				});
-				$("#desireddatepicker").on("dp.change", function (e) {
-				$('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
-				});
-			});
+        $('#planneddatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#actualdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#unloadingdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $("#loadingdatepicker").on("dp.change", function (e) {
+            $('#desireddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#estimateddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#planneddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#unloadingdatepicker').data("DateTimePicker").minDate(e.date);
+        });
+        $('#unloadingdatepicker').on("dp.change", function (e) {
+            $('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
+        });
+	});
 
 			//--------add to existing transport--------
 			$('#addTransportToComponent').on('click',function(){
