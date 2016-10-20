@@ -1,3 +1,7 @@
+<?php
+	use App\Windmill;
+	use App\Http\Controllers\ComponentController;
+?>  
   <!-- Modal -->
   <div class="modal fade" id="addComponent" role="dialog">
     <div class="modal-dialog">
@@ -18,7 +22,13 @@
 					<label for="status">Component</label>
 					<select class="form-control" id="componentid" name="componentid">
 					@foreach($allComponents as $componentselect)
-						<option value="{{$componentselect->id}}">{{$componentselect->name}}, {{$componentselect->regnumber}}</option>
+					@if(ComponentController::checkOnTransport($componentselect->id,$transport->id))
+						@if($componentselect->mainwindmillid !=null && $componentselect->mainwindmillid != "")
+						<option value="{{$componentselect->id}}">{{$componentselect->regnumber}}, {{$componentselect->name}} ({{Windmill::where('id', '=', $componentselect->mainwindmillid)->first()->name}})</option>
+						@else
+							<option value="{{$componentselect->id}}">{{$componentselect->regnumber}}, {{$componentselect->name}}</option>
+						@endif
+					@endif
 					@endforeach
 					</select>
 				</div>
