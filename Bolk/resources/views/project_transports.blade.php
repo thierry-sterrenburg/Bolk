@@ -176,6 +176,7 @@
 				'<td>'+ data.dateestimated +'</td>'+
 				'<td>'+ data.dateplanned +'</td>'+
 				'<td>'+ data.dateactual +'</td>'+
+				'<td>'+ data.unloadingdate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td/>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
@@ -206,6 +207,7 @@
 				$('#dateestimated').val(data.dateestimated);
 				$('#dateplanned').val(data.dateplanned);
 				$('#dateactual').val(data.dateactual);
+				$('#unloadingdate').val(data.unloadingdate);
 				$('#remarks').val(data.remarks);
 				$('#frmTransport-submit').val('Update');
 				$('#transport').modal('show');
