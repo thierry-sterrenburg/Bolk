@@ -1,5 +1,6 @@
 <?php
 	use App\Http\Controllers\Project_componentsController;
+	use App\Http\Controllers\WindmillController;
 ?>
 @extends('layouts.master')
 @section('content')
@@ -62,40 +63,39 @@
 							<td>#</td>
 							<td>Reg. number</td>
 							<td>Name</td>
-							<td>From</td>
-							<td>To</td>
+							<td>Length</td>
+							<td>Height</td>
+							<td>Width</td>
+							<td>Weight</td>
+							<td>Current location</td>
+							<td>status</td>
 							<td>Number of transport phases</td>
-							<td>Date of loading</td>
-							<td>Date of Arrival</td>
-							<td>Offloading(initial)</td>
-							<td>Offloading(final)</td>
-							<td>Last update</td>
 							<td>Remarks</td>
+							<td>Last update</td>
 							<td></td>
 						</thead>
-
 						<tbody id="component-table">
 							@foreach($components as $component)
 								<tr id="component{{$component->id}}">
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 									<td>
-											@permission(('edit-component'))
-										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
-											@endpermission
-											@permission(('delete-component'))
-										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
-											@endpermission
+										@permission(('edit-component'))
+											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
+										@endpermission
+										@permission(('delete-component'))
+											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
+										@endpermission
 									</td>
 								</tr>
 							@endforeach
@@ -150,14 +150,13 @@
 				'<td>'+ data.id +'</td>'+
 				'<td>'+ data.regnumber +'</td>'+
 				'<td>'+ data.name +'</td>'+
-				'<td></td>'+
-				'<td></td>'+
+				'<td>'+ data.length +'</td>'+
+				'<td>'+ data.heigth +'</td>'+
+				'<td>'+ data.width +'</td>'+
+				'<td>'+ data.weight +'</td>'+
+				'<td>'+ data.currentlocation +'</td>'+
+				'<td>'+ data.status +'</td>'+
 				'<td>0</td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
-				'<td></td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-component" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
@@ -186,6 +185,7 @@
 				$('#componentheight').val(data.height);
 				$('#componentwidth').val(data.width);
 				$('#componentweight').val(data.weight);
+				$('#currentlocation').val(data.currentlocation);
 				$('#componentremarks').val(data.remarks);
 				$('#componentstatus').val(data.status).change();
 				$('#frmComponent-submit').val('Update');

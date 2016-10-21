@@ -80,6 +80,14 @@
 				</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-12 col-sm-12">
+				<div class="form-group">
+				 	<label for="currentlocation">Current location</label>
+					<input type="text" name="currentlocation" id="currentlocation" placeholder="Current location" class="form-control">
+				</div>
+				</div>
+			</div>
 
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
