@@ -63,18 +63,15 @@
 							<td>#</td>
 							<td>Reg. number</td>
 							<td>Name</td>
-<<<<<<< HEAD
+							<td>Attached To</td>
+							<td>From</td>
+							<td>To</td>
 							<td>Length</td>
 							<td>Height</td>
 							<td>Width</td>
 							<td>Weight</td>
 							<td>Current location</td>
 							<td>status</td>
-=======
-							<td>Attached To</td>
-							<td>From</td>
-							<td>To</td>
->>>>>>> origin/master
 							<td>Number of transport phases</td>
 							<td>Remarks</td>
 							<td>Last update</td>
@@ -86,25 +83,16 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
-<<<<<<< HEAD
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getWindmillName($component->mainwindmillid) }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
-=======
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getWindmillName($component->mainwindmillid) }}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
->>>>>>> origin/master
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 									<td>
