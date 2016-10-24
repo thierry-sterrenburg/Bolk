@@ -131,7 +131,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
-					<input type="text" name="transportremarks" id="transportremarks" placeholder="Remarks" class="form-control">
+					<textarea rows="4" cols="50" type="text" name="transportremarks" id="transportremarks" placeholder="Remarks" class="form-control"></textarea>
 				</div>
 				</div>
 			</div>
