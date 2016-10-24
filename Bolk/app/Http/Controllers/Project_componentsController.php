@@ -32,4 +32,26 @@ class Project_componentsController extends Controller
         }
         return $windmillName;
     }
+
+    public static function getFromLocation($componentid) {
+        $firstTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired','asc')->pluck('from')->first();
+        if(empty($firstTransport)) {
+            $firstTransport = '-';
+        }
+        return $firstTransport;
+    }
+
+    public static function getToLocation($componentid) {
+        $lastTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired', 'asc')->pluck('to')->last();
+        if(empty($lastTransport)) {
+            $lastTransport = '-';
+        }
+        return $lastTransport;
+    }
+
+    public static function getCurrentLocation($componentid) {
+        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->get();
+        $currentTimestamp = null;
+        return 'null';
+    }
 }

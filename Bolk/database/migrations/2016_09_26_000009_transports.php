@@ -26,13 +26,12 @@ class Transports extends Migration
 			$table->string('from')->nullable();
 			$table->string('to')->nullable();
 			$table->datetime('loadingdate')->nullable();
-            $table->datetime('datedesired')->nullable();
+            $table->datetime('datedesired')
             $table->datetime('dateestimated')->nullable();
             $table->datetime('dateplanned')->nullable();
             $table->datetime('dateactual')->nullable();
             $table->datetime('unloadingdate')->nullable();
 			$table->longText('remarks')->nullable();
-
             $table->timestamps();
 		});
     }

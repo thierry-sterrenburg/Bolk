@@ -84,8 +84,8 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getWindmillName($component->mainwindmillid) }}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getFromLocation($component->id) }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getToLocation($component->id) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
