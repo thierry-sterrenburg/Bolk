@@ -100,7 +100,7 @@
 				<div class="col-lg-4 col-sm-4">
 					<div class="form-group">
 						<div class='input-group date' id='planneddatepicker'>
-							<input type='text' class="form-control" name="dateplanned" id="dateplanned" placeholder="planned arrival" />
+							<input type='text' class="form-control" name="dateplanned" id="dateplanned" placeholder="Planned arrival" />
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</span>

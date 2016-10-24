@@ -203,19 +203,20 @@
 			success:function(data){
 				$('#id').val(data.id);
 				$('#transportnumber').val(data.transportnumber);
-				$('#company').val(data.company);
-				$('#truck').val(data.truck);
-				$('#trailer').val(data.trailer);
-				$('#configuration').val(data.configuration);
-				$('#from').val(data.from);
-				$('#to').val(data.to);
-				$('#dateofloading').val(data.dateofloading);
+				$('#transportcompany').val(data.company);
+				$('#transporttruck').val(data.truck);
+				$('#transporttrailer').val(data.trailer);
+				$('#transportconfiguration').val(data.configuration);
+				$('#transportfrom').val(data.from);
+				$('#transportto').val(data.to);
+				$('#loadingdate').val(data.loadingdate);
 				$('#datedesired').val(data.datedesired);
 				$('#dateestimated').val(data.dateestimated);
 				$('#dateplanned').val(data.dateplanned);
 				$('#dateactual').val(data.dateactual);
 				$('#unloadingdate').val(data.unloadingdate);
-				$('#remarks').val(data.remarks);
+				$('#transportremarks').val(data.remarks);
+				$('#frmTransport-dismiss').val('reset');
 				$('#frmTransport-submit').val('Update');
 				$('#transport').modal('show');
 			}
@@ -234,19 +235,19 @@
 			success:function(data){
 				$('#id').val(data.id);
 				$('#transportnumber').val(data.transportnumber);
-				$('#company').val(data.company);
-				$('#truck').val(data.truck);
-				$('#trailer').val(data.trailer);
-				$('#configuration').val(data.configuration);
-				$('#from').val(data.from);
-				$('#to').val(data.to);
-				$('#dateofloading').val(data.dateofloading);
+				$('#transportcompany').val(data.company);
+				$('#transporttruck').val(data.truck);
+				$('#transporttrailer').val(data.trailer);
+				$('#transportconfiguration').val(data.configuration);
+				$('#transportfrom').val(data.from);
+				$('#transportto').val(data.to);
+				$('#loadingdate').val(data.loadingdate);
 				$('#datedesired').val(data.datedesired);
 				$('#dateestimated').val(data.dateestimated);
 				$('#dateplanned').val(data.dateplanned);
 				$('#dateactual').val(data.dateactual);
 				$('#unloadingdate').val(data.unloadingdate);
-				$('#remarks').val(data.remarks);
+				$('#transportremarks').val(data.remarks);
 				$('#frmTransport-dismiss').val('reset');
 				$('#frmTransport-submit').val('Duplicate');
 				$('#transport').modal('show');
