@@ -51,7 +51,7 @@ class Project_componentsController extends Controller
     }
 
     public static function getCurrentLocation($componentid) {
-        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->whereNotNull('loadingdate')->orderBy('loadingdate', 'asc')->get();
+        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('loadingdate', 'asc')->whereNotNull('loadingdate')->get();
         if(count($allTransport) < 1 ) {
             $currentLocation = self::getFromLocation($componentid);
             return $currentLocation;
@@ -59,21 +59,18 @@ class Project_componentsController extends Controller
 
         $currentDateTime = new DateTime();
         foreach($allTransport as $transport) {
+             $currentLocation = '';
             if($transport->loadingdate > $currentDateTime) {
-                $currentLocation = $transport->from;
-                return $currentLocation;
+              $currentLocation = $transport->from;
+              return $currentLocation;
             } elseif (empty($transport->unloadingdate)) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
                 return $currentLocation;
             } elseif ($transport->unloadingdate < $currentDateTime) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
-                return $currentDateTime;
+                return $currentLocation;
             } else {
-                $currentLocation = $transport->to;
-                if (empty($currentLocation)) {
-                    $currentLocation = 'something went is wrong!';
-                }
-                return $currentLocation
+                $currentLocation = 'error in location'; 
             }
         }
         return $currentLocation;
