@@ -95,14 +95,14 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->loadingdate}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->loadingdate))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->datedesired))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateestimated))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateplanned))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateactual))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->unloadingdate))}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->updated_at))}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -173,12 +173,12 @@
 				'<td>'+ data.to +'</td>'+
 				'<td>0</td>'+
 				'<td>0</td>'+
-				'<td>'+ data.dateofloading +'</td>'+
-				'<td>'+ data.datedesired +'</td>'+
-				'<td>'+ data.dateestimated +'</td>'+
-				'<td>'+ data.dateplanned +'</td>'+
-				'<td>'+ data.dateactual +'</td>'+
-				'<td>'+ data.unloadingdate +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.dateofloading)) +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.datedesired)) +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.dateestimated)) +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.dateplanned)) +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.dateactual)) +'</td>'+
+				'<td>'+ date("d-m-Y" , strtotime(data.unloadingdate)) +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td/>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
