@@ -98,10 +98,17 @@
 					responsive: true,
 					dom: 'B<"clear">lfrtip',
 					buttons: [
-						'excel', 'pdf', 'print', 
+						'excel',
+						{
+						extend: 'pdfHtml5',
+						orientation: 'landscape',
+						columns: ':not(:first-child)',
+						pageSize: 'LEGAL'
+						},
+						'print',
 						{
 						extend: 'colvis',
-                		columns: ':not(:first-child)'
+                		columns: ':not(:first-child)',
             			}
 					]
 				});
@@ -111,10 +118,17 @@
 					responsive: true,
 					dom: 'B<"clear">lfrtip',
 					buttons: [
-						'excel', 'pdf', 'print', 
+						'excel',
+						{
+						extend: 'pdfHtml5',
+						orientation: 'landscape',
+						columns: ':not(:first-child)',
+						pageSize: 'LEGAL'
+						},
+						'print',
 						{
 						extend: 'colvis',
-                		columns: ':not(:first-child)'
+                		columns: ':not(:first-child)',
             			}
 					]
 				});
