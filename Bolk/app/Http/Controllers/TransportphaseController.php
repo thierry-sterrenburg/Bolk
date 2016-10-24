@@ -287,4 +287,17 @@ class TransportphaseController extends Controller
 	   
 	   
    }
+   
+   public static function checkStatusRequirement($requirementid){
+	    $requirement=Requirement::find($requirementid);
+	   if($requirement->booked == 'no'){
+		   return 'danger';
+	   }else if($requirement->booked == 'yes'){
+		   return 'success';
+	   }else if($requirement->booked == 'pending'){
+		   return 'warning';
+	   }else{
+		   return;
+	   }
+   }
 }

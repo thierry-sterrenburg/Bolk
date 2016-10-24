@@ -1,3 +1,7 @@
+<?php
+use app\Http\Controllers\TransportphaseController as TransportphaseController;
+?>
+
 @extends('layouts.master')
 @section('content')
         <!-- Page Content -->
@@ -75,7 +79,7 @@
 						</thead>
 						<tbody id="requirement-table">
 							@foreach($requirements as $requirement)
-								<tr id="requirement{{$requirement->id}}">
+								<tr id="requirement{{$requirement->id}}" class="{{TransportphaseController::checkStatusRequirement($requirement->id)}}">
 									<td>{{ $requirement->id }}</td>
 									<td>{{ $requirement->name }}</td>
 									<td>{{ $requirement->country }}</td>
