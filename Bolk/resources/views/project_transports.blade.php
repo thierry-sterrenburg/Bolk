@@ -37,7 +37,7 @@
 					<h3>Transports</h3>
 				</div>
 				<div class="row">
-					<table id="transport-datatable" class="table table-condensed table-hover">
+					<table id="transport-datatable" class="table table-condensed table-hover"  style="width:100%">
 						<div class="container">
 							<div class='col-sm-5'>
 							    <div class="form-group">

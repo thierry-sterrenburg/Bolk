@@ -10,7 +10,7 @@
 				<!--panel content -->
 				<!--create table-->
 				<div class="row">
-					<table class="table table-condensed table-hover">
+					<table class="table table-condensed table-hover"  style="width:100%">
 						<thead>
 							<td>Reg. number</td>
 							<td>Component</td>

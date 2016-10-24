@@ -37,7 +37,7 @@
 				
 				<!--Requirement Table-->
 				<div class="row" id="tablecontainer">
-					<table id="requirementtable" class="table table-condensed table-hover">
+					<table id="requirementtable" class="table table-condensed table-hover"  style="width:100%">
 						<div class="container">
 						    <div class='col-md-5'>
 						        <div class="form-group">

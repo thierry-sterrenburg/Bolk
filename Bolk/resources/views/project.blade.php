@@ -35,7 +35,7 @@
 					<h3>Windmills</h3>
 				</div>
 				<div class="row">
-					<table id="windmill-datatable" class="table table-condensed table-hover">
+					<table id="windmill-datatable" class="table table-condensed table-hover"  style="width:100%">
 						<div class="container">
 						    <div class='col-md-5'>
 						        <div class="form-group">

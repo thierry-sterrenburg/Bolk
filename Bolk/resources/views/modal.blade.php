@@ -22,7 +22,7 @@
 
   <div class="panel-body">
 	@include('newProject')
-	<table class="table table-hover">
+	<table class="table table-hover"  style="width:100%">
 		<caption>Projects</caption>
 			<thead>
 				<td>#</td>

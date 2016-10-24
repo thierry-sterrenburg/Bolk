@@ -41,7 +41,7 @@
 					<h3>Transports</h3>
 				</div>
 				<div class="row">
-					<table id="transportphasetable" class="table table-condensed table-hover">
+					<table id="transportphasetable" class="table table-condensed table-hover"  style="width:100%">
 						<div class="container">
 						    <div class='col-md-5'>
 						        <div class="form-group">
