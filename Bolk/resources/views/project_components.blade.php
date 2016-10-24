@@ -63,12 +63,18 @@
 							<td>#</td>
 							<td>Reg. number</td>
 							<td>Name</td>
+<<<<<<< HEAD
 							<td>Length</td>
 							<td>Height</td>
 							<td>Width</td>
 							<td>Weight</td>
 							<td>Current location</td>
 							<td>status</td>
+=======
+							<td>Attached To</td>
+							<td>From</td>
+							<td>To</td>
+>>>>>>> origin/master
 							<td>Number of transport phases</td>
 							<td>Remarks</td>
 							<td>Last update</td>
@@ -80,6 +86,7 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+<<<<<<< HEAD
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
@@ -87,6 +94,17 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
+=======
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getWindmillName($component->mainwindmillid) }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+>>>>>>> origin/master
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 									<td>
@@ -234,29 +252,6 @@
         });
     });
 
-	function validator() {
-    var x,y,text;
-
-    // Get the value of the input field with id="regnumber"
-    x = document.getElementById("regnumber").value;
-	y = document.getElementById("name").value;
-
-    // If x is Not a Number or less than one or greater than 10
-    if (x == "") {
-        text = "Regnumber must be filled in.";
-    }
-	if (y == ""){
-		if(text!=null){
-			text = text+"<br/>";
-		}
-        text = text+"Name must be filled in.";
-    }
-	if(x != "" && y != ""){
-		$('#windmill').modal('toggle');
-	}else{
-		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
-	}
-}
 
   </script>
     <!-- Datatable script-->

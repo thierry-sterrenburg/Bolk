@@ -65,6 +65,7 @@
 					<thead>
 						<td>#</td>
 						<td>Reg. number</td>
+						<td>Attached To</td>
 						<td>Name</td>
 						<td>From</td>
 						<td>To</td>
@@ -83,6 +84,7 @@
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::getWindmillName($component->mainwindmillid)}}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::countTransports($component->id)}}</td>

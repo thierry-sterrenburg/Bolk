@@ -183,7 +183,7 @@
       }
          ?>
         <div class="modal-footer">
-			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary">
+			<input type="submit" name="frmComponent-submit" value="Save" id="frmComponent-submit" class="btn btn-primary" onclick="validator()">
 			<button type="button" class="btn btn-warning" id="frmComponent-clear">Clear</button>
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -191,3 +191,30 @@
 
     </div>
   </div>
+
+  <script type="text/javascript">
+	function validator() {
+    var x,y,text;
+	text="";
+
+    // Get the value of the input field with id="regnumber"
+    x = document.getElementById("componentregnumber").value;
+	y = document.getElementById("componentname").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x == "") {
+        text = "Regnumber must be filled in.";
+    }
+	if (y == ""){
+		if(text!=""){
+			text = text+"<br/>";
+		}
+        text = text+"Name must be filled in.";
+    }
+	if(x != "" && y != ""){
+		$('#windmill').modal('toggle');
+	}else{
+		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+	}
+}
+  </script>

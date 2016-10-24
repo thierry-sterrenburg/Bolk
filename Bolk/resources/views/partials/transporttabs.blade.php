@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs">
 	<li id="componenttab"><a onclick="document.location= '/transport_components/id={{$transport->id}}';">Components</a></li>
-	<li id="requirementtab"><a onclick="document.location= '/transportphase/id={{$transport->id}}';">`Requirements</a></li>
+	<li id="requirementtab"><a onclick="document.location= '/transportphase/id={{$transport->id}}';">Requirements</a></li>
 </ul>
 
 <script type=text/javascript>
