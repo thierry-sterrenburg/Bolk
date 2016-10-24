@@ -88,6 +88,7 @@
 									<td>{{ $requirement->remarks }}</td>
 									<td>
 										<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
+										<button class="btn btn-warning btn-clone-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-clipboard"></i></button>
 										<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
 									
 								</tr>
@@ -112,6 +113,10 @@
 			
 			//---------add Transport---------
 			$('#addRequirement').on('click',function(){
+				if($('#frmRequirement-dismiss').val() == 'reset'){
+					$('#frmRequirement').trigger('reset');
+				}
+				$('#frmRequirement-dismiss').val('');
 				$('#frmRequirement-submit').val('Save');
 				$('#requirement').modal('show');
 			})
@@ -195,6 +200,33 @@
 						$('#requirementbooked').val(data.booked);
 						$('#requirementremarks').val(data.remarks);
 						$('#frmRequirement-submit').val('Update');
+						$('#frmRequirement-dismiss').val('reset');
+						$('#requirement').modal('show');
+					}
+				});
+			})
+			
+			
+			//---------get update requirement for duplicate---------
+			$('#requirement-table').delegate('.btn-clone-requirement','click',function(){
+			document.getElementById("error_message").innerHTML = '';
+			var value=$(this).data('id');
+				var url='{{URL::to('getUpdateRequirement')}}';
+				$.ajax({
+					type: 'get',
+					url : url,
+					data: {'id':value},
+					success:function(data){
+						$('#id').val(data.id);
+						$('#requirementname').val(data.name);
+						$('#requirementcountry').val(data.country);
+						$('#requirementstartdate').val(data.startdate);
+						$('#requirementenddate').val(data.enddate);
+						$('#requirementplanner').val(data.responsibleplanner);
+						$('#requirementbooked').val(data.booked);
+						$('#requirementremarks').val(data.remarks);
+						$('#frmRequirement-submit').val('Duplicate');
+						$('#frmRequirement-dismiss').val('reset');
 						$('#requirement').modal('show');
 					}
 				});

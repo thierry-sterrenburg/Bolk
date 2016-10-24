@@ -79,6 +79,7 @@
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="frmRequirement-dismiss" id="frmRequirement-dismiss" value="">
 			<input type="hidden" name="transportid" id="id" value="{{$transport->id}}">
 		  </form>
         </div>
