@@ -83,3 +83,33 @@
 
     </div>
   </div>
+  <script type="text/javascript">
+  	function validator() {
+    var x,y,text;
+	text="";
+    // Get the value of the input field with id="regnumber"
+    x = document.getElementById("regnumber").value;
+	y = document.getElementById("name").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x == "") {
+        text = "Regnumber must be filled in.";
+    }
+	if (y == ""){
+		if(text!=""){
+			text = text+"<br/>";
+		}
+        text = text+"Name must be filled in.";
+    }
+	if(x == "" || y == ""){
+		$('#project').modal('toggle');
+		
+	}else{
+		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+	}
+
+	function resetError(){
+		document.getElementById("error_message").innerHTML = '';
+	}
+}
+  </script>

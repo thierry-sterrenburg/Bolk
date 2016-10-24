@@ -207,31 +207,6 @@
             $('#startdatepicker').data("DateTimePicker").maxDate(e.date);
         });
     });
-
-	function validator() {
-    var x,y,text;
-
-    // Get the value of the input field with id="regnumber"
-    x = document.getElementById("regnumber").value;
-	y = document.getElementById("name").value;
-
-    // If x is Not a Number or less than one or greater than 10
-    if (x == "") {
-        text = "Regnumber must be filled in.";
-    }
-	if (y == ""){
-		if(text!=null){
-			text = text+"<br/>";
-		}
-        text = text+"Name must be filled in.";
-    }
-	if(x != "" && y != ""){
-		$('#windmill').modal('toggle');
-	}else{
-		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
-	}
-}
-
   </script>
     <!-- Datatable script-->
     @include('partials.scriptimport')
