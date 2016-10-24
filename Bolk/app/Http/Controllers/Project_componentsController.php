@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DateTime;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -35,7 +36,7 @@ class Project_componentsController extends Controller
 
     public static function getFromLocation($componentid) {
         $firstTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired','asc')->pluck('from')->first();
-        if(empty($firstTransport)) {
+        if(count($firstTransport) < 1) {
             $firstTransport = '-';
         }
         return $firstTransport;
@@ -43,15 +44,38 @@ class Project_componentsController extends Controller
 
     public static function getToLocation($componentid) {
         $lastTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired', 'asc')->pluck('to')->last();
-        if(empty($lastTransport)) {
+        if(count($lastTransport) < 1) {
             $lastTransport = '-';
         }
         return $lastTransport;
     }
 
     public static function getCurrentLocation($componentid) {
-        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->get();
-        $currentTimestamp = null;
-        return 'null';
+        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->whereNotNull('loadingdate')->orderBy('loadingdate', 'asc')->get();
+        if(count($allTransport) < 1 ) {
+            $currentLocation = self::getFromLocation($componentid);
+            return $currentLocation;
+        }
+
+        $currentDateTime = new DateTime();
+        foreach($allTransport as $transport) {
+            if($transport->loadingdate > $currentDateTime) {
+                $currentLocation = $transport->from;
+                return $currentLocation;
+            } elseif (empty($transport->unloadingdate)) {
+                $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
+                return $currentLocation;
+            } elseif ($transport->unloadingdate < $currentDateTime) {
+                $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
+                return $currentDateTime;
+            } else {
+                $currentLocation = $transport->to;
+                if (empty($currentLocation)) {
+                    $currentLocation = 'something went is wrong!';
+                }
+                return $currentLocation
+            }
+        }
+        return $currentLocation;
     }
 }
