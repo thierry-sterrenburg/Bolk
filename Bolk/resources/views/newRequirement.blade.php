@@ -1,4 +1,4 @@
-  <!-- Modal -->
+<!-- Modal -->
   <div class="modal fade" id="requirement" role="dialog">
     <div class="modal-dialog">
     
@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
 				<div class="form-group">
-					<input type="text" name="requirementplanner" id="requirementplanner" placeholder="Planner" class="form-control">
+					<input type="text" name="requirementplanner" id="requirementplanner" placeholder="Planner" class="form-control" value="{{Auth::user()->fullname}}">
 				</div>
 				</div>
 				
