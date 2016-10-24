@@ -36,7 +36,7 @@
 					<h3>Components</h3>
 				</div>
 				<div class="row">
-					<table id="component-datatable" class="table table-condensed table-hover">
+					<table id="component-datatable" class="table table-condensed table-hover" style="width:100%;">
 						<div class="container">
 						    <div class='col-md-5'>
 							    <div class="form-group">
@@ -144,9 +144,7 @@
 				$('#frmComponent').trigger('reset');
 				$('#componentregnumber').focus();
 				$('#component').modal('toggle');
-				addRow(data);
-				data.numberoftransports = 0;
-				$("#component-datatable").DataTable().row.add(data).draw();
+				location.reload();
 
 			}
 		});
@@ -154,7 +152,7 @@
 	});
 
 	//---------addrow---------
-	function addRow(data){
+	function addRow(data, state){
 		var row='<tr id="component'+data.id+'">'+
 				'<td>'+ data.id +'</td>'+
 				'<td>'+ data.regnumber +'</td>'+
@@ -170,11 +168,11 @@
 				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-component" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
-				// if(state=='Save'){
-				// 	$('#component-table').append(row);
-				// }else{
-				// 	$('#component'+data.id).replaceWith(row);
-				// }
+				if(state=='Save'){
+					$('#component-table').append(row);
+				}else{
+					$('#component'+data.id).replaceWith(row);
+				}
 		
 	}
 
