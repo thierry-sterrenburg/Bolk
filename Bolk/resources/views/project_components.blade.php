@@ -62,6 +62,7 @@
 							<td>#</td>
 							<td>Reg. number</td>
 							<td>Name</td>
+							<td>Attached To</td>
 							<td>From</td>
 							<td>To</td>
 							<td>Number of transport phases</td>
@@ -80,6 +81,7 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::getWindmillName($component->mainwindmillid) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 									<td onclick="document.location= '/component/id={{$component->id}}';"></td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>

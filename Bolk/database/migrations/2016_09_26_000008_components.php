@@ -21,7 +21,7 @@ class Components extends Migration
 			$table->integer('mainwindmillid')->nullable()->unsigned();
             $table->foreign('mainwindmillid')->references('id')->on('windmills')->onDelete('set null');
 			$table->string('regnumber');
-            $table->string('name')->nullable();
+            $table->string('name');
 			$table->double('length', 8,2)->nullable();
 			$table->double('height', 8,2)->nullable();
 			$table->double('width', 8,2)->nullable();
