@@ -107,6 +107,7 @@
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										<button class="btn btn-warning btn-clone-transport" data-id="{{ $transport->id }}"><i class="fa fa-clipboard"></i></button>
 										@permission(('delete-transport'))
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
@@ -130,6 +131,10 @@
 
 	//---------add Transport---------
 	$('#addTransport').on('click',function(){
+		if($('#frmTransport-dismiss').val() == 'reset'){
+			$('#frmTransport').trigger('reset');
+		}
+		$('#frmTransport-dismiss').val('');
 		$('#frmTransport-submit').val('Save');
 		$('#transport').modal('show');
 	})
@@ -212,6 +217,38 @@
 				$('#unloadingdate').val(data.unloadingdate);
 				$('#remarks').val(data.remarks);
 				$('#frmTransport-submit').val('Update');
+				$('#transport').modal('show');
+			}
+		});
+	})
+	
+	//---------get update transport for duplicate---------
+	$('#transport-table').delegate('.btn-clone-transport','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateTransport')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#transportnumber').val(data.transportnumber);
+				$('#company').val(data.company);
+				$('#truck').val(data.truck);
+				$('#trailer').val(data.trailer);
+				$('#configuration').val(data.configuration);
+				$('#from').val(data.from);
+				$('#to').val(data.to);
+				$('#dateofloading').val(data.dateofloading);
+				$('#datedesired').val(data.datedesired);
+				$('#dateestimated').val(data.dateestimated);
+				$('#dateplanned').val(data.dateplanned);
+				$('#dateactual').val(data.dateactual);
+				$('#unloadingdate').val(data.unloadingdate);
+				$('#remarks').val(data.remarks);
+				$('#frmTransport-dismiss').val('reset');
+				$('#frmTransport-submit').val('Duplicate');
 				$('#transport').modal('show');
 			}
 		});
