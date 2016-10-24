@@ -186,6 +186,7 @@
         </div>
         <div class="modal-footer">
 			<input type="submit" name="frmChecklist-submit" value="Save" id="frmChecklist-submit" class="btn btn-primary">
+			<button type="button" class="btn btn-warning" id="frmChecklist-clear">Clear</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

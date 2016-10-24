@@ -84,6 +84,7 @@
         </div>
         <div class="modal-footer">
 			<input type="submit" name="frmRequirement-submit" value="Save" id="frmRequirement-submit" class="btn btn-primary" onclick="validator()">
+			<button type="button" class="btn btn-warning" id="frmRequirement-clear">Clear</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

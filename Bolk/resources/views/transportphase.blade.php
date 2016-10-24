@@ -101,19 +101,24 @@
         <!-- /#page-wrapper -->
 		<script type="text/javascript">
 		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		
+		$('#frmRequirement-clear').on('click',function(){
+		$('#frmRequirement').trigger('reset');
+			})
+			
+		$('#frmChecklist-clear').on('click',function(){
+		$('#frmChecklist').trigger('reset');
+			})
+			
 			//---------add Transport---------
 			$('#addRequirement').on('click',function(){
 				$('#frmRequirement-submit').val('Save');
-				$('#frmRequirement').trigger('reset');
-
 				$('#requirement').modal('show');
 			})
 			
 			//---------add Transport---------
 			$('#addChecklist').on('click',function(){
 				$('#frmChecklist-submit').val('Save');
-				$('#frmChecklist').trigger('reset');
-
 				$('#checklist').modal('show');
 			})
 
