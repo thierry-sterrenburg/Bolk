@@ -75,6 +75,7 @@
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 						@endpermission
+						<button class="btn btn-warning btn-clone-project" data-id="{{ $project->id }}"><i class="fa fa-clipboard"></i></button>
 						@permission(('delete-project'))
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 						@endpermission
@@ -102,6 +103,10 @@
 
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('Save');
+		if($('#frmProject-dismiss').val() == 'reset'){
+			$('#frmProject').trigger('reset');
+		}
+		$('#frmProject-dismiss').val('');
 		document.getElementById("error_message").innerHTML = '';
 		$('#project').modal('show');
 	})
@@ -172,7 +177,32 @@
 				$('#startdate').val(data.startdate);
 				$('#remarks').val(data.remarks);
 				$('#enddate').val(data.enddate);
+				$('#frmProject-dismiss').val('reset');
 				$('#frmProject-submit').val('Update');
+				$('#project').modal('show');
+			}
+		});
+	});
+	
+		//---------get update for duplicate project--------
+	$('tbody').delegate('.btn-clone-project','click',function(){
+		document.getElementById("error_message").innerHTML = '';
+		var value=$(this).data('id');
+		var url='{{URL::to('getUpdate')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#regnumber').val(data.regnumber);
+				$('#name').val(data.name);
+				$('#location').val(data.location);
+				$('#startdate').val(data.startdate);
+				$('#remarks').val(data.remarks);
+				$('#enddate').val(data.enddate);
+				$('#frmProject-dismiss').val('reset');
+				$('#frmProject-submit').val('Duplicate');
 				$('#project').modal('show');
 			}
 		});

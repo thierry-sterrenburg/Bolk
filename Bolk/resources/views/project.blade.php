@@ -86,6 +86,7 @@
 										@permission(('edit-windmill'))
 										<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										<button class="btn btn-warning btn-clone-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-clipboard"></i></button>
 										@permission(('delete-windmill'))
 										<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
@@ -113,6 +114,10 @@
 	})
 	//---------add Windmill---------
 	$('#addWindmill').on('click',function(){
+		if($('#frmWindmill-dismiss').val() == 'reset'){
+			$('#frmWindmill').trigger('reset');
+		}
+		$('#frmWindmill-dismiss').val('');
 		$('#frmWindmill-submit').val('Save');
 		document.getElementById("error_message").innerHTML = '';
 		$('#windmill').modal('show');
@@ -185,7 +190,32 @@
 				$('#startdate').val(data.startdate);
 				$('#remarks').val(data.remarks);
 				$('#enddate').val(data.enddate);
+				$('#frmWindmill-dismiss').val('reset');
 				$('#frmWindmill-submit').val('Update');
+				$('#windmill').modal('show');
+			}
+		});
+	})
+	
+		//---------get update windmill for duplicate---------
+	$('#windmill-table').delegate('.btn-clone-windmill','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateWindmill')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#regnumber').val(data.regnumber);
+				$('#name').val(data.name);
+				$('#location').val(data.location);
+				$('#startdate').val(data.startdate);
+				$('#remarks').val(data.remarks);
+				$('#enddate').val(data.enddate);
+				$('#frmWindmill-dismiss').val('reset');
+				$('#frmWindmill-submit').val('Duplicate');
 				$('#windmill').modal('show');
 			}
 		});

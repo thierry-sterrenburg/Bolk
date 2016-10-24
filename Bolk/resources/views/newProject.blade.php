@@ -64,6 +64,7 @@
 			</div>
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="frmProject-dismiss" id="frmProject-dismiss" value="">
 		  </form>
         </div>
         @endpermission
