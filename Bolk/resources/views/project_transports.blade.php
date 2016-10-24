@@ -123,12 +123,14 @@
         <!-- /#page-wrapper -->
 		<script type="text/javascript">
 	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+	
+	$('#frmTransport-clear').on('click',function(){
+		$('#frmTransport').trigger('reset');
+			})
 
 	//---------add Transport---------
 	$('#addTransport').on('click',function(){
 		$('#frmTransport-submit').val('Save');
-		$('#frmTransport').trigger('reset');
-
 		$('#transport').modal('show');
 	})
 

@@ -146,6 +146,7 @@
         </div>
         <div class="modal-footer">
 			<input type="submit" name="frmTransport-submit" value="Save" id="frmTransport-submit" class="btn btn-primary" onclick="validator()">
+			<button type="button" class="btn btn-warning" id="frmTransport-clear">Clear</button>
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
