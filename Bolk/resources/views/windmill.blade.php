@@ -118,7 +118,6 @@
 	//---------new Component---------
 	$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
-		$('#frmComponent').trigger('reset');
 		$('#component').modal('show');
 	})
 
