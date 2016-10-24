@@ -138,7 +138,10 @@
 				$('#frmComponent').trigger('reset');
 				$('#componentregnumber').focus();
 				$('#component').modal('toggle');
-				location.reload();
+				addRow(data);
+				data.numberoftransports = 0;
+				$("#component-datatable").DataTable().row.add(data).draw();
+
 			}
 		});
 	})
@@ -161,11 +164,12 @@
 				'<td><button class="btn btn-success btn-edit-component" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-component" data-id="'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
 				'</tr>';
-				if(state=='Save'){
-					$('#component-table').append(row);
-				}else{
-					$('#component'+data.id).replaceWith(row);
-				}
+				// if(state=='Save'){
+				// 	$('#component-table').append(row);
+				// }else{
+				// 	$('#component'+data.id).replaceWith(row);
+				// }
+		
 	}
 
 		//---------get update component---------
