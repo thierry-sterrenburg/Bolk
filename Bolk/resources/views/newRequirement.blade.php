@@ -83,10 +83,34 @@
 		  </form>
         </div>
         <div class="modal-footer">
-			<input type="submit" name="frmRequirement-submit" value="Save" id="frmRequirement-submit" class="btn btn-primary">
+			<input type="submit" name="frmRequirement-submit" value="Save" id="frmRequirement-submit" class="btn btn-primary" onclick="validator()">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
       
     </div>
   </div>
+  <script type="text/javascript">
+	function validator() {
+    var x,y,text;
+	text="";
+
+    // Get the value of the input field with id="regnumber"
+    x = document.getElementById("requirementname").value;
+	y = document.getElementById("requirementplanner").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x == "") {
+        text = "Name must be filled in.";
+    }
+	if (y == ""){
+		if(text!=""){
+			text = text+"<br/>";
+		}
+        text = text+"Planner must be filled in.";
+    }
+	if(x == "" || y == ""){
+		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
+	}
+}
+  </script>
