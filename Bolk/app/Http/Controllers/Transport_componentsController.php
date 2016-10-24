@@ -26,6 +26,14 @@ class Transport_componentsController extends Controller
 		$numberoftransports = Component_Transport::where('componentid','=',$componentid)->count();
 		return $numberoftransports;
 	}
+
+	public static function getWindmillName($windmillid) {
+		$windmillName = Windmill::where('id', '=', $windmillid)->pluck('name')->first();
+		if(empty($windmillName)) {
+			$windmillName = '-';
+		}
+		return $windmillName;
+	}
 	
 	public function addComponent(Request $request){
 		 if($request->ajax()){
@@ -42,6 +50,5 @@ class Transport_componentsController extends Controller
 		   Component_Transport::where('componentid', $request->id)->delete();
 		   return Response()->json(['sms'=>'delete successfully']);
 	   }
-	}
-	
+	}	
 }
