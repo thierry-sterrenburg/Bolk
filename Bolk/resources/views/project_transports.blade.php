@@ -286,23 +286,6 @@
         
     });
 
-	function validator() {
-    var x,y,text;
-
-    // Get the value of the input field with id="regnumber"
-    x = document.getElementById("transportnumber").value;
-
-    // If x is Not a Number or less than one or greater than 10
-    if (x == "") {
-        text = "Transportnumber must be filled in.";
-    }
-	if(x != ""){
-		$('#transport').modal('toggle');
-	}else{
-		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
-	}
-}
-
   </script>
     <!-- Datatable script-->
     @include('partials.scriptimport')
