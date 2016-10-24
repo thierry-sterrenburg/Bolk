@@ -99,6 +99,7 @@
 										@permission(('edit-component'))
 											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										<button class="btn btn-warning btn-clone-component" data-id="{{ $component->id }}"><i class="fa fa-clipboard"></i></button>
 										@permission(('delete-component'))
 											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
@@ -121,6 +122,10 @@
 	//---------add Component---------
 	$('#addComponent').on('click',function(){
 		$('#frmComponent-submit').val('Save');
+		if($('#frmComponent-dismiss').val() == 'reset'){
+			$('#frmComponent').trigger('reset');
+		}
+		$('#frmComponent-dismiss').val('');
 		$('#component').modal('show');
 	})
 
@@ -176,7 +181,7 @@
 		
 	}
 
-		//---------get update component---------
+		//---------form get Component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
@@ -196,7 +201,35 @@
 				$('#currentlocation').val(data.currentlocation);
 				$('#componentremarks').val(data.remarks);
 				$('#componentstatus').val(data.status).change();
+				$('#frmComponent-dismiss').val('reset');
 				$('#frmComponent-submit').val('Update');
+				$('#component').modal('show');
+			}
+		});
+	})
+	
+	//---------form get Component for duplicate---------
+	$('#component-table').delegate('.btn-clone-component','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateComponent')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#componentid').val(data.id);
+				$('#componentregnumber').val(data.regnumber);
+				$('#componentname').val(data.name);
+				$('#componentlength').val(data.length);
+				$('#componentheight').val(data.height);
+				$('#componentwidth').val(data.width);
+				$('#componentweight').val(data.weight);
+				$('#currentlocation').val(data.currentlocation);
+				$('#componentremarks').val(data.remarks);
+				$('#componentstatus').val(data.status).change();
+				$('#frmComponent-dismiss').val('reset');
+				$('#frmComponent-submit').val('Duplicate');
 				$('#component').modal('show');
 			}
 		});

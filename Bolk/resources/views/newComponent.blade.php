@@ -168,6 +168,7 @@
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="componentid" id="componentid" value="">
+			<input type="hidden" name="frmComponent-dismiss" id="frmComponent-dismiss" value="">
 		  </form>
         </div>
         @endpermission
