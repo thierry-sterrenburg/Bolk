@@ -97,14 +97,14 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->loadingdate)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->datedesired)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateestimated)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateplanned)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateactual)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->unloadingdate)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ($transport->loadingdate)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->updated_at)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -143,30 +143,29 @@
 
 	//---------form Transport---------
 	$(function() {
-	$('#frmTransport-submit').on('click', function(e){
-		e.preventDefault();
-		var form=$('#frmTransport');
-		var formData=form.serialize();
-		var url=form.attr('action');
-		var state=$('#frmTransport-submit').val();
-		var type= 'post';
-		if(state=='Update'){
-			type = 'put';
-		}
-		$.ajax({
-			type : type,
-			url : url,
-			data: formData,
-			success:function(data){
-				$('#frmTransport').trigger('reset');
-				$('#transportnumber').focus();
-				$('#transport').modal('toggle');
-				location.reload();
+		$('#frmTransport-submit').on('click', function(e){
+			e.preventDefault();
+			var form=$('#frmTransport');
+			var formData=form.serialize();
+			var url=form.attr('action');
+			var state=$('#frmTransport-submit').val();
+			var type= 'post';
+			if(state=='Update'){
+				type = 'put';
 			}
-		});
+			$.ajax({
+				type : type,
+				url : url,
+				data: formData,
+				success:function(data){
+					$('#frmTransport').trigger('reset');
+					$('#transportnumber').focus();
+					$('#transport').modal('toggle');
+					location.reload();
+				}
+			})
+		})
 	})
-	});
-
 	//---------addrow---------
 	function addRow(data){
 		var row='<tr id="transport'+data.id+'">'+
@@ -180,16 +179,17 @@
 				'<td>'+ data.to +'</td>'+
 				'<td>0</td>'+
 				'<td>0</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.dateofloading)) +'</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.datedesired)) +'</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.dateestimated)) +'</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.dateplanned)) +'</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.dateactual)) +'</td>'+
-				'<td>'+ date("d-m-Y" , strtotime(data.unloadingdate)) +'</td>'+
+				'<td>'+ data.dateofloading +'</td>'+
+				'<td>'+ data.datedesired +'</td>'+
+				'<td>'+ data.dateestimated +'</td>'+
+				'<td>'+ data.dateplanned +'</td>'+
+				'<td>'+ data.dateactual +'</td>'+
+				'<td>'+ data.unloadingdate +'</td>'+
 				'<td>'+ data.remarks +'</td>'+
 				'<td/>'+
 				'<td><button class="btn btn-success btn-edit-transport" data-id="'+ data.id +'"><i class="fa fa-pencil"></i></button> '+
 				'<button class="btn btn-danger btn-delete-transport" data-id"'+ data.id +'"><i class="fa fa-trash-o"></i></button></td>'+
+				'</tr>';
 		$('tbody').append(row);
 	}
 
