@@ -73,7 +73,7 @@ class Project_componentsController extends Controller
                 if (empty($currentLocation)) {
                     $currentLocation = 'something went is wrong!';
                 }
-                return $currentLocation
+                return $currentLocation;
             }
         }
         return $currentLocation;
