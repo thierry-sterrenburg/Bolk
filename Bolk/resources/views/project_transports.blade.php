@@ -1,5 +1,6 @@
 <?php
 	use App\Http\Controllers\Project_transportsController;
+
 ?>
 @extends('layouts.master')
 @section('content')
@@ -37,7 +38,8 @@
 					<h3>Transports</h3>
 				</div>
 				<div class="row">
-					<table id="transport-datatable" class="table table-condensed table-hover"  style="width:100%">
+					<table id="transport-datatable" class="table table-condensed table-hover"  style="width:100%"> 
+				
 						<div class="container">
 							<div class='col-sm-5'>
 							    <div class="form-group">
@@ -95,14 +97,14 @@
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countComponents($transport->id)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Project_transportsController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->loadingdate))}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->datedesired))}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateestimated))}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateplanned))}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->dateactual))}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->unloadingdate))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->loadingdate)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->datedesired)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateestimated)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateplanned)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->dateactual)}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->unloadingdate)}}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ date("d-m-Y" , strtotime($transport->updated_at))}}</td>
+									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ DfD($transport->updated_at)}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
@@ -333,7 +335,7 @@
     <script type="text/javascript">
     	var $table = $('#transport-datatable');
     	var $table2 = $('#component-datatable');
-    	var $column = [9, 10, 11];
+    	var $column = [10, 11, 12, 13, 14, 15];
     	var $column2 = [6, 7];
     </script>
 

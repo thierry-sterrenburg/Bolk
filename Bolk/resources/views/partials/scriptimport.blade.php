@@ -11,3 +11,4 @@
 	    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
 	    <script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
+	    <script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.12/dataRender/datetime.js"></script>

@@ -4,11 +4,15 @@
     		$(function () {
     			if(typeof $column2 != 'undefined'){
     				$('#startdatesearch2').datetimepicker({
-		        	format: 'YYYY-MM-DD'
+		        	sideBySide: true,
+					format: 'DD-MM-YYYY',
+					calendarWeeks: true
 		        });
 		        $('#enddatesearch2').datetimepicker({
 		            useCurrent: false, //Important! See issue #1075
-		            format: 'YYYY-MM-DD'
+		            sideBySide: true,
+					format: 'DD-MM-YYYY',
+					calendarWeeks: true
 		        });
 		        $("#startdatesearch2").on("dp.change", function (e) {
 		            $('#enddatesearch2').data("DateTimePicker").minDate(e.date);
@@ -24,11 +28,15 @@
 	        	});
 		    	}
 		        $('#startdatesearch').datetimepicker({
-		        	format: 'YYYY-MM-DD'
+		        	sideBySide: true,
+					format: 'DD-MM-YYYY',
+					calendarWeeks: true
 		        });
 		        $('#enddatesearch').datetimepicker({
 		            useCurrent: false, //Important! See issue #1075
-		            format: 'YYYY-MM-DD'
+		            sideBySide: true,
+					format: 'DD-MM-YYYY',
+					calendarWeeks: true
 		        });
 		        $("#startdatesearch").on("dp.change", function (e) {
 		            $('#enddatesearch').data("DateTimePicker").minDate(e.date);
@@ -46,51 +54,51 @@
     		//DataTables search execution
 	    	minDateFilter="";
 			maxDateFilter="";
-			$.fn.dataTable.ext.search.push(
-			   function(oSettings, aData, iDataIndex) {
+			// $.fn.dataTable.ext.search.push(
+			//    function(oSettings, aData, iDataIndex) {
 
-			   	if($searchcolumn.length == 2){
-					if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')) {
-				      aData._date = new Date(aData[$searchcolumn[0]]).getTime();
-				      var bData = new Date(aData[$searchcolumn[1]]).getTime();
-				    }
+			//    	if($searchcolumn.length == 2){
+			// 		if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')) {
+			// 	      aData._date = new Date(aData[$searchcolumn[0]]).getTime();
+			// 	      var bData = new Date(aData[$searchcolumn[1]]).getTime();
+			// 	    }
 
-				    if (minDateFilter && !isNaN(minDateFilter)) {
-				      if ((aData._date < minDateFilter)&&(bData < minDateFilter)) {
-				        return false;
-				      }
-				    }
+			// 	    if (minDateFilter && !isNaN(minDateFilter)) {
+			// 	      if ((aData._date < minDateFilter)&&(bData < minDateFilter)) {
+			// 	        return false;
+			// 	      }
+			// 	    }
 
-				    if (maxDateFilter && !isNaN(maxDateFilter)) {
-				      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)) {
-				        return false;
-				      }
-				    }
+			// 	    if (maxDateFilter && !isNaN(maxDateFilter)) {
+			// 	      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)) {
+			// 	        return false;
+			// 	      }
+			// 	    }
 
-				    return true;
+			// 	    return true;
 
-			   	} else if($searchcolumn.length == 3){
-					if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')||(typeof cData == 'undefined')) {
-				      aData._date = new Date(aData[$searchcolumn[0]]).getTime();
-				      var bData = new Date(aData[$searchcolumn[1]]).getTime();
-				      var cData = new Date(aData[$searchcolumn[2]]).getTime();
-				    }
+			//    	} else if($searchcolumn.length == 3){
+			// 		if ((typeof aData._date == 'undefined')||(typeof bData == 'undefined')||(typeof cData == 'undefined')) {
+			// 	      aData._date = new Date(aData[$searchcolumn[0]]).getTime();
+			// 	      var bData = new Date(aData[$searchcolumn[1]]).getTime();
+			// 	      var cData = new Date(aData[$searchcolumn[2]]).getTime();
+			// 	    }
 
-				    if (minDateFilter && !isNaN(minDateFilter)) {
-				      if ((aData._date < minDateFilter)&&(bData < minDateFilter)&&(cData < minDateFilter)) {
-				        return false;
-				      }
-				    }
+			// 	    if (minDateFilter && !isNaN(minDateFilter)) {
+			// 	      if ((aData._date < minDateFilter)&&(bData < minDateFilter)&&(cData < minDateFilter)) {
+			// 	        return false;
+			// 	      }
+			// 	    }
 
-				    if (maxDateFilter && !isNaN(maxDateFilter)) {
-				      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)&&(cData > maxDateFilter)) {
-				        return false;
-				      }
-				    }
+			// 	    if (maxDateFilter && !isNaN(maxDateFilter)) {
+			// 	      if ((aData._date > maxDateFilter)&&(bData > maxDateFilter)&&(cData > maxDateFilter)) {
+			// 	        return false;
+			// 	      }
+			// 	    }
 
-			    return true;
-			  }
-			});
+			//     return true;
+			//   }
+			// });
 
 	   		$(document).ready(function () {
 				$table.DataTable({
@@ -110,7 +118,11 @@
 						extend: 'colvis',
                 		columns: ':not(:first-child)',
             			}
-					]
+					],
+					columnDefs: [{
+						targets: $column,
+						render: $.fn.dataTable.render.moment( "DD-MM-YYYY")
+					}]
 				});
 				if (typeof $table2 != 'undefined'){
 	   				$table2.DataTable({
