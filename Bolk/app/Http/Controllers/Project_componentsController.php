@@ -56,7 +56,8 @@ class Project_componentsController extends Controller
             $currentLocation = self::getFromLocation($componentid);
             return $currentLocation;
         }
-
+        $counter = 0;
+        $allTransportsCount = count($allTransport);
         $currentDateTime = new DateTime();
         foreach($allTransport as $transport) {
              $currentLocation = '';
@@ -66,12 +67,18 @@ class Project_componentsController extends Controller
             } elseif (empty($transport->unloadingdate)) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
                 return $currentLocation;
-            } elseif ($transport->unloadingdate < $currentDateTime) {
+            } elseif ($transport->unloadingdate > $currentDateTime) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
                 return $currentLocation;
+            } elseif ($transport->unloadingdate < $currentDateTime) {
+                $currentLocation = $transport->to;
+                if($counter >= $allTransportsCount) {
+                    return $currentLocation;
+                }
             } else {
                 $currentLocation = 'error in location'; 
             }
+            $counter++;
         }
         return $currentLocation;
     }
