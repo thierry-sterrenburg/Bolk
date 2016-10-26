@@ -19,7 +19,7 @@ class WindmillController extends Controller
     	$components = Component::where('mainwindmillid','=',$id)->get();
     	$project = Project::where('id', '=', Windmill::where('id','=', $id)->value('projectid'))->first();
 		$windmills = Windmill::where('projectid','=', $project->id)->get();
-        $allComponentsWithoutWindmill = Component::whereNull('mainwindmillid')->get();
+        $allComponentsWithoutWindmill = Component::where('projectid','=',$project->id)->whereNull('mainwindmillid')->get();
     	return view('/windmill', ['components' => $components, 'windmill'=> $windmill, 'project' => $project, 'windmills'=>$windmills, 'allComponentsWithoutWindmill'=>$allComponentsWithoutWindmill]);
     }
 
