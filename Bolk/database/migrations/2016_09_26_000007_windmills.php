@@ -21,8 +21,8 @@ class Windmills extends Migration
 			$table->string('regnumber');
 			$table->string('name');
 			$table->string('location')->nullable();
-			$table->datetime('startdate')->nullable();
-			$table->datetime('enddate')->nullable();
+			$table->date('startdate')->nullable();
+			$table->date('enddate')->nullable();
 			$table->longText('remarks')->nullable();
             $table->timestamps();
 		});

@@ -17,10 +17,10 @@ class Testdata extends Migration
     public function up()
     {
         //projects: id int(10)|regnumber varchar(255)|name varchar(255)|location varchar(255)|startdate datetime|enddate datetime|remarks longtext
-        DB::table('projects')->insert(['regnumber' => '123456', 'name' => 'Windmill Nijverdal', 'location' => 'Nijverdal', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
-        DB::table('projects')->insert(['regnumber' => '321456', 'name' => 'Windmill Almelo', 'location' => 'Almelo', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
-        DB::table('projects')->insert(['regnumber' => '654321', 'name' => 'Windmill Enschede', 'location' => 'Enschede', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
-        DB::table('projects')->insert(['regnumber' => '456123', 'name' => 'Windmill Genderen', 'location' => 'Genderen', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
+        DB::table('projects')->insert(['regnumber' => '123456', 'name' => 'Project Nijverdal', 'location' => 'Nijverdal', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
+        DB::table('projects')->insert(['regnumber' => '321456', 'name' => 'Project Almelo', 'location' => 'Almelo', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
+        DB::table('projects')->insert(['regnumber' => '654321', 'name' => 'Project Enschede', 'location' => 'Enschede', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
+        DB::table('projects')->insert(['regnumber' => '456123', 'name' => 'Project Genderen', 'location' => 'Genderen', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
         //windmills: id int(10)|projectid id(11)|regnumber varchar(255)|name varchar(255)|location varchar(255)|startdate datetime|enddate datetime|remarks longtex
         DB::table('windmills')->insert(['projectid' => '1', 'regnumber' => '123457', 'name' => 'T1', 'location' => 'Nijverdal', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);
         DB::table('windmills')->insert(['projectid' => '1', 'regnumber' => '123458', 'name' => 'T2', 'location' => 'Nijverdal', 'startdate' => null, 'enddate' => null, 'remarks' => '' ]);

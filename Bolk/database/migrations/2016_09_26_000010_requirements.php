@@ -20,8 +20,8 @@ class Requirements extends Migration
             $table->foreign('transportid')->references('id')->on('transports')->onDelete('cascade');
 			$table->string('name');
 			$table->string('country')->nullable();
-			$table->datetime('startdate')->nullable();
-			$table->datetime('enddate')->nullable();
+			$table->date('startdate')->nullable();
+			$table->date('enddate')->nullable();
 			$table->enum('booked', ['no','pending','yes']);
             $table->string('responsibleplanner');
 			$table->longText('remarks')->nullable();
