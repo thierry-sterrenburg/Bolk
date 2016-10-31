@@ -175,12 +175,12 @@ class ProjectController extends Controller
 		   if($request->startdate == ''){
 			   $windmill->startdate=null;
 		   }else{
-			   $windmill->startdate=$request->startdate;
+			   $windmill->startdate=DfD($request->startdate);
 		   }
 		   if($request->enddate == ''){
 			   $windmill->enddate=null;
 		   }else{
-			   $windmill->enddate=$request->enddate;
+			   $windmill->enddate=DfD($request->enddate);
 		   }
 		   if($request->remarks == ''){
 			   $windmill->remarks=null;
@@ -281,32 +281,32 @@ class ProjectController extends Controller
 		   if($request->loadingdate == ''){
 			   $transport->loadingdate=null;
 		   }else{
-			   $transport->loadingdate=date("Y-m-d" , strtotime($request->loadingdate));
+			   $transport->loadingdate=DfD($request->loadingdate);
 		   }
 		   if($request->datedesired == ''){
 			   $transport->datedesired=null;
 		   }else{
-			   $transport->datedesired=date("Y-m-d" , strtotime($request->datedesired));
+			   $transport->datedesired=DfD($request->datedesired);
 		   }
 		   if($request->dateplanned == ''){
 			   $transport->dateplanned=null;
 		   }else{
-			   $transport->dateplanned=date("Y-m-d" , strtotime($request->dateplanned));
+			   $transport->dateplanned=DfD($request->dateplanned);
 		   }
 		   if($request->dateestimated == ''){
 			   $transport->dateestimated=null;
 		   }else{
-			   $transport->dateestimated=date("Y-m-d" , strtotime($request->dateestimated));
+			   $transport->dateestimated=DfD($request->dateestimated);
 		   }
 		   if($request->dateactual == ''){
 			   $transport->dateactual=null;
 		   }else{
-			   $transport->dateactual=date("Y-m-d" , strtotime($request->dateactual));
+			   $transport->dateactual=DfD($request->dateactual);
 		   }
 		   if($request->unloadingdate == ''){
 			   $transport->unloadingdate=null;
 		   }else{
-			   $transport->unloadingdate=date("Y-m-d" , strtotime($request->unloadingdate));
+			   $transport->unloadingdate=DfD($request->unloadingdate);
 		   }		   
 		   if($request->transportremarks == ''){
 			   $transport->remarks=null;

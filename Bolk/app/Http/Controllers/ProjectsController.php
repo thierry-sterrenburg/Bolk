@@ -88,12 +88,12 @@ class ProjectsController extends Controller
 		   if($request->startdate == ''){
 			   $project->startdate=null;
 		   }else{
-			   $project->startdate=$request->startdate;
+			   $project->startdate=DfD($request->startdate);
 		   }
 		   if($request->enddate == ''){
 			   $project->enddate=null;
 		   }else{
-			   $project->enddate=$request->enddate;
+			   $project->enddate=DfD($request->enddate);
 		   }
 		   if($request->remarks == ''){
 			   $project->remarks=null;
