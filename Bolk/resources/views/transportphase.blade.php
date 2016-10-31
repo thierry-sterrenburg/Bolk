@@ -31,13 +31,17 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 				<!--end panels-->
 				<!--add buttons-->
 				<div class="row">
+					@permission(('edit-transport'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#RequirementModal" id="addRequirement" value="add">Add Requirement <span class="badge">+</span></button>
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ChecklistModal" id="addChecklist" value="add">Add Checklist <span class="badge">+</span></button>
+					@endpermission
 				</div>
 				
 				<br/>
+				@permission(('edit-transport'))
 				@include('newRequirement')
 				@include('newChecklist')
+				@endpermission
 				
 				<!--Requirement Table-->
 				<div class="row" id="tablecontainer">
@@ -91,9 +95,11 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 									<td>{{ $requirement->updated_at }}</td>
 									<td>{{ $requirement->remarks }}</td>
 									<td>
+										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>
 										<button class="btn btn-warning btn-clone-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-clipboard"></i></button>
 										<button class="btn btn-danger btn-delete-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-trash-o"></i></button></td>
+									@endpermission
 									
 								</tr>
 							@endforeach
