@@ -72,7 +72,7 @@
 						</thead>
 						<tbody id="windmill-table">
 							@foreach($windmills as $windmill)
-								@if(!(Auth::user()->projectid == '') && Auth::user()->projectid == $project->id)
+								@if(Auth::user()->projectid == $project->id)
 								<tr id="windmill{{$windmill->id}}">
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
@@ -95,6 +95,29 @@
 										@endpermission
 									</td>
 								</tr>
+								@elseif(Auth::user()->projectid == '')
+									<tr id="windmill{{$windmill->id}}">
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->id }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->regnumber }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->name }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->location }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+										<td>
+											@permission(('edit-windmill'))
+											<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-pencil"></i></button>
+											@endpermission
+											@permission(('create-windmill'))
+											<button class="btn btn-warning btn-clone-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-clipboard"></i></button>
+											@endpermission
+											@permission(('delete-windmill'))
+											<button class="btn btn-danger btn-delete-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-trash-o"></i></button>
+											@endpermission
+										</td>
+									</tr>
 								@endif
 							@endforeach
 						</tbody>
