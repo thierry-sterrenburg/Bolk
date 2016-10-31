@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DateTime;
+use Date;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -58,7 +58,7 @@ class Project_componentsController extends Controller
         }
         $counter = 0;
         $allTransportsCount = count($allTransport);
-        $currentDateTime = new DateTime();
+        $currentDateTime = date("Y-m-d");
         foreach($allTransport as $transport) {
              $currentLocation = '';
             if($transport->loadingdate > $currentDateTime) {
@@ -78,7 +78,7 @@ class Project_componentsController extends Controller
             } else {
                 $currentLocation = 'error in location'; 
             }
-            $counter++;
+            $counter = $counter + 1;
         }
         return $currentLocation;
     }
