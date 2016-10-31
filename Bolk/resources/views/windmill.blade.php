@@ -261,7 +261,7 @@
         <!-- own javascript code-->
         <script type="text/javascript">
         	var $table = $('#componenttable');
-        	var $column = [6, 7];
+        	var $column = [];
         </script>
 
         <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
