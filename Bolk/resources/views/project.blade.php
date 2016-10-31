@@ -66,8 +66,8 @@
 							<td>number of components</td>
 							<td>start date</td>
 							<td>end date</td>
-							<td>last update</td>
 							<td>remarks</td>
+							<td>last update</td>
 							<td></td>
 						</thead>
 						<tbody id="windmill-table">
@@ -81,8 +81,8 @@
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
-									<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
 									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+									<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->updated_at }}</td>
 									<td>
 										@permission(('edit-windmill'))
 										<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-pencil"></i></button>
@@ -104,8 +104,8 @@
 										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ ProjectController::countComponents($windmill->id)}}</td>
 										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->startdate }}</td>
 										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->enddate }}</td>
-										<td onclick="document.location= '/windmill/id={{$windmill->id}}';"></td>
 										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->remarks }}</td>
+										<td onclick="document.location= '/windmill/id={{$windmill->id}}';">{{ $windmill->updated_at }}</td>
 										<td>
 											@permission(('edit-windmill'))
 											<button class="btn btn-success btn-edit-windmill" data-id="{{ $windmill->id }}"><i class="fa fa-pencil"></i></button>

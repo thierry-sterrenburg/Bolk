@@ -94,7 +94,7 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Project_componentsController::countTransports($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ DfD($component->updated_at) }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 									<td>
 										@permission(('edit-component'))
 											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
@@ -279,10 +279,8 @@
     @include('partials.scriptimport')
     <!-- own javascript code-->
     <script type="text/javascript">
-    	var $table = $('#windmill-datatable');
-    	var $table2 = $('#component-datatable');
+    	var $table = $('#component-datatable');
     	var $column = [];
-    	var $column2 = [6, 7];
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">

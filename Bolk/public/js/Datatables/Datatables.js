@@ -99,6 +99,25 @@
 	//     return true;
 	//   }
 	// });
+	jQuery.fn.dataTable.render.moment1 = function ( from, to, locale ) {
+		// Argument shifting
+		if ( arguments.length === 1 ) {
+			locale = 'en';
+			to = from;
+			from = 'YYYY-MM-DD';
+		}
+		else if ( arguments.length === 2 ) {
+			locale = 'en';
+		}
+
+		return function ( d, type, row ) {
+			var m = window.moment( d, from, locale, true );
+
+			// Order and type get a number value from Moment, everything else
+			// sees the rendered value
+			return m.format( type === 'sort' || type === 'type' ? 'x' : to );
+		};
+	};
 	jQuery.fn.dataTable.render.moment = function ( from, to, locale ) {
 		// Argument shifting
 		if ( arguments.length === 1 ) {
@@ -140,7 +159,10 @@
 			],
 			columnDefs: [{
 				targets: $column,
-				render: $.fn.dataTable.render.moment( "DD-MM-YYYY")
+				render: $.fn.dataTable.render.moment1( "DD-MM-YYYY")
+			},{
+				targets: -2,
+				render: $.fn.dataTable.render.moment( "DD-MM-YYYY HH:mm:ss")
 			}]
 		});
 		if (typeof $table2 != 'undefined'){

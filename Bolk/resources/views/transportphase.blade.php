@@ -77,8 +77,8 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 							<td>End datetime</td>
 							<td>Booked</td>
 							<td>Responsible planner</td>
-							<td>Last update</td>
 							<td>Remarks</td>
+							<td>Last update</td>
 							<td></td>
 						</thead>
 						<tbody id="requirement-table">
@@ -92,8 +92,8 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 									<td>{{ $requirement->enddate }}</td>
 									<td>{{ $requirement->booked }}</td>
 									<td>{{ $requirement->responsibleplanner }}</td>
-									<td>{{ $requirement->updated_at }}</td>
 									<td>{{ $requirement->remarks }}</td>
+									<td>{{ $requirement->updated_at }}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-requirement" data-id="{{ $requirement->id }}"><i class="fa fa-pencil"></i></button>

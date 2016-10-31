@@ -56,6 +56,7 @@
 				<td>start date</td>
 				<td>end date</td>
 				<td>remarks</td>
+				<td>Last update</td>
 				<td></td>
 			</thead>
 			<tbody>
@@ -72,6 +73,7 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
+					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 					<td>
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
@@ -96,6 +98,7 @@
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 						<td>
 							@permission(('edit-project'))
 							<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>

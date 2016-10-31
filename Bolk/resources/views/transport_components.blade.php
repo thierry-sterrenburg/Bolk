@@ -67,15 +67,15 @@
 						<td>Reg. number</td>
 						<td>Attached To</td>
 						<td>Name</td>
-						<td>From</td>
-						<td>To</td>
+						<td>Length</td>
+						<td>Height</td>
+						<td>Width</td>
+						<td>Weight</td>
 						<td>Number of transport phases</td>
-						<td>Date of loading</td>
-						<td>Date of Arrival</td>
-						<td>Offloading(initial)</td>
-						<td>Offloading(final)</td>
-						<td>Last update</td>
+						<td>Currentlocation</td>
+						<td>Status</td>
 						<td>Remarks</td>
+						<td>Last update</td>
 						<td></td>
 					</thead>
 					<tbody id="component-table">
@@ -83,17 +83,17 @@
 							<tr id="component{{$component->id}}">
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
-								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::getWindmillName($component->mainwindmillid)}}</td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name }}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length }}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height }}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width }}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::countTransports($component->id)}}</td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
-								<td onclick="document.location= '/component/id={{$component->id}}';"></td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 								<td>
 									@permission(('edit-component'))
 										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
@@ -212,10 +212,8 @@
     @include('partials.scriptimport')
     <!-- own javascript code-->
     <script type="text/javascript">
-    	var $table = $('#windmill-datatable');
-    	var $table2 = $('#component-datatable');
-    	var $column = [5, 6];
-    	var $column2 = [6, 7];
+    	var $table = $('#component-datatable');
+    	var $column = [];
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">	
