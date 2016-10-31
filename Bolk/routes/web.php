@@ -23,6 +23,8 @@ Route::get('/index', function () {
 //    return view('clients');
 //});
 
+Route::resource('users', 'UserController');
+
 Route::get('/projects', 'ProjectsController@index');
 Route::post('/newProject', 'ProjectsController@newProject');
 Route::get('/getUpdate', 'ProjectsController@getUpdate');
@@ -70,8 +72,6 @@ Route::get('/closestdeadlines_components', function () {
 });
 
 Route::get('/modal', 'ProjectsController@index');
-
-
 
 Auth::routes();
 

@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable();
             $table->string('password');
             $table->string('remember_token',100)->nullable();
+            $table->integer('projectid')->unsigned()->nullable();
+            $table->foreign('projectid')->references('id')->on('projects');
         });
     }
 

@@ -54,8 +54,9 @@ class Testdata extends Migration
         DB::table('requirements')->insert(['transportid' => '1', 'name' => 'overslagverguning', 'country' => 'Duitsland', 'startdate' => '2010-01-01 00:00:00', 'enddate' => '2010-02-01 00:00:00', 'booked' => 'yes', 'responsibleplanner' => 'Johannes van Bergen', 'remarks' => '']);
 
         DB::table('users')->insert(['name' => 'admin', 'fullname' => 'Administrator', 'email' => 'admin@bolk.com', 'password' => bcrypt('secret'),]);
-        DB::table('users')->insert(['name' => 'planner', 'fullname' => 'Planner', 'email' => 'planner', 'password' => bcrypt('secret'),]);
-        DB::table('users')->insert(['name' => 'customer', 'fullname' => 'Customer', 'email' => 'customer', 'password' => bcrypt('secret'),]);
+        DB::table('users')->insert(['name' => 'planner', 'fullname' => 'Planner', 'email' => 'planner@bolk.com', 'password' => bcrypt('secret'),]);
+        DB::table('users')->insert(['name' => 'customer', 'fullname' => 'Customer', 'email' => 'customer@bolk.com', 'password' => bcrypt('secret'),]);
+        DB::table('users')->insert(['name' => 'ge', 'fullname' => 'General Electric', 'email' => 'info@ge.com', 'password' => bcrypt('geisawesome'), 'projectid' => '1']);
 
         $admin = new Role();
         $admin -> name = 'admin';
@@ -69,12 +70,18 @@ class Testdata extends Migration
         $customer -> name = 'customer';
         $customer -> display_name = 'Customer';
         $customer -> save();
+        $ge = new Role();
+        $ge -> name = 'ge';
+        $ge -> display_name = 'General Electric';
+        $ge -> save();
 
         $user = User::where('name', '=', 'admin')->first();
         $user->attachRole($admin);
         $user = User::where('name', '=', 'planner')->first();
         $user->attachRole($planner);
         $user = User::where('name', '=', 'customer')->first();
+        $user->attachRole($customer);
+        $user = User::where('name', '=', 'ge')->first();
         $user->attachRole($customer);
 
         $createProject = new Permission(); $createProject -> name = 'create-project'; $createProject -> display_name = 'Create Projects'; $createProject -> save();
@@ -105,6 +112,7 @@ class Testdata extends Migration
         $admin->attachPermissions(array($createProject,$readProject,$editProject,$deleteProject,$createWindmill,$readWindmill,$editWindmill,$deleteWindmill,$createTransport,$readTransport,$editTransport,$deleteTransport,$createComponent,$readComponent,$editComponent,$deleteComponent));
         $planner->attachPermissions(array($createProject,$readProject,$editProject,$deleteProject,$createWindmill,$readWindmill,$editWindmill,$deleteWindmill,$createTransport,$readTransport,$editTransport,$deleteTransport,$createComponent,$readComponent,$editComponent,$deleteComponent));
         $customer->attachPermissions(array($readProject, $readWindmill,$readTransport,$readComponent));
+        $ge->attachPermissions(array($readProject, $readWindmill,$readTransport,$readComponent));
     }
 
     /**

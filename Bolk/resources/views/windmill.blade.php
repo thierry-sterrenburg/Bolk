@@ -94,7 +94,9 @@
 										@permission(('edit-component'))
 											<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										@permission(('create-component'))
 										<button class="btn btn-warning btn-clone-component" data-id="{{ $component->id }}"><i class="fa fa-clipboard"></i></button>
+										@endpermission
 										@permission(('delete-component'))
 											<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission

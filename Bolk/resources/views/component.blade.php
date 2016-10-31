@@ -29,12 +29,18 @@
 				</div>
 				<!--end panels-->
 				<!--add buttons-->
-				<div class="row">	
+				<div class="row">
+					@permission(('create-transport'))
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransport" value="add">Add New Transport <span class="badge">+</span></button>
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#TransportModal" id="addTransportToComponent" value="add">Add Existing Transport <span class="badge">+</span></button>
+					@endpermission
 				</div>
+				@permission(('create-transport'))
 				@include('newTransport')
+				@endpermission
+				@permission(('create-transport'))
 				@include('addTransport')
+				@endpermission
 				<!--end buttons-->
 				<!--transport table-->
 				<div class="row">
@@ -108,7 +114,9 @@
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										@permission(('create-transport'))
 										<button class="btn btn-warning btn-clone-transport" data-id="{{ $transport->id }}"><i class="fa fa-clipboard"></i></button>
+										@endpermission
 										@permission(('delete-transport'))
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission

@@ -28,8 +28,8 @@
                         <td>{{ $user->fullname }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
-                        {{--<td><a href="/user/{{ $user->id }}/edit" class="btn btn-info pull-left" style="margin-right: 3px;"><i class="fa fa-pencil"></i></a>--}}
-                        {{--{{ Form::open(['url' => '/user/' . $user->id, 'method' => 'DELETE']) }}--}}
+                        {{--<td><a href="/users/{{ $users->id }}/edit" class="btn btn-info pull-left" style="margin-right: 3px;"><i class="fa fa-pencil"></i></a>--}}
+                        {{--{{ Form::open(['url' => '/users/' . $users->id, 'method' => 'DELETE']) }}--}}
                         {{--{{ Form::submit('<i class="fa fa-danger"></i>', ['class' => 'btn btn-danger']) }}--}}
                         {{--{{ Form::close() }}--}}
                         {{--</td>--}}
@@ -40,6 +40,7 @@
                     </table>
                 </div>
 
-                <a href="/user/create" class="btn btn-success">Add user</a>
+                <a href="/users/create" class="btn btn-success">Add user</a>
+
             </div>
             @stop

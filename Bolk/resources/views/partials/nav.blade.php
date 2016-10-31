@@ -29,6 +29,7 @@ use app\Http\Controllers\NavController;
 		$sizeP = count($projectsoverview);
 		$indexP = 1; 
 		foreach($projectsoverview as $project){
+            if(!(Auth::user()->projectid == '') && Auth::user()->projectid == $project->id){
 			echo '{ 
 				text: '.json_encode($project->name).', 
 				icon: "fa fa-institution",
@@ -127,7 +128,7 @@ use app\Http\Controllers\NavController;
 			},';
 			$indexP ++;
 		}
-	}
+	}}
 	?>
 	]
 	},

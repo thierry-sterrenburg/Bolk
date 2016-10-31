@@ -109,7 +109,9 @@
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
+										@permission(('create-transport'))
 										<button class="btn btn-warning btn-clone-transport" data-id="{{ $transport->id }}"><i class="fa fa-clipboard"></i></button>
+										@endpermission
 										@permission(('delete-transport'))
 										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission

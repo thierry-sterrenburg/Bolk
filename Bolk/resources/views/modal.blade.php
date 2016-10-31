@@ -49,6 +49,7 @@
 				</tr>
 
 				@foreach($projects as $project)
+					@if(!(Auth::user()->projectid == '') && Auth::user()->projectid == $project->id))
 				<tr id="project{{$project->id}}">
 					<td>{{ $project->id }}</td>
 					<td>{{ $project->regnumber }}</td>
@@ -66,6 +67,7 @@
             @endpermission
 					</td>
 				</tr>
+					@endif
 				@endforeach
 			</tbody>
 	</table>

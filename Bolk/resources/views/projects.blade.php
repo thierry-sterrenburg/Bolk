@@ -60,6 +60,7 @@
 			</thead>
 			<tbody>
 				@foreach($projects as $project)
+				@if(Auth::user()->projectid == $project->id)
 				<tr id="project{{$project->id}}">
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->id }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
@@ -75,12 +76,39 @@
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 						@endpermission
+						@permission(('create-project'))
 						<button class="btn btn-warning btn-clone-project" data-id="{{ $project->id }}"><i class="fa fa-clipboard"></i></button>
+						@endpermission
 						@permission(('delete-project'))
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 						@endpermission
 					</td>
 				</tr>
+				@elseif(Auth::user()->projectid == '')
+					<tr id="project{{$project->id}}">
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->id }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->name }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->location }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countWindmills($project->id) }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countComponents($project->id) }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ ProjectsController::countTransports($project->id) }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->startdate }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->enddate }}</td>
+						<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
+						<td>
+							@permission(('edit-project'))
+							<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
+							@endpermission
+							@permission(('create-project'))
+							<button class="btn btn-warning btn-clone-project" data-id="{{ $project->id }}"><i class="fa fa-clipboard"></i></button>
+							@endpermission
+							@permission(('delete-project'))
+							<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
+							@endpermission
+						</td>
+					</tr>
+				@endif
 				@endforeach
 			</tbody>
 	</table>
