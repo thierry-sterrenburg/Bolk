@@ -12,7 +12,7 @@ use App\Transport;
 use App\Component;
 use App\Windmill;
 
-class Transport_componentsController extends Controller
+class Transport_componentsController extends Project_componentsController
 {
     public function index($id) {
     	$transport = Transport::where('id','=',$id)->first();
@@ -21,19 +21,6 @@ class Transport_componentsController extends Controller
 		$allComponents = Component::where('projectid', '=', $project->id)->get();
     	return view('/transport_components',['transport'=>$transport,'components'=>$components,'project'=>$project,'allComponents'=>$allComponents]);
     }
-
-    public static function countTransports($componentid) {
-		$numberoftransports = Component_Transport::where('componentid','=',$componentid)->count();
-		return $numberoftransports;
-	}
-
-	public static function getWindmillName($windmillid) {
-		$windmillName = Windmill::where('id', '=', $windmillid)->pluck('name')->first();
-		if(empty($windmillName)) {
-			$windmillName = '-';
-		}
-		return $windmillName;
-	}
 	
 	public function addComponent(Request $request){
 		 if($request->ajax()){

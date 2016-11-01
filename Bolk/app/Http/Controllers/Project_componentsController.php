@@ -51,7 +51,7 @@ class Project_componentsController extends Controller
     }
 
     public static function getCurrentLocation($componentid) {
-        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('loadingdate', 'asc')->whereNotNull('loadingdate')->get();
+        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired', 'asc')->get();
         if(count($allTransport) < 1 ) {
             $currentLocation = self::getFromLocation($componentid);
             return $currentLocation;
@@ -61,16 +61,16 @@ class Project_componentsController extends Controller
         $currentDateTime = date("Y-m-d");
         foreach($allTransport as $transport) {
              $currentLocation = '';
-            if($transport->loadingdate > $currentDateTime) {
-              $currentLocation = $transport->from;
-              return $currentLocation;
-            } elseif (empty($transport->unloadingdate)) {
+            if (empty($transport->loadingdate) || $transport->loadingdate > $currentDateTime){
+                $currentLocation = $transport->form;
+                return $currentLocation;
+            }  elseif (empty($transport->unloadingdate)) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
                 return $currentLocation;
             } elseif ($transport->unloadingdate > $currentDateTime) {
                 $currentLocation = 'On Transport from '.$transport->from.' To '.$transport->to;
                 return $currentLocation;
-            } elseif ($transport->unloadingdate < $currentDateTime) {
+            } elseif ($transport->unloadingdate <= $currentDateTime) {
                 $currentLocation = $transport->to;
                 if($counter >= $allTransportsCount) {
                     return $currentLocation;
@@ -78,7 +78,7 @@ class Project_componentsController extends Controller
             } else {
                 $currentLocation = 'error in location'; 
             }
-            $counter = $counter + 1;
+            $counter = $counter++;
         }
         return $currentLocation;
     }

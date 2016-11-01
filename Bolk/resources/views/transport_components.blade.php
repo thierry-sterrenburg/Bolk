@@ -90,7 +90,7 @@
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::countTransports($component->id)}}</td>
-								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
+								<td onclick="document.location= '/component/id={{$component->id}}';">{{ Transport_componentsController::getCurrentLocation($component->id)}}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
