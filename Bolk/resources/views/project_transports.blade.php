@@ -336,9 +336,7 @@
     <!-- own javascript code-->
     <script type="text/javascript">
     	var $table = $('#transport-datatable');
-    	var $table2 = $('#component-datatable');
     	var $column = [10, 11, 12, 13, 14, 15];
-    	var $column2 = [6, 7];
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
