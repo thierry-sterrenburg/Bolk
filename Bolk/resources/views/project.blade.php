@@ -28,7 +28,7 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="addWindmill" value="add">Add Windmill <span class="badge">+</span></button>
 					@endpermission
 				</div>
-				@include('newWindmill')
+				@include('modal.newWindmill')
 				<!--Windmill Table -->
 				<div class="row">
 					@permission(('read-windmill'))

@@ -31,7 +31,7 @@
 				</div>
 				@endpermission
 
-				@include('newTransport')	
+				@include('modal.newTransport')	
 				<!--Transport Table -->
 				@permission(('read-transport'))
 				<div class="row">

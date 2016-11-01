@@ -30,7 +30,7 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add Component <span class="badge">+</span></button>
 					@endpermission
 				</div>
-				@include('newComponent')	
+				@include('modal.newComponent')	
 				<!-- Component Table-->
 				<div class="row">
 					<h3>Components</h3>

@@ -20,7 +20,7 @@
 						<br>
 
 						  <div class="panel-body">
-	@include('newProject')
+	@include('modal.newProject')
 	<table id="projectdatatable" class="table table-condensed table-hover" style="width:100%">
 		<div class="container">
 		    <div class='col-md-5'>

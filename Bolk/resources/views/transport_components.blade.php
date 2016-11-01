@@ -33,7 +33,7 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponenttoTransport" value="add">Add Component to Transport<span class="badge">+</span></button>
 				@endpermission
 			</div>
-				@include(('addComponenttoTransport'))
+				@include(('modal.addComponenttoTransport'))
 			<!-- Component Table-->
 			<div class="row">
 				<h3>Components</h3>

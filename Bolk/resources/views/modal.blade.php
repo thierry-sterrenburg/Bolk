@@ -21,7 +21,7 @@
 
 
   <div class="panel-body">
-	@include('newProject')
+	@include('modal/newProject')
 	<table class="table table-hover"  style="width:100%">
 		<caption>Projects</caption>
 			<thead>

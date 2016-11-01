@@ -36,10 +36,10 @@
 					@endpermission
 				</div>
 				@permission(('create-transport'))
-				@include('newTransport')
+				@include('modal/newTransport')
 				@endpermission
 				@permission(('create-transport'))
-				@include('addTransport')
+				@include('modal/addTransport')
 				@endpermission
 				<!--end buttons-->
 				<!--transport table-->

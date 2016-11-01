@@ -27,8 +27,8 @@
 				<div class="row">
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponent" value="add">Add New Component <span class="badge">+</span></button>
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addExistingComponentToWindmill">Add Existing Component <span class="badge">+</span></button>
- 					@include('newComponent')
- 					@include('addComponentToWindmill')
+ 					@include('modal.newComponent')
+ 					@include('modal.addComponentToWindmill')
  				</div>
  			@endpermission
  			<!--table content -->

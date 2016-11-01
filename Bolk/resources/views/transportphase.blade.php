@@ -39,8 +39,8 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 				
 				<br/>
 				@permission(('edit-transport'))
-				@include('newRequirement')
-				@include('newChecklist')
+				@include('modal.newRequirement')
+				@include('modal.newChecklist')
 				@endpermission
 				
 				<!--Requirement Table-->
