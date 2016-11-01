@@ -118,7 +118,7 @@
 										<button class="btn btn-warning btn-clone-transport" data-id="{{ $transport->id }}"><i class="fa fa-clipboard"></i></button>
 										@endpermission
 										@permission(('delete-transport'))
-										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
+										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-chain-broken"></i></button>
 										@endpermission
 									</td>
 								</tr>

@@ -99,7 +99,7 @@
 										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
 									@endpermission
 									@permission(('delete-component'))
-										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-trash-o"></i></button>
+										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-chain-broken"></i></button>
 									@endpermission
 								</td>
 							</tr>
