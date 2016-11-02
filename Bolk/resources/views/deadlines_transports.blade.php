@@ -69,25 +69,25 @@
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
 								<tr>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Deadlines_transportsController::getProjectName($transport->projectid) }}</td>	
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->truck}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->trailer }}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->configuration}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->from }}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->to}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Deadlines_transportsController::countComponents($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ Deadlines_transportsController::countRequirements($transport->id)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ ($transport->loadingdate)}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->remarks}}</td>
-									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->id }}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ Deadlines_transportsController::getProjectName($transport->projectid) }}</td>	
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->company}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->truck}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->trailer }}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->configuration}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->from }}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->to}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ Deadlines_transportsController::countComponents($transport->id)}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ Deadlines_transportsController::countRequirements($transport->id)}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ ($transport->loadingdate)}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->datedesired}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->dateestimated}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->dateplanned}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->dateactual}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->unloadingdate}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->remarks}}</td>
+									<td onclick="document.location= '/transport_components/id={{$transport->id}}';">{{ $transport->updated_at}}</td>
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>

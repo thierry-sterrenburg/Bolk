@@ -235,7 +235,7 @@ use app\Http\Controllers\NavController;
 	{
 		text: "Deadlines",
 		icon: "fa fa-clock-o fa-fw",
-		href: "/closestdeadlines"
+		href: "/deadlines_components"
 	}
 	<?php
 	if(Entrust::hasRole('admin')){
