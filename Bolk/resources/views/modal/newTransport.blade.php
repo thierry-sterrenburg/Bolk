@@ -157,12 +157,13 @@
   
   <script type="text/javascript">
 	function validator() {
-    var x,y,text;
+    var x,y,z,text;
 	text="";
 
     // Get the value of the input field with id="regnumber"
     x = document.getElementById("transportnumber").value;
 	y = document.getElementById("transportcompany").value;
+	z=  document.getElementById("datedesired").value;
 
     // If x is Not a Number or less than one or greater than 10
     if (x == "") {
@@ -174,7 +175,14 @@
 		}
         text = text+"Transport company must be filled in.";
     }
-	if(x == "" || y == ""){
+	if (z == ""){
+		if(text!=""){
+			text = text+"<br/>";
+		}
+        text = text+"Desired date must be filled in.";
+    }
+	
+	if(x == "" || y == "" || z == ""){
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
 }
