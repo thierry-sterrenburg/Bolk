@@ -28,12 +28,12 @@
 											</tr>
 											<tr>
 												<td colspan="1"><u>Length: {{$component->length}}</u></td>
-												<td colspan="1"><u>Heigth: {{$component->heigth}}</u></td>
+												<td colspan="1"><u>Height: {{$component->height}}</u></td>
 												<td colspan="1"><u>Width: {{$component->width}}</u></td>
 												<td colspan="1"><u>Weight:</u> {{$component->weight}}</td>
 											</tr>
 											<tr>
-												<td colspan="2"><u>Switchable:</u> {{$component->switchable}}</td>
+												<td colspan="2"><u>Current location:</u> {{ WindmillController::getCurrentLocation($component->id)}}}</td>
 												<td colspan="2"><u>Status:</u> {{$component->status}}</td>
 											</tr>
 											<tr>

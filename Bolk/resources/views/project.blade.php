@@ -196,14 +196,11 @@
 					$('#windmill'+data.id).replaceWith(row);
 				}
 	}
-	
-	function addRowWindmill(data){
-	}
 
 	//---------get update windmill---------
 	$('#windmill-table').delegate('.btn-edit-windmill','click',function(){
-	document.getElementById("error_message").innerHTML = '';
-	var value=$(this).data('id');
+		document.getElementById("error_message").innerHTML = '';
+		var value=$(this).data('id');
 		var url='{{URL::to('getUpdateWindmill')}}';
 		$.ajax({
 			type: 'get',

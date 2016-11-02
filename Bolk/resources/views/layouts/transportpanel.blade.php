@@ -41,6 +41,7 @@
 												<td colspan="1"><u>Estimated arrival:</u>{{$transport->dateestimated}}</td>
 												<td colspan="1"><u>Planned arrival:</u>{{$transport->dateplanned}}</td>
 												<td colspan="1"><u>Actual arrival:</u>{{$transport->dateactual}}</td>
+												<td colspan="1"><u>Date of unloading:</u>{{$transport->unloadingdate}}</td>
 											</tr>
 											<tr>
 												<td colspan="3"><u>Number of Requirements:{{ComponentController::countRequirements($transport->id)}}</u></td>
