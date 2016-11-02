@@ -11,7 +11,7 @@ use App\Component;
 class Deadlines_componentsController extends Controller
 {
     public function index() {
-    	$components = Component::all()->orderBy('enddate', 'dsc');
+    	$components = Component::all();
     	return view('/deadlines_components',['components'=>$components]);
     }
 }

@@ -40,8 +40,8 @@
 						<div class="container">
 						    <div class='col-md-5'>
 							    <div class="form-group">
-							        <div class='input-group date' id='startdatesearch2'>
-							            <input type='text' class="form-control" />
+							        <div class='input-group date' id='startdatesearch'>
+							            <input type='text' class="form-control" placeholder="Starting date for search" />
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
@@ -50,8 +50,8 @@
 							</div>
 							<div class='col-md-5'>
 							    <div class="form-group">
-							        <div class='input-group date' id='enddatesearch2'>
-							            <input type='text' class="form-control" />
+							        <div class='input-group date' id='enddatesearch'>
+							            <input type='text' class="form-control" placeholder="Ending date for search" />
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
