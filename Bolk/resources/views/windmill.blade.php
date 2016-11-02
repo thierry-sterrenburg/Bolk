@@ -64,6 +64,8 @@
 							<td>#</td>
 							<td>Reg. number</td>
 							<td>Name</td>
+							<td>From</td>
+							<td>To</td>
 							<td>Length</td>
 							<td>Height</td>
 							<td>Width</td>
@@ -81,11 +83,13 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::getFromLocation($component->id)}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::getToLocation($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->currentlocation}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::getCurrentLocation($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ WindmillController::countTransports($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>
