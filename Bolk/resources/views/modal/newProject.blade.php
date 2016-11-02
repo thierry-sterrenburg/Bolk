@@ -102,9 +102,8 @@
 		}
         text = text+"Name must be filled in.";
     }
-	if(x == "" || y == ""){
+	if(x != "" && y != ""){
 		$('#project').modal('toggle');
-		
 	}else{
 		document.getElementById("error_message").innerHTML = '<div class="alert alert-danger">'+text+'</div>';
 	}
