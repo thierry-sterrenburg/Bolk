@@ -18,6 +18,11 @@ class Deadlines_componentsController extends Controller
     	return view('/deadlines_components',['components'=>$components]);
     }
 
+    public static function getProject($projectid) {
+        $project = Project::where('id','=',$projectid)->first();
+        return $project;
+    }
+
     public static function getProjectName($projectid) {
     	$projectname = Project::where('id','=',$projectid)->pluck('name')->first();
     	if(empty($projectname)) {
@@ -32,6 +37,11 @@ class Deadlines_componentsController extends Controller
             $windmillName = '-';
         }
         return $windmillName;
+    }
+
+    public static function getWindMills($projectid) {
+        $windmills = Windmill::where('projectid','=',$projectid)->get();
+        return $windmills;
     }
 
     public static function countTransports($componentid) {
