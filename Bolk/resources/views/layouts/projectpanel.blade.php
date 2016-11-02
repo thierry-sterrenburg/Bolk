@@ -24,7 +24,7 @@
 										<tbody>
 											<tr>
 												<td colspan="1"><u>Project Registration Number:</u> {{$project->regnumber}}</td>
-												<td colspan="1"><u>Name: {{$project->name}}</u></td>
+												<td colspan="1"><u>Name:</u> {{$project->name}}</td>
 												<td colspan="1"><u>Location:</u> {{$project->location}}</td>
 											</tr>
 											<tr>
@@ -37,7 +37,7 @@
 												<td colspan="1"><u>Total number of Transport Phases:</u> {{ProjectsController::countTransports($project->id)}}</td>
 											</tr>
 											<tr>
-												<td colspan="3"><u>Remarks:</u>{{$project->remarks}}</td>
+												<td colspan="3"><u>Remarks:</u> {{$project->remarks}}</td>
 											</tr>
 										</tbody>
 									</table>
