@@ -87,4 +87,45 @@ class WindmillController extends Controller
         }
         return $currentLocation;
     }
+
+    public static function getTransportColor($transport){
+        $currentDateTime = date("Y-m-d");
+        If($transport->unloadingdate!= null &&$transport->unloadingdate < $currentDateTime){
+            return "success";
+        }else if($transport->dateplanned != null){
+            if($transport->loadingdate < $currentDateTime){
+                return "warning";
+            }else{
+                return "info";
+            }
+        }
+        return "";
+    }
+
+    Public static function getComponentColor($componentid){
+        $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->get();
+        $successAmount = 0;
+        $geplandAmount = 0;
+        foreach($allTransport as $transport){
+            $color = self::getTransportColor($transport);
+            if($color == "success"){
+                $successAmount++;
+            }else if($color == "info" || $color == "warning"){
+                $geplandAmount++;
+            }
+        
+            if($successAmount >= count($allTransport)){
+                return "success";
+            }else if ($geplandAmount >= count($allTransport)){
+                if(substr(self::getCurrentLocation($componentid),0,2) == "On"){
+                    return "warning";
+                }else{
+                    return "info";
+                }
+            }
+        }
+
+        return "";
+    }
+
 }
