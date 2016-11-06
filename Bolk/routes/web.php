@@ -70,8 +70,8 @@ Route::put('/newRequirement', 'TransportphaseController@newUpdateRequirement');
 Route::delete('/deleteRequirement', 'TransportphaseController@deleteRequirement');
 
 
-Route::get('/deadlines_components', 'Deadlines_ComponentsController@index');
-Route::get('/deadlines_transports', 'Deadlines_TransportsController@index');	
+Route::get('/deadlines_components', 'Deadlines_componentsController@index');
+Route::get('/deadlines_transports', 'Deadlines_transportsController@index');
 
 Route::get('/modal', 'ProjectsController@index');
 

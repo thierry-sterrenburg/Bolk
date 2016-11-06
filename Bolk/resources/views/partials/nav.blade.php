@@ -129,7 +129,7 @@ use app\Http\Controllers\NavController;
 			$indexP ++;
 		}
 	}
-		elseif(Auth::user()->projectid == ''){
+		elseif(Auth::user()->projectid == '' || Auth::user()->projectid == '0'){
             echo '{
 				text: '.json_encode($project->name).',
 				icon: "fa fa-institution",
@@ -247,9 +247,9 @@ use app\Http\Controllers\NavController;
 		echo '
 	,
 	{
-		text: "Administration",
-		icon: "fa fa-gears fa-fw",
-		href: "/Administration"
+		text: "User administration",
+		icon: "fa fa-users",
+		href: "/users"
 	}';
 	}
 	?>

@@ -98,7 +98,7 @@
 						@endif
 					</td>
 				</tr>
-				@elseif(Auth::user()->projectid == '')
+				@elseif(Auth::user()->projectid == '' || Auth::user()->projectid == '0')
 					<tr id="project{{$project->id}}">
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->id }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
