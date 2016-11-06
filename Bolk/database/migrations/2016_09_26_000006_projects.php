@@ -21,6 +21,7 @@ class Projects extends Migration
 			$table->string('location')->nullable();
 			$table->date('startdate')->nullable();
 			$table->date('enddate')->nullable();
+			$table->boolean('archived')->default(false);
 			$table->longText('remarks')->nullable();
             $table->timestamps();
 		});
