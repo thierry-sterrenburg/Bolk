@@ -15,12 +15,13 @@
 						</h1>
 
 						<!--panel content -->
+						@if($title == 'Projects')
 						@permission(('create-project'))
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
 						@endpermission
 
 						<br>
-
+						@endif
 						  <div class="panel-body">
 	@include('modal.newProject')
 	<table id="projectdatatable" class="table table-condensed table-hover" style="width:100%">

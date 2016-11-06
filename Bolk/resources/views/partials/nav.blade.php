@@ -18,7 +18,7 @@ use app\Http\Controllers\NavController;
   		href: "/index"
   	},
   	{
-  		text: "Overview",
+  		text: "Projects",
   		icon: "fa fa-truck",
   		href: "/projects",
   		nodes:
@@ -232,6 +232,11 @@ use app\Http\Controllers\NavController;
 	?>
 	]
 	},
+	{
+  		text: "Archived Projects",
+  		icon: "fa fa-truck",
+  		href: "/archivedprojects"
+  	},
 	{
 		text: "Deadlines",
 		icon: "fa fa-clock-o fa-fw",
