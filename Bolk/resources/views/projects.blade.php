@@ -78,7 +78,7 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 					<td>
-						@if($project->archived = false)
+						@if($project->archived == false)
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 						@endpermission
@@ -112,7 +112,7 @@
 						<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 						<td>
-							@if($project->archived = false)
+							@if($project->archived == false)
 							@permission(('edit-project'))
 							<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 							@endpermission
