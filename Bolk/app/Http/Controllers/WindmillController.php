@@ -106,18 +106,21 @@ class WindmillController extends Controller
         $allTransport = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->get();
         $successAmount = 0;
         $geplandAmount = 0;
+        $underway = 0;
         foreach($allTransport as $transport){
             $color = self::getTransportColor($transport);
             if($color == "success"){
                 $successAmount++;
-            }else if($color == "info" || $color == "warning"){
+            }else if($color == "info"){
                 $geplandAmount++;
+            }else if($color == "warning"){
+                $underway++;
             }
         
             if($successAmount >= count($allTransport)){
                 return "success";
-            }else if ($geplandAmount >= count($allTransport)){
-                if(substr(self::getCurrentLocation($componentid),0,2) == "On"){
+            }else if (($geplandAmount + $successAmount + $underway) >= count($allTransport)){
+                if($underway > 0){
                     return "warning";
                 }else{
                     return "info";
