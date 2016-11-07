@@ -44,6 +44,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+		if ($exception instanceof TokenMismatchException){
+            //redirect to a form. Here is an example of how I handle mine
+            return redirect('/');
+        }
         return parent::render($request, $exception);
     }
 
