@@ -63,6 +63,7 @@
 						</thead>
 						<tbody id="component-table">
 							@foreach($components as $component)
+								@include('modal.newComponent');
 								<tr id="component{{$component->id}}">
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>

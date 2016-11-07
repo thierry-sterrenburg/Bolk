@@ -1,5 +1,8 @@
   <?php
 	use App\Http\Controllers\ProjectController;
+	use App\Project;
+	use App\Component;
+	use App\Switchable;
 	$componentid = Cookie::get('componentid');
 ?>
   <!--Modal -->
@@ -103,10 +106,11 @@
 				</div>
 				</div>
 			</div>
-
+				@if(isset($windmills))
 			<div class="row">
 				<div class="col-lg-6 col-sm-6">
 				<label class="form-check-label">Switchable with</label>
+
 				@foreach($windmills as $eachwindmill)
 				<div class="form-check">
 					<label for="componentswitchable" class="form-check-label">
@@ -131,6 +135,7 @@
 					</label>
 				</div>
 				@endforeach
+
 				</div>
 
 				<div class="col-lg-6 col-sm-6">
@@ -157,7 +162,7 @@
 
 				</div>
 			</div>
-
+			@endif
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
@@ -165,7 +170,11 @@
 				</div>
 				</div>
 			</div>
+
+			@if(isset($project))
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
+			@else <input type="hidden" name="projectid" value="unknown">
+			@endif
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="componentid" id="componentid" value="">
 			<input type="hidden" name="frmComponent-dismiss" id="frmComponent-dismiss" value="">

@@ -62,6 +62,8 @@ class ProjectController extends Controller
 		   $component = new Component();
 		   $this->checkInputComponent($component, $request);
 		   $component->save();
+
+		   if($request->projectid !='unknown') {
 		   $windmills = Windmill::where('projectid', '=', $request->projectid)->get();
 			
 		   foreach($windmills as $windmill){
@@ -72,7 +74,10 @@ class ProjectController extends Controller
 				  $switchable->windmillid = $checkwindmill;
 				  $switchable->save();
 			 }
+
+
 		   }
+		}
 		   return response()->json($component);
 	   }
    }
@@ -80,7 +85,7 @@ class ProjectController extends Controller
 	  if ($request->ajax()){
 		  $component=Component::find($request->id);
 		  $switchablewindmills = Switchable::where('componentid', '=', $request->id)->pluck('windmillid');
-		  return Response($component)->withCookie(Cookie::make('componentid', $request->id, 60));
+		  return Response($component)->withCookie(Cookie::make('componentid', $request->id));
 	  }
    }
    public function newUpdateComponent(Request $request){
@@ -191,8 +196,18 @@ class ProjectController extends Controller
    }
    
    public function checkInputComponent($component, $request){
-		$component->projectid=$request->projectid;
+		
 		$component->status=$request->componentstatus;
+			if($request->projectid != 'unknown'){
+			   $component->projectid=$request->projectid;
+			   if($request->componentinwindmill == 'none'){
+			   $component->mainwindmillid = null;
+		  		 }else{
+			  	 $component->mainwindmillid=$request->componentinwindmill;
+		  		 }
+			}
+
+
 		   if($request->componentregnumber == ''){
 			   $component->regnumber=null;
 		   }else{
@@ -232,10 +247,6 @@ class ProjectController extends Controller
 			   $component->remarks=null;
 		   }else{
 			   $component->remarks=$request->componentremarks;
-		   }if($request->componentinwindmill == 'none'){
-			   $component->mainwindmillid = null;
-		   }else{
-			   $component->mainwindmillid=$request->componentinwindmill;
 		   }
 		   
 	   return $component;
