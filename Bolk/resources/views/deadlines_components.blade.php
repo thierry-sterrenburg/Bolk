@@ -62,11 +62,6 @@
 						</thead>
 						<tbody id="component-table">
 							@foreach($components as $component)
-								<?php
-									$windmills = Deadlines_componentsController::getWindmills($component->projectid);
-									$project = Deadlines_componentsController::getProject($component->projectid);
-								?>
-								@include('modal.newComponent')
 								<tr id="component{{$component->id}}">
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
@@ -75,11 +70,12 @@
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getWindmillName($component->mainwindmillid) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getFromLocation($component->id) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getToLocation($component->id) }}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getFinalDesiredDate($component->id)}}</td>
+									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getCurrentLocation($component->id) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->length}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->height}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->width}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->weight}}</td>
-									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::getCurrentLocation($component->id) }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->status}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ Deadlines_componentsController::countTransports($component->id)}}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->remarks }}</td>

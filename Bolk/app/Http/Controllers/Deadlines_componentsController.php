@@ -97,4 +97,12 @@ class Deadlines_componentsController extends Controller
         }
         return $currentLocation;
     }
+
+    public static function getFinalDesiredDate($componentid) {
+        $lastDate = Component_Transport::where('componentid', '=', $componentid)->join('transports', 'component_transports.transportid','=','transports.id')->orderBy('datedesired', 'asc')->pluck('datedesired')->last();
+        if(count($lastDate) < 1) {
+            $lastTransport = '-';
+        }
+        return $lastDate;
+    }
 }
