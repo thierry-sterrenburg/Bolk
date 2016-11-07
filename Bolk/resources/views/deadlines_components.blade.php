@@ -49,11 +49,12 @@
 							<td>Attached To</td>
 							<td>From</td>
 							<td>To</td>
+							<td>Desired Date</td>
+							<td>Current location</td>
 							<td>Length</td>
 							<td>Height</td>
 							<td>Width</td>
 							<td>Weight</td>
-							<td>Current location</td>
 							<td>status</td>
 							<td>Number of transport phases</td>
 							<td>Remarks</td>
