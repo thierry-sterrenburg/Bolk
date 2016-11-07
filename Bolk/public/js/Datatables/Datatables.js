@@ -71,32 +71,61 @@
 		};
 	};
 
-		$(document).ready(function () {
-		$table.DataTable({
-			"scrollX": true,
-			responsive: true,
-			dom: 'B<"clear">lfrtip',
-			buttons: [
-				'excel',
-				{
-				extend: 'pdfHtml5',
-				orientation: 'landscape',
-				columns: ':not(:first-child)',
-				pageSize: 'LEGAL'
-				},
-				'print',
-				{
-				extend: 'colvis',
-        		columns: ':not(:first-child)',
-    			}
-			],
-			order:[[$ordering, 'asc']],
-			columnDefs: [{
-				targets: $column,
-				render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
-			},{
-				targets: -2,
-				render: $.fn.dataTable.render.moment( "YYYY-MM-DD HH:mm:ss", "DD-MM-YYYY HH:mm:ss")
-			}]
-		});
+		$(document).ready(function () 
+		{if($ordering.length >= 1){
+			$table.DataTable({
+				"scrollX": true,
+				responsive: true,
+				dom: 'B<"clear">lfrtip',
+				buttons: [
+					'excel',
+					{
+					extend: 'pdfHtml5',
+					orientation: 'landscape',
+					columns: ':not(:first-child)',
+					pageSize: 'LEGAL'
+					},
+					'print',
+					{
+					extend: 'colvis',
+	        		columns: ':not(:first-child)',
+	    			}
+				],
+				columnDefs: [{
+					targets: $column,
+					render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
+				},{
+					targets: -2,
+					render: $.fn.dataTable.render.moment( "YYYY-MM-DD HH:mm:ss", "DD-MM-YYYY HH:mm:ss")
+				}]
+			});
+		}else{
+			$table.DataTable({
+				"scrollX": true,
+				responsive: true,
+				dom: 'B<"clear">lfrtip',
+				buttons: [
+					'excel',
+					{
+					extend: 'pdfHtml5',
+					orientation: 'landscape',
+					columns: ':not(:first-child)',
+					pageSize: 'LEGAL'
+					},
+					'print',
+					{
+					extend: 'colvis',
+	        		columns: ':not(:first-child)',
+	    			}
+				],
+				table.order:[[$ordering, 'asc']],
+				columnDefs: [{
+					targets: $column,
+					render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
+				},{
+					targets: -2,
+					render: $.fn.dataTable.render.moment( "YYYY-MM-DD HH:mm:ss", "DD-MM-YYYY HH:mm:ss")
+				}]
+			});
+		}
 	});

@@ -79,7 +79,7 @@
 						</thead>
 						<tbody id="component-table">
 							@foreach($components as $component)
-								<tr id="component{{$component->id}}">
+								<tr id="component{{$component->id}}" class="{{project_componentscontroller::getComponentColor($component->id)}}">
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
@@ -281,6 +281,7 @@
     <script type="text/javascript">
     	var $table = $('#component-datatable');
     	var $column = [];
+    	var $ordering = [];
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
