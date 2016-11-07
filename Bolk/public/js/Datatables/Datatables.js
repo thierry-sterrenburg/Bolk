@@ -71,8 +71,8 @@
 		};
 	};
 
-		$(document).ready(function () 
-		{if($ordering.length >= 1){
+	$(document).ready(function (){
+		if(!typeof($ordering)&& $ordering.length >= 1){
 			$table.DataTable({
 				"scrollX": true,
 				responsive: true,
@@ -91,6 +91,7 @@
 	        		columns: ':not(:first-child)',
 	    			}
 				],
+				order:[[$ordering, 'asc']],
 				columnDefs: [{
 					targets: $column,
 					render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
@@ -118,7 +119,6 @@
 	        		columns: ':not(:first-child)',
 	    			}
 				],
-				table.order:[[$ordering, 'asc']],
 				columnDefs: [{
 					targets: $column,
 					render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
