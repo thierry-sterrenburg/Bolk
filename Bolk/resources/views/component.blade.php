@@ -92,7 +92,7 @@
 						</thead>
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
-								<tr>
+								<tr class={{ComponentController::getTransportColor($transport)}}>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->id }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->transportnumber }}</td>
 									<td onclick="document.location= '/transportphase/id={{$transport->id}}';">{{ $transport->company}}</td>
@@ -400,6 +400,7 @@
         <script type="text/javascript">
         	var $table = $('#transportphasetable');
         	var $column = [9, 10, 11, 12, 13, 14];
+        	var $ordering = [9];
 		</script>
 		<script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}"></script>
 

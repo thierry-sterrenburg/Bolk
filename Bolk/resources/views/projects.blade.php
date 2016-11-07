@@ -9,16 +9,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-
-                        <h1 class="page-header">Projects</h1>
+						
+                        <h1 class="page-header">
+							{{$title}}
+						</h1>
 
 						<!--panel content -->
+						@if($title == 'Projects')
 						@permission(('create-project'))
 						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="add" value="add">Add Project <span class="badge">+</span></button>
 						@endpermission
 
 						<br>
-
+						@endif
 						  <div class="panel-body">
 	@include('modal.newProject')
 	<table id="projectdatatable" class="table table-condensed table-hover" style="width:100%">
@@ -75,18 +78,27 @@
 					<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 					<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 					<td>
+						@if($project->archived == false)
 						@permission(('edit-project'))
 						<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 						@endpermission
 						@permission(('create-project'))
 						<button class="btn btn-warning btn-clone-project" data-id="{{ $project->id }}"><i class="fa fa-clipboard"></i></button>
 						@endpermission
+						@permission(('create-project'))
+						<button class="btn btn-primary btn-archive-project" data-id="{{ $project->id }}"><i class="fa fa-archive"></i></button>
+						@endpermission
 						@permission(('delete-project'))
 						<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 						@endpermission
+						@else
+								@permission(('create-project'))
+								<button class="btn btn-success btn-dearchive-project" data-id="{{ $project->id }}"><i class="fa fa-archive"></i></button>
+								@endpermission
+						@endif
 					</td>
 				</tr>
-				@elseif(Auth::user()->projectid == '')
+				@elseif(Auth::user()->projectid == '' || Auth::user()->projectid == '0')
 					<tr id="project{{$project->id}}">
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->id }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->regnumber }}</td>
@@ -100,15 +112,24 @@
 						<td onclick="document.location= '/project/id={{$project->id}}';" style="white-space:pre-wrap ; word-wrap:break-word;">{{ $project->remarks }}</td>
 						<td onclick="document.location= '/project/id={{$project->id}}';">{{ $project->updated_at }}</td>
 						<td>
+							@if($project->archived == false)
 							@permission(('edit-project'))
 							<button class="btn btn-success btn-edit" data-id="{{ $project->id }}"><i class="fa fa-pencil"></i></button>
 							@endpermission
 							@permission(('create-project'))
 							<button class="btn btn-warning btn-clone-project" data-id="{{ $project->id }}"><i class="fa fa-clipboard"></i></button>
 							@endpermission
+							@permission(('create-project'))
+								<button class="btn btn-primary btn-archive-project" data-id="{{ $project->id }}"><i class="fa fa-archive"></i></button>
+							@endpermission
 							@permission(('delete-project'))
 							<button class="btn btn-danger btn-delete" data-id="{{ $project->id }}"><i class="fa fa-trash-o"></i></button>
 							@endpermission
+							@else
+								@permission(('create-project'))
+								<button class="btn btn-success btn-dearchive-project" data-id="{{ $project->id }}"><i class="fa fa-archive"></i></button>
+								@endpermission
+							@endif
 						</td>
 					</tr>
 				@endif
@@ -131,7 +152,7 @@
 	$('#frmProject-clear').on('click',function(){
 		$('#frmProject').trigger('reset');
 	})
-
+	
 	$('#add').on('click',function(){
 		$('#frmProject-submit').val('Save');
 		if($('#frmProject-dismiss').val() == 'reset'){
@@ -246,6 +267,40 @@
 		if (confirm('Are you sure to delete?')==true){
 			$.ajax({
 				type : 'delete',
+				url : url,
+				data : {"_token": "{{ csrf_token() }}" ,
+					'id':value},
+				success:function(data){
+					$('#project'+value).remove();
+				}
+			});
+		}
+	});
+	
+	//---------archive project---------
+	$('tbody').delegate('.btn-archive-project', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('archiveProject')}}';
+		if (confirm('Are you sure to archive this project?')==true){
+			$.ajax({
+				type : 'put',
+				url : url,
+				data : {"_token": "{{ csrf_token() }}" ,
+					'id':value},
+				success:function(data){
+					$('#project'+value).remove();
+				}
+			});
+		}
+	});
+	
+		//---------dearchive project---------
+	$('tbody').delegate('.btn-dearchive-project', 'click',function(){
+		var value = $(this).data('id');
+		var url = '{{URL::to('dearchiveProject')}}';
+		if (confirm('Are you sure to activate this project?')==true){
+			$.ajax({
+				type : 'put',
 				url : url,
 				data : {"_token": "{{ csrf_token() }}" ,
 					'id':value},

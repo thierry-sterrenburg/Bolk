@@ -14,8 +14,13 @@ use DB;
 class ProjectsController extends Controller
 {
    public function index(){
-	$projects = Project::all();
-	return view('projects', ['projects' => $projects]);
+	$projects = Project::where('archived', '=', false)->get();
+	return view('projects', ['projects' => $projects, 'title' => 'Projects']);
+   }
+   
+   public function FindArchivedProjects(){
+	$projects = Project::where('archived', '=', true)->get();
+	return view('projects', ['projects' => $projects, 'title' => 'Archived Projects']);
    }
 
    public static function countWindmills($projectid) {
@@ -62,6 +67,24 @@ class ProjectsController extends Controller
 		   return Response($project);
 	   }
    }
+   public function archiveProject(Request $request){
+	   if ($request->ajax()){
+		   $project = Project::find($request->id);
+		   $project->archived = true;
+		   $project->save();
+		   return Response()->json(['sms'=>'archived successfully']);
+	   }
+   }
+   
+     public function dearchiveProject(Request $request){
+	   if ($request->ajax()){
+		   $project = Project::find($request->id);
+		   $project->archived = false;
+		   $project->save();
+		   return Response()->json(['sms'=>'activated successfully']);
+	   }
+   }
+   
    public function deleteProject(Request $request){
 	   if ($request->ajax()){
 		   Project::destroy($request->id);

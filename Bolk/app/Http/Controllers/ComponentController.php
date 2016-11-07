@@ -78,6 +78,19 @@ class ComponentController extends Controller
    			return Response()->json(['sms'=>'delete successfully']);
    		}
     }
+    public static function getTransportColor($transport){
+    	$currentDateTime = date("Y-m-d");
+    	If($transport->unloadingdate!= null &&$transport->unloadingdate < $currentDateTime){
+    		return "success";
+    	}else if($transport->dateplanned != null){
+    		if($transport->loadingdate < $currentDateTime){
+    			return "warning";
+    		}else{
+    			return "info";
+    		}
+    	}
+    	return "";
+    }
 
 	public function checkInputTransport($transport, $request){
 		   if($request->transportnumber == ''){

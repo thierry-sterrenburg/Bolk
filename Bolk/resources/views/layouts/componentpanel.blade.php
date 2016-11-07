@@ -27,21 +27,21 @@
 												<td colspan="2"><u>Name:</u> {{$component->name}}</td>
 											</tr>
 											<tr>
-												<td colspan="1"><u>Length: {{$component->length}}</u></td>
-												<td colspan="1"><u>Height: {{$component->height}}</u></td>
-												<td colspan="1"><u>Width: {{$component->width}}</u></td>
+												<td colspan="1"><u>Length:</u> {{$component->length}}</td>
+												<td colspan="1"><u>Height:</u> {{$component->height}}</td>
+												<td colspan="1"><u>Width:</u> {{$component->width}}</td>
 												<td colspan="1"><u>Weight:</u> {{$component->weight}}</td>
 											</tr>
 											<tr>
-												<td colspan="2"><u>Current location:</u> {{ WindmillController::getCurrentLocation($component->id)}}}</td>
+												<td colspan="2"><u>Current location:</u> {{WindmillController::getCurrentLocation($component->id)}}</td>
 												<td colspan="2"><u>Status:</u> {{$component->status}}</td>
 											</tr>
 											<tr>
-												<td colspan="4"><u>Number of Transport Phases:</u>{{WindmillController::countTransports($component->id)}}</td>
+												<td colspan="4"><u>Number of Transport Phases:</u> {{WindmillController::countTransports($component->id)}}</td>
 
 											</tr>
 											<tr>
-												<td colspan="4"><u>Remarks:</u></td>
+												<td colspan="4"><u>Remarks:</u> {{$component->remarks}}</td>
 											</tr>
 										</tbody>
 									</table>

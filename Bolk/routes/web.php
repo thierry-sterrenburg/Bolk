@@ -26,10 +26,13 @@ Route::get('/index', function () {
 Route::resource('users', 'UserController');
 
 Route::get('/projects', 'ProjectsController@index');
+Route::get('/archivedprojects', 'ProjectsController@FindArchivedProjects');
 Route::post('/newProject', 'ProjectsController@newProject');
 Route::get('/getUpdate', 'ProjectsController@getUpdate');
 Route::put('/newProject', 'ProjectsController@newUpdate');
 Route::delete('/deleteProject', 'ProjectsController@deleteProject');
+Route::put('/archiveProject', 'ProjectsController@archiveProject');
+Route::put('/dearchiveProject', 'ProjectsController@dearchiveProject');
 
 Route::get('/project/id={id}','ProjectController@index');
 Route::get('/project_transports/id={id}','Project_transportsController@index');
@@ -67,8 +70,8 @@ Route::put('/newRequirement', 'TransportphaseController@newUpdateRequirement');
 Route::delete('/deleteRequirement', 'TransportphaseController@deleteRequirement');
 
 
-Route::get('/deadlines_components', 'Deadlines_ComponentsController@index');
-Route::get('/deadlines_transports', 'Deadlines_TransportsController@index');	
+Route::get('/deadlines_components', 'Deadlines_componentsController@index');
+Route::get('/deadlines_transports', 'Deadlines_transportsController@index');
 
 Route::get('/modal', 'ProjectsController@index');
 

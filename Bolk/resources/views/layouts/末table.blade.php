@@ -270,7 +270,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <!--
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+						<li><a href="#"><i class="fa fa-users fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -278,7 +278,7 @@
 						-->
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                     </ul>
-                    <!-- /.dropdown-user -->
+                    <!-- /.dropdown-users -->
                 </li>
                 <!-- /.dropdown -->
             </ul>

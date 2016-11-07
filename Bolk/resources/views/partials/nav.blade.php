@@ -18,7 +18,7 @@ use app\Http\Controllers\NavController;
   		href: "/index"
   	},
   	{
-  		text: "Overview",
+  		text: "Projects",
   		icon: "fa fa-truck",
   		href: "/projects",
   		nodes:
@@ -129,7 +129,7 @@ use app\Http\Controllers\NavController;
 			$indexP ++;
 		}
 	}
-		elseif(Auth::user()->projectid == ''){
+		elseif(Auth::user()->projectid == '' || Auth::user()->projectid == '0'){
             echo '{
 				text: '.json_encode($project->name).',
 				icon: "fa fa-institution",
@@ -233,6 +233,11 @@ use app\Http\Controllers\NavController;
 	]
 	},
 	{
+  		text: "Archived Projects",
+  		icon: "fa fa-truck",
+  		href: "/archivedprojects"
+  	},
+	{
 		text: "Deadlines",
 		icon: "fa fa-clock-o fa-fw",
 		href: "/deadlines_components"
@@ -242,9 +247,9 @@ use app\Http\Controllers\NavController;
 		echo '
 	,
 	{
-		text: "Administration",
-		icon: "fa fa-gears fa-fw",
-		href: "/Administration"
+		text: "User administration",
+		icon: "fa fa-users",
+		href: "/users"
 	}';
 	}
 	?>
