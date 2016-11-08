@@ -185,7 +185,7 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 						$('#frmChecklist').trigger('reset');
 						$('#name').focus();
 						$('#checklist').modal('toggle');
-						location.reload;
+						location.reload();
 					}
 				});
 				})
@@ -258,6 +258,23 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 					});
 				}
 			});
+			
+			$(function () {
+        $('#requirementstartdatepicker').datetimepicker({
+			format: 'DD-MM-YYYY'});
+
+
+        $('#requirementenddatepicker').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+			format: 'DD-MM-YYYY'
+			});
+        $("#requirementstartdatepicker").on("dp.change", function (e) {
+            $('#requirementenddatepicker').data("DateTimePicker").minDate(e.date);
+        });
+        $("#requirementenddatepicker").on("dp.change", function (e) {
+            $('#requirementstartdatepicker').data("DateTimePicker").maxDate(e.date);
+        });
+    });
 		</script>
 		<!-- Datatable script-->
 		@include('partials.scriptimport')

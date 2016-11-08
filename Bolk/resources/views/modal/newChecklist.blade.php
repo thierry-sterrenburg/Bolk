@@ -181,6 +181,7 @@
 						
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<input type="hidden" name="id" id="id" value="">
+			<input type="hidden" name="responsibleplanner" id="responsibleplanner" value="{{Auth::user()->fullname}}">
 			<input type="hidden" name="transportid" id="id" value="{{$transport->id}}">
 		  </form>
         </div>
