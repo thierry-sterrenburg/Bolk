@@ -72,7 +72,6 @@
 	};
 
 	$(document).ready(function (){
-		alert($ordering);
 		if((!typeof($ordering))&& $ordering.length >= 1){
 			$table.DataTable({
 				"scrollX": true,
