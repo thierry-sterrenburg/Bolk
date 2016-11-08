@@ -337,7 +337,7 @@
     <script type="text/javascript">
     	var $table = $('#transport-datatable');
     	var $column = [10, 11, 12, 13, 14, 15];
-    	var $ordering = [9];
+    	var $ordering = 10;
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">

@@ -281,7 +281,6 @@
     <script type="text/javascript">
     	var $table = $('#component-datatable');
     	var $column = [];
-    	var $ordering = [];
     </script>
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
