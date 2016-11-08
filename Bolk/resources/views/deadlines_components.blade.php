@@ -63,8 +63,8 @@
 						</thead>
 						<tbody id="component-table">
 							@foreach($components as $component)
-								@include('modal.newComponent');
-								<tr id="component{{$component->id}}">
+								@include('modal.newComponent')
+								<tr id="component{{$component->id}}" class="{{Deadlines_componentsController::getComponentColor($component->id)}}">
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->id }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->regnumber }}</td>
 									<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->name}}</td>
@@ -251,7 +251,8 @@
     <!-- own javascript code-->
     	<script type="text/javascript">
         	var $table = $('#component-datatable');
-        	var $column = [];
+        	var $column = [7];
+        	var $ordering = [7];
         </script>
         <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 @endsection

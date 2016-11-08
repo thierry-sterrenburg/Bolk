@@ -72,7 +72,8 @@
 	};
 
 	$(document).ready(function (){
-		if(!typeof($ordering)&& $ordering.length >= 1){
+		alert($ordering);
+		if((!typeof($ordering))&& $ordering.length >= 1){
 			$table.DataTable({
 				"scrollX": true,
 				responsive: true,
@@ -91,14 +92,14 @@
 	        		columns: ':not(:first-child)',
 	    			}
 				],
-				order:[[$ordering, 'asc']],
 				columnDefs: [{
 					targets: $column,
 					render: $.fn.dataTable.render.moment( "YYYY-MM-DD", "DD-MM-YYYY")
 				},{
 					targets: -2,
 					render: $.fn.dataTable.render.moment( "YYYY-MM-DD HH:mm:ss", "DD-MM-YYYY HH:mm:ss")
-				}]
+				}],
+				order:[[$ordering, 'asc']]
 			});
 		}else{
 			$table.DataTable({

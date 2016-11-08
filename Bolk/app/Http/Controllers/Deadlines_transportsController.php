@@ -35,4 +35,17 @@ class Deadlines_transportsController extends Controller
 		$numberofRequirements = Requirement::where('transportid','=',$transportid)->count();
 		return $numberofRequirements;
 	}
+	public static function getTransportColor($transport){
+        $currentDateTime = date("Y-m-d");
+        If($transport->unloadingdate!= null &&$transport->unloadingdate < $currentDateTime){
+            return "success";
+        }else if($transport->dateplanned != null){
+            if($transport->loadingdate < $currentDateTime){
+                return "warning";
+            }else{
+                return "info";
+            }
+        }
+        return "";
+    }
 }
