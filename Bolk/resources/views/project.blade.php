@@ -211,9 +211,9 @@
 				$('#regnumber').val(data.regnumber);
 				$('#name').val(data.name);
 				$('#location').val(data.location);
-				$('#startdate').val(data.startdate);
+				$('#startdate').val(moment(data.startdate).format("DD-MM-YYYY"));
 				$('#remarks').val(data.remarks);
-				$('#enddate').val(data.enddate);
+				$('#enddate').val(moment(data.enddate).format("DD-MM-YYYY"));
 				$('#frmWindmill-dismiss').val('reset');
 				$('#frmWindmill-submit').val('Update');
 				$('#windmill').modal('show');
@@ -235,9 +235,9 @@
 				$('#regnumber').val(data.regnumber);
 				$('#name').val(data.name);
 				$('#location').val(data.location);
-				$('#startdate').val(data.startdate);
+				$('#startdate').val(moment(data.startdate).format("DD-MM-YYYY"));
 				$('#remarks').val(data.remarks);
-				$('#enddate').val(data.enddate);
+				$('#enddate').val(moment(data.enddate).format("DD-MM-YYYY"));
 				$('#frmWindmill-dismiss').val('reset');
 				$('#frmWindmill-submit').val('Duplicate');
 				$('#windmill').modal('show');
