@@ -72,7 +72,7 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 							<td>#</td>
 							<td>Name</td>
 							<td>Country</td>
-							<td>Document Location</td>
+							<!--<td>Document Location</td-->
 							<td>Start datetime</td>
 							<td>End datetime</td>
 							<td>Booked</td>
@@ -87,7 +87,7 @@ use app\Http\Controllers\TransportphaseController as TransportphaseController;
 									<td>{{ $requirement->id }}</td>
 									<td>{{ $requirement->name }}</td>
 									<td>{{ $requirement->country }}</td>
-									<td>is nog geen plek voor in database</td>
+									<!--<td>is nog geen plek voor in database</td>-->
 									<td>{{ $requirement->startdate }}</td>
 									<td>{{ $requirement->enddate }}</td>
 									<td>{{ $requirement->booked }}</td>

@@ -105,6 +105,32 @@
 	$('#frmComponent-clear').on('click',function(){
 		$('#frmComponent').trigger('reset');
 	})
+	
+	//---------form new Component---------
+	$(function() {
+		$('#frmComponent-submit').on('click', function(e){
+			e.preventDefault();
+			var form=$('#frmComponent');
+			var formData=form.serialize();
+			var url=form.attr('action');
+			var state=$('#frmComponent-submit').val();
+			var type= 'post';
+			if(state=='Update'){
+				type = 'put';
+			}
+			$.ajax({
+				type : type,
+				url : url,
+				data: formData,
+				success:function(data){
+					$('#frmComponent').trigger('reset');
+					$('#componentregnumber').focus();
+					$('#component').modal('toggle');
+					location.reload();
+				}
+			});
+		})
+	});
 
 
 	//---------form get Component---------

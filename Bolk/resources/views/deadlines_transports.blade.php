@@ -114,6 +114,32 @@
 	$('#frmTransport-clear').on('click',function(){
 		$('#frmTransport').trigger('reset');
 	})
+	
+	//---------form transport---------
+			$(function() {
+				$('#frmTransport-submit').on('click', function(e){
+				e.preventDefault();
+				var form=$('#frmTransport');
+				var formData=form.serialize();
+				var url=form.attr('action');
+				var state=$('#frmTransport-submit').val();
+				var type= 'post';
+				if(state=='Update'){
+					type = 'put';
+				}
+				$.ajax({
+					type : type,
+					url : url,
+					data: formData,
+					success:function(data){
+						$('#frmTransport').trigger('reset');
+						$('#transportnumber').focus();
+						$('#transport').modal('toggle');
+						location.reload();
+					}
+				});
+				})
+			});
 
 	//---------get update transport---------
 	$('#transport-table').delegate('.btn-edit-transport','click',function(){
