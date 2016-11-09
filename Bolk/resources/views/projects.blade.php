@@ -226,9 +226,9 @@
 				$('#regnumber').val(data.regnumber);
 				$('#name').val(data.name);
 				$('#location').val(data.location);
-				$('#startdate').val(data.startdate);
+				$('#startdate').val(moment(data.startdate).format("DD-MM-YYYY"));
 				$('#remarks').val(data.remarks);
-				$('#enddate').val(data.enddate);
+				$('#enddate').val(moment(data.enddate).format("DD-MM-YYYY"));
 				$('#frmProject-dismiss').val('reset');
 				$('#frmProject-submit').val('Update');
 				$('#project').modal('show');
@@ -250,9 +250,9 @@
 				$('#regnumber').val(data.regnumber);
 				$('#name').val(data.name);
 				$('#location').val(data.location);
-				$('#startdate').val(data.startdate);
+				$('#startdate').val(moment(data.startdate).format("DD-MM-YYYY"));
 				$('#remarks').val(data.remarks);
-				$('#enddate').val(data.enddate);
+				$('#enddate').val(moment(data.enddate).format("DD-MM-YYYY"));
 				$('#frmProject-dismiss').val('reset');
 				$('#frmProject-submit').val('Duplicate');
 				$('#project').modal('show');

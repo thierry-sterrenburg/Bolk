@@ -106,72 +106,6 @@
 		$('#frmComponent').trigger('reset');
 	})
 
-	//---------new Component---------
-	$('#addComponent').on('click',function(){
-		$('#frmComponent-submit').val('Save');
-		if($('#frmComponent-dismiss').val() == 'reset'){
-			$('#frmComponent').trigger('reset');
-		}
-		$('#frmComponent-dismiss').val('');
-		$('#component').modal('show');
-	})
-
-	//---------add Component---------
-	$('#addExistingComponentToWindmill').on('click',function(){
-		$('#frmAddComponent-submit').val('Save');
-		$('#frmAddComponent').trigger('reset');
-		$('#addExistingComponent').modal('show');
-	})
-
-	//---------form new Component---------
-	$(function() {
-		$('#frmComponent-submit').on('click', function(e){
-			e.preventDefault();
-			var form=$('#frmComponent');
-			var formData=form.serialize();
-			var url=form.attr('action');
-			var state=$('#frmComponent-submit').val();
-			var type= 'post';
-			if(state=='Update'){
-				type = 'put';
-			}
-			$.ajax({
-				type : type,
-				url : url,
-				data: formData,
-				success:function(data){
-					$('#frmComponent').trigger('reset');
-					$('#componentregnumber').focus();
-					$('#component').modal('toggle');
-					location.reload();
-				}
-			});
-		})
-	});
-
-	//---------form add Component---------
-	$(function() {
-		$('#frmAddComponent-submit').on('click', function(e){
-			e.preventDefault();
-			var form=$('#frmAddComponent');
-			var formData=form.serialize();
-			var url=form.attr('action');
-			var state=$('#frmExistingComponent-submit').val();
-			var type= 'put';
-			$.ajax({
-				type : type,
-				url : url,
-				data: formData,
-				success:function(data){
-					$('#frmAddComponent').trigger('reset');
-					$('#componentregnumber').focus();
-					$('#addExistingComponent').modal('toggle');
-					location.reload();
-				}
-			});
-		})
-	});
-
 
 	//---------form get Component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
@@ -200,33 +134,6 @@
 		});
 	})
 	
-	//---------form get Component for duplicate---------
-	$('#component-table').delegate('.btn-clone-component','click',function(){
-	document.getElementById("error_message").innerHTML = '';
-	var value=$(this).data('id');
-		var url='{{URL::to('getUpdateComponent')}}';
-		$.ajax({
-			type: 'get',
-			url : url,
-			data: {'id':value},
-			success:function(data){
-				$('#componentid').val(data.id);
-				$('#componentregnumber').val(data.regnumber);
-				$('#componentname').val(data.name);
-				$('#componentlength').val(data.length);
-				$('#componentheight').val(data.height);
-				$('#componentwidth').val(data.width);
-				$('#componentweight').val(data.weight);
-				$('#currentlocation').val(data.currentlocation);
-				$('#componentremarks').val(data.remarks);
-				$('#componentstatus').val(data.status).change();
-				$('#frmComponent-dismiss').val('reset');
-				$('#frmComponent-submit').val('Duplicate');
-				$('#component').modal('show');
-			}
-		});
-	})
-
 	//---------delete component---------
 	$('#component-table').delegate('.btn-delete-component', 'click',function(){
 		var value = $(this).data('id');

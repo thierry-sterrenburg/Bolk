@@ -65,7 +65,7 @@
 							<td>Last update</td>
 							<td/>
 						</thead>
-
+						@include('modal.newTransport')
 						<tbody id="transport-table">
 							@foreach($transports as $transport)
 								<tr class="{{Deadlines_transportsController::getTransportColor($transport)}}">
@@ -92,9 +92,6 @@
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
 										@endpermission
-										@permission(('delete-transport'))
-										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
-										@endpermission
 									</td>
 								</tr>
 							@endforeach
@@ -113,7 +110,101 @@
     	var $table = $('#transport-datatable');
     	var $column = [11, 12, 13, 14, 15, 16];
     	var $ordering = 12;
+
+	$('#frmTransport-clear').on('click',function(){
+		$('#frmTransport').trigger('reset');
+	})
+
+	//---------get update transport---------
+	$('#transport-table').delegate('.btn-edit-transport','click',function(){
+	document.getElementById("error_message").innerHTML = '';
+	var value=$(this).data('id');
+		var url='{{URL::to('getUpdateTransport')}}';
+		$.ajax({
+			type: 'get',
+			url : url,
+			data: {'id':value},
+			success:function(data){
+				$('#id').val(data.id);
+				$('#transportnumber').val(data.transportnumber);
+				$('#transportcompany').val(data.company);
+				$('#transporttruck').val(data.truck);
+				$('#transporttrailer').val(data.trailer);
+				$('#transportconfiguration').val(data.configuration);
+				$('#transportfrom').val(data.from);
+				$('#transportto').val(data.to);
+				$('#loadingdate').val(moment(data.loadingdate).format("DD-MM-YYYY"));
+				$('#datedesired').val(moment(data.datedesired).format("DD-MM-YYYY"));
+				$('#dateestimated').val(moment(data.dateestimated).format("DD-MM-YYYY"));
+				$('#dateplanned').val(moment(data.dateplanned).format("DD-MM-YYYY"));
+				$('#dateactual').val(moment(data.dateactual).format("DD-MM-YYYY"));
+				$('#unloadingdate').val(moment(data.unloadingdate).format("DD-MM-YYYY"));
+				$('#transportremarks').val(data.remarks);
+				$('#frmTransport-dismiss').val('reset');
+				$('#frmTransport-submit').val('Update');
+				$('#transport').modal('show');
+			}
+		});
+	})
+
+	$(function () {
+        $('#loadingdatepicker').datetimepicker({
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#desireddatepicker').datetimepicker({
+            useCurrent: false, //Important! See issue #1075
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#estimateddatepicker').datetimepicker({
+			useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#planneddatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#actualdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $('#unloadingdatepicker').datetimepicker({
+        	useCurrent: false,
+			sideBySide: true,
+			format: 'DD-MM-YYYY',
+			calendarWeeks: true
+		});
+
+        $("#loadingdatepicker").on("dp.change", function (e) {
+            $('#desireddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#estimateddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#planneddatepicker').data("DateTimePicker").minDate(e.date);
+            $('#unloadingdatepicker').data("DateTimePicker").minDate(e.date);
+        });
+        $('#unloadingdatepicker').on("dp.change", function (e) {
+            $('#loadingdatepicker').data("DateTimePicker").maxDate(e.date);
+        });
+        
+    });
     </script>
+
+
+
+
 
     <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 @endsection

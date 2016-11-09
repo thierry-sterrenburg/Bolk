@@ -120,7 +120,7 @@ class WindmillController extends Controller
             if($successAmount >= count($allTransport)){
                 return "success";
             }else if (($geplandAmount + $successAmount + $underway) >= count($allTransport)){
-                if($underway > 0){
+                if($underway > 0 || $successAmount > 0){
                     return "warning";
                 }else{
                     return "info";
