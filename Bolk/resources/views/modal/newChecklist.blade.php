@@ -11,6 +11,7 @@
         <div class="modal-body">
 			<div id="error_message"></div>
           <form action="/newChecklist" method="post" id="frmChecklist">
+			Choose the booking status for the following options. (booked?)
 			<div class="row">
 				<div class="col-lg-12 col-sm-12">
 				<div class="form-group">
