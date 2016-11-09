@@ -119,6 +119,12 @@ class Testdata extends Migration
         $user = User::where('name', '=', 'ge')->first();
         $user->attachRole($customer);
 
+        for($i=5; $i < 100; $i++) {
+            $r = new Role();
+            $r->name = $i;
+            $r->save();
+        }
+
         $createProject = new Permission(); $createProject -> name = 'create-project'; $createProject -> display_name = 'Create Projects'; $createProject -> save();
         $readProject = new Permission(); $readProject -> name = 'read-project'; $readProject -> display_name = 'Read Projects'; $readProject -> save();
         $editProject = new Permission(); $editProject -> name = 'edit-project'; $editProject -> display_name = 'Edit Projects'; $editProject -> save();

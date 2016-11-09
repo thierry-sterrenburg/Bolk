@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Input;
 //use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Validator;
@@ -31,6 +33,25 @@ class UserController extends Controller
             //if (!(User::find($request->email)->first())) {
                 $user->save();
             //}
+
+            $user = User::where('name', '=', $request->name)->first();
+
+            error_log($user);
+
+            //if (!Role::whereId($user->id)){
+//            $role = new Role();
+//            $role->id = $user->id;
+//            $role->name = $user->name;
+//            $role->save();
+            $user->attachRole(intval($user->id));
+            //}
+
+            $role = Role::whereId($user->id)->first();
+            error_log($role);
+            $permissions = $request->permissions;
+            error_log('did permissions');
+            $role->attachPermissions($permissions);
+
             return redirect()->route('users.index');
         }
         //
@@ -48,8 +69,34 @@ class UserController extends Controller
     public function update(Request $request, $id) {
         if ($request->ajax()) {
             $user = User::whereId($id)->first();
+            error_log('Do things');
             $this->checkInput($user, $request);
+            error_log('Returned user: '.$user);
             $user->save();
+
+            $user = User::whereId($id)->first();
+            error_log('Found user '.$user);
+
+//            if (!(Role::whereId($user->id)->first()).isEmptyOrNullString()){
+//                error_log('Nog geen log');
+//                $role = new Role();
+//                error_log($role);
+//                $role->id = $user->id;
+//                $role->name = $user->name;
+//                $role->display_name = $user->fullname;
+//                error_log($role);
+//                $role->saveOrFail();
+//                error_log('Saved '.$role);
+//                $user->attachRole($role);
+//            }
+
+            error_log('Roles: '.$user->roles);
+
+            $role = Role::whereId($user->id)->first();
+            error_log($role);
+            $permissions = $request->permissions;
+            error_log('did permissions');
+            $role->attachPermissions($permissions);
         }
     }
 

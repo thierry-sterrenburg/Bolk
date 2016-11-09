@@ -70,7 +70,9 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        @if($state == 'Edit')
                         <span class="col-md-offset-4 help-block">The password will only change if you fill in values in below fields.</span>
+                        @endif
                         <label for="password" class="col-md-4 control-label">Password</label>
 
                         <div class="col-md-6">
@@ -96,6 +98,44 @@
                                 </span>
                             @endif
                         </div>
+                    </div>
+
+                    @php
+                    $roles = App\Role::all();
+                    $permissions = App\Permission::all();
+                    @endphp
+
+                    <!--<div class="col-md-offset-4 help-block">
+                        Choose the role for this user in the program.
+                    </div>
+
+                    <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
+                        <label class="col-md-4 control-label">Choose user's role</label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="role">
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}" @if($user->hasRole($role->name)) selected @endif>{{ $role->display_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>-->
+
+                    <div class="col-md-offset-4 help-block">
+                        Hold CTRL or Shift to select more permissions for user<!--{{ App\Role::where('name', $user->name)->first() }} {{ $user->roles }}-->.
+                    </div>
+
+                    <div class="form-group {{ $errors->has('roles') ? 'has-error' : '' }}">
+                        <label class="col-md-4 control-label">Choose permissions of user</label>
+                        <div class="col-md-6">
+                            <select multiple class="form-control" size="7" name="permissions[]">
+                            @foreach($permissions as $permission)
+                                <option value="{{ $permission->id }}" name="permission[]" @if($user->can($permission->name)) selected @endif>
+                                    {{ $permission->display_name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
