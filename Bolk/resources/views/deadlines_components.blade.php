@@ -22,8 +22,8 @@
 						<div class="container">
 						    <div class='col-md-5'>
 							    <div class="form-group">
-							        <div class='input-group date' id='startdatesearch2'>
-							            <input type='text' class="form-control" placeholder="Starting date for search" />
+							        <div class='input-group date' id='startdatesearch'>
+							            <input type='text' class="form-control" placeholder="Starting date for search" id="startdateinput" />
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
@@ -32,8 +32,8 @@
 							</div>
 							<div class='col-md-5'>
 							    <div class="form-group">
-							        <div class='input-group date' id='enddatesearch2'>
-							            <input type='text' class="form-control" placeholder="Ending date for search" />
+							        <div class='input-group date' id='enddatesearch'>
+							            <input type='text' class="form-control" placeholder="Ending date for search" id="enddateinput"/>
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
@@ -186,6 +186,7 @@
         	var $table = $('#component-datatable');
         	var $column = [7];
         	var $ordering = 7;
+        	var $datetoday = new Date();
         </script>
         <script type="text/javascript" src="{{asset('js/Datatables/Datatables.js')}}">
 @endsection

@@ -72,6 +72,14 @@
 	};
 
 	$(document).ready(function (){
+		if((typeof $datetoday != 'undefined' && $datetoday)){
+			startdeadline = moment($datetoday).subtract(7, 'days');
+			enddeadline = moment($datetoday).add(14, 'days');
+			document.getElementById("startdateinput").value = moment(startdeadline).format("DD-MM-YYYY");
+			document.getElementById("enddateinput").value = moment(enddeadline).format("DD-MM-YYYY");
+			minDateFilter = startdeadline;
+			maxDateFilter = enddeadline;
+		}
 		var table = $table.DataTable({
 			"scrollX": true,
 			responsive: true,

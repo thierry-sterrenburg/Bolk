@@ -25,7 +25,7 @@
 							<div class='col-sm-5'>
 							    <div class="form-group">
 							        <div class='input-group date' id='startdatesearch'>
-							            <input type='text' class="form-control" placeholder="Starting date for search" />
+							            <input type='text' class="form-control" placeholder="Starting date for search" id="startdateinput" />
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
@@ -35,7 +35,7 @@
 							<div class='col-sm-5'>
 							    <div class="form-group">
 							        <div class='input-group date' id='enddatesearch'>
-							            <input type='text' class="form-control" placeholder="Ending date for search" />
+							            <input type='text' class="form-control" placeholder="Ending date for search" id="enddateinput" />
 							            <span class="input-group-addon">
 							                <span class="glyphicon glyphicon-calendar"></span>
 							            </span>
@@ -91,6 +91,9 @@
 									<td>
 										@permission(('edit-transport'))
 										<button class="btn btn-success btn-edit-transport" data-id="{{ $transport->id }}"><i class="fa fa-pencil"></i></button>
+										@endpermission
+										@permission(('delete-transport'))
+										<button class="btn btn-danger btn-delete-transport" data-id="{{ $transport->id }}"><i class="fa fa-trash-o"></i></button>
 										@endpermission
 									</td>
 								</tr>
