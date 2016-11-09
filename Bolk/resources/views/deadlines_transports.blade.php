@@ -113,6 +113,7 @@
     	var $table = $('#transport-datatable');
     	var $column = [11, 12, 13, 14, 15, 16];
     	var $ordering = 12;
+    	var $datetoday = new Date();
 
 	$('#frmTransport-clear').on('click',function(){
 		$('#frmTransport').trigger('reset');
