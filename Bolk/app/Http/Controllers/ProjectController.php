@@ -207,7 +207,6 @@ class ProjectController extends Controller
 		  		 }
 			}
 
-
 		   if($request->componentregnumber == ''){
 			   $component->regnumber=null;
 		   }else{
@@ -253,79 +252,81 @@ class ProjectController extends Controller
    }
    
    public function checkInputTransport($transport, $request){
-			$transport->projectid=$request->projectid;
-		   if($request->transportnumber == ''){
-			   $transport->transportnumber=null;
-		   }else{
-			   $transport->transportnumber=$request->transportnumber;
-		   }
-		   if($request->transportcompany == ''){
-			   $transport->company=null;
-		   }else{
-			   $transport->company=$request->transportcompany;
-		   }
-		   if($request->transporttruck == ''){
-			   $transport->truck=null;
-		   }else{
-			   $transport->truck=$request->transporttruck;
-		   }
-		   if($request->transporttrailer == ''){
-			   $transport->trailer=null;
-		   }else{
-			   $transport->trailer=$request->transporttrailer;
-		   }
-		   if($request->transportconfiguration == ''){
-			   $transport->configuration=null;
-		   }else{
-			   $transport->configuration=$request->transportconfiguration;
-		   }
-		   if($request->transportfrom == ''){
-			   $transport->from=null;
-		   }else{
-			   $transport->from=$request->transportfrom;
-		   }
-		   if($request->transportto == ''){
-			   $transport->to=null;
-		   }else{
-			   $transport->to=$request->transportto;
-		   }
-		   if($request->loadingdate == ''){
-			   $transport->loadingdate=null;
-		   }else{
-			   $transport->loadingdate=DfD($request->loadingdate);
-		   }
-		   if($request->datedesired == ''){
-			   $transport->datedesired=null;
-		   }else{
-			   $transport->datedesired=DfD($request->datedesired);
-		   }
-		   if($request->dateplanned == ''){
-			   $transport->dateplanned=null;
-		   }else{
-			   $transport->dateplanned=DfD($request->dateplanned);
-		   }
-		   if($request->dateestimated == ''){
-			   $transport->dateestimated=null;
-		   }else{
-			   $transport->dateestimated=DfD($request->dateestimated);
-		   }
-		   if($request->dateactual == ''){
-			   $transport->dateactual=null;
-		   }else{
-			   $transport->dateactual=DfD($request->dateactual);
-		   }
-		   if($request->unloadingdate == ''){
-			   $transport->unloadingdate=null;
-		   }else{
-			   $transport->unloadingdate=DfD($request->unloadingdate);
-		   }		   
-		   if($request->transportremarks == ''){
-			   $transport->remarks=null;
-		   }else{
-			   $transport->remarks=$request->transportremarks;
-		   }
-	   return $transport;
-   }
+   		if($request->projectid !='unknown') {
+   			$transport->projectid=$request->projectid;
+   		}
+		if($request->transportnumber == ''){
+		   $transport->transportnumber=null;
+		}else{
+		   $transport->transportnumber=$request->transportnumber;
+		}
+		if($request->transportcompany == ''){
+		   $transport->company=null;
+		}else{
+		   $transport->company=$request->transportcompany;
+		}
+		if($request->transporttruck == ''){
+		   $transport->truck=null;
+		}else{
+		   $transport->truck=$request->transporttruck;
+		}
+		if($request->transporttrailer == ''){
+		   $transport->trailer=null;
+		}else{
+		   $transport->trailer=$request->transporttrailer;
+		}
+		if($request->transportconfiguration == ''){
+		   $transport->configuration=null;
+		}else{
+		   $transport->configuration=$request->transportconfiguration;
+		}
+		if($request->transportfrom == ''){
+		   $transport->from=null;
+		}else{
+		   $transport->from=$request->transportfrom;
+		}
+		if($request->transportto == ''){
+		   $transport->to=null;
+		}else{
+		   $transport->to=$request->transportto;
+		}
+		if($request->loadingdate == ''){
+		   $transport->loadingdate=null;
+		}else{
+		   $transport->loadingdate=DfD($request->loadingdate);
+		}
+		if($request->datedesired == ''){
+		   $transport->datedesired=null;
+		}else{
+		   $transport->datedesired=DfD($request->datedesired);
+		}
+		if($request->dateplanned == ''){
+		   $transport->dateplanned=null;
+		}else{
+		   $transport->dateplanned=DfD($request->dateplanned);
+		}
+		if($request->dateestimated == ''){
+		   $transport->dateestimated=null;
+		}else{
+		   $transport->dateestimated=DfD($request->dateestimated);
+		}
+		if($request->dateactual == ''){
+		   $transport->dateactual=null;
+		}else{
+		   $transport->dateactual=DfD($request->dateactual);
+		}
+		if($request->unloadingdate == ''){
+		   $transport->unloadingdate=null;
+		}else{
+		   $transport->unloadingdate=DfD($request->unloadingdate);
+		}		   
+		if($request->transportremarks == ''){
+		   $transport->remarks=null;
+		}else{
+		   $transport->remarks=$request->transportremarks;
+		}
+		return $transport;
+		}
    
    public static function checkSwitchable($componentid, $windmillid){
 	   if(!is_null(Switchable::where('componentid', '=', $componentid)->where('windmillid', '=', $windmillid)->first())){

@@ -140,7 +140,10 @@
 			@if(isset($component))
 				<input type="hidden" name="componentid" id="componentid" value="{{$component->id}}">
 			@endif
+			@if(isset($project))
 			<input type="hidden" name="projectid" value="{{ $project->id }}">
+			@else <input type="hidden" name="projectid" value="unknown">
+			@endif
 			<input type="hidden" name="frmTransport-dismiss" id="frmTransport-dismiss" value="">
 			
 		  </form>
