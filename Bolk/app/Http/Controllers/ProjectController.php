@@ -238,11 +238,6 @@ class ProjectController extends Controller
 		   }else{
 			   $component->weight=$request->componentweight;
 		   }
-		   if($request->currentlocation == ''){
-		   		$component->currentlocation ="unknown";
-		   }else{
-		   		$component->currentlocation = $request->currentlocation;
-		   }
 		   if($request->componentremarks == ''){
 			   $component->remarks=null;
 		   }else{
