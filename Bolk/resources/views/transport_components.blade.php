@@ -33,7 +33,8 @@
 					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ComponentModal" id="addComponenttoTransport" value="add">Add Component to Transport<span class="badge">+</span></button>
 				@endpermission
 			</div>
-				@include(('modal.addComponenttoTransport'))
+				@include('modal.addComponenttoTransport')
+				@include('modal.newComponent')
 			<!-- Component Table-->
 			<div class="row">
 				<h3>Components</h3>
@@ -96,7 +97,7 @@
 								<td onclick="document.location= '/component/id={{$component->id}}';">{{ $component->updated_at }}</td>
 								<td>
 									@permission(('edit-component'))
-										<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>
+										<!--<button class="btn btn-success btn-edit-component" data-id="{{ $component->id }}"><i class="fa fa-pencil"></i></button>-->
 									@endpermission
 									@permission(('delete-component'))
 										<button class="btn btn-danger btn-delete-component" data-id="{{ $component->id }}"><i class="fa fa-chain-broken"></i></button>
@@ -119,8 +120,7 @@
 
 		$('#addComponent').modal('show');
 	})
-
-
+	
 	//---------form Component---------
 	$(function() {
 	$('#frmAddComponent-submit').on('click', function(e){
@@ -146,8 +146,37 @@
 		});
 	})
 	});
+	
+	
 
-		//---------get update component---------
+		//---------form new Component---------
+	$(function() {
+		$('#frmComponent-submit').on('click', function(e){
+			e.preventDefault();
+			var form=$('#frmComponent');
+			var formData=form.serialize();
+			var url=form.attr('action');
+			var state=$('#frmComponent-submit').val();
+			var type= 'post';
+			if(state=='Update'){
+				type = 'put';
+			}
+			$.ajax({
+				type : type,
+				url : url,
+				data: formData,
+				success:function(data){
+					$('#frmComponent').trigger('reset');
+					$('#componentregnumber').focus();
+					$('#component').modal('toggle');
+					location.reload();
+				}
+			});
+		})
+	});
+
+
+	//---------form get Component---------
 	$('#component-table').delegate('.btn-edit-component','click',function(){
 	document.getElementById("error_message").innerHTML = '';
 	var value=$(this).data('id');
@@ -164,8 +193,10 @@
 				$('#componentheight').val(data.height);
 				$('#componentwidth').val(data.width);
 				$('#componentweight').val(data.weight);
+				$('#currentlocation').val(data.currentlocation);
 				$('#componentremarks').val(data.remarks);
 				$('#componentstatus').val(data.status).change();
+				$('#frmComponent-dismiss').val('reset');
 				$('#frmComponent-submit').val('Update');
 				$('#component').modal('show');
 			}
